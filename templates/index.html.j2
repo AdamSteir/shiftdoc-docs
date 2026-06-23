@@ -1,0 +1,27 @@
+{% extends "base.html.j2" %}
+
+{% block title %}ShiftDoc — Test Documentation{% endblock %}
+
+{% block content %}
+<h1>ShiftDoc Test Documentation</h1>
+<div class="meta" style="margin-bottom:2rem;">
+  <span>Automatically generated from the ShiftDoc test suite.</span>
+</div>
+
+{% for section, pages in sections.items() %}
+{% set label = section_labels.get(section, section | replace('_', ' ') | title) %}
+<div class="index-section">
+  <h2><a href="/{{ section }}/" style="text-decoration:none;color:inherit;">{{ label }}</a></h2>
+  <div class="section-grid">
+    {% for page in pages %}
+    {% set title = page.stem | replace('_', ' ') | title %}
+    {% set test_count = page.po.tests | length %}
+    <a class="section-card" href="/{{ page.key }}/">
+      <h3>{{ title }}</h3>
+      <p>{{ test_count }} scenario{{ 's' if test_count != 1 }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

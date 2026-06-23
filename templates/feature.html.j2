@@ -1,0 +1,153 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ po.shiftdoc.source_file | replace('.feature', '') | replace('_', ' ') | title }} — ShiftDoc Docs{% endblock %}
+
+{% block content %}
+{% set title = po.shiftdoc.source_file | replace('.feature', '') | replace('_', ' ') | title %}
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  {% if section %}
+  <span>/</span>
+  <a href="/{{ section }}/">{{ section_label }}</a>
+  {% endif %}
+  <span>/</span>
+  {{ title }}
+</div>
+
+<h1>{{ title }}</h1>
+<div class="meta">
+  <span>Framework: {{ po.shiftdoc.framework | upper }}</span>
+  <span>Generated: {{ po.shiftdoc.generated[:10] }}</span>
+  <span>Model: {{ po.shiftdoc.model }}</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+{# ── Product Owner view ── #}
+<div id="view-po">
+  {% for test in po.tests %}
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">{{ test.test_name }}</span></div>
+    {% if test.feature %}<div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">{{ test.feature }}</span></div>{% endif %}
+    {% if test.user_role %}<div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">{{ test.user_role }}</span></div>{% endif %}
+
+    {% if test.traceability_annotations %}
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      {% for tag in test.traceability_annotations %}<span class="tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    {% if test.description %}
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">{{ test.description }}</span></div>
+    {% endif %}
+
+    {% if test.test_coverage %}
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        {% for row in test.test_coverage %}
+        <tr>
+          <td>{{ row.verification_step }}</td>
+          <td>{{ row.what_it_checks }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{# ── QA Manager view ── #}
+{% if qam %}
+<div id="view-qam" class="hidden">
+  {% for test in qam.tests %}
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">{{ test.test_name }}</span></div>
+    {% if test.feature %}<div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">{{ test.feature }}</span></div>{% endif %}
+    {% if test.user_role %}<div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">{{ test.user_role }}</span></div>{% endif %}
+    {% if test.outline_type %}<div class="label-row"><span class="field-label">Type:</span> <span class="field-value">{{ test.outline_type }}</span></div>{% endif %}
+
+    {% if test.traceability_annotations %}
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      {% for tag in test.traceability_annotations %}<span class="tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    {% if test.execution_annotations %}
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      {% for ann in test.execution_annotations %}<span class="tag" style="background:#fef3c7;color:#92400e;">{{ ann.type }}: {{ ann.value }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    {% if test.journey %}
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">{{ test.journey }}</span></div>
+    {% endif %}
+
+    {% if test.example_groups %}
+      {% for group in test.example_groups %}
+      {% if group.label %}<div class="feature-label" style="margin-top:0.5rem;">{{ group.label }}</div>{% endif %}
+      <table>
+        <thead><tr>
+          {% for col in group.rows[0].keys() %}
+          <th>{{ col | replace('_', ' ') | title }}</th>
+          {% endfor %}
+        </tr></thead>
+        <tbody>
+          {% for row in group.rows %}
+          <tr>
+            {% for val in row.values() %}
+            <td>{{ val }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endfor %}
+    {% elif test.test_coverage_matrix %}
+    <table>
+      <thead><tr>
+        {% for col in test.test_coverage_matrix[0].keys() %}
+        <th>{{ col | replace('_', ' ') | title }}</th>
+        {% endfor %}
+      </tr></thead>
+      <tbody>
+        {% for row in test.test_coverage_matrix %}
+        <tr>
+          {% for key, val in row.items() %}
+          <td>
+            {% if key == 'gherkin_type' %}
+              {% set cls = 'gherkin-positive' if 'positive' in val.lower() else ('gherkin-negative' if 'negative' in val.lower() else ('gherkin-boundary' if 'boundary' in val.lower() else 'gherkin-edge')) %}
+              <span class="gherkin-type {{ cls }}">{{ val }}</span>
+            {% else %}
+              {{ val }}
+            {% endif %}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+{% endblock %}

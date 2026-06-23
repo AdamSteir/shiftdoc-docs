@@ -1,0 +1,25 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ section_label }} — ShiftDoc Docs{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  <span>/</span>
+  {{ section_label }}
+</div>
+
+<h1>{{ section_label }}</h1>
+<div class="meta"><span>{{ pages | length }} feature file{{ 's' if pages | length != 1 }}</span></div>
+
+<div class="section-grid">
+  {% for page in pages %}
+  {% set title = page.stem | replace('_', ' ') | title %}
+  {% set test_count = page.po.tests | length %}
+  <a class="section-card" href="/{{ page.key }}/">
+    <h3>{{ title }}</h3>
+    <p>{{ test_count }} scenario{{ 's' if test_count != 1 }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}
