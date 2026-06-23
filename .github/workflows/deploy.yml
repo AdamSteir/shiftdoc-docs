@@ -39,6 +39,7 @@ jobs:
         with:
           repository: AdamSteir/shiftdoc-tests
           path: shiftdoc-tests
+          token: ${{ secrets.SHIFTDOC_DOCS_DISPATCH_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
