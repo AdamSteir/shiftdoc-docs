@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dictionary Management — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/account_settings/">Account Settings</a>
+  
+  <span>/</span>
+  Dictionary Management
+</div>
+
+<h1>Dictionary Management</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a JSON data dictionary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can upload a JSON file to create a new data dictionary that is saved and visible in settings.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload JSON dictionary file</td>
+          <td>Uploading a valid JSON file successfully creates a named dictionary</td>
+        </tr>
+        
+        <tr>
+          <td>Dictionary appears in settings</td>
+          <td>The newly created dictionary is visible in the settings page after upload</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an Excel data dictionary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can upload an Excel (.xlsx) file to create a new data dictionary that is saved and visible in settings.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload XLSX dictionary file</td>
+          <td>Uploading a valid Excel file successfully creates a named dictionary</td>
+        </tr>
+        
+        <tr>
+          <td>Dictionary appears in settings</td>
+          <td>The newly created dictionary is visible in the settings page after upload</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Create dictionary manually without importing a file</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-41</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can manually create a data dictionary by entering terms and definitions directly, without uploading a file.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Create dictionary with a term and definition</td>
+          <td>A dictionary named &#39;Manual Dictionary&#39; is created with term &#39;TC&#39; defined as &#39;Test Case&#39;</td>
+        </tr>
+        
+        <tr>
+          <td>Dictionary appears in settings</td>
+          <td>The manually created dictionary is saved and visible in settings</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Edit dictionary name</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-42</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can rename an existing data dictionary and see the updated name reflected in settings.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Rename dictionary</td>
+          <td>An existing dictionary can be given a new name</td>
+        </tr>
+        
+        <tr>
+          <td>Renamed dictionary is visible</td>
+          <td>The dictionary appears under its new name in settings</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Edit dictionary entries</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-42</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can edit the terms and definitions within an existing dictionary and have those changes saved.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Update dictionary term and definition</td>
+          <td>An existing dictionary entry can be changed to a new term and definition</td>
+        </tr>
+        
+        <tr>
+          <td>Updated dictionary appears in settings</td>
+          <td>The edited dictionary is saved and visible in settings</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Mark dictionary as default</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-43</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can designate a dictionary as the default, so it is automatically applied to analyses.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Set dictionary as default</td>
+          <td>A saved dictionary can be marked as the default dictionary</td>
+        </tr>
+        
+        <tr>
+          <td>Default status is reflected</td>
+          <td>The dictionary is shown as the active default in settings</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing the default dictionary clears the previous default</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-43</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user sets a new default dictionary, the previously defaulted dictionary is automatically unset, ensuring only one dictionary is ever the default.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Set a new dictionary as default</td>
+          <td>A second dictionary can be promoted to default</td>
+        </tr>
+        
+        <tr>
+          <td>New default is marked correctly</td>
+          <td>The newly selected dictionary shows as the active default</td>
+        </tr>
+        
+        <tr>
+          <td>Previous default is cleared</td>
+          <td>The formerly default dictionary is no longer marked as default</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an unsupported file format shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a file in an unsupported format is rejected with a clear error message.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload unsupported file type</td>
+          <td>The system rejects files that are not in a supported format</td>
+        </tr>
+        
+        <tr>
+          <td>Error message displayed</td>
+          <td>The user sees an error message containing &#39;Unsupported file type&#39;</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a malformed JSON file shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a JSON file with invalid formatting is rejected with a clear error message.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload malformed JSON file</td>
+          <td>The system rejects JSON files that are not properly formatted</td>
+        </tr>
+        
+        <tr>
+          <td>Error message displayed</td>
+          <td>The user sees an error message containing &#39;Invalid JSON&#39;</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a JSON with too many entries shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a JSON dictionary that exceeds the maximum number of allowed entries is rejected with a clear error message.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload JSON with excessive entries</td>
+          <td>The system enforces a maximum entry limit on imported dictionaries</td>
+        </tr>
+        
+        <tr>
+          <td>Error message displayed</td>
+          <td>The user sees an error message containing &#39;may not exceed 500 entries&#39;</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an oversized XLSX file shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading an Excel dictionary file that exceeds the allowed file size is rejected with a clear error message.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload oversized XLSX file</td>
+          <td>The system enforces a file size limit on uploaded dictionary files</td>
+        </tr>
+        
+        <tr>
+          <td>Error message displayed</td>
+          <td>The user sees an error message containing &#39;File too large&#39;</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Create dictionary manually with multiple terms</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-41</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can manually create a dictionary containing multiple terms and definitions in a single session.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Create dictionary with multiple terms</td>
+          <td>A dictionary can be created manually with more than one term-definition pair</td>
+        </tr>
+        
+        <tr>
+          <td>Dictionary appears in settings</td>
+          <td>The multi-term dictionary is saved and visible in settings</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Duplicate dictionary name shows an error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-41</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Attempting to create a second dictionary with the same name as an existing one is blocked with a clear error message.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload dictionary with an already-used name</td>
+          <td>The system prevents two dictionaries from sharing the same name</td>
+        </tr>
+        
+        <tr>
+          <td>Duplicate name error displayed</td>
+          <td>The user is informed that the dictionary name is already in use</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Export dictionary as JSON</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-44</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can export a saved dictionary as a downloadable JSON file.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Trigger JSON export</td>
+          <td>The export action is initiated for a saved dictionary</td>
+        </tr>
+        
+        <tr>
+          <td>JSON file is downloaded</td>
+          <td>A file with a .json extension is downloaded to the user&#39;s device</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Export dictionary as Excel</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-44</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can export a saved dictionary as a downloadable Excel file.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Trigger Excel export</td>
+          <td>The export action is initiated for a saved dictionary</td>
+        </tr>
+        
+        <tr>
+          <td>Excel file is downloaded</td>
+          <td>A file with a .xlsx extension is downloaded to the user&#39;s device</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Delete saved dictionary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-46</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can permanently delete a saved dictionary, removing it from their settings.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Delete a saved dictionary</td>
+          <td>The delete action is performed on an existing dictionary</td>
+        </tr>
+        
+        <tr>
+          <td>Dictionary is removed from settings</td>
+          <td>The deleted dictionary no longer appears in the user&#39;s settings</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Override dictionary for a session</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-45</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can supply a dictionary file directly in the analysis panel to override the default dictionary for that analysis only, without permanently changing their settings.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Supply dictionary in the analysis panel</td>
+          <td>A dictionary file can be provided at the point of running an analysis</td>
+        </tr>
+        
+        <tr>
+          <td>Session dictionary is applied</td>
+          <td>The supplied dictionary is used for the current analysis instead of the default</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a JSON data dictionary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user uploads a JSON file to create a named data dictionary, which is then persisted and visible in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Upload a JSON data dictionary
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User uploads a JSON dictionary file named &#39;E2E JSON Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              Dictionary is saved and shown in settings
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an Excel data dictionary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user uploads an XLSX file to create a named data dictionary, which is then persisted and visible in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Upload an Excel data dictionary
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User uploads an xlsx dictionary file named &#39;E2E XLSX Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              Dictionary is saved and shown in settings
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Create dictionary manually without importing a file</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-41</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user manually creates a data dictionary with a single term-definition pair, which is then persisted and visible in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Create dictionary manually without importing a file
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User creates a dictionary named &#39;Manual Dictionary&#39; with term &#39;TC&#39; defined as &#39;Test Case&#39;
+            
+          </td>
+          
+          <td>
+            
+              Dictionary is saved and shown in settings
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Edit dictionary name</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-42</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user renames an existing saved dictionary, and the updated name is reflected in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Edit dictionary name
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with a saved dictionary named &#39;E2E Edit Name Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              User renames the dictionary to &#39;E2E Renamed Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              The dictionary named &#39;E2E Renamed Dictionary&#39; is visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Edit dictionary entries</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-42</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user edits the term-definition entries of an existing dictionary, and the changes are persisted and shown in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Edit dictionary entries
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with a saved dictionary named &#39;E2E Edit Entries Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              User edits the dictionary entries to set term &#39;BDD&#39; defined as &#39;Behaviour Driven Development&#39;
+            
+          </td>
+          
+          <td>
+            
+              Dictionary is saved and shown in settings
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Mark dictionary as default</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-43</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user marks an existing dictionary as the default, and the default status is reflected in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Mark dictionary as default
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with a saved dictionary named &#39;E2E Default Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              User marks the dictionary as default
+            
+          </td>
+          
+          <td>
+            
+              The dictionary is marked as default
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing the default dictionary clears the previous default</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-43</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user designates a new dictionary as default, the system automatically deselects the previously defaulted dictionary, ensuring only one default exists at a time.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Changing the default dictionary clears the previous default
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with two saved dictionaries, &#39;E2E Old Default&#39; already marked as default
+            
+          </td>
+          
+          <td>
+            
+              User marks &#39;E2E New Default&#39; as the default dictionary
+            
+          </td>
+          
+          <td>
+            
+              &#39;E2E New Default&#39; is marked as default and &#39;E2E Old Default&#39; is no longer marked as default
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an unsupported file format shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a file in an unsupported format and receives a descriptive import error.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Upload an unsupported file format shows an import error
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User uploads a file with an unsupported format
+            
+          </td>
+          
+          <td>
+            
+              Import error containing &#39;Unsupported file type&#39; is displayed
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a malformed JSON file shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a JSON dictionary file with invalid JSON syntax and receives a descriptive import error.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Upload a malformed JSON file shows an import error
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User uploads a malformed JSON dictionary file
+            
+          </td>
+          
+          <td>
+            
+              Import error containing &#39;Invalid JSON&#39; is displayed
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a JSON with too many entries shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a JSON dictionary that exceeds the maximum entry limit and receives a descriptive import error.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Upload a JSON with too many entries shows an import error
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User uploads a JSON dictionary with too many entries
+            
+          </td>
+          
+          <td>
+            
+              Import error containing &#39;may not exceed 500 entries&#39; is displayed
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-boundary">Boundary</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an oversized XLSX file shows an import error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-40</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload an XLSX dictionary file that exceeds the allowed file size and receives a descriptive import error.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Upload an oversized XLSX file shows an import error
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User uploads an oversized XLSX dictionary file
+            
+          </td>
+          
+          <td>
+            
+              Import error containing &#39;File too large&#39; is displayed
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-boundary">Boundary</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Create dictionary manually with multiple terms</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-41</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user manually creates a dictionary containing multiple term-definition pairs, and the completed dictionary is persisted and visible in settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Create dictionary manually with multiple terms
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page
+            
+          </td>
+          
+          <td>
+            
+              User creates a dictionary named &#39;E2E Multi-Term Dict&#39; with multiple terms
+            
+          </td>
+          
+          <td>
+            
+              Dictionary is saved and shown in settings
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Duplicate dictionary name shows an error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-41</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to create a second dictionary with an already-used name and receives a duplicate name validation error.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Duplicate dictionary name shows an error
+            
+          </td>
+          
+          <td>
+            
+              User is logged in and on the settings page with a dictionary named &#39;E2E Duplicate Test&#39; already uploaded
+            
+          </td>
+          
+          <td>
+            
+              User uploads another JSON dictionary file with the same name &#39;E2E Duplicate Test&#39;
+            
+          </td>
+          
+          <td>
+            
+              A duplicate dictionary name error is displayed
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Export dictionary as JSON</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-44</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user exports an existing dictionary as a JSON file, triggering a download with the correct file extension.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Export dictionary as JSON
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with a saved dictionary named &#39;E2E Export JSON&#39;
+            
+          </td>
+          
+          <td>
+            
+              User exports the dictionary as JSON
+            
+          </td>
+          
+          <td>
+            
+              A file with extension &#39;.json&#39; is downloaded
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Export dictionary as Excel</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-44</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user exports an existing dictionary as an Excel file, triggering a download with the correct file extension.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Export dictionary as Excel
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with a saved dictionary named &#39;E2E Export Excel&#39;
+            
+          </td>
+          
+          <td>
+            
+              User exports the dictionary as Excel
+            
+          </td>
+          
+          <td>
+            
+              A file with extension &#39;.xlsx&#39; is downloaded
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Delete saved dictionary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-46</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user deletes an existing saved dictionary, and it is no longer present in the settings view.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Delete saved dictionary
+            
+          </td>
+          
+          <td>
+            
+              User is logged in with a saved dictionary named &#39;E2E Delete Dictionary&#39;
+            
+          </td>
+          
+          <td>
+            
+              User deletes the dictionary
+            
+          </td>
+          
+          <td>
+            
+              The dictionary is removed from settings
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Override dictionary for a session</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-45</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user on the Analyze page supplies a dictionary file inline in the analysis panel, and that dictionary is applied only for the current analysis session without affecting saved settings.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Override dictionary for a session
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User supplies a dictionary file in the analysis panel
+            
+          </td>
+          
+          <td>
+            
+              That dictionary is used for the current analysis only
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>
