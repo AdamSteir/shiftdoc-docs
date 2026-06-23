@@ -3,5 +3,5 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-_cache/
+_cache_local/
 site/

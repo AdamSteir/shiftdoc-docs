@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
 """
-build.py — reads _cache/, renders Jinja2 templates, writes site/.
+build.py — reads cache dir, renders Jinja2 templates, writes site/.
 
 Usage:
+    python build.py [--cache-dir DIR]
+
+Examples:
     python build.py
+    python build.py --cache-dir _cache_local/
+    python build.py --cache-dir _cache/
 """
 
 import json
+import sys
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
-CACHE_DIR = Path(__file__).parent / "_cache"
 SITE_DIR = Path(__file__).parent / "site"
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 
@@ -23,12 +28,12 @@ SECTION_LABELS = {
 }
 
 
-def load_cache():
+def load_cache(cache_dir: Path) -> dict:
     pages = {}
-    for po_file in sorted(CACHE_DIR.rglob("shiftdoc-po-*.json")):
+    for po_file in sorted(cache_dir.rglob("shiftdoc-po-*.json")):
         stem = po_file.stem.replace("shiftdoc-po-", "")
         qam_file = po_file.parent / f"shiftdoc-qam-{stem}.json"
-        rel_dir = po_file.parent.relative_to(CACHE_DIR)
+        rel_dir = po_file.parent.relative_to(cache_dir)
         section = str(rel_dir) if str(rel_dir) != "." else ""
         key = f"{section}/{stem}" if section else stem
         pages[key] = {
@@ -41,13 +46,12 @@ def load_cache():
     return pages
 
 
-def build():
+def build(cache_dir: Path):
     env = Environment(loader=FileSystemLoader(str(TEMPLATES_DIR)), autoescape=True)
     SITE_DIR.mkdir(exist_ok=True)
 
-    pages = load_cache()
+    pages = load_cache(cache_dir)
 
-    # Render individual feature pages
     feature_tmpl = env.get_template("feature.html.j2")
     for key, data in pages.items():
         out_dir = SITE_DIR / key
@@ -56,7 +60,6 @@ def build():
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         print(f"  built site/{key}/index.html")
 
-    # Group pages by section for section index pages
     sections = {}
     for key, data in pages.items():
         section = data["section"]
@@ -71,7 +74,6 @@ def build():
         (out_dir / "index.html").write_text(html, encoding="utf-8")
         print(f"  built site/{section}/index.html" if section else "  built site/index.html (general)")
 
-    # Render main index
     index_tmpl = env.get_template("index.html.j2")
     ordered_sections = {k: sections[k] for k in ["claude_workflows", "analyze", "account_settings", ""] if k in sections}
     html = index_tmpl.render(sections=ordered_sections, section_labels=SECTION_LABELS)
@@ -81,5 +83,20 @@ def build():
     print(f"\nDone. {len(pages)} pages built.")
 
 
+def main():
+    args = sys.argv[1:]
+    cache_dir = Path(__file__).parent / "_cache_local"
+
+    if "--cache-dir" in args:
+        idx = args.index("--cache-dir")
+        cache_dir = Path(args[idx + 1])
+
+    if not cache_dir.exists():
+        print(f"Error: cache directory not found: {cache_dir}")
+        sys.exit(1)
+
+    build(cache_dir)
+
+
 if __name__ == "__main__":
-    build()
+    main()

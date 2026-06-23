@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """
-generate.py — calls ShiftDoc API for every feature file and writes PO + QAM JSON to _cache/.
+generate.py — calls ShiftDoc API for every feature file and writes PO + QAM JSON to the cache dir.
 
 Usage:
-    python generate.py <features_dir>
+    python generate.py <features_dir> [--cache-dir DIR] [--limit N] [--files stem1 stem2 ...]
 
     features_dir: path to the shiftdoc-tests/features directory
 
-Example:
+Examples:
     python generate.py ../shiftdoc-tests/features
+    python generate.py ../shiftdoc-tests/features --cache-dir _cache_local/
+    python generate.py ../shiftdoc-tests/features --files espresso bdd --cache-dir _cache_local/
 """
 
 import json
@@ -26,8 +28,6 @@ REQUEST_TIMEOUT = 60
 SKIP_DIRS = {"smoke"}
 MAX_CONSECUTIVE_ERRORS = 5
 
-CACHE_DIR = Path(__file__).parent / "_cache"
-
 
 def find_feature_files(features_dir: Path) -> list[Path]:
     files = []
@@ -38,10 +38,10 @@ def find_feature_files(features_dir: Path) -> list[Path]:
     return files
 
 
-def cache_path(feature_file: Path, features_dir: Path, role_slug: str) -> Path:
+def cache_path(feature_file: Path, features_dir: Path, role_slug: str, cache_dir: Path) -> Path:
     rel = feature_file.relative_to(features_dir)
     filename = f"shiftdoc-{role_slug}-{feature_file.stem}.json"
-    return CACHE_DIR / rel.parent / filename
+    return cache_dir / rel.parent / filename
 
 
 def call_shiftdoc(content: str, filename: str, role: str) -> dict:
@@ -59,6 +59,14 @@ def call_shiftdoc(content: str, filename: str, role: str) -> dict:
 
 def main():
     args = sys.argv[1:]
+
+    cache_dir = Path(__file__).parent / "_cache_local"
+
+    if "--cache-dir" in args:
+        idx = args.index("--cache-dir")
+        cache_dir = Path(args[idx + 1])
+        args = [a for i, a in enumerate(args) if i != idx and i != idx + 1]
+
     limit = None
     if "--limit" in args:
         idx = args.index("--limit")
@@ -66,7 +74,7 @@ def main():
         args = [a for i, a in enumerate(args) if i != idx and i != idx + 1]
 
     if not args:
-        print("Usage: python generate.py <features_dir> [--limit N]")
+        print("Usage: python generate.py <features_dir> [--cache-dir DIR] [--limit N] [--files ...]")
         sys.exit(1)
 
     features_dir = Path(args[0]).resolve()
@@ -87,13 +95,14 @@ def main():
     elif limit:
         feature_files = feature_files[:limit]
         print(f"(--limit {limit}: processing first {limit} files only)")
+
     total = len(feature_files) * len(ROLES)
     call_num = 0
     errors = []
     consecutive_errors = 0
     suite_start = time.monotonic()
 
-    print(f"Found {len(feature_files)} feature files — {total} API calls at {SLEEP_SECONDS}s apart")
+    print(f"Found {len(feature_files)} feature files -- {total} API calls at {SLEEP_SECONDS}s apart")
     print(f"Estimated time: ~{(total * SLEEP_SECONDS) // 60} minutes\n")
 
     for feature_file in feature_files:
@@ -102,7 +111,7 @@ def main():
         for role in ROLES:
             call_num += 1
             slug = ROLE_SLUG[role]
-            out_path = cache_path(feature_file, features_dir, slug)
+            out_path = cache_path(feature_file, features_dir, slug, cache_dir)
             rel_label = feature_file.relative_to(features_dir)
             print(f"[{call_num}/{total}] {rel_label} ({slug})")
 
@@ -112,7 +121,7 @@ def main():
                 elapsed = time.monotonic() - call_start
                 out_path.parent.mkdir(parents=True, exist_ok=True)
                 out_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
-                print(f"  saved -> _cache/{out_path.relative_to(CACHE_DIR)} ({elapsed:.1f}s)")
+                print(f"  saved -> {cache_dir.name}/{out_path.relative_to(cache_dir)} ({elapsed:.1f}s)")
                 consecutive_errors = 0
             except Exception as e:
                 elapsed = time.monotonic() - call_start
@@ -120,7 +129,7 @@ def main():
                 errors.append({"file": str(rel_label), "role": slug, "error": str(e)})
                 consecutive_errors += 1
                 if consecutive_errors >= MAX_CONSECUTIVE_ERRORS:
-                    print(f"\nAborting — {MAX_CONSECUTIVE_ERRORS} consecutive failures. API may be down.")
+                    print(f"\nAborting -- {MAX_CONSECUTIVE_ERRORS} consecutive failures. API may be down.")
                     break
 
             if call_num < total:
