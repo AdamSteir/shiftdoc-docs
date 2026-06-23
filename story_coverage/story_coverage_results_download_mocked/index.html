@@ -195,7 +195,7 @@
   <a href="/">Home</a>
   
   <span>/</span>
-  <a href="/analyze/">Analyze</a>
+  <a href="/story_coverage/">Story Coverage</a>
   
   <span>/</span>
   Story Coverage Results Download Mocked
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in MD format produces a file with the correct .md extension and the original story filename.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in MD format produces a file with the correct name and extension based on the uploaded story file.</span></div>
     
 
     
@@ -240,17 +240,17 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>A coverage result is available based on a story file the user uploaded</td>
+          <td>Coverage results are available from a named uploaded story file</td>
         </tr>
         
         <tr>
           <td>When I click the Download MD button</td>
-          <td>The user initiates a download in Markdown format</td>
+          <td>User can trigger a download in Markdown format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.md&#34;</td>
-          <td>The downloaded file carries the correct name derived from the uploaded story file and the .md extension</td>
+          <td>Downloaded file name reflects the original story filename and uses the .md extension</td>
         </tr>
         
       </tbody>
@@ -271,7 +271,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in HTML format produces a file with the correct .html extension and the original story filename.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in HTML format produces a file with the correct name and extension based on the uploaded story file.</span></div>
     
 
     
@@ -282,17 +282,17 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>A coverage result is available based on a story file the user uploaded</td>
+          <td>Coverage results are available from a named uploaded story file</td>
         </tr>
         
         <tr>
           <td>When I click the Download HTML button</td>
-          <td>The user initiates a download in HTML format</td>
+          <td>User can trigger a download in HTML format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.html&#34;</td>
-          <td>The downloaded file carries the correct name derived from the uploaded story file and the .html extension</td>
+          <td>Downloaded file name reflects the original story filename and uses the .html extension</td>
         </tr>
         
       </tbody>
@@ -313,7 +313,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in JSON format produces a file with the correct .json extension and the original story filename.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in JSON format produces a file with the correct name and extension based on the uploaded story file.</span></div>
     
 
     
@@ -324,17 +324,17 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>A coverage result is available based on a story file the user uploaded</td>
+          <td>Coverage results are available from a named uploaded story file</td>
         </tr>
         
         <tr>
           <td>When I click the Download JSON button</td>
-          <td>The user initiates a download in JSON format</td>
+          <td>User can trigger a download in JSON format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.json&#34;</td>
-          <td>The downloaded file carries the correct name derived from the uploaded story file and the .json extension</td>
+          <td>Downloaded file name reflects the original story filename and uses the .json extension</td>
         </tr>
         
       </tbody>
@@ -355,7 +355,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user pastes story content instead of uploading a file, the downloaded coverage report uses a date-time stamp in its filename rather than a story-derived name.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when coverage results come from pasted story text (no file name available), the downloaded file is automatically named using a date-time timestamp instead.</span></div>
     
 
     
@@ -366,17 +366,17 @@
         
         <tr>
           <td>Given a coverage result is displayed</td>
-          <td>A coverage result is available from pasted story content (no uploaded file)</td>
+          <td>Coverage results are available from pasted story text with no associated filename</td>
         </tr>
         
         <tr>
           <td>When I click the Download MD button</td>
-          <td>The user initiates a download in Markdown format</td>
+          <td>User triggers a download in Markdown format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file matches &#34;shiftdoc-tca-\d{8}-\d{6}\.md&#34;</td>
-          <td>The downloaded filename contains a date-time stamp instead of a story name, ensuring a meaningful fallback when no filename is available</td>
+          <td>Downloaded file is automatically named with a date-time stamp when no story filename exists</td>
         </tr>
         
       </tbody>
@@ -406,7 +406,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result from an uploaded story file and verifies the downloaded filename extension matches the selected export format.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result derived from an uploaded story file and verifies the downloaded file carries the correct extension for each supported format.</span></div>
     
 
     
@@ -468,7 +468,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content rather than uploading a file downloads the coverage result and verifies the filename falls back to a date-time stamp pattern instead of a story-derived name.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content rather than uploading a file downloads a coverage result and verifies the filename falls back to a date-time-stamped pattern instead of a story-derived name.</span></div>
     
 
     
@@ -498,7 +498,7 @@
           
           <td>
             
-              A coverage result is displayed with no uploaded file (pasted content)
+              A coverage result is displayed with no uploaded story file (pasted input)
             
           </td>
           
@@ -510,7 +510,7 @@
           
           <td>
             
-              Downloaded filename matches the pattern shiftdoc-tca-\d{8}-\d{6}\.md
+              Downloaded filename matches the regex pattern shiftdoc-tca-\d{8}-\d{6}\.md
             
           </td>
           

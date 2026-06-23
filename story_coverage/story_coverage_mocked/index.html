@@ -195,7 +195,7 @@
   <a href="/">Home</a>
   
   <span>/</span>
-  <a href="/analyze/">Analyze</a>
+  <a href="/story_coverage/">Story Coverage</a>
   
   <span>/</span>
   Story Coverage Mocked
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The Check Coverage button only becomes available once the user has provided both a user story and test cases, preventing incomplete submissions.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The Check Coverage button only becomes active once the user has provided both a user story and test cases, preventing incomplete submissions.</span></div>
     
 
     
@@ -239,18 +239,18 @@
       <tbody>
         
         <tr>
-          <td>Button disabled with no inputs</td>
-          <td>Check Coverage button is inactive when the page is first loaded</td>
+          <td>Button disabled with no input</td>
+          <td>Check Coverage button is inactive when the page is first opened</td>
         </tr>
         
         <tr>
-          <td>Button disabled with only a user story</td>
-          <td>Check Coverage button remains inactive when only the story field is filled</td>
+          <td>Button disabled after story only</td>
+          <td>Check Coverage button remains inactive after entering only a user story</td>
         </tr>
         
         <tr>
-          <td>Button enabled with both inputs</td>
-          <td>Check Coverage button becomes active only after both the story and test case fields are filled</td>
+          <td>Button enabled after both inputs</td>
+          <td>Check Coverage button becomes active once test cases are also entered</td>
         </tr>
         
       </tbody>
@@ -271,7 +271,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">After submitting a story and test cases, the user sees a results panel and download options appear on the page.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">After submitting both inputs, the user sees a results panel and download options with the coverage analysis.</span></div>
     
 
     
@@ -282,12 +282,12 @@
         
         <tr>
           <td>Results panel is visible</td>
-          <td>Coverage analysis results are displayed to the user after a successful check</td>
+          <td>Coverage results are displayed to the user after a successful analysis</td>
         </tr>
         
         <tr>
           <td>Download buttons are shown</td>
-          <td>Users are offered download options once results are available</td>
+          <td>Users can download the coverage results once they are available</td>
         </tr>
         
       </tbody>
@@ -308,7 +308,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Clicking the Clear button wipes both input fields and hides the results panel, returning the page to a blank state.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The Clear button returns the page to its initial state, wiping both input fields and hiding the results panel.</span></div>
     
 
     
@@ -319,17 +319,17 @@
         
         <tr>
           <td>Story input is empty</td>
-          <td>The user story field is cleared after clicking Clear</td>
+          <td>User story field is cleared after clicking Clear</td>
         </tr>
         
         <tr>
           <td>Test input is empty</td>
-          <td>The test cases field is cleared after clicking Clear</td>
+          <td>Test cases field is cleared after clicking Clear</td>
         </tr>
         
         <tr>
           <td>Results panel is hidden</td>
-          <td>Previously shown coverage results are removed from the page after clicking Clear</td>
+          <td>Previously displayed coverage results are removed from view after clicking Clear</td>
         </tr>
         
       </tbody>
@@ -350,7 +350,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the coverage service fails, the user sees a clear error message instead of a results panel.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the coverage service fails, the user sees a meaningful error message instead of a blank or broken page.</span></div>
     
 
     
@@ -361,7 +361,7 @@
         
         <tr>
           <td>Error message is displayed</td>
-          <td>Users are informed when the coverage check fails due to a service error</td>
+          <td>User is informed of the failure when the coverage analysis cannot be completed</td>
         </tr>
         
       </tbody>
@@ -382,7 +382,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can select a test format (e.g. Playwright) and that selection is correctly sent to the coverage service when the check is run.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The test format selector is visible on the page and the user&#39;s chosen format is included when the coverage analysis is requested.</span></div>
     
 
     
@@ -393,12 +393,12 @@
         
         <tr>
           <td>Format selector is visible</td>
-          <td>The test format dropdown is present on the page</td>
+          <td>Users can see and interact with the test format selector</td>
         </tr>
         
         <tr>
           <td>Compare request includes test_format &#39;playwright&#39;</td>
-          <td>The chosen format is passed correctly to the coverage API when the check is submitted</td>
+          <td>The selected format is correctly sent to the analysis service when coverage is checked</td>
         </tr>
         
       </tbody>
@@ -419,7 +419,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user selects a testing layer, that selection is correctly included in the request sent to the coverage service.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The testing layer chosen by the user is included in the coverage analysis request.</span></div>
     
 
     
@@ -430,7 +430,7 @@
         
         <tr>
           <td>Compare request includes the selected testing layer</td>
-          <td>The chosen testing layer is passed correctly to the coverage API when the check is submitted</td>
+          <td>The chosen testing layer is correctly passed to the analysis service when coverage is checked</td>
         </tr>
         
       </tbody>
@@ -451,7 +451,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Switching the test format removes any previously entered test case content and clears the associated filename, preventing mismatched data.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user switches the test format, any previously entered test case content and uploaded filename are automatically cleared to avoid mismatched data.</span></div>
     
 
     
@@ -462,7 +462,7 @@
         
         <tr>
           <td>Test case content is cleared</td>
-          <td>Existing test case text is removed when the format is changed</td>
+          <td>The test cases field is emptied when the format is changed</td>
         </tr>
         
         <tr>
@@ -488,7 +488,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Switching the test format leaves the user story field untouched, so users don&#39;t lose their story content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Switching the test format leaves the user story input untouched so the user does not need to re-enter it.</span></div>
     
 
     
@@ -520,7 +520,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a coverage result is already displayed, changing the test format hides it so users know they need to re-run the check.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user changes the test format, any existing coverage results are hidden to prevent showing stale analysis.</span></div>
     
 
     
@@ -531,7 +531,7 @@
         
         <tr>
           <td>Results panel is hidden</td>
-          <td>Coverage results are dismissed when the test format is changed, signalling that the previous result is no longer valid</td>
+          <td>Previously displayed coverage results are removed when the test format is changed</td>
         </tr>
         
       </tbody>
@@ -552,7 +552,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a coverage result is already displayed, changing the testing layer selection hides it so users know the result is stale.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user changes the testing layer selection, any existing coverage results are hidden to prevent showing stale analysis.</span></div>
     
 
     
@@ -563,7 +563,7 @@
         
         <tr>
           <td>Results panel is hidden</td>
-          <td>Coverage results are dismissed when the testing layer selection is changed</td>
+          <td>Previously displayed coverage results are removed when the testing layer is changed</td>
         </tr>
         
       </tbody>
@@ -584,7 +584,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a coverage result is already displayed, changing the data dictionary selection hides it so users know the result is stale.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user changes the data dictionary selection, any existing coverage results are hidden to prevent showing stale analysis.</span></div>
     
 
     
@@ -595,7 +595,7 @@
         
         <tr>
           <td>Results panel is hidden</td>
-          <td>Coverage results are dismissed when the data dictionary selection is changed</td>
+          <td>Previously displayed coverage results are removed when the data dictionary is changed</td>
         </tr>
         
       </tbody>
@@ -616,7 +616,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a coverage result is already displayed, editing the story input hides it so users understand they need to re-run the check with the updated content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user edits the user story after a coverage analysis has been run, the results are hidden to reflect that the analysis is no longer current.</span></div>
     
 
     
@@ -627,7 +627,7 @@
         
         <tr>
           <td>Results panel is hidden</td>
-          <td>Coverage results are dismissed when the user modifies the story input</td>
+          <td>Coverage results are cleared when the user story is modified</td>
         </tr>
         
       </tbody>
@@ -648,7 +648,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a coverage result is already displayed, editing the test input hides it so users understand they need to re-run the check with the updated content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user edits the test cases after a coverage analysis has been run, the results are hidden to reflect that the analysis is no longer current.</span></div>
     
 
     
@@ -659,7 +659,7 @@
         
         <tr>
           <td>Results panel is hidden</td>
-          <td>Coverage results are dismissed when the user modifies the test case input</td>
+          <td>Coverage results are cleared when the test cases are modified</td>
         </tr>
         
       </tbody>
@@ -680,7 +680,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user&#39;s story text is preserved when they leave the Story Coverage page and return, so they don&#39;t have to re-enter it.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user&#39;s story input is preserved when they navigate away from the page and return, so they do not lose their work.</span></div>
     
 
     
@@ -691,7 +691,7 @@
         
         <tr>
           <td>Story input still contains my text</td>
-          <td>The user story field retains its content after navigating away and returning to the page</td>
+          <td>The user story field retains its content after the user leaves and returns to the page</td>
         </tr>
         
       </tbody>
@@ -712,7 +712,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user&#39;s test case text is preserved when they leave the Story Coverage page and return, so they don&#39;t have to re-enter it.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user&#39;s test case input is preserved when they navigate away from the page and return, so they do not lose their work.</span></div>
     
 
     
@@ -723,7 +723,7 @@
         
         <tr>
           <td>Test input still contains my text</td>
-          <td>The test cases field retains its content after navigating away and returning to the page</td>
+          <td>The test cases field retains its content after the user leaves and returns to the page</td>
         </tr>
         
       </tbody>
@@ -744,7 +744,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user&#39;s chosen test format and testing layer are remembered when they leave the Story Coverage page and return.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The user&#39;s chosen test format and testing layer selections are remembered when they navigate away and return to the page.</span></div>
     
 
     
@@ -755,12 +755,12 @@
         
         <tr>
           <td>Format selection is unchanged</td>
-          <td>The previously selected test format is still selected after returning to the page</td>
+          <td>The test format selector reflects the user&#39;s previous choice after returning to the page</td>
         </tr>
         
         <tr>
           <td>Testing layer selection is unchanged</td>
-          <td>The previously selected testing layer is still selected after returning to the page</td>
+          <td>The testing layer selector reflects the user&#39;s previous choice after returning to the page</td>
         </tr>
         
       </tbody>
@@ -781,7 +781,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A coverage result that was displayed before navigation is still visible when the user returns to the Story Coverage page.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A completed coverage analysis result remains visible when the user navigates away and returns, so they can review it without re-running the analysis.</span></div>
     
 
     
@@ -792,7 +792,7 @@
         
         <tr>
           <td>Results panel is still visible</td>
-          <td>Previously generated coverage results remain on screen after navigating away and returning</td>
+          <td>Coverage results are retained and displayed after the user leaves and returns to the page</td>
         </tr>
         
       </tbody>
@@ -813,7 +813,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">All story and test case inputs are cleared when a user logs out, ensuring no data persists into a subsequent session.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">All user inputs are cleared when the user logs out, ensuring no data is left accessible to the next person who logs in.</span></div>
     
 
     
@@ -824,12 +824,12 @@
         
         <tr>
           <td>Story input is empty</td>
-          <td>The user story field is blank when returning to the page after logging out</td>
+          <td>The user story field is blank after logging out and returning to the page</td>
         </tr>
         
         <tr>
           <td>Test input is empty</td>
-          <td>The test cases field is blank when returning to the page after logging out</td>
+          <td>The test cases field is blank after logging out and returning to the page</td>
         </tr>
         
       </tbody>
@@ -859,7 +859,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user must provide both a user story and test cases before the Check Coverage button becomes interactive, preventing incomplete submissions.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the Check Coverage button remains disabled until both the user story and test case inputs are populated.</span></div>
     
 
     
@@ -895,13 +895,13 @@
           
           <td>
             
-              User enters a user story only, then enters test cases
+              User enters a user story only, then also enters test cases
             
           </td>
           
           <td>
             
-              Button remains disabled with only one input; button becomes enabled only when both inputs are present
+              Button is disabled with only one input; button becomes enabled when both inputs are filled
             
           </td>
           
@@ -935,7 +935,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After submitting both inputs against a mocked valid API, the user sees a results panel and download buttons confirming a successful coverage check.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that submitting valid inputs against a mocked successful API renders the results panel and download buttons.</span></div>
     
 
     
@@ -965,7 +965,7 @@
           
           <td>
             
-              Coverage API is mocked to return a valid result
+              Coverage API is mocked with a valid result
             
           </td>
           
@@ -1011,7 +1011,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who wants to start over can click Clear to wipe all inputs and hide the results panel, returning the page to its initial state.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that clicking the Clear button empties both text inputs and hides the results panel.</span></div>
     
 
     
@@ -1041,7 +1041,7 @@
           
           <td>
             
-              A coverage result is currently displayed on the page
+              A coverage result is already displayed
             
           </td>
           
@@ -1053,7 +1053,7 @@
           
           <td>
             
-              Story input is empty, test input is empty, and the results panel is hidden
+              Story input is empty, test input is empty, and results panel is hidden
             
           </td>
           
@@ -1087,7 +1087,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When the coverage API returns a 500 error, the user is shown a meaningful error message rather than a blank or broken results panel.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that a 500 error response from the coverage API surfaces an error message to the user.</span></div>
     
 
     
@@ -1129,7 +1129,7 @@
           
           <td>
             
-              An error message is displayed to the user
+              An error message is displayed
             
           </td>
           
@@ -1163,7 +1163,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">The format selector is visible to the user and the selected format value is correctly included in the API request payload when coverage is checked.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the format selector is visible and that the selected format value is included in the API request payload.</span></div>
     
 
     
@@ -1193,7 +1193,7 @@
           
           <td>
             
-              Coverage API is mocked with a valid result and the format selector is visible
+              Coverage API is mocked with a valid result
             
           </td>
           
@@ -1205,7 +1205,7 @@
           
           <td>
             
-              The compare request includes test_format &#39;playwright&#39;
+              Format selector is visible and the compare request includes test_format &#39;playwright&#39;
             
           </td>
           
@@ -1239,7 +1239,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user selects a testing layer, that selection is correctly forwarded in the API request payload on coverage check.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the selected testing layer is included in the API request payload when Check Coverage is triggered.</span></div>
     
 
     
@@ -1315,7 +1315,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Switching the test format resets the test case content and filename to prevent mismatched data from being submitted.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that switching the test format clears any previously entered test case content and the associated filename.</span></div>
     
 
     
@@ -1391,7 +1391,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When the user changes the test format, the story input is preserved so the user does not need to re-enter their user story.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that switching the test format leaves the story input field unchanged.</span></div>
     
 
     
@@ -1467,7 +1467,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Changing the test format after a coverage result is shown hides the stale results panel to avoid presenting misleading data.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that switching the test format hides a previously displayed coverage results panel.</span></div>
     
 
     
@@ -1497,7 +1497,7 @@
           
           <td>
             
-              A coverage result is currently displayed
+              A coverage result is displayed
             
           </td>
           
@@ -1543,7 +1543,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Changing the testing layer selection after a result is displayed hides the stale results panel to avoid presenting misleading data.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that changing the testing layer selection hides a previously displayed coverage results panel.</span></div>
     
 
     
@@ -1573,7 +1573,7 @@
           
           <td>
             
-              A coverage result is currently displayed
+              A coverage result is displayed
             
           </td>
           
@@ -1619,7 +1619,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Changing the data dictionary selection after a result is displayed hides the stale results panel to avoid presenting misleading data.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that changing the data dictionary selection hides a previously displayed coverage results panel.</span></div>
     
 
     
@@ -1649,7 +1649,7 @@
           
           <td>
             
-              A coverage result is currently displayed
+              A coverage result is displayed
             
           </td>
           
@@ -1695,7 +1695,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user edits the story input after viewing a result, the results panel is hidden so only up-to-date coverage data is shown.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that editing the story input after a coverage result is displayed causes the results panel to be hidden.</span></div>
     
 
     
@@ -1725,7 +1725,7 @@
           
           <td>
             
-              A coverage result is currently displayed
+              A coverage result is displayed
             
           </td>
           
@@ -1771,7 +1771,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user edits the test input after viewing a result, the results panel is hidden so only up-to-date coverage data is shown.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that editing the test input after a coverage result is displayed causes the results panel to be hidden.</span></div>
     
 
     
@@ -1801,7 +1801,7 @@
           
           <td>
             
-              A coverage result is currently displayed
+              A coverage result is displayed
             
           </td>
           
@@ -1847,7 +1847,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s story input is preserved in state so that navigating away and returning to the page does not lose their entered text.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the story input text is preserved when a user navigates away from and returns to the Story Coverage page.</span></div>
     
 
     
@@ -1877,7 +1877,7 @@
           
           <td>
             
-              User has entered a user story on the Story Coverage page
+              User has entered a user story
             
           </td>
           
@@ -1923,7 +1923,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s test case input is preserved in state so that navigating away and returning to the page does not lose their entered text.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the test case input text is preserved when a user navigates away from and returns to the Story Coverage page.</span></div>
     
 
     
@@ -1953,7 +1953,7 @@
           
           <td>
             
-              User has entered test cases on the Story Coverage page
+              User has entered test cases
             
           </td>
           
@@ -1999,7 +1999,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s format and testing layer selections are preserved so that navigating away and returning to the page restores their chosen configuration.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the selected test format and testing layer are preserved when a user navigates away from and returns to the Story Coverage page.</span></div>
     
 
     
@@ -2041,7 +2041,7 @@
           
           <td>
             
-              Format selection and testing layer selection are both unchanged
+              Format selection and testing layer selection are unchanged
             
           </td>
           
@@ -2075,7 +2075,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A previously generated coverage result remains visible when the user navigates away and returns, avoiding the need to re-run the check.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that a previously generated coverage result remains visible when a user navigates away from and returns to the Story Coverage page.</span></div>
     
 
     
@@ -2105,7 +2105,7 @@
           
           <td>
             
-              A coverage result is currently displayed
+              A coverage result is displayed
             
           </td>
           
@@ -2151,7 +2151,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user logs out, all Story Coverage page state is cleared so that a subsequent session starts fresh with no residual data.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that logging out clears all story and test case input state so that a returning user sees an empty page.</span></div>
     
 
     
@@ -2193,7 +2193,7 @@
           
           <td>
             
-              Story input and test input are both empty
+              Story input is empty and test input is empty
             
           </td>
           
