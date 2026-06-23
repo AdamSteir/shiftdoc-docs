@@ -23,6 +23,7 @@ TEMPLATES_DIR = Path(__file__).parent / "templates"
 SECTION_LABELS = {
     "account_settings": "Account Settings",
     "analyze": "Analyze",
+    "story_coverage": "Story Coverage",
     "claude_workflows": "Frameworks & Add-ons",
     "": "General",
 }
@@ -75,7 +76,9 @@ def build(cache_dir: Path):
         print(f"  built site/{section}/index.html" if section else "  built site/index.html (general)")
 
     index_tmpl = env.get_template("index.html.j2")
-    ordered_sections = {k: sections[k] for k in ["claude_workflows", "analyze", "account_settings", ""] if k in sections}
+    preferred = ["claude_workflows", "analyze", "story_coverage", "account_settings", ""]
+    ordered_sections = {k: sections[k] for k in preferred if k in sections}
+    ordered_sections.update({k: v for k, v in sections.items() if k not in ordered_sections})
     html = index_tmpl.render(sections=ordered_sections, section_labels=SECTION_LABELS)
     (SITE_DIR / "index.html").write_text(html, encoding="utf-8")
     print("  built site/index.html")
