@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi File Batch — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Multi File Batch
+</div>
+
+<h1>Multi File Batch</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Submit button is disabled when the queue is empty</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user cannot accidentally submit a batch job when no files have been added to the queue.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Enable multi-file mode</td>
+          <td>Multi-file mode can be activated by the user</td>
+        </tr>
+        
+        <tr>
+          <td>Submit button is disabled</td>
+          <td>The submit button is unavailable when the file queue is empty, preventing empty submissions</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Submitting a valid multi-file batch shows the batch status card</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that after submitting a batch with at least one file, the user sees a batch status card instead of an immediate results panel.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select format and role, add a file, and submit</td>
+          <td>A complete batch submission can be initiated with a format, role, and at least one file</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card is visible</td>
+          <td>The user receives confirmation that their batch job has been submitted</td>
+        </tr>
+        
+        <tr>
+          <td>Results panel is not visible</td>
+          <td>Batch jobs do not immediately show results — the user is directed to the status card instead</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card shows the job reference and polling message</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card gives the user a job reference ID and a message indicating their results are being processed.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Batch status card shows a job_id reference</td>
+          <td>Users can identify and track their submitted batch job by a unique reference</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card shows the polling message</td>
+          <td>Users are informed that processing is underway and results will be available shortly</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card remains visible after switching back to single-file mode</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a submitted batch job&#39;s status card persists even if the user switches back to single-file mode, so they do not lose track of an in-progress job.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Submit a batch job in multi-file mode</td>
+          <td>A batch job is successfully submitted and the status card appears</td>
+        </tr>
+        
+        <tr>
+          <td>Disable multi-file mode</td>
+          <td>The user can switch back to single-file mode after submitting a batch</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card is still visible</td>
+          <td>The in-progress batch status card is not removed when the user changes modes, preventing loss of job tracking</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card summary row shows format, role and file count</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card displays a summary of the submitted job&#39;s key details — the format, role, and number of files — so users can confirm what was submitted.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Batch status card shows the format label</td>
+          <td>The selected file format is clearly shown on the status card</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card shows the role label &#39;Product Owner&#39;</td>
+          <td>The selected audience role is displayed so the user can confirm the correct role was applied</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card shows &#39;1&#39; for file count</td>
+          <td>The number of files included in the batch is accurately reflected on the status card</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Submit button is disabled when the queue is empty</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode with an empty queue and verifies the submit button is disabled to prevent empty batch submissions.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Submit button is disabled when the queue is empty
+            
+          </td>
+          
+          <td>
+            
+              Analysis and multi-file APIs are mocked; user is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode
+            
+          </td>
+          
+          <td>
+            
+              The submit button is disabled
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Submitting a valid multi-file batch shows the batch status card</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a valid single-file batch in multi-file mode and verifies that the batch status card appears while the results panel remains hidden.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Submitting a valid multi-file batch shows the batch status card
+            
+          </td>
+          
+          <td>
+            
+              Analysis and multi-file APIs are mocked; user is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds fixture &#39;bdd_sample.feature&#39;, and clicks submit
+            
+          </td>
+          
+          <td>
+            
+              The batch status card is visible and the results panel is not visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card shows the job reference and polling message</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a valid batch and verifies that the batch status card displays both a job_id reference and a polling status message confirming asynchronous processing has started.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Batch status card shows the job reference and polling message
+            
+          </td>
+          
+          <td>
+            
+              Analysis and multi-file APIs are mocked; user is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds fixture &#39;bdd_sample.feature&#39;, and clicks submit
+            
+          </td>
+          
+          <td>
+            
+              The batch status card is visible, displays a job_id reference, and shows the polling message
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card remains visible after switching back to single-file mode</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a batch in multi-file mode, switches back to single-file mode, and verifies the batch status card persists to avoid losing batch progress context.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Batch status card remains visible after switching back to single-file mode
+            
+          </td>
+          
+          <td>
+            
+              Analysis and multi-file APIs are mocked; user is on the Analyze page; a batch has been submitted in multi-file mode
+            
+          </td>
+          
+          <td>
+            
+              User disables multi-file mode after submission
+            
+          </td>
+          
+          <td>
+            
+              The batch status card is still visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card summary row shows format, role and file count</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — submit and batch status card</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a single-file batch and verifies that the batch status card summary row accurately reflects the selected format, role, and file count of the submitted job.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Batch status card summary row shows format, role and file count
+            
+          </td>
+          
+          <td>
+            
+              Analysis and multi-file APIs are mocked; user is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds fixture &#39;bdd_sample.feature&#39;, and clicks submit
+            
+          </td>
+          
+          <td>
+            
+              The batch status card shows the format label, role label &#39;Product Owner&#39;, and file count of &#39;1&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

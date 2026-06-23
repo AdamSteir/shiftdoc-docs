@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bdd — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
+  
+  <span>/</span>
+  Bdd
+</div>
+
+<h1>Bdd</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-17</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a BDD feature file and generating documentation produces a valid, complete JSON output with named tests, descriptions, and coverage details.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I see documentation in the output panel</td>
+          <td>Documentation is displayed to the user after processing</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has 1 or more tests</td>
+          <td>At least one test entry is generated from the uploaded file</td>
+        </tr>
+        
+        <tr>
+          <td>Every test has a non-empty test_name</td>
+          <td>Each generated test is identifiable by a name</td>
+        </tr>
+        
+        <tr>
+          <td>The first test has a non-empty string description</td>
+          <td>The first test includes a human-readable description of what it covers</td>
+        </tr>
+        
+        <tr>
+          <td>The first test has a non-empty array test_coverage</td>
+          <td>The first test includes at least one coverage step detailing what is verified</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - data-driven produces multiple tests</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-19</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven BDD feature file with multiple parameter sets produces a separate test entry for each scenario variation.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I see documentation in the output panel</td>
+          <td>Documentation is displayed after processing a data-driven feature file</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>All fields across all generated tests are fully populated</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has 3 or more tests</td>
+          <td>Each data-driven scenario variation is captured as its own test entry</td>
+        </tr>
+        
+        <tr>
+          <td>Every test has a non-empty test_name</td>
+          <td>Each generated test, including parameterized variants, is identifiable by name</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Panel title is &#34;Documentation&#34; when no add-ons are selected</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-21</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the output panel title displays only &#34;Documentation&#34; and not an extended title when no additional add-ons are enabled.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I see documentation in the output panel</td>
+          <td>Documentation output is shown after processing</td>
+        </tr>
+        
+        <tr>
+          <td>I do not see &#34;Documentation and Analysis&#34; as the panel title</td>
+          <td>The panel title reflects the basic documentation mode, not an enhanced add-on mode</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - QAM - coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-18</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager viewing BDD documentation sees a fully populated coverage matrix with correctly structured rows for each test.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I see documentation in the output panel</td>
+          <td>Documentation is displayed after processing</td>
+        </tr>
+        
+        <tr>
+          <td>The filename bdd_sample.feature appears in the output</td>
+          <td>The source file is attributed in the generated output</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+        </tr>
+        
+        <tr>
+          <td>The first test has a non-empty array test_coverage_matrix</td>
+          <td>The first test includes a coverage matrix with at least one entry</td>
+        </tr>
+        
+        <tr>
+          <td>Coverage matrix rows use the correct schema for bdd</td>
+          <td>Each row in the coverage matrix conforms to the expected BDD-specific data structure</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-17</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a BDD feature file and verifies that the documentation output is generated with valid structure, including named tests and a description and coverage array on the first test.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              BDD - PO - core output structure
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1+ tests each with a non-empty test_name, and the first test has a non-empty description string and non-empty test_coverage array
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - data-driven produces multiple tests</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-19</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven BDD feature file and verifies that the system expands it into three or more individually named tests in the JSON output.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              BDD - PO - data-driven produces multiple tests
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_datadriven_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Panel title is &#34;Documentation&#34; when no add-ons are selected</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-21</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner documents a BDD file without any add-ons selected and verifies that the output panel title is &#39;Documentation&#39; and not the combined &#39;Documentation and Analysis&#39; title.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Panel title is &#34;Documentation&#34; when no add-ons are selected
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with no add-ons selected
+            
+          </td>
+          
+          <td>
+            
+              User selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel is visible and its title is &#39;Documentation&#39;, not &#39;Documentation and Analysis&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - QAM - coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-18</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a BDD feature file and verifies that the JSON output contains a correctly structured coverage matrix with schema-compliant rows for the BDD format.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              BDD - QAM - coverage matrix populated
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel shows documentation with the filename &#39;bdd_sample.feature&#39; visible; downloaded JSON has no unresolved values, the first test has a non-empty test_coverage_matrix array, and coverage matrix rows conform to the BDD schema
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi File Queue — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Multi File Queue
+</div>
+
+<h1>Multi File Queue</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Logged-in user can enable multi-file mode</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that enabling multi-file mode shows the file queue and hides the single-file input area.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>When I enable multi-file mode</td>
+          <td>The user can switch the page into multi-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>Then the file queue is visible</td>
+          <td>The file queue appears after enabling multi-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>And the single-file input area is not visible</td>
+          <td>The single-file input is hidden when multi-file mode is active</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Switching to multi-file mode clears the single-file input</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that any content typed in the single-file input is cleared when the user switches to multi-file mode.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Given I have typed content in the input area</td>
+          <td>A baseline of pre-existing content in the single-file input is established</td>
+        </tr>
+        
+        <tr>
+          <td>When I enable multi-file mode</td>
+          <td>The user switches to multi-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>Then the input area content is cleared</td>
+          <td>Previously entered content is removed when switching modes, preventing stale data carry-over</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Switching back to single-file mode clears the queue</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that switching back to single-file mode hides the queue (including any queued files) and restores the single-file input area.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>When I enable multi-file mode and add a file to the queue</td>
+          <td>A file is staged in the queue while in multi-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>And I disable multi-file mode</td>
+          <td>The user switches back to single-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>Then the file queue is not visible</td>
+          <td>The queue is hidden after returning to single-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>And the single-file input area is visible</td>
+          <td>The single-file input area is restored when multi-file mode is turned off</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Files can be added and removed from the queue</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can add a file to the queue and then remove it, leaving the queue empty.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>When I add a fixture file to the queue</td>
+          <td>A file can be successfully added to the multi-file queue</td>
+        </tr>
+        
+        <tr>
+          <td>Then the queue shows 1 file</td>
+          <td>The queue count accurately reflects the number of staged files</td>
+        </tr>
+        
+        <tr>
+          <td>When I remove the file from the queue</td>
+          <td>A file can be removed from the queue by the user</td>
+        </tr>
+        
+        <tr>
+          <td>Then the queue is empty</td>
+          <td>The queue correctly shows as empty after removal</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Files can be added to the queue via drag-and-drop</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can drag and drop a file onto the queue drop zone and it appears in the queue with a success status.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>When I drop a fixture file onto the queue drop zone</td>
+          <td>Drag-and-drop is a supported method for adding files to the queue</td>
+        </tr>
+        
+        <tr>
+          <td>Then the queue shows 1 file</td>
+          <td>The dropped file is registered in the queue</td>
+        </tr>
+        
+        <tr>
+          <td>And the file row shows an ok badge</td>
+          <td>The file is accepted and marked with a positive status indicator</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Adding a file with a duplicate filename shows a toast and does not add it to the queue</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that attempting to add a file that is already in the queue shows a warning message and prevents a duplicate entry.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>When I add the same fixture file to the queue a second time</td>
+          <td>The system detects a duplicate filename being added to the queue</td>
+        </tr>
+        
+        <tr>
+          <td>Then I see a warning toast containing &#39;is already in the queue&#39;</td>
+          <td>The user is notified with a clear warning message about the duplicate</td>
+        </tr>
+        
+        <tr>
+          <td>And the queue shows 1 file</td>
+          <td>The duplicate file is not added, keeping the queue count accurate</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Logged-in user can enable multi-file mode</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode and verifies the file queue appears while the single-file input is hidden.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Logged-in user can enable multi-file mode
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with APIs mocked
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode
+            
+          </td>
+          
+          <td>
+            
+              File queue is visible and single-file input area is not visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Switching to multi-file mode clears the single-file input</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user who has typed content in the single-file input switches to multi-file mode and verifies the input content is cleared.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Switching to multi-file mode clears the single-file input
+            
+          </td>
+          
+          <td>
+            
+              User has typed content in the input area on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode
+            
+          </td>
+          
+          <td>
+            
+              The input area content is cleared
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Switching back to single-file mode clears the queue</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode, adds a file to the queue, then switches back to single-file mode and verifies the queue is gone and the single-file input is restored.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Switching back to single-file mode clears the queue
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with multi-file mode enabled and one file in the queue
+            
+          </td>
+          
+          <td>
+            
+              User disables multi-file mode
+            
+          </td>
+          
+          <td>
+            
+              File queue is not visible and single-file input area is visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Files can be added and removed from the queue</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user adds a file to the multi-file queue and then removes it, verifying the queue count updates correctly at each step.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Files can be added and removed from the queue
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with multi-file mode enabled
+            
+          </td>
+          
+          <td>
+            
+              User adds a fixture file to the queue, then removes it
+            
+          </td>
+          
+          <td>
+            
+              Queue shows 1 file after adding, then queue is empty after removing
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Files can be added to the queue via drag-and-drop</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user adds a file to the multi-file queue via drag-and-drop and verifies the file appears in the queue with a valid status badge.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Files can be added to the queue via drag-and-drop
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with multi-file mode enabled
+            
+          </td>
+          
+          <td>
+            
+              User drops a fixture file onto the queue drop zone
+            
+          </td>
+          
+          <td>
+            
+              Queue shows 1 file and the file row displays an ok badge
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Adding a file with a duplicate filename shows a toast and does not add it to the queue</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — queue operations</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to add the same file twice to the multi-file queue and verifies a warning toast is shown and the queue count remains at one.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Adding a file with a duplicate filename shows a toast and does not add it to the queue
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with multi-file mode enabled and one file already in the queue
+            
+          </td>
+          
+          <td>
+            
+              User attempts to add the same fixture file a second time
+            
+          </td>
+          
+          <td>
+            
+              A warning toast containing &#39;is already in the queue&#39; is shown and the queue still shows only 1 file
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

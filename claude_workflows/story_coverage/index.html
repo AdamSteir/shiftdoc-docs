@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Coverage — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
+  
+  <span>/</span>
+  Story Coverage
+</div>
+
+<h1>Story Coverage</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Coverage run produces a populated coverage table</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-53</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that submitting a user story with acceptance criteria alongside a BDD test file produces a non-empty coverage table showing which criteria are covered.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Paste a user story with explicit acceptance criteria</td>
+          <td>The page accepts a user story as input</td>
+        </tr>
+        
+        <tr>
+          <td>Upload a BDD test case fixture</td>
+          <td>The page accepts a BDD test file as input</td>
+        </tr>
+        
+        <tr>
+          <td>Click Check Coverage</td>
+          <td>The coverage analysis is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>Result contains a coverage table with at least one row</td>
+          <td>The output includes a populated coverage table mapping criteria to tests</td>
+        </tr>
+        
+        <tr>
+          <td>Result is non-empty</td>
+          <td>The overall result is not blank or missing</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Non-covered AC rows have a risk value</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-53</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that acceptance criteria not covered by any test are flagged with a risk value to highlight gaps for the product team.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Paste the story coverage login story fixture</td>
+          <td>A known user story with defined acceptance criteria is loaded</td>
+        </tr>
+        
+        <tr>
+          <td>Upload the story coverage incomplete test fixture</td>
+          <td>A test file that does not cover all criteria is loaded</td>
+        </tr>
+        
+        <tr>
+          <td>Click Check Coverage</td>
+          <td>The coverage analysis is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>Every non-covered row has a non-empty risk value</td>
+          <td>Uncovered acceptance criteria surface an associated risk to signal potential gaps</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Fully covered AC rows have no risk value</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-53</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that acceptance criteria fully covered by tests are not incorrectly flagged with a risk value.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Paste the story coverage login story fixture</td>
+          <td>A known user story with defined acceptance criteria is loaded</td>
+        </tr>
+        
+        <tr>
+          <td>Upload the story coverage complete test fixture</td>
+          <td>A test file that covers all criteria is loaded</td>
+        </tr>
+        
+        <tr>
+          <td>Click Check Coverage</td>
+          <td>The coverage analysis is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>No covered row has a risk value</td>
+          <td>Acceptance criteria with passing test coverage are not falsely marked as risky</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Markdown download works after coverage run</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can download the coverage report as a Markdown file after a coverage analysis has been completed.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>A coverage result has been produced</td>
+          <td>A completed coverage analysis is available on the page</td>
+        </tr>
+        
+        <tr>
+          <td>Click the Download MD button</td>
+          <td>The Markdown download action is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>A .md file is downloaded</td>
+          <td>The browser receives a valid Markdown file as the download output</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">HTML download works after coverage run</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can download the coverage report as an HTML file after a coverage analysis has been completed.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>A coverage result has been produced</td>
+          <td>A completed coverage analysis is available on the page</td>
+        </tr>
+        
+        <tr>
+          <td>Click the Download HTML button</td>
+          <td>The HTML download action is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>A .html file is downloaded</td>
+          <td>The browser receives a valid HTML file as the download output</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">JSON download works after coverage run</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can download the coverage report as a JSON file after a coverage analysis has been completed.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>A coverage result has been produced</td>
+          <td>A completed coverage analysis is available on the page</td>
+        </tr>
+        
+        <tr>
+          <td>Click the Download JSON button</td>
+          <td>The JSON download action is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>A .json file is downloaded</td>
+          <td>The browser receives a valid JSON file as the download output</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Coverage run produces a populated coverage table</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-53</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes a user story with acceptance criteria and uploads a BDD test fixture, then runs a coverage check and verifies a non-empty coverage table is returned.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Coverage run produces a populated coverage table
+            
+          </td>
+          
+          <td>
+            
+              User is on the Story Coverage page with a user story containing explicit AC and a BDD test fixture uploaded
+            
+          </td>
+          
+          <td>
+            
+              User clicks Check Coverage
+            
+          </td>
+          
+          <td>
+            
+              Result contains a coverage table with at least one row and is non-empty
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Non-covered AC rows have a risk value</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-53</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user runs a coverage check against an incomplete test fixture and verifies that every non-covered acceptance criteria row carries a populated risk value.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Non-covered AC rows have a risk value
+            
+          </td>
+          
+          <td>
+            
+              User is on the Story Coverage page with the login story fixture and an incomplete test fixture uploaded, and coverage has been checked
+            
+          </td>
+          
+          <td>
+            
+              Coverage check completes against an incomplete test fixture
+            
+          </td>
+          
+          <td>
+            
+              Every non-covered row in the coverage table has a non-empty risk value
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Fully covered AC rows have no risk value</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-53</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user runs a coverage check against a complete test fixture and verifies that fully covered acceptance criteria rows do not carry a risk value.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Fully covered AC rows have no risk value
+            
+          </td>
+          
+          <td>
+            
+              User is on the Story Coverage page with the login story fixture and a complete test fixture uploaded, and coverage has been checked
+            
+          </td>
+          
+          <td>
+            
+              Coverage check completes against a complete test fixture
+            
+          </td>
+          
+          <td>
+            
+              No covered row in the coverage table has a risk value
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Markdown download works after coverage run</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After a coverage result has been produced, a user downloads the result as a Markdown file and verifies the correct file type is returned.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Markdown download works after coverage run
+            
+          </td>
+          
+          <td>
+            
+              User is on the Story Coverage page and a coverage result has already been produced
+            
+          </td>
+          
+          <td>
+            
+              User clicks the Download MD button
+            
+          </td>
+          
+          <td>
+            
+              A .md file is downloaded
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">HTML download works after coverage run</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After a coverage result has been produced, a user downloads the result as an HTML file and verifies the correct file type is returned.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              HTML download works after coverage run
+            
+          </td>
+          
+          <td>
+            
+              User is on the Story Coverage page and a coverage result has already been produced
+            
+          </td>
+          
+          <td>
+            
+              User clicks the Download HTML button
+            
+          </td>
+          
+          <td>
+            
+              A .html file is downloaded
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">JSON download works after coverage run</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — real Claude scenarios</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After a coverage result has been produced, a user downloads the result as a JSON file and verifies the correct file type is returned.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              JSON download works after coverage run
+            
+          </td>
+          
+          <td>
+            
+              User is on the Story Coverage page and a coverage result has already been produced
+            
+          </td>
+          
+          <td>
+            
+              User clicks the Download JSON button
+            
+          </td>
+          
+          <td>
+            
+              A .json file is downloaded
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

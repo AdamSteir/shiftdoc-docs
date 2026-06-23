@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appium — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
+  
+  <span>/</span>
+  Appium
+</div>
+
+<h1>Appium</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-17</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Appium test file receives a valid, fully resolved JSON documentation output containing at least one named test.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I select format &#39;appium&#39; and role &#39;Product Owner&#39;</td>
+          <td>The correct analysis format and audience role are applied before processing</td>
+        </tr>
+        
+        <tr>
+          <td>I upload the test case fixture &#39;appium_single_sample.java&#39;</td>
+          <td>A single Appium test file can be successfully submitted for analysis</td>
+        </tr>
+        
+        <tr>
+          <td>I see documentation in the output panel</td>
+          <td>The product produces visible documentation output after analysis</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has 1 or more tests</td>
+          <td>At least one test entry is present in the output</td>
+        </tr>
+        
+        <tr>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>Each test in the output is identifiable by a meaningful name</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - DataProvider expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-19</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Appium test file, each data row is expanded into its own separate test entry in the output.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I upload the test case fixture &#39;appium_datadriven_sample.java&#39;</td>
+          <td>A data-driven Appium test file with multiple data rows can be submitted for analysis</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has 3 or more tests</td>
+          <td>The data provider rows are expanded so that each row produces a distinct test entry in the output</td>
+        </tr>
+        
+        <tr>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>Each expanded test entry is identifiable by a meaningful name</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>All fields across all expanded test entries are fully resolved with no missing data</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-18</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Appium test file receives output that includes a populated test coverage matrix alongside core test documentation.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I select format &#39;appium&#39; and role &#39;QA Manager&#39;</td>
+          <td>The QA Manager role produces output enriched with coverage matrix information</td>
+        </tr>
+        
+        <tr>
+          <td>I upload the test case fixture &#39;appium_single_sample.java&#39;</td>
+          <td>A single Appium test file is successfully analysed under the QA Manager role</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has 1 or more tests</td>
+          <td>At least one test entry is present in the output</td>
+        </tr>
+        
+        <tr>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>Each test is identifiable by a meaningful name</td>
+        </tr>
+        
+        <tr>
+          <td>The first test has a non-empty array &#39;test_coverage_matrix&#39;</td>
+          <td>The QA Manager output includes a coverage matrix with at least one entry for the analysed test</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - DataProvider collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-20</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Appium test file receives a single collapsed test entry whose coverage matrix rows reflect each data example using the correct schema.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I select format &#39;appium&#39; and role &#39;QA Manager&#39;</td>
+          <td>The QA Manager role collapses data-driven tests rather than expanding them</td>
+        </tr>
+        
+        <tr>
+          <td>I upload the test case fixture &#39;appium_datadriven_sample.java&#39;</td>
+          <td>A data-driven Appium test file is successfully submitted for analysis</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has exactly 1 tests</td>
+          <td>Multiple data rows are collapsed into a single test entry in the QA Manager output</td>
+        </tr>
+        
+        <tr>
+          <td>For data-driven tests the coverage matrix row count matches the examples</td>
+          <td>The coverage matrix contains one row per data example, preserving full data-driven coverage detail</td>
+        </tr>
+        
+        <tr>
+          <td>Coverage matrix rows use the correct schema for &#39;generic&#39;</td>
+          <td>Each coverage matrix row conforms to the expected generic schema format</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-17</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Appium test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Appium - PO - single test, core output structure
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              Selects format &#39;appium&#39; and role &#39;Product Owner&#39;, uploads &#39;appium_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - DataProvider expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-19</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own distinct test entry in the JSON output.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Appium - PO - DataProvider expands one test per row
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              Selects format &#39;appium&#39; and role &#39;Product Owner&#39;, uploads &#39;appium_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel is populated, downloaded JSON has no unresolved values, contains 3 or more tests (one per DataProvider row), and every test has a non-empty test_name
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-18</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test entry.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Appium - QAM - single test, coverage matrix populated
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              Selects format &#39;appium&#39; and role &#39;QA Manager&#39;, uploads &#39;appium_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test_names, and the first test has a non-empty test_coverage_matrix array
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - DataProvider collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-20</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Appium fixture and verifies that all DataProvider rows collapse into a single test entry whose coverage matrix rows match the number of data rows and conform to the generic schema.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Appium - QAM - DataProvider collapses
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              Selects format &#39;appium&#39; and role &#39;QA Manager&#39;, uploads &#39;appium_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel is populated, downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the DataProvider examples, and each row uses the correct generic schema
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

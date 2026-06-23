@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyze Results Download Mocked — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Analyze Results Download Mocked
+</div>
+
+<h1>Analyze Results Download Mocked</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- Product Owner, auth.feature, , Documentation, shiftdoc-po-auth.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-5</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a test file and downloads the analysis with no add-ons selected, the downloaded file is named using the role abbreviation and source filename.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select role and upload file</td>
+          <td>The Product Owner role and auth.feature file are accepted for analysis</td>
+        </tr>
+        
+        <tr>
+          <td>Panel heading shown as Documentation</td>
+          <td>The output panel correctly reflects a base analysis with no add-ons</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-auth.md</td>
+          <td>The filename encodes the role (po) and source file (auth) with a .md extension</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- QA Manager, auth.feature, , Documentation, shiftdoc-qam-auth.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-5</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a QA Manager uploads a test file and downloads the analysis with no add-ons selected, the downloaded file is named using the QA Manager role abbreviation and source filename.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select QA Manager role and upload auth.feature</td>
+          <td>The QA Manager role is correctly encoded in the output filename</td>
+        </tr>
+        
+        <tr>
+          <td>Panel heading shown as Documentation</td>
+          <td>The output panel reflects a base analysis with no add-ons</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-qam-auth.md</td>
+          <td>The filename uses the qam abbreviation for the QA Manager role</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- Product Owner, checkout_flow.feature, , Documentation, shiftdoc-po-checkout_flow.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-5</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a differently named test file, the downloaded filename correctly reflects that source file&#39;s name.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload checkout_flow.feature</td>
+          <td>Source filenames with underscores are preserved in the download filename</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-checkout_flow.md</td>
+          <td>The full source filename (including underscores) is used in the output filename</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- Product Owner, login.spec.ts, , Documentation, shiftdoc-po-login.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-5</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a non-Gherkin test file (e.g. a TypeScript spec file), the downloaded filename uses only the base name without the original extension.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload login.spec.ts</td>
+          <td>Non-.feature file types are accepted and handled correctly</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-login.md</td>
+          <td>The source file extension is stripped and only the base name is used in the download filename</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes -- Product Owner, auth.feature, Technical Review, Documentation and Analysis, shiftdoc-po-auth+tr.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-6</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a single add-on is selected, its short code is appended to the downloaded filename after a plus sign.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select Technical Review add-on</td>
+          <td>A single add-on is accepted and reflected in the analysis output</td>
+        </tr>
+        
+        <tr>
+          <td>Panel heading shown as Documentation and Analysis</td>
+          <td>The output panel label changes to reflect that add-ons were included</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-auth+tr.md</td>
+          <td>The Technical Review add-on short code (+tr) is correctly appended to the filename</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes -- QA Manager, auth.feature, Technical Review, Gap Analysis, Risk Assessment, Documentation and Analysis, shiftdoc-qam-auth+tr+gap+risk.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-6</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When multiple add-ons are selected, all their short codes are appended in order to the downloaded filename.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select Technical Review, Gap Analysis, and Risk Assessment add-ons</td>
+          <td>Multiple add-ons are all accepted and applied to the analysis</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-qam-auth+tr+gap+risk.md</td>
+          <td>All three add-on short codes are appended in sequence to the filename</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes -- QA Manager, auth.feature, Technical Review, Gap Analysis, Annotation Summary, Risk Assessment, Recommendations, Documentation and Analysis, shiftdoc-qam-auth+tr+gap+ann+risk+rec.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-6</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the maximum set of add-ons is selected, all their short codes appear in the downloaded filename in the correct order.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select all five add-ons</td>
+          <td>The system handles the full complement of add-ons without error</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-qam-auth+tr+gap+ann+risk+rec.md</td>
+          <td>All five add-on short codes are correctly encoded in sequence in the filename</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasted text with no filename falls back to date-time</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-7</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user pastes test content directly instead of uploading a file, the downloaded filename uses a date-time stamp since there is no source filename to reference.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Paste BDD test case content instead of uploading a file</td>
+          <td>The system accepts pasted content as a valid input for analysis</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file matches shiftdoc-po-{date}-{time}.md pattern</td>
+          <td>A date-time fallback filename is generated when no source file is available</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasted text with add-ons falls back to date-time with add-on suffix</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-7</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user pastes content and selects add-ons, the downloaded filename combines the date-time fallback with the add-on short codes.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select Technical Review and Gap Analysis add-ons, then paste content</td>
+          <td>Add-ons are correctly combined with pasted input</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file matches shiftdoc-po-{date}-{time}+tr+gap.md pattern</td>
+          <td>The filename includes both the date-time fallback and the add-on short codes in the correct format</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension -- Markdown, shiftdoc-po-auth.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-8</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user downloads analysis results in Markdown format, the file is saved with a .md extension.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Click Download Markdown</td>
+          <td>The Markdown download option produces a file with a .md extension</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-auth.md</td>
+          <td>The correct file extension is applied for the Markdown format</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension -- HTML, shiftdoc-po-auth.html</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-8</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user downloads analysis results in HTML format, the file is saved with a .html extension.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Click Download HTML</td>
+          <td>The HTML download option produces a file with a .html extension</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-auth.html</td>
+          <td>The correct file extension is applied for the HTML format</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension -- JSON, shiftdoc-po-auth.json</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-8</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user downloads analysis results in JSON format, the file is saved with a .json extension.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Click Download JSON</td>
+          <td>The JSON download option produces a file with a .json extension</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded file is named shiftdoc-po-auth.json</td>
+          <td>The correct file extension is applied for the JSON format</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons)</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-5</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects a role, uploads a source file with no add-ons, submits the analysis, and verifies that the downloaded Markdown filename encodes only the role slug and source filename.</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Role</th>
+          
+          <th>Source</th>
+          
+          <th>Add Ons</th>
+          
+          <th>Panel Heading</th>
+          
+          <th>Expected</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>Product Owner</td>
+            
+            <td>auth.feature</td>
+            
+            <td></td>
+            
+            <td>Documentation</td>
+            
+            <td>shiftdoc-po-auth.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>QA Manager</td>
+            
+            <td>auth.feature</td>
+            
+            <td></td>
+            
+            <td>Documentation</td>
+            
+            <td>shiftdoc-qam-auth.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>Product Owner</td>
+            
+            <td>checkout_flow.feature</td>
+            
+            <td></td>
+            
+            <td>Documentation</td>
+            
+            <td>shiftdoc-po-checkout_flow.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>Product Owner</td>
+            
+            <td>login.spec.ts</td>
+            
+            <td></td>
+            
+            <td>Documentation</td>
+            
+            <td>shiftdoc-po-login.md</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-6</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects a role, uploads a source file, activates one or more add-ons, submits the analysis, and verifies that each active add-on appends its short code to the downloaded Markdown filename in selection order.</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Role</th>
+          
+          <th>Source</th>
+          
+          <th>Add Ons</th>
+          
+          <th>Panel Heading</th>
+          
+          <th>Expected</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>Product Owner</td>
+            
+            <td>auth.feature</td>
+            
+            <td>Technical Review</td>
+            
+            <td>Documentation and Analysis</td>
+            
+            <td>shiftdoc-po-auth+tr.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>QA Manager</td>
+            
+            <td>auth.feature</td>
+            
+            <td>Technical Review, Gap Analysis, Risk Assessment</td>
+            
+            <td>Documentation and Analysis</td>
+            
+            <td>shiftdoc-qam-auth+tr+gap+risk.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>QA Manager</td>
+            
+            <td>auth.feature</td>
+            
+            <td>Technical Review, Gap Analysis, Annotation Summary, Risk Assessment, Recommendations</td>
+            
+            <td>Documentation and Analysis</td>
+            
+            <td>shiftdoc-qam-auth+tr+gap+ann+risk+rec.md</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasted text with no filename falls back to date-time</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-7</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes raw BDD content (providing no source filename), submits the analysis, and verifies that the downloaded Markdown filename falls back to a date-time stamp pattern.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Pasted text with no filename falls back to date-time
+            
+          </td>
+          
+          <td>
+            
+              Analysis API is mocked; user is on the Analyze page with role &#39;Product Owner&#39; and format &#39;bdd&#39; selected
+            
+          </td>
+          
+          <td>
+            
+              User pastes BDD test case content (no file upload), submits the analysis, and clicks Download Markdown
+            
+          </td>
+          
+          <td>
+            
+              Downloaded filename matches the regex &#39;shiftdoc-po-\d{8}-\d{6}\.md&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasted text with add-ons falls back to date-time with add-on suffix</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-7</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes raw BDD content with add-ons selected but no source file, submits the analysis, and verifies that the downloaded Markdown filename combines the date-time fallback with the add-on short codes.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Pasted text with add-ons falls back to date-time with add-on suffix
+            
+          </td>
+          
+          <td>
+            
+              Analysis API is mocked; user is on the Analyze page with role &#39;Product Owner&#39;, format &#39;bdd&#39;, and add-ons &#39;Technical Review, Gap Analysis&#39; selected
+            
+          </td>
+          
+          <td>
+            
+              User pastes BDD test case content (no file upload), submits the analysis, and clicks Download Markdown
+            
+          </td>
+          
+          <td>
+            
+              Downloaded filename matches the regex &#39;shiftdoc-po-\d{8}-\d{6}\+tr\+gap\.md&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-8</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a source file and selects each available download format, verifying that the downloaded filename carries the correct file extension for each format.</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Format</th>
+          
+          <th>Expected</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>Markdown</td>
+            
+            <td>shiftdoc-po-auth.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>HTML</td>
+            
+            <td>shiftdoc-po-auth.html</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>JSON</td>
+            
+            <td>shiftdoc-po-auth.json</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

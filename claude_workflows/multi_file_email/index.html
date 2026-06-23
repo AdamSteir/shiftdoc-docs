@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi File Email — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
+  
+  <span>/</span>
+  Multi File Email
+</div>
+
+<h1>Multi File Email</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Submitting a multi-file batch returns 202 Accepted</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner submits multiple BDD files for analysis, the system accepts the batch request and confirms receipt.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Enable multi-file mode and queue files</td>
+          <td>The user can switch to multi-file mode, select the BDD format and Product Owner role, and add multiple files to the processing queue</td>
+        </tr>
+        
+        <tr>
+          <td>Submit the batch</td>
+          <td>Clicking submit triggers the batch job and displays a status card to the user</td>
+        </tr>
+        
+        <tr>
+          <td>Backend accepted the request with status 202</td>
+          <td>The system successfully acknowledges the batch submission without errors</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">A multifile_batch_complete event is logged after the batch completes</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-52</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a batch job finishes processing, a usage event is recorded with valid performance timing data.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Submit a single-file batch in multi-file mode</td>
+          <td>The user can submit a file through the multi-file workflow</td>
+        </tr>
+        
+        <tr>
+          <td>A multifile_batch_complete usage log event is recorded</td>
+          <td>The system logs a completion event for analytics and audit purposes after the batch finishes</td>
+        </tr>
+        
+        <tr>
+          <td>The event has a positive processing_ms value</td>
+          <td>The logged event captures a meaningful processing duration, confirming timing data is being tracked correctly</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card transitions to complete state after processing finishes</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status indicator progresses from a processing/polling state to a completed state and informs the user that results have been emailed.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Batch status card shown in polling state</td>
+          <td>The user sees real-time feedback that their batch is actively being processed</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card shows completion</td>
+          <td>The status card updates to reflect that processing has finished</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card shows &#39;Results emailed&#39;</td>
+          <td>The user is clearly informed that the output has been delivered to their email</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card can be dismissed after completion</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that once a batch has completed, the user can dismiss the status card to clean up their workspace.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Wait for batch status card to show completion</td>
+          <td>The batch finishes processing and the completion state is displayed</td>
+        </tr>
+        
+        <tr>
+          <td>Click the dismiss button on the batch status card</td>
+          <td>The user has a clear way to close the status notification when they are done with it</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card is not visible</td>
+          <td>The status card is fully removed from view after dismissal, keeping the interface uncluttered</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Submitting a multi-file batch returns 202 Accepted</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode, queues two BDD fixture files, submits the batch, and confirms the backend acknowledges the request with a 202 Accepted status.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Submitting a multi-file batch returns 202 Accepted
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode, selects format and role, adds two fixture files to the queue, and submits
+            
+          </td>
+          
+          <td>
+            
+              Batch status card is visible and the backend responded with HTTP 202
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">A multifile_batch_complete event is logged after the batch completes</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-52</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a single-file batch in multi-file mode and verifies that a usage analytics event named &#39;multifile_batch_complete&#39; is recorded with a positive processing duration.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              A multifile_batch_complete event is logged after the batch completes
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode, selects format and role, adds one fixture file, and submits
+            
+          </td>
+          
+          <td>
+            
+              A &#39;multifile_batch_complete&#39; usage log event is recorded with a positive processing_ms value
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card transitions to complete state after processing finishes</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a batch and observes the status card polling until processing completes, confirming the final UI state displays a &#39;Results emailed&#39; message.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Batch status card transitions to complete state after processing finishes
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enables multi-file mode, selects format and role, adds a fixture file, and submits; then waits for the status card to reach completion
+            
+          </td>
+          
+          <td>
+            
+              Batch status card first shows polling state and then displays &#39;Results emailed&#39; upon completion
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Batch status card can be dismissed after completion</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file batch processing and email delivery</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-51</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @requires_login</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a batch, waits for it to complete, dismisses the status card, and confirms it is no longer visible in the UI.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Batch status card can be dismissed after completion
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page and has submitted a batch that has reached completion state
+            
+          </td>
+          
+          <td>
+            
+              User clicks the dismiss button on the batch status card
+            
+          </td>
+          
+          <td>
+            
+              The batch status card is no longer visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addon Risk Assessment Ui — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
+  
+  <span>/</span>
+  Addon Risk Assessment Ui
+</div>
+
+<h1>Addon Risk Assessment Ui</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Risk Assessment renders and JSON is complete for QA Manager</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Risk Assessment UI</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-29</span><span class="tag">@SHIFT-30</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can run the Risk Assessment add-on on a BDD test file and receive complete, well-structured risk output — both in the on-screen panel and as a downloadable JSON report.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Documentation and analysis appears in the output panel</td>
+          <td>The Analyze page displays results after processing the uploaded test file with the Risk Assessment add-on</td>
+        </tr>
+        
+        <tr>
+          <td>Scenario Risk Ratings appears exactly once in the output</td>
+          <td>The risk rating section for individual scenarios is present and not duplicated in the displayed output</td>
+        </tr>
+        
+        <tr>
+          <td>Risk Summary appears exactly once in the output</td>
+          <td>An overall risk summary section is present and not duplicated in the displayed output</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded JSON has no unresolved values</td>
+          <td>The exported report contains no placeholder or missing data fields</td>
+        </tr>
+        
+        <tr>
+          <td>JSON contains top-level key &#39;risk_assessment&#39;</td>
+          <td>The exported report follows the expected structure with a dedicated risk assessment section</td>
+        </tr>
+        
+        <tr>
+          <td>&#39;risk_assessment&#39; section has a non-empty &#39;scenario_risk_ratings&#39;</td>
+          <td>The exported report includes actual risk ratings for the uploaded scenarios, not an empty result</td>
+        </tr>
+        
+        <tr>
+          <td>&#39;scenario_risk_ratings&#39; appears exactly once in the &#39;risk_assessment&#39; section</td>
+          <td>The JSON structure is clean with no duplicate risk rating entries</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Risk Assessment renders and JSON is complete for Product Owner</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Risk Assessment UI</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-29</span><span class="tag">@SHIFT-30</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can run the Risk Assessment add-on on a BDD test file and receive complete, well-structured risk output — both in the on-screen panel and as a downloadable JSON report.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Documentation and analysis appears in the output panel</td>
+          <td>The Analyze page displays results after processing the uploaded test file with the Risk Assessment add-on</td>
+        </tr>
+        
+        <tr>
+          <td>Scenario Risk Ratings appears exactly once in the output</td>
+          <td>The risk rating section for individual scenarios is present and not duplicated in the displayed output</td>
+        </tr>
+        
+        <tr>
+          <td>Risk Summary appears exactly once in the output</td>
+          <td>An overall risk summary section is present and not duplicated in the displayed output</td>
+        </tr>
+        
+        <tr>
+          <td>Downloaded JSON has no unresolved values</td>
+          <td>The exported report contains no placeholder or missing data fields</td>
+        </tr>
+        
+        <tr>
+          <td>JSON contains top-level key &#39;risk_assessment&#39;</td>
+          <td>The exported report follows the expected structure with a dedicated risk assessment section</td>
+        </tr>
+        
+        <tr>
+          <td>&#39;risk_assessment&#39; section has a non-empty &#39;scenario_risk_ratings&#39;</td>
+          <td>The exported report includes actual risk ratings for the uploaded scenarios, not an empty result</td>
+        </tr>
+        
+        <tr>
+          <td>&#39;scenario_risk_ratings&#39; appears exactly once in the &#39;risk_assessment&#39; section</td>
+          <td>The JSON structure is clean with no duplicate risk rating entries</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Risk Assessment renders and JSON is complete for &lt;role&gt;</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Risk Assessment UI</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-29</span><span class="tag">@SHIFT-30</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Risk Assessment add-on with a specific role, uploads a BDD fixture, triggers analysis, and verifies that both the rendered output panel and the downloaded JSON contain complete, well-structured risk assessment data.</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Role</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>QA Manager</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>Product Owner</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

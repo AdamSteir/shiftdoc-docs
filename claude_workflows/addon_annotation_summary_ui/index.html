@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addon Annotation Summary Ui — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
+  
+  <span>/</span>
+  Addon Annotation Summary Ui
+</div>
+
+<h1>Addon Annotation Summary Ui</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Annotation Summary renders and JSON is complete for QA Manager</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Annotation Summary UI</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-27</span><span class="tag">@SHIFT-28</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can upload a BDD test file, run the Annotation Summary add-on, and receive complete, well-formed output including a populated Annotation Health section both on screen and in the downloaded JSON.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I see documentation and analysis in the output panel</td>
+          <td>The results panel displays content after analysis is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>I see &#39;Annotation Health&#39; exactly once in the output content</td>
+          <td>The Annotation Health section appears in the UI exactly one time, with no duplication or omission</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>The downloaded JSON contains no placeholder or missing data values</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has top-level key &#39;annotation_summary&#39;</td>
+          <td>The JSON structure includes the expected top-level section for annotation results</td>
+        </tr>
+        
+        <tr>
+          <td>The &#39;annotation_summary&#39; section has a non-empty &#39;annotation_health&#39;</td>
+          <td>The annotation health field is populated with actual content, not blank or null</td>
+        </tr>
+        
+        <tr>
+          <td>The &#39;annotation_summary&#39; section contains &#39;annotation_health&#39; exactly once</td>
+          <td>The annotation health key appears exactly one time in the JSON, with no duplication</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Annotation Summary renders and JSON is complete for Product Owner</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Annotation Summary UI</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-27</span><span class="tag">@SHIFT-28</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can upload a BDD test file, run the Annotation Summary add-on, and receive complete, well-formed output including a populated Annotation Health section both on screen and in the downloaded JSON.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>I see documentation and analysis in the output panel</td>
+          <td>The results panel displays content after analysis is triggered</td>
+        </tr>
+        
+        <tr>
+          <td>I see &#39;Annotation Health&#39; exactly once in the output content</td>
+          <td>The Annotation Health section appears in the UI exactly one time, with no duplication or omission</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON output has no unresolved values</td>
+          <td>The downloaded JSON contains no placeholder or missing data values</td>
+        </tr>
+        
+        <tr>
+          <td>The JSON has top-level key &#39;annotation_summary&#39;</td>
+          <td>The JSON structure includes the expected top-level section for annotation results</td>
+        </tr>
+        
+        <tr>
+          <td>The &#39;annotation_summary&#39; section has a non-empty &#39;annotation_health&#39;</td>
+          <td>The annotation health field is populated with actual content, not blank or null</td>
+        </tr>
+        
+        <tr>
+          <td>The &#39;annotation_summary&#39; section contains &#39;annotation_health&#39; exactly once</td>
+          <td>The annotation health key appears exactly one time in the JSON, with no duplication</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Annotation Summary renders and JSON is complete for &lt;role&gt;</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Annotation Summary UI</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-27</span><span class="tag">@SHIFT-28</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Annotation Summary add-on for a given role, uploads a BDD fixture, triggers analysis, and verifies that the output panel renders correctly and the downloaded JSON is structurally complete with a single, non-empty annotation_health entry.</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Role</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>QA Manager</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>Product Owner</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

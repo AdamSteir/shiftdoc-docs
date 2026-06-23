@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing Layer — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Testing Layer
+</div>
+
+<h1>Testing Layer</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Testing layer selector renders on the Analyze page</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the testing layer selector is present and visible when a user opens the Analyze page.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Testing layer selector is visible</td>
+          <td>The testing layer selection control appears on the Analyze page</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selecting a layer shows it in the dropdown summary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user selects a predefined testing layer, the chosen layer is reflected in the dropdown summary.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select testing layer &#39;Unit&#39;</td>
+          <td>User can pick a layer from the available options</td>
+        </tr>
+        
+        <tr>
+          <td>Testing layer selector shows &#39;Unit&#39;</td>
+          <td>The dropdown summary updates to display the selected layer</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selected testing layers appear in the analysis metadata</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span><span class="tag">@SHIFT-10</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a testing layer chosen before running analysis is recorded in the JSON output metadata.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select format, role, and testing layer</td>
+          <td>User can configure analysis with a specific testing layer</td>
+        </tr>
+        
+        <tr>
+          <td>Upload fixture and run documentation</td>
+          <td>Analysis completes with the chosen layer in context</td>
+        </tr>
+        
+        <tr>
+          <td>JSON output has no unresolved values</td>
+          <td>Output is complete and well-formed</td>
+        </tr>
+        
+        <tr>
+          <td>JSON shiftdoc metadata includes testing layer &#39;unit&#39;</td>
+          <td>The selected layer is correctly embedded in the analysis metadata</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Entering a custom layer via Other shows it in the dropdown summary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span><span class="tag">@SHIFT-11</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user-typed custom testing layer name appears in the dropdown summary after entry.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Enter custom testing layer &#39;smoke-only&#39;</td>
+          <td>User can type a free-text layer name in the Other field</td>
+        </tr>
+        
+        <tr>
+          <td>Testing layer selector shows &#39;smoke-only&#39;</td>
+          <td>The custom layer name is reflected in the dropdown summary</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Typing more than 50 characters in Other shows an error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that entering more than 50 characters in the custom layer field triggers a visible error message.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Type 51 characters into the Other layer input</td>
+          <td>The character limit of 50 is enforced on the custom layer field</td>
+        </tr>
+        
+        <tr>
+          <td>Testing layer shows an over-limit error</td>
+          <td>An error is displayed to inform the user the input is too long</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selecting 4 or more layers falls back silently and analysis still runs</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-12</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that selecting four or more testing layers does not block analysis from completing and still produces output.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Select four testing layers</td>
+          <td>The UI accepts multiple layer selections without crashing or blocking</td>
+        </tr>
+        
+        <tr>
+          <td>Upload fixture and run documentation</td>
+          <td>Analysis runs successfully despite the high layer count</td>
+        </tr>
+        
+        <tr>
+          <td>Documentation appears in the output panel</td>
+          <td>Results are returned to the user with no visible failure</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">A custom layer entered via Other appears in the analysis metadata</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-10</span><span class="tag">@SHIFT-11</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user-defined custom testing layer is correctly saved in the JSON analysis metadata.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Enter custom testing layer &#39;smoke-layer&#39; and run analysis</td>
+          <td>Analysis executes with a free-text layer name provided by the user</td>
+        </tr>
+        
+        <tr>
+          <td>JSON output has no unresolved values</td>
+          <td>Output is complete and well-formed</td>
+        </tr>
+        
+        <tr>
+          <td>JSON shiftdoc metadata includes testing layer &#39;smoke-layer&#39;</td>
+          <td>The custom layer name is correctly stored in the output metadata</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Error below trigger persists after dropdown is closed with 51+ char Other text</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the over-limit error for the custom layer field remains visible even after the user collapses the dropdown.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Type 51 characters and close the dropdown</td>
+          <td>Closing the dropdown does not hide an active validation error</td>
+        </tr>
+        
+        <tr>
+          <td>Collapsed layer error is visible below the trigger</td>
+          <td>The error persists in a collapsed state so the user is still informed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Analyze button is disabled while Other text exceeds 50 characters</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the Analyze button is blocked from use when the custom layer field contains an invalid over-limit value.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Configure analysis and type 51 characters in the Other layer input</td>
+          <td>The form is otherwise ready but the layer validation error is present</td>
+        </tr>
+        
+        <tr>
+          <td>Analyze button is disabled</td>
+          <td>Users cannot submit the form while the custom layer input is invalid</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Analyze button re-enables once the Other text error is fixed</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the Analyze button becomes available again as soon as the user corrects the over-limit custom layer text.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Type 51 characters in the Other layer input</td>
+          <td>The button is disabled due to the validation error</td>
+        </tr>
+        
+        <tr>
+          <td>Delete one character to bring input within the limit</td>
+          <td>Reducing the text to 50 characters clears the error</td>
+        </tr>
+        
+        <tr>
+          <td>Analyze button is enabled</td>
+          <td>The user can immediately proceed to run analysis once the error is resolved</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Testing layer selector renders on the Analyze page</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the testing layer selector UI component is present and visible when a user lands on the Analyze page.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Testing layer selector renders on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              No action — presence check only
+            
+          </td>
+          
+          <td>
+            
+              Testing layer selector is visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selecting a layer shows it in the dropdown summary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that when a user selects a predefined testing layer, the dropdown summary reflects the selection immediately.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Selecting a layer shows it in the dropdown summary
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User selects testing layer &#39;Unit&#39;
+            
+          </td>
+          
+          <td>
+            
+              Testing layer selector shows &#39;Unit&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selected testing layers appear in the analysis metadata</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span><span class="tag">@SHIFT-10</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that a predefined testing layer selected before running analysis is correctly persisted in the downloaded JSON shiftdoc metadata output.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Selected testing layers appear in the analysis metadata
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, testing layer &#39;Unit&#39;, and fixture uploaded
+            
+          </td>
+          
+          <td>
+            
+              User clicks &#39;Document test cases&#39; and downloads the JSON output
+            
+          </td>
+          
+          <td>
+            
+              JSON output has no unresolved values and shiftdoc metadata includes testing layer &#39;unit&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Entering a custom layer via Other shows it in the dropdown summary</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-9</span><span class="tag">@SHIFT-11</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that a custom testing layer value entered via the &#39;Other&#39; input is reflected in the dropdown summary.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Entering a custom layer via Other shows it in the dropdown summary
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User enters custom testing layer &#39;smoke-only&#39; via the Other input
+            
+          </td>
+          
+          <td>
+            
+              Testing layer selector shows &#39;smoke-only&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Typing more than 50 characters in Other shows an error</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that exceeding the 50-character limit in the Other layer input triggers a visible validation error.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Typing more than 50 characters in Other shows an error
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page
+            
+          </td>
+          
+          <td>
+            
+              User types a 51-character string into the Other layer input
+            
+          </td>
+          
+          <td>
+            
+              An over-limit error is shown on the testing layer input
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-boundary">Boundary</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selecting 4 or more layers falls back silently and analysis still runs</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-12</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that selecting four or more testing layers does not block the analysis from completing and documentation still appears in the output panel.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Selecting 4 or more layers falls back silently and analysis still runs
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, and fixture uploaded
+            
+          </td>
+          
+          <td>
+            
+              User selects four testing layers (Unit, Integration, API / Contract, UI / Component) and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Documentation is visible in the output panel
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">A custom layer entered via Other appears in the analysis metadata</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-10</span><span class="tag">@SHIFT-11</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that a custom testing layer entered via the Other input is correctly persisted in the downloaded JSON shiftdoc metadata output.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              A custom layer entered via Other appears in the analysis metadata
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, custom layer &#39;smoke-layer&#39;, and fixture uploaded
+            
+          </td>
+          
+          <td>
+            
+              User clicks &#39;Document test cases&#39; and downloads the JSON output
+            
+          </td>
+          
+          <td>
+            
+              JSON output has no unresolved values and shiftdoc metadata includes testing layer &#39;smoke-layer&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Error below trigger persists after dropdown is closed with 51+ char Other text</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the over-limit validation error remains visible below the dropdown trigger even after the user closes the testing layer dropdown.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Error below trigger persists after dropdown is closed with 51+ char Other text
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with a 51-character string typed into the Other layer input
+            
+          </td>
+          
+          <td>
+            
+              User closes the testing layer dropdown
+            
+          </td>
+          
+          <td>
+            
+              The collapsed layer error is visible below the dropdown trigger
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Analyze button is disabled while Other text exceeds 50 characters</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the Analyze button is disabled when the Other layer input contains an invalid (over-limit) value, preventing premature submission.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Analyze button is disabled while Other text exceeds 50 characters
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, and fixture uploaded
+            
+          </td>
+          
+          <td>
+            
+              User types a 51-character string into the Other layer input
+            
+          </td>
+          
+          <td>
+            
+              The Analyze button is disabled
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Analyze button re-enables once the Other text error is fixed</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Testing Layer Selection</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-13</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the Analyze button becomes re-enabled once the user corrects the Other layer input to fall within the 50-character limit.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Analyze button re-enables once the Other text error is fixed
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, fixture uploaded, and a 51-character string in the Other layer input
+            
+          </td>
+          
+          <td>
+            
+              User deletes one character from the Other layer input to bring it to 50 characters
+            
+          </td>
+          
+          <td>
+            
+              The Analyze button is enabled
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-boundary">Boundary</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

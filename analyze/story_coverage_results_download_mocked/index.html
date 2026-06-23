@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Coverage Results Download Mocked — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Story Coverage Results Download Mocked
+</div>
+
+<h1>Story Coverage Results Download Mocked</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension matches selected format -- MD, shiftdoc-tca-story_sample.md</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story Coverage download — filename and format (mocked)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in MD format produces a file with the correct name and extension based on the uploaded story file.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Given a coverage result is displayed from an uploaded story file</td>
+          <td>A coverage result is available from a named uploaded file</td>
+        </tr>
+        
+        <tr>
+          <td>When I click the Download MD button</td>
+          <td>The user initiates a download in Markdown format</td>
+        </tr>
+        
+        <tr>
+          <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.md&#34;</td>
+          <td>The downloaded file uses the original story filename with an .md extension</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension matches selected format -- HTML, shiftdoc-tca-story_sample.html</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story Coverage download — filename and format (mocked)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in HTML format produces a file with the correct name and extension based on the uploaded story file.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Given a coverage result is displayed from an uploaded story file</td>
+          <td>A coverage result is available from a named uploaded file</td>
+        </tr>
+        
+        <tr>
+          <td>When I click the Download HTML button</td>
+          <td>The user initiates a download in HTML format</td>
+        </tr>
+        
+        <tr>
+          <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.html&#34;</td>
+          <td>The downloaded file uses the original story filename with an .html extension</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension matches selected format -- JSON, shiftdoc-tca-story_sample.json</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story Coverage download — filename and format (mocked)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in JSON format produces a file with the correct name and extension based on the uploaded story file.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Given a coverage result is displayed from an uploaded story file</td>
+          <td>A coverage result is available from a named uploaded file</td>
+        </tr>
+        
+        <tr>
+          <td>When I click the Download JSON button</td>
+          <td>The user initiates a download in JSON format</td>
+        </tr>
+        
+        <tr>
+          <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.json&#34;</td>
+          <td>The downloaded file uses the original story filename with a .json extension</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download filename falls back to date-time when story is pasted</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story Coverage download — filename and format (mocked)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when story content is pasted rather than uploaded as a file, the downloaded coverage report uses a date-time stamp in its filename instead of a story name.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Given a coverage result is displayed</td>
+          <td>A coverage result is available without an associated uploaded filename (e.g. story was pasted)</td>
+        </tr>
+        
+        <tr>
+          <td>When I click the Download MD button</td>
+          <td>The user initiates a download in Markdown format</td>
+        </tr>
+        
+        <tr>
+          <td>Then the downloaded file matches &#34;shiftdoc-tca-\d{8}-\d{6}\.md&#34;</td>
+          <td>The downloaded file is named using a date-time stamp pattern since no original filename is available</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension matches selected format</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story Coverage download — filename and format (mocked)</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result from an uploaded story file and verifies the downloaded filename extension matches the selected format (MD, HTML, or JSON).</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Format</th>
+          
+          <th>Expected</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>MD</td>
+            
+            <td>shiftdoc-tca-story_sample.md</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>HTML</td>
+            
+            <td>shiftdoc-tca-story_sample.html</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>JSON</td>
+            
+            <td>shiftdoc-tca-story_sample.json</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download filename falls back to date-time when story is pasted</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story Coverage download — filename and format (mocked)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content (rather than uploading a file) downloads a coverage result and verifies the filename falls back to a date-time stamp pattern instead of a source filename.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Download filename falls back to date-time when story is pasted
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is displayed with no uploaded file (story was pasted)
+            
+          </td>
+          
+          <td>
+            
+              User clicks the Download MD button
+            
+          </td>
+          
+          <td>
+            
+              Downloaded filename matches the pattern shiftdoc-tca-\d{8}-\d{6}\.md
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyze File Validation — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Analyze File Validation
+</div>
+
+<h1>Analyze File Validation</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file with no test cases shows an error toast</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a BDD file containing no test cases blocks the content from loading and clearly notifies the user with an error.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a BDD file with no scenarios</td>
+          <td>An error notification appears stating no test cases were found</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is empty</td>
+          <td>No content is loaded into the editor when the file is invalid</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion -- bdd, robot_single_sample.robot, doesn&#39;t look like a BDD / Gherkin file, Robot Framework</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a Robot Framework file when BDD format is selected</td>
+          <td>A warning notification appears indicating the file doesn&#39;t look like a BDD / Gherkin file</td>
+        </tr>
+        
+        <tr>
+          <td>Toast suggests Robot Framework</td>
+          <td>The warning guides the user toward the correct format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion -- robot, playwright_single_sample.spec.ts, doesn&#39;t look like a Robot Framework, Playwright</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a Playwright file when Robot Framework format is selected</td>
+          <td>A warning notification appears indicating the file doesn&#39;t look like a Robot Framework file</td>
+        </tr>
+        
+        <tr>
+          <td>Toast suggests Playwright</td>
+          <td>The warning guides the user toward the correct format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion -- playwright, bdd_sample.feature, doesn&#39;t look like a Playwright file, BDD / Gherkin</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a BDD file when Playwright format is selected</td>
+          <td>A warning notification appears indicating the file doesn&#39;t look like a Playwright file</td>
+        </tr>
+        
+        <tr>
+          <td>Toast suggests BDD / Gherkin</td>
+          <td>The warning guides the user toward the correct format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion -- cypress, bdd_sample.feature, doesn&#39;t look like a Cypress file, BDD / Gherkin</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a BDD file when Cypress format is selected</td>
+          <td>A warning notification appears indicating the file doesn&#39;t look like a Cypress file</td>
+        </tr>
+        
+        <tr>
+          <td>Toast suggests BDD / Gherkin</td>
+          <td>The warning guides the user toward the correct format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion -- swift, playwright_single_sample.spec.ts, doesn&#39;t look like a Swift / XCTest, Playwright</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a Playwright file when Swift / XCTest format is selected</td>
+          <td>A warning notification appears indicating the file doesn&#39;t look like a Swift / XCTest file</td>
+        </tr>
+        
+        <tr>
+          <td>Toast suggests Playwright</td>
+          <td>The warning guides the user toward the correct format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion -- espresso, bdd_sample.feature, doesn&#39;t look like an Espresso, BDD / Gherkin</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a BDD file when Espresso format is selected</td>
+          <td>A warning notification appears indicating the file doesn&#39;t look like an Espresso file</td>
+        </tr>
+        
+        <tr>
+          <td>Toast suggests BDD / Gherkin</td>
+          <td>The warning guides the user toward the correct format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a valid test case file shows no toast</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that matches the selected format loads content silently without any notification.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a Playwright file when Playwright format is selected</td>
+          <td>No notification is shown when the file format matches the selection</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Content loads successfully into the editor</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasting content that exceeds the character limit shows an error and does not load the box</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-35</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting content exceeding the allowed character limit is rejected with an error message and leaves the editor empty.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Paste 100,001 characters into the test case box</td>
+          <td>An error message appears indicating the content is too long</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is empty</td>
+          <td>Oversized content is not loaded into the editor</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasting valid matching content shows no toast</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-34</span><span class="tag">@SHIFT-35</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting content that matches the selected format and is within the character limit loads silently without any notification.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Paste the contents of a BDD file when BDD format is selected</td>
+          <td>No notification is shown when pasted content matches the selected format</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is populated</td>
+          <td>Valid pasted content loads successfully into the editor</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Warning toast dismisses and content remains loaded</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that dismissing a format mismatch warning does not remove the uploaded content from the editor.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Upload a mismatched file and receive a warning toast</td>
+          <td>A warning notification appears for the format mismatch</td>
+        </tr>
+        
+        <tr>
+          <td>Dismiss the toast</td>
+          <td>The user can close the warning notification</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is still populated after dismissal</td>
+          <td>Dismissing the warning does not clear the loaded content</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Dropping multiple test case files in single-file mode shows a dismissible warning</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that dropping multiple files onto the input area in single-file mode shows a clear guidance message that the user can dismiss, and prevents any content from being loaded.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Drop multiple files onto the test case input in single-file mode</td>
+          <td>A warning message appears prompting the user to switch to multi-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>Dismiss button is visible on the warning</td>
+          <td>The user has a clear way to close the warning message</td>
+        </tr>
+        
+        <tr>
+          <td>Test case box is empty</td>
+          <td>No content is loaded when multiple files are dropped in single-file mode</td>
+        </tr>
+        
+        <tr>
+          <td>Click the dismiss button</td>
+          <td>The warning message disappears after the user dismisses it</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file with no test cases shows an error toast</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a BDD feature file that contains no test cases and expects an error toast informing them that no test cases were found, with the test case box remaining empty.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Uploading a test case file with no test cases shows an error toast
+            
+          </td>
+          
+          <td>
+            
+              Format is set to BDD
+            
+          </td>
+          
+          <td>
+            
+              User uploads a BDD fixture file containing no scenarios
+            
+          </td>
+          
+          <td>
+            
+              An error toast appears with &#39;No test cases found&#39; and the test case box is empty
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a test case file in the wrong format shows a warning toast with suggestion</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    <div class="label-row"><span class="field-label">Type:</span> <span class="field-value">Scenario Outline</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a test case file whose format does not match the selected format, and expects a warning toast identifying the mismatch and suggesting the correct format, while the test case box is still populated with the file content.</span></div>
+    
+
+    
+      
+      <div class="feature-label" style="margin-top:0.5rem;">Examples</div>
+      <table>
+        <thead><tr>
+          
+          <th>Selected Format</th>
+          
+          <th>Fixture File</th>
+          
+          <th>Mismatch Phrase</th>
+          
+          <th>Suggestion</th>
+          
+        </tr></thead>
+        <tbody>
+          
+          <tr>
+            
+            <td>bdd</td>
+            
+            <td>robot_single_sample.robot</td>
+            
+            <td>doesn&#39;t look like a BDD / Gherkin file</td>
+            
+            <td>Robot Framework</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>robot</td>
+            
+            <td>playwright_single_sample.spec.ts</td>
+            
+            <td>doesn&#39;t look like a Robot Framework</td>
+            
+            <td>Playwright</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>playwright</td>
+            
+            <td>bdd_sample.feature</td>
+            
+            <td>doesn&#39;t look like a Playwright file</td>
+            
+            <td>BDD / Gherkin</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>cypress</td>
+            
+            <td>bdd_sample.feature</td>
+            
+            <td>doesn&#39;t look like a Cypress file</td>
+            
+            <td>BDD / Gherkin</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>swift</td>
+            
+            <td>playwright_single_sample.spec.ts</td>
+            
+            <td>doesn&#39;t look like a Swift / XCTest</td>
+            
+            <td>Playwright</td>
+            
+          </tr>
+          
+          <tr>
+            
+            <td>espresso</td>
+            
+            <td>bdd_sample.feature</td>
+            
+            <td>doesn&#39;t look like an Espresso</td>
+            
+            <td>BDD / Gherkin</td>
+            
+          </tr>
+          
+        </tbody>
+      </table>
+      
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Uploading a valid test case file shows no toast</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a Playwright test file that matches the selected Playwright format and expects no toast notification, with the test case box successfully populated.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Uploading a valid test case file shows no toast
+            
+          </td>
+          
+          <td>
+            
+              Format is set to playwright
+            
+          </td>
+          
+          <td>
+            
+              User uploads a matching Playwright fixture file
+            
+          </td>
+          
+          <td>
+            
+              No toast is displayed and the test case box is populated
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasting content that exceeds the character limit shows an error and does not load the box</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-35</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content exceeding the 100,000-character limit into the test case box and expects a paste error indicating the content is too long, with the box remaining empty.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Pasting content that exceeds the character limit shows an error and does not load the box
+            
+          </td>
+          
+          <td>
+            
+              Format is set to bdd
+            
+          </td>
+          
+          <td>
+            
+              User pastes 100,001 characters into the test case box
+            
+          </td>
+          
+          <td>
+            
+              A paste error containing &#39;too long&#39; is shown and the test case box is empty
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-boundary">Boundary</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasting valid matching content shows no toast</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-34</span><span class="tag">@SHIFT-35</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes the contents of a valid BDD feature file into the test case box and expects no toast to appear, with the box successfully populated.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Pasting valid matching content shows no toast
+            
+          </td>
+          
+          <td>
+            
+              Format is set to bdd
+            
+          </td>
+          
+          <td>
+            
+              User pastes the contents of a valid BDD fixture file into the test case box
+            
+          </td>
+          
+          <td>
+            
+              No toast is displayed and the test case box is populated
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Warning toast dismisses and content remains loaded</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-33</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a mismatched file triggering a warning toast, then dismisses the toast, and expects the test case box to remain populated confirming the file content is retained.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Warning toast dismisses and content remains loaded
+            
+          </td>
+          
+          <td>
+            
+              Format is set to robot and a mismatched Playwright file has been uploaded, showing a warning toast
+            
+          </td>
+          
+          <td>
+            
+              User dismisses the warning toast
+            
+          </td>
+          
+          <td>
+            
+              The test case box is still populated after the toast is dismissed
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Dropping multiple test case files in single-file mode shows a dismissible warning</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Test case file validation on the Analyze page</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-48</span>
+    </div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Execution:</span>
+      <span class="tag" style="background:#fef3c7;color:#92400e;">Tag: @file-validation</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user in single-file mode drops multiple files onto the test case input and expects a dismissible warning suggesting they switch to multi-file mode, with the test case box remaining empty, and the warning disappearing after dismissal.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Dropping multiple test case files in single-file mode shows a dismissible warning
+            
+          </td>
+          
+          <td>
+            
+              Format is set to bdd and the page is in single-file mode
+            
+          </td>
+          
+          <td>
+            
+              User drops multiple files onto the test case input
+            
+          </td>
+          
+          <td>
+            
+              A warning message advising multi-file mode is visible with a dismiss button, and the test case box is empty; after dismissal the warning is no longer visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>

@@ -219,7 +219,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a JSON data dictionary</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can upload a JSON file to create a new data dictionary that is saved and visible in settings.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can upload a JSON file to create a new data dictionary that is then visible in settings.</span></div>
     
 
     
@@ -240,12 +240,12 @@
         
         <tr>
           <td>Upload JSON dictionary file</td>
-          <td>Uploading a valid JSON file successfully creates a named dictionary</td>
+          <td>A JSON file can be successfully uploaded as a named data dictionary</td>
         </tr>
         
         <tr>
-          <td>Dictionary appears in settings</td>
-          <td>The newly created dictionary is visible in the settings page after upload</td>
+          <td>Dictionary saved and shown in settings</td>
+          <td>The newly uploaded dictionary appears in the user&#39;s settings after upload</td>
         </tr>
         
       </tbody>
@@ -256,7 +256,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an Excel data dictionary</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -266,7 +266,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can upload an Excel (.xlsx) file to create a new data dictionary that is saved and visible in settings.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can upload an Excel (.xlsx) file to create a new data dictionary that is then visible in settings.</span></div>
     
 
     
@@ -277,12 +277,12 @@
         
         <tr>
           <td>Upload XLSX dictionary file</td>
-          <td>Uploading a valid Excel file successfully creates a named dictionary</td>
+          <td>An Excel file can be successfully uploaded as a named data dictionary</td>
         </tr>
         
         <tr>
-          <td>Dictionary appears in settings</td>
-          <td>The newly created dictionary is visible in the settings page after upload</td>
+          <td>Dictionary saved and shown in settings</td>
+          <td>The newly uploaded dictionary appears in the user&#39;s settings after upload</td>
         </tr>
         
       </tbody>
@@ -293,7 +293,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Create dictionary manually without importing a file</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -303,7 +303,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can manually create a data dictionary by entering terms and definitions directly, without uploading a file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can manually create a data dictionary by entering a name and defining terms directly, without uploading a file.</span></div>
     
 
     
@@ -313,13 +313,13 @@
       <tbody>
         
         <tr>
-          <td>Create dictionary with a term and definition</td>
-          <td>A dictionary named &#39;Manual Dictionary&#39; is created with term &#39;TC&#39; defined as &#39;Test Case&#39;</td>
+          <td>Create dictionary with term and definition</td>
+          <td>A user can manually enter a dictionary name and define a term (e.g. &#39;TC&#39; = &#39;Test Case&#39;)</td>
         </tr>
         
         <tr>
-          <td>Dictionary appears in settings</td>
-          <td>The manually created dictionary is saved and visible in settings</td>
+          <td>Dictionary saved and shown in settings</td>
+          <td>The manually created dictionary appears in settings after saving</td>
         </tr>
         
       </tbody>
@@ -330,7 +330,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Edit dictionary name</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -340,7 +340,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can rename an existing data dictionary and see the updated name reflected in settings.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can rename an existing data dictionary and see the updated name reflected in settings.</span></div>
     
 
     
@@ -350,13 +350,13 @@
       <tbody>
         
         <tr>
-          <td>Rename dictionary</td>
-          <td>An existing dictionary can be given a new name</td>
+          <td>Rename existing dictionary</td>
+          <td>A user can change the name of a saved dictionary</td>
         </tr>
         
         <tr>
-          <td>Renamed dictionary is visible</td>
-          <td>The dictionary appears under its new name in settings</td>
+          <td>Renamed dictionary visible in settings</td>
+          <td>The new dictionary name is displayed correctly after the change</td>
         </tr>
         
       </tbody>
@@ -367,7 +367,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Edit dictionary entries</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -377,7 +377,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can edit the terms and definitions within an existing dictionary and have those changes saved.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can update the terms and definitions within an existing data dictionary.</span></div>
     
 
     
@@ -387,13 +387,13 @@
       <tbody>
         
         <tr>
-          <td>Update dictionary term and definition</td>
-          <td>An existing dictionary entry can be changed to a new term and definition</td>
+          <td>Edit dictionary entries</td>
+          <td>A user can modify an existing dictionary entry (e.g. set &#39;BDD&#39; = &#39;Behaviour Driven Development&#39;)</td>
         </tr>
         
         <tr>
-          <td>Updated dictionary appears in settings</td>
-          <td>The edited dictionary is saved and visible in settings</td>
+          <td>Updated dictionary saved and shown in settings</td>
+          <td>The edited dictionary is persisted and visible in settings</td>
         </tr>
         
       </tbody>
@@ -404,7 +404,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Mark dictionary as default</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -414,7 +414,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can designate a dictionary as the default, so it is automatically applied to analyses.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can designate a saved dictionary as the default dictionary.</span></div>
     
 
     
@@ -424,13 +424,13 @@
       <tbody>
         
         <tr>
-          <td>Set dictionary as default</td>
-          <td>A saved dictionary can be marked as the default dictionary</td>
+          <td>Mark dictionary as default</td>
+          <td>A user can set a specific dictionary as the default</td>
         </tr>
         
         <tr>
-          <td>Default status is reflected</td>
-          <td>The dictionary is shown as the active default in settings</td>
+          <td>Dictionary shows default status</td>
+          <td>The selected dictionary is correctly marked as the default in settings</td>
         </tr>
         
       </tbody>
@@ -441,7 +441,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing the default dictionary clears the previous default</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -451,7 +451,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user sets a new default dictionary, the previously defaulted dictionary is automatically unset, ensuring only one dictionary is ever the default.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that setting a new default dictionary automatically removes the default status from the previously designated default.</span></div>
     
 
     
@@ -461,18 +461,13 @@
       <tbody>
         
         <tr>
-          <td>Set a new dictionary as default</td>
-          <td>A second dictionary can be promoted to default</td>
+          <td>New dictionary marked as default</td>
+          <td>The newly selected dictionary is correctly set as the default</td>
         </tr>
         
         <tr>
-          <td>New default is marked correctly</td>
-          <td>The newly selected dictionary shows as the active default</td>
-        </tr>
-        
-        <tr>
-          <td>Previous default is cleared</td>
-          <td>The formerly default dictionary is no longer marked as default</td>
+          <td>Previous default dictionary is no longer default</td>
+          <td>Only one dictionary can hold default status at a time — the old default is cleared when a new one is chosen</td>
         </tr>
         
       </tbody>
@@ -483,7 +478,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an unsupported file format shows an import error</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -493,7 +488,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a file in an unsupported format is rejected with a clear error message.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file in an unsupported format displays a clear error message to the user.</span></div>
     
 
     
@@ -508,8 +503,8 @@
         </tr>
         
         <tr>
-          <td>Error message displayed</td>
-          <td>The user sees an error message containing &#39;Unsupported file type&#39;</td>
+          <td>Error message &#39;Unsupported file type&#39; shown</td>
+          <td>A meaningful error message is displayed so the user understands why the upload failed</td>
         </tr>
         
       </tbody>
@@ -520,7 +515,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a malformed JSON file shows an import error</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -530,7 +525,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a JSON file with invalid formatting is rejected with a clear error message.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a JSON file with invalid formatting results in a clear error message.</span></div>
     
 
     
@@ -541,12 +536,12 @@
         
         <tr>
           <td>Upload malformed JSON file</td>
-          <td>The system rejects JSON files that are not properly formatted</td>
+          <td>The system detects and rejects JSON files that are not well-formed</td>
         </tr>
         
         <tr>
-          <td>Error message displayed</td>
-          <td>The user sees an error message containing &#39;Invalid JSON&#39;</td>
+          <td>Error message &#39;Invalid JSON&#39; shown</td>
+          <td>A descriptive error is displayed to inform the user the file content is invalid</td>
         </tr>
         
       </tbody>
@@ -557,7 +552,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload a JSON with too many entries shows an import error</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -567,7 +562,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a JSON dictionary that exceeds the maximum number of allowed entries is rejected with a clear error message.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a JSON dictionary that exceeds the maximum allowed number of entries (500) shows an appropriate error.</span></div>
     
 
     
@@ -577,13 +572,13 @@
       <tbody>
         
         <tr>
-          <td>Upload JSON with excessive entries</td>
+          <td>Upload JSON with too many entries</td>
           <td>The system enforces a maximum entry limit on imported dictionaries</td>
         </tr>
         
         <tr>
-          <td>Error message displayed</td>
-          <td>The user sees an error message containing &#39;may not exceed 500 entries&#39;</td>
+          <td>Error message &#39;may not exceed 500 entries&#39; shown</td>
+          <td>The user is informed of the entry limit and why the upload was rejected</td>
         </tr>
         
       </tbody>
@@ -594,7 +589,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Upload an oversized XLSX file shows an import error</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -604,7 +599,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading an Excel dictionary file that exceeds the allowed file size is rejected with a clear error message.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading an Excel file that exceeds the maximum allowed file size results in a clear error message.</span></div>
     
 
     
@@ -615,12 +610,12 @@
         
         <tr>
           <td>Upload oversized XLSX file</td>
-          <td>The system enforces a file size limit on uploaded dictionary files</td>
+          <td>The system enforces a file size limit on dictionary uploads</td>
         </tr>
         
         <tr>
-          <td>Error message displayed</td>
-          <td>The user sees an error message containing &#39;File too large&#39;</td>
+          <td>Error message &#39;File too large&#39; shown</td>
+          <td>The user is informed that the file exceeds the size limit</td>
         </tr>
         
       </tbody>
@@ -631,7 +626,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Create dictionary manually with multiple terms</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -641,7 +636,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can manually create a dictionary containing multiple terms and definitions in a single session.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can manually create a dictionary containing multiple term definitions in a single session.</span></div>
     
 
     
@@ -652,12 +647,12 @@
         
         <tr>
           <td>Create dictionary with multiple terms</td>
-          <td>A dictionary can be created manually with more than one term-definition pair</td>
+          <td>A user can enter more than one term and definition when building a dictionary manually</td>
         </tr>
         
         <tr>
-          <td>Dictionary appears in settings</td>
-          <td>The multi-term dictionary is saved and visible in settings</td>
+          <td>Dictionary saved and shown in settings</td>
+          <td>The multi-term dictionary is persisted and visible in settings</td>
         </tr>
         
       </tbody>
@@ -668,7 +663,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Duplicate dictionary name shows an error</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -678,7 +673,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Attempting to create a second dictionary with the same name as an existing one is blocked with a clear error message.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that attempting to create a second dictionary with an already-used name displays an error to prevent duplicates.</span></div>
     
 
     
@@ -688,13 +683,13 @@
       <tbody>
         
         <tr>
-          <td>Upload dictionary with an already-used name</td>
-          <td>The system prevents two dictionaries from sharing the same name</td>
+          <td>Upload second dictionary with same name</td>
+          <td>The system detects when a dictionary name already exists</td>
         </tr>
         
         <tr>
-          <td>Duplicate name error displayed</td>
-          <td>The user is informed that the dictionary name is already in use</td>
+          <td>Duplicate dictionary name error shown</td>
+          <td>The user receives an error preventing them from saving two dictionaries with the same name</td>
         </tr>
         
       </tbody>
@@ -705,7 +700,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Export dictionary as JSON</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -715,7 +710,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can export a saved dictionary as a downloadable JSON file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can export a saved dictionary as a JSON file download.</span></div>
     
 
     
@@ -725,13 +720,13 @@
       <tbody>
         
         <tr>
-          <td>Trigger JSON export</td>
-          <td>The export action is initiated for a saved dictionary</td>
+          <td>Export dictionary as JSON</td>
+          <td>A user can trigger an export of their dictionary in JSON format</td>
         </tr>
         
         <tr>
-          <td>JSON file is downloaded</td>
-          <td>A file with a .json extension is downloaded to the user&#39;s device</td>
+          <td>File with .json extension is downloaded</td>
+          <td>The downloaded file has the correct JSON file extension</td>
         </tr>
         
       </tbody>
@@ -742,7 +737,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Export dictionary as Excel</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -752,7 +747,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can export a saved dictionary as a downloadable Excel file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can export a saved dictionary as an Excel file download.</span></div>
     
 
     
@@ -762,13 +757,13 @@
       <tbody>
         
         <tr>
-          <td>Trigger Excel export</td>
-          <td>The export action is initiated for a saved dictionary</td>
+          <td>Export dictionary as Excel</td>
+          <td>A user can trigger an export of their dictionary in Excel format</td>
         </tr>
         
         <tr>
-          <td>Excel file is downloaded</td>
-          <td>A file with a .xlsx extension is downloaded to the user&#39;s device</td>
+          <td>File with .xlsx extension is downloaded</td>
+          <td>The downloaded file has the correct Excel file extension</td>
         </tr>
         
       </tbody>
@@ -779,7 +774,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Delete saved dictionary</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Data Dictionary Management</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged-in user</span></div>
+    
 
     
     <div class="label-row">
@@ -789,7 +784,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can permanently delete a saved dictionary, removing it from their settings.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can permanently delete a saved dictionary, removing it from their settings.</span></div>
     
 
     
@@ -799,12 +794,12 @@
       <tbody>
         
         <tr>
-          <td>Delete a saved dictionary</td>
-          <td>The delete action is performed on an existing dictionary</td>
+          <td>Delete dictionary</td>
+          <td>A user can choose to delete an existing saved dictionary</td>
         </tr>
         
         <tr>
-          <td>Dictionary is removed from settings</td>
+          <td>Dictionary removed from settings</td>
           <td>The deleted dictionary no longer appears in the user&#39;s settings</td>
         </tr>
         
@@ -826,7 +821,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A user can supply a dictionary file directly in the analysis panel to override the default dictionary for that analysis only, without permanently changing their settings.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can supply a one-time dictionary on the Analyze page that overrides their default for that analysis only, without changing their saved settings.</span></div>
     
 
     
@@ -836,13 +831,13 @@
       <tbody>
         
         <tr>
-          <td>Supply dictionary in the analysis panel</td>
-          <td>A dictionary file can be provided at the point of running an analysis</td>
+          <td>Supply dictionary file in the analysis panel</td>
+          <td>A user can provide a dictionary specifically for a single analysis run</td>
         </tr>
         
         <tr>
-          <td>Session dictionary is applied</td>
-          <td>The supplied dictionary is used for the current analysis instead of the default</td>
+          <td>Supplied dictionary used for current analysis only</td>
+          <td>The session-level dictionary takes effect for that analysis without permanently replacing the user&#39;s default</td>
         </tr>
         
       </tbody>
@@ -877,7 +872,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user uploads a JSON file to create a named data dictionary, which is then persisted and visible in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user uploads a JSON file to create a named data dictionary that is persisted and visible in settings.</span></div>
     
 
     
@@ -958,7 +953,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user uploads an XLSX file to create a named data dictionary, which is then persisted and visible in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user uploads an Excel (.xlsx) file to create a named data dictionary that is persisted and visible in settings.</span></div>
     
 
     
@@ -1039,7 +1034,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user manually creates a data dictionary with a single term-definition pair, which is then persisted and visible in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user manually creates a data dictionary with a single custom term and definition, which is then saved and visible in settings.</span></div>
     
 
     
@@ -1120,7 +1115,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user renames an existing saved dictionary, and the updated name is reflected in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user renames an existing saved dictionary and verifies the new name is reflected in settings.</span></div>
     
 
     
@@ -1162,7 +1157,7 @@
           
           <td>
             
-              The dictionary named &#39;E2E Renamed Dictionary&#39; is visible
+              Dictionary named &#39;E2E Renamed Dictionary&#39; is visible in settings
             
           </td>
           
@@ -1201,7 +1196,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user edits the term-definition entries of an existing dictionary, and the changes are persisted and shown in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user edits the entries of an existing saved dictionary to update a term and its definition, confirming the changes are persisted.</span></div>
     
 
     
@@ -1282,7 +1277,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user marks an existing dictionary as the default, and the default status is reflected in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user marks a saved dictionary as the default, verifying the default flag is applied correctly.</span></div>
     
 
     
@@ -1363,7 +1358,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user designates a new dictionary as default, the system automatically deselects the previously defaulted dictionary, ensuring only one default exists at a time.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user sets a new default dictionary and verifies that the previously defaulted dictionary is automatically unset, enforcing a single-default constraint.</span></div>
     
 
     
@@ -1393,13 +1388,13 @@
           
           <td>
             
-              User is logged in with two saved dictionaries, &#39;E2E Old Default&#39; already marked as default
+              User is logged in with saved dictionaries &#39;E2E Old Default&#39; and &#39;E2E New Default&#39;, with &#39;E2E Old Default&#39; already marked as default
             
           </td>
           
           <td>
             
-              User marks &#39;E2E New Default&#39; as the default dictionary
+              User marks &#39;E2E New Default&#39; as default
             
           </td>
           
@@ -1444,7 +1439,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a file in an unsupported format and receives a descriptive import error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a dictionary file in an unsupported format and receives a descriptive import error.</span></div>
     
 
     
@@ -1525,7 +1520,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a JSON dictionary file with invalid JSON syntax and receives a descriptive import error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a malformed JSON dictionary file and receives a parse error indicating invalid JSON.</span></div>
     
 
     
@@ -1606,7 +1601,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a JSON dictionary that exceeds the maximum entry limit and receives a descriptive import error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload a JSON dictionary that exceeds the 500-entry limit and receives a boundary violation error.</span></div>
     
 
     
@@ -1687,7 +1682,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload an XLSX dictionary file that exceeds the allowed file size and receives a descriptive import error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload an XLSX dictionary file that exceeds the allowed file size limit and receives a file size error.</span></div>
     
 
     
@@ -1768,7 +1763,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user manually creates a dictionary containing multiple term-definition pairs, and the completed dictionary is persisted and visible in settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user manually creates a dictionary containing multiple terms, verifying the system handles multi-entry dictionaries and persists them correctly.</span></div>
     
 
     
@@ -1849,7 +1844,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to create a second dictionary with an already-used name and receives a duplicate name validation error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to upload two dictionaries with the same name and receives a duplicate name error, enforcing name uniqueness.</span></div>
     
 
     
@@ -1879,7 +1874,7 @@
           
           <td>
             
-              User is logged in and on the settings page with a dictionary named &#39;E2E Duplicate Test&#39; already uploaded
+              User is logged in and on the settings page with an existing dictionary named &#39;E2E Duplicate Test&#39;
             
           </td>
           
@@ -1930,7 +1925,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user exports an existing dictionary as a JSON file, triggering a download with the correct file extension.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user exports a saved dictionary in JSON format and verifies that a .json file is downloaded.</span></div>
     
 
     
@@ -2011,7 +2006,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user exports an existing dictionary as an Excel file, triggering a download with the correct file extension.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user exports a saved dictionary in Excel format and verifies that a .xlsx file is downloaded.</span></div>
     
 
     
@@ -2092,7 +2087,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user deletes an existing saved dictionary, and it is no longer present in the settings view.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user deletes a saved dictionary and verifies it is no longer present in settings.</span></div>
     
 
     
@@ -2134,7 +2129,7 @@
           
           <td>
             
-              The dictionary is removed from settings
+              The dictionary is removed from the user&#39;s settings
             
           </td>
           
@@ -2168,7 +2163,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user on the Analyze page supplies a dictionary file inline in the analysis panel, and that dictionary is applied only for the current analysis session without affecting saved settings.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user on the Analyze page supplies a dictionary file directly in the analysis panel, which is applied only to the current analysis session without affecting saved settings.</span></div>
     
 
     

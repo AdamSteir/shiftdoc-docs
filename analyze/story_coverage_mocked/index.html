@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Coverage Mocked — ShiftDoc Docs</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fc;
+    }
+
+    /* Nav */
+    nav {
+      background: #1a1a2e;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    nav a.brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    nav a.brand span { color: #7c9ef8; }
+    nav a.nav-link {
+      color: #aab4cc;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    nav a.nav-link:hover { color: #fff; }
+
+    /* Layout */
+    .page { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 1.25rem;
+    }
+    .breadcrumb a { color: #6b7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1a1a2e; }
+    .breadcrumb span { margin: 0 0.35rem; }
+
+    /* Page heading */
+    h1 { font-size: 1.5rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.25rem; }
+    .meta { font-size: 0.8rem; color: #6b7280; margin-bottom: 1.75rem; }
+    .meta span { margin-right: 1rem; }
+
+    /* Toggle */
+    .toggle {
+      display: inline-flex;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 1.75rem;
+    }
+    .toggle button {
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: none;
+      background: #fff;
+      color: #6b7280;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+    }
+    .toggle button.active {
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    /* Test card */
+    .test-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-card h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 0.4rem;
+    }
+    .test-card .feature-label {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.5rem;
+    }
+    .test-card .description {
+      font-size: 0.875rem;
+      color: #374151;
+      margin-bottom: 0.9rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      background: #eef2ff;
+      color: #4f46e5;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      margin-right: 0.35rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Label rows */
+    .label-row { margin-bottom: 0.35rem; font-size: 0.875rem; }
+    .field-label { font-weight: 700; color: #1a1a2e; }
+    .field-value { color: #374151; }
+    .field-value.description { color: #374151; }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 0.825rem; margin-top: 0.75rem; }
+    th {
+      background: #f3f4f6;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* Gherkin type badge */
+    .gherkin-type {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .gherkin-positive { background: #d1fae5; color: #065f46; }
+    .gherkin-negative { background: #fee2e2; color: #991b1b; }
+    .gherkin-boundary { background: #fef3c7; color: #92400e; }
+    .gherkin-edge     { background: #e0e7ff; color: #3730a3; }
+
+    /* Section index */
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s;
+    }
+    .section-card:hover { border-color: #7c9ef8; }
+    .section-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .section-card p { font-size: 0.78rem; color: #6b7280; }
+
+    /* Index sections */
+    .index-section { margin-bottom: 2.5rem; }
+    .index-section h2 { font-size: 1rem; font-weight: 700; color: #1a1a2e; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #eef2ff; }
+
+    /* Utility */
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">Shift<span>Doc</span></a>
+    <a class="nav-link" href="/">Test Docs</a>
+    <a class="nav-link" href="https://shiftdoc.dev" target="_blank">shiftdoc.dev</a>
+  </nav>
+
+  <div class="page">
+    
+
+
+<div class="breadcrumb">
+  <a href="/">Home</a>
+  
+  <span>/</span>
+  <a href="/analyze/">Analyze</a>
+  
+  <span>/</span>
+  Story Coverage Mocked
+</div>
+
+<h1>Story Coverage Mocked</h1>
+<div class="meta">
+  <span>Framework: BDD</span>
+  <span>Generated: 2026-06-23</span>
+  <span>Model: claude-sonnet-4-6</span>
+</div>
+
+<div class="toggle">
+  <button id="btn-po" class="active" onclick="showView('po')">Product Owner</button>
+  <button id="btn-qam" onclick="showView('qam')">QA Manager</button>
+</div>
+
+
+<div id="view-po">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Both inputs required before Check Coverage button is enabled</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-55</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The Check Coverage button only becomes available once the user has provided both a user story and test cases, preventing premature submissions.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Button disabled with no inputs</td>
+          <td>The Check Coverage button is inactive when the page is first loaded</td>
+        </tr>
+        
+        <tr>
+          <td>Button disabled with only story entered</td>
+          <td>The button remains inactive when only the user story field is filled in</td>
+        </tr>
+        
+        <tr>
+          <td>Button enabled with both inputs</td>
+          <td>The button becomes active only after both the story and test case fields contain content</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Coverage renders results panel</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">After submitting both inputs, users see a results panel along with download options for the coverage report.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is visible</td>
+          <td>The coverage results section appears after a successful check</td>
+        </tr>
+        
+        <tr>
+          <td>Download buttons are shown</td>
+          <td>Users are presented with options to download the coverage report</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Clear button resets all inputs and results</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The Clear button resets the entire page — removing all entered content and hiding the results — so users can start a fresh coverage check.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Story input is empty after clearing</td>
+          <td>The user story field is wiped clean</td>
+        </tr>
+        
+        <tr>
+          <td>Test input is empty after clearing</td>
+          <td>The test cases field is wiped clean</td>
+        </tr>
+        
+        <tr>
+          <td>Results panel is hidden after clearing</td>
+          <td>Previously displayed coverage results are no longer shown</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">API error shows error state</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the coverage service fails, users receive a clear error message rather than a silent failure or broken display.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Error message is displayed on server failure</td>
+          <td>A meaningful error message appears when the coverage check cannot be completed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Format selector is present and forwarded in payload</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-54</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can choose a test format (e.g. Playwright) and that selection is correctly included when the coverage check is submitted.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Format selector is visible</td>
+          <td>The test format dropdown is present on the page</td>
+        </tr>
+        
+        <tr>
+          <td>Selected format is included in the request</td>
+          <td>Choosing &#39;playwright&#39; as the format sends that value to the coverage service</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Testing layers selection is forwarded in payload</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-54</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The testing layer chosen by the user is correctly passed along to the coverage service when a check is run.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Selected testing layer is included in the request</td>
+          <td>The coverage submission includes the testing layer the user selected</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing test format clears test case content and filename</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user switches the test format, any previously entered test case content and associated filename are automatically cleared to avoid mismatched data.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Test case content is cleared on format change</td>
+          <td>The test cases field is emptied when the format is changed</td>
+        </tr>
+        
+        <tr>
+          <td>Test case filename is cleared on format change</td>
+          <td>Any uploaded or referenced filename is removed when the format is changed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing test format does not clear story input</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Switching the test format only affects test-related fields — the user story content is preserved so users do not need to re-enter it.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Story input is unchanged after format change</td>
+          <td>The user story field retains its content when the test format is switched</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing test format clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a user changes the test format after seeing results, the results panel is hidden to prevent showing outdated coverage information.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is hidden after format change</td>
+          <td>Previously displayed coverage results disappear when the test format is changed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing testing layers clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a user changes the testing layer selection after seeing results, the results panel is hidden to prevent showing stale coverage data.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is hidden after testing layer change</td>
+          <td>Previously displayed coverage results disappear when the testing layer selection is changed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing data dictionary clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a user changes the data dictionary selection after seeing results, the results panel is hidden to prevent showing stale coverage data.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is hidden after data dictionary change</td>
+          <td>Previously displayed coverage results disappear when the data dictionary selection is changed</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Editing story input clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a user edits the story input after results are shown, the results panel is hidden to ensure coverage results always reflect the current inputs.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is hidden after editing the story</td>
+          <td>Coverage results disappear when the user modifies the user story field</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Editing test input clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">If a user edits the test cases after results are shown, the results panel is hidden to ensure coverage results always reflect the current inputs.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is hidden after editing the test input</td>
+          <td>Coverage results disappear when the user modifies the test cases field</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Story input persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users do not lose their entered user story if they navigate to another page and return, preserving their work.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Story input is retained after navigation</td>
+          <td>The user story field still contains the previously entered text after leaving and returning to the page</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Test input persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users do not lose their entered test cases if they navigate to another page and return, preserving their work.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Test input is retained after navigation</td>
+          <td>The test cases field still contains the previously entered text after leaving and returning to the page</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selector state persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">The test format and testing layer selections a user has made are remembered if they navigate away and come back, so they do not have to reconfigure their preferences.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Format selection is unchanged after navigation</td>
+          <td>The previously chosen test format is still selected when the user returns</td>
+        </tr>
+        
+        <tr>
+          <td>Testing layer selection is unchanged after navigation</td>
+          <td>The previously chosen testing layer is still selected when the user returns</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Coverage result persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A completed coverage result is still visible when a user navigates away and returns, so they do not have to re-run the check.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Results panel is still visible after navigation</td>
+          <td>The coverage results remain on screen when the user returns to the page</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">State resets on logout</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user logs out, all previously entered story and test case content is cleared, ensuring no data carries over between sessions.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Story input is empty after logout</td>
+          <td>The user story field contains no content when a new session begins</td>
+        </tr>
+        
+        <tr>
+          <td>Test input is empty after logout</td>
+          <td>The test cases field contains no content when a new session begins</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+
+<div id="view-qam" class="hidden">
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Both inputs required before Check Coverage button is enabled</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-55</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user must provide both a user story and test cases before the Check Coverage button becomes interactive, preventing partial submissions.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Both inputs required before Check Coverage button is enabled
+            
+          </td>
+          
+          <td>
+            
+              Story Coverage page is loaded with no inputs filled
+            
+          </td>
+          
+          <td>
+            
+              User enters a user story only, then also enters test cases
+            
+          </td>
+          
+          <td>
+            
+              Button remains disabled with one input; button becomes enabled only when both inputs are populated
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-boundary">Boundary</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Coverage renders results panel</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who fills both inputs and submits a coverage check sees the results panel and download options rendered on a successful API response.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Coverage renders results panel
+            
+          </td>
+          
+          <td>
+            
+              Coverage API is mocked with a valid result
+            
+          </td>
+          
+          <td>
+            
+              User fills both inputs and clicks Check Coverage
+            
+          </td>
+          
+          <td>
+            
+              Results panel is visible and download buttons are shown
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Clear button resets all inputs and results</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who has received coverage results can click Clear to wipe all inputs and hide the results panel, returning the page to its initial state.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Clear button resets all inputs and results
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User clicks the Clear button
+            
+          </td>
+          
+          <td>
+            
+              Story input is empty, test input is empty, and the results panel is hidden
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">API error shows error state</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-56</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When the coverage API returns a server error, the user sees an informative error message instead of results.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              API error shows error state
+            
+          </td>
+          
+          <td>
+            
+              Coverage API is mocked to return HTTP 500
+            
+          </td>
+          
+          <td>
+            
+              User fills both inputs and clicks Check Coverage
+            
+          </td>
+          
+          <td>
+            
+              An error message is displayed to the user
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Format selector is present and forwarded in payload</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-54</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user can see the format selector on the page and the chosen format is correctly forwarded as the test_format field in the API request payload.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Format selector is present and forwarded in payload
+            
+          </td>
+          
+          <td>
+            
+              Coverage API is mocked with a valid result and format selector is visible
+            
+          </td>
+          
+          <td>
+            
+              User selects format &#39;playwright&#39; and fills both inputs then clicks Check Coverage
+            
+          </td>
+          
+          <td>
+            
+              The compare request includes test_format &#39;playwright&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Testing layers selection is forwarded in payload</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-54</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s chosen testing layer selection is correctly forwarded in the API request payload when coverage is checked.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Testing layers selection is forwarded in payload
+            
+          </td>
+          
+          <td>
+            
+              Coverage API is mocked with a valid result
+            
+          </td>
+          
+          <td>
+            
+              User selects a testing layer and fills both inputs then clicks Check Coverage
+            
+          </td>
+          
+          <td>
+            
+              The compare request includes the selected testing layer
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing test format clears test case content and filename</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user switches the test format, any previously entered test case content and filename are cleared to prevent format mismatch on submission.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Changing test format clears test case content and filename
+            
+          </td>
+          
+          <td>
+            
+              Test input is populated with content
+            
+          </td>
+          
+          <td>
+            
+              User changes the test format
+            
+          </td>
+          
+          <td>
+            
+              Test case content is cleared and test case filename is cleared
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing test format does not clear story input</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user switches the test format, the story input field is preserved so the user does not lose their user story text.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Changing test format does not clear story input
+            
+          </td>
+          
+          <td>
+            
+              Story input is populated with content
+            
+          </td>
+          
+          <td>
+            
+              User changes the test format
+            
+          </td>
+          
+          <td>
+            
+              Story input remains unchanged
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing test format clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Switching the test format while a result is displayed hides the results panel, ensuring stale results from a different format are not shown.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Changing test format clears coverage result
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User changes the test format
+            
+          </td>
+          
+          <td>
+            
+              Results panel is hidden
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing testing layers clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Modifying the testing layer selection while a result is displayed hides the results panel to prevent showing results that no longer reflect the current configuration.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Changing testing layers clears coverage result
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User changes the testing layer selection
+            
+          </td>
+          
+          <td>
+            
+              Results panel is hidden
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Changing data dictionary clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Changing the data dictionary selection while a result is displayed hides the results panel to avoid stale results being shown under a different dictionary context.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Changing data dictionary clears coverage result
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User changes the data dictionary selection
+            
+          </td>
+          
+          <td>
+            
+              Results panel is hidden
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Editing story input clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Editing the story input after a result is displayed hides the results panel so the user cannot act on coverage results that no longer match the current story.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Editing story input clears coverage result
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User edits the story input
+            
+          </td>
+          
+          <td>
+            
+              Results panel is hidden
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Editing test input clears coverage result</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-60</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Editing the test input after a result is displayed hides the results panel to prevent the user from acting on coverage results that no longer reflect the current test cases.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Editing test input clears coverage result
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User edits the test input
+            
+          </td>
+          
+          <td>
+            
+              Results panel is hidden
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Story input persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s story input is preserved in state when they navigate away and return to the Story Coverage page, avoiding data loss.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Story input persists after navigating away and back
+            
+          </td>
+          
+          <td>
+            
+              User has entered a user story
+            
+          </td>
+          
+          <td>
+            
+              User navigates to another page and returns to Story Coverage
+            
+          </td>
+          
+          <td>
+            
+              Story input still contains the previously entered text
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Test input persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s test cases input is preserved in state when they navigate away and return to the Story Coverage page, avoiding data loss.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Test input persists after navigating away and back
+            
+          </td>
+          
+          <td>
+            
+              User has entered test cases
+            
+          </td>
+          
+          <td>
+            
+              User navigates to another page and returns to Story Coverage
+            
+          </td>
+          
+          <td>
+            
+              Test input still contains the previously entered text
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selector state persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user&#39;s chosen test format and testing layer selections are preserved when they navigate away and return, so they do not need to reconfigure the page.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Selector state persists after navigating away and back
+            
+          </td>
+          
+          <td>
+            
+              User has selected a test format and a testing layer
+            
+          </td>
+          
+          <td>
+            
+              User navigates to another page and returns to Story Coverage
+            
+          </td>
+          
+          <td>
+            
+              Format selection and testing layer selection are both unchanged
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Coverage result persists after navigating away and back</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A previously obtained coverage result remains visible when a user navigates away and returns to the Story Coverage page, preserving continuity of work.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Coverage result persists after navigating away and back
+            
+          </td>
+          
+          <td>
+            
+              A coverage result is currently displayed
+            
+          </td>
+          
+          <td>
+            
+              User navigates to another page and returns to Story Coverage
+            
+          </td>
+          
+          <td>
+            
+              Results panel is still visible
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-positive">Positive</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">State resets on logout</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Story vs. Test Coverage — UI behaviour (mocked API)</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-61</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">When a user logs out and the Story Coverage page is revisited, all previously entered inputs are cleared to ensure no data leaks between sessions.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              State resets on logout
+            
+          </td>
+          
+          <td>
+            
+              User is logged in, on the Story Coverage page, and has entered a user story and test cases
+            
+          </td>
+          
+          <td>
+            
+              User logs out and navigates back to the Story Coverage page
+            
+          </td>
+          
+          <td>
+            
+              Story input and test input are both empty
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+</div>
+
+
+<script>
+  function showView(v) {
+    document.getElementById('view-po').classList.toggle('hidden', v !== 'po');
+    document.getElementById('view-qam').classList.toggle('hidden', v !== 'qam');
+    document.getElementById('btn-po').classList.toggle('active', v === 'po');
+    document.getElementById('btn-qam').classList.toggle('active', v === 'qam');
+  }
+</script>
+
+  </div>
+</body>
+</html>
