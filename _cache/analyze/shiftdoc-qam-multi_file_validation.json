@@ -1,0 +1,194 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:03:09Z",
+    "source_file": "multi_file_validation.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Adding more than the maximum files shows a warning toast and rejects the file",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user who has already filled the queue to the maximum limit attempts to add one more file and is blocked with a warning toast, confirming the hard cap is enforced.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Adding more than the maximum files shows a warning toast and rejects the file",
+          "given_context": "Multi-file mode is enabled and the queue is at the maximum file limit",
+          "when_action": "User attempts to add another file to the queue",
+          "then_assertion": "A warning toast about the file limit is shown and the queue file count does not increase",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Adding two files when one slot remains toasts and accepts only the first",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user with one slot remaining in the queue attempts to add two files simultaneously; only the first is accepted, the second is rejected with a warning toast, verifying partial-batch boundary enforcement.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Adding two files when one slot remains toasts and accepts only the first",
+          "given_context": "Multi-file mode is enabled and the queue contains 19 files (one slot remaining)",
+          "when_action": "User attempts to add 2 files at once",
+          "then_assertion": "A warning toast about the file limit is shown and the queue shows exactly 20 files",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "A file with no test cases shows an error badge at selection time",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user selects BDD format and adds a feature file that contains no scenarios; the queue immediately flags the file with an error badge and a descriptive message, preventing silent submission of empty files.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "A file with no test cases shows an error badge at selection time",
+          "given_context": "Multi-file mode is enabled and analysis format is set to BDD",
+          "when_action": "User adds fixture 'bdd_no_scenarios.feature' to the queue",
+          "then_assertion": "The file row shows an error badge and the error message mentions 'No test cases found'",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "A file in the wrong format shows a warning badge at selection time",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user selects BDD format but adds a Playwright TypeScript spec file; the queue immediately flags the format mismatch with a warning badge, alerting the user before any analysis is triggered.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "A file in the wrong format shows a warning badge at selection time",
+          "given_context": "Multi-file mode is enabled and analysis format is set to BDD",
+          "when_action": "User adds fixture 'playwright_single_sample.spec.ts' to the queue",
+          "then_assertion": "The file row for 'playwright_single_sample.spec.ts' shows a warning badge",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "A file that exceeds the size limit shows an error badge at selection time",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user adds a file that exceeds the allowed size limit; the queue immediately rejects it with an error badge and a 'File too large' message, enforcing the upload size constraint at selection time.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "A file that exceeds the size limit shows an error badge at selection time",
+          "given_context": "Multi-file mode is enabled",
+          "when_action": "User adds an oversized file to the queue",
+          "then_assertion": "The file row shows an error badge and the error message mentions 'File too large'",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "A valid file shows an ok badge",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user selects BDD format and adds a well-formed feature file; the queue immediately confirms the file is valid by displaying an ok badge, providing positive feedback before submission.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "A valid file shows an ok badge",
+          "given_context": "Multi-file mode is enabled and analysis format is set to BDD",
+          "when_action": "User adds fixture 'bdd_sample.feature' to the queue",
+          "then_assertion": "The file row for 'bdd_sample.feature' shows an ok badge",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

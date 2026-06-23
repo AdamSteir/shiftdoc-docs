@@ -1,0 +1,106 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:16:35Z",
+    "source_file": "multi_file_email.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Submitting a multi-file batch returns 202 Accepted",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user submits a multi-file batch with two fixtures and verifies the backend acknowledges the request with HTTP 202 Accepted and displays a batch status card.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Submitting a multi-file batch returns 202 Accepted",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User enables multi-file mode, selects format and role, adds two fixture files to the queue, and submits",
+          "then_assertion": "Batch status card is visible and backend responded with status 202",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "A multifile_batch_complete event is logged after the batch completes",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-52"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user submits a single-file batch and verifies that a usage log event of type 'multifile_batch_complete' is recorded with a positive processing duration.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "A multifile_batch_complete event is logged after the batch completes",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User enables multi-file mode, selects format and role, adds one fixture file, and submits",
+          "then_assertion": "A 'multifile_batch_complete' usage log event is recorded with a positive processing_ms value",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card transitions to complete state after processing finishes",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user submits a batch and observes the status card moving through a polling state before settling on a completion state that confirms results were emailed.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Batch status card transitions to complete state after processing finishes",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User enables multi-file mode, selects format and role, adds one fixture file, and submits",
+          "then_assertion": "Status card first shows polling state, then transitions to completion state displaying 'Results emailed'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card can be dismissed after completion",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user submits a batch, waits for it to complete, then dismisses the status card and verifies it is no longer visible.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Batch status card can be dismissed after completion",
+          "given_context": "User is on the Analyze page with a completed batch status card visible",
+          "when_action": "User clicks the dismiss button on the batch status card",
+          "then_assertion": "The batch status card is no longer visible on the page",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

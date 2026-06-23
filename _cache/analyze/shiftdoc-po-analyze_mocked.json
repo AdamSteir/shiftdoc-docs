@@ -1,0 +1,260 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:57:20Z",
+    "source_file": "analyze_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Analyze button is disabled when no input is provided",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that users cannot trigger an analysis without first providing any test case content.",
+      "test_coverage": [
+        {
+          "verification_step": "Analyze button is disabled",
+          "what_it_checks": "The Analyze button remains inactive when the input area is empty"
+        }
+      ]
+    },
+    {
+      "test_name": "Analyze button is enabled when test case content is provided",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that uploading a test case file enables the Analyze button so users can proceed.",
+      "test_coverage": [
+        {
+          "verification_step": "Analyze button is enabled after file upload",
+          "what_it_checks": "The Analyze button becomes active once a test case file has been provided"
+        }
+      ]
+    },
+    {
+      "test_name": "Analysis renders the output panel",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that submitting an analysis displays generated documentation in the output panel.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel shows documentation after submission",
+          "what_it_checks": "Analysis results are presented to the user in the output panel following a successful request"
+        }
+      ]
+    },
+    {
+      "test_name": "Clear button resets input and output",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that clearing the analysis results removes both the output documentation and the test case input, returning the page to a blank state.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared",
+          "what_it_checks": "Previously generated analysis output is removed from the panel"
+        },
+        {
+          "verification_step": "Test case box is empty",
+          "what_it_checks": "The input area no longer contains the previously uploaded test case content"
+        }
+      ]
+    },
+    {
+      "test_name": "API error shows an error message",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that when the analysis service fails, users see a meaningful error message instead of a blank or broken result.",
+      "test_coverage": [
+        {
+          "verification_step": "Error message is shown on API failure",
+          "what_it_checks": "A user-facing error message is displayed when the analysis request returns a server error"
+        }
+      ]
+    },
+    {
+      "test_name": "Format selection is forwarded in the analysis payload",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that the format and role options chosen by the user are correctly included when the analysis request is sent.",
+      "test_coverage": [
+        {
+          "verification_step": "Analysis request includes selected format",
+          "what_it_checks": "The chosen format (e.g. 'playwright') is passed through to the analysis API rather than being ignored"
+        }
+      ]
+    },
+    {
+      "test_name": "Testing layer selection is forwarded in the analysis payload",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that the testing layer chosen by the user is correctly included when the analysis request is sent.",
+      "test_coverage": [
+        {
+          "verification_step": "Analysis request includes selected testing layer",
+          "what_it_checks": "The chosen testing layer (e.g. 'unit') is passed through to the analysis API rather than being ignored"
+        }
+      ]
+    },
+    {
+      "test_name": "Output panel clears when new content is pasted",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that pasting new test case content automatically clears any previously generated analysis output, preventing stale results from being displayed.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after pasting new content",
+          "what_it_checks": "Existing analysis results are removed when the user pastes new input, ensuring the output matches the current input"
+        }
+      ]
+    },
+    {
+      "test_name": "Output panel clears when a new test case file is uploaded",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that uploading a new test case file automatically clears any previously generated analysis output, preventing stale results from being displayed.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after new file upload",
+          "what_it_checks": "Existing analysis results are removed when the user uploads a different file, ensuring the output matches the current input"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing format clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that changing the output format option clears any existing analysis results so users are not shown output generated under a different format.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after format change",
+          "what_it_checks": "Previously generated results are discarded when the user selects a different format"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing role clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that changing the role option clears any existing analysis results so users are not shown output generated for a different role.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after role change",
+          "what_it_checks": "Previously generated results are discarded when the user selects a different role"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing add-ons selection clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that enabling or changing an add-on option clears any existing analysis results so the output stays consistent with the current configuration.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after add-on selection changes",
+          "what_it_checks": "Previously generated results are discarded when the user selects a different add-on (e.g. 'Technical Review')"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing data dictionary clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that changing the data dictionary selection clears any existing analysis results so the output stays consistent with the current configuration.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after dictionary change",
+          "what_it_checks": "Previously generated results are discarded when the user selects a different data dictionary"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing testing layers clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that changing the testing layer selection clears any existing analysis results so the output stays consistent with the current configuration.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel is cleared after testing layer change",
+          "what_it_checks": "Previously generated results are discarded when the user selects a different testing layer"
+        }
+      ]
+    },
+    {
+      "test_name": "Test case input persists after navigating away and back",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that a user's uploaded test case content is preserved when they leave and return to the Analyze page, so they do not lose their work.",
+      "test_coverage": [
+        {
+          "verification_step": "Test case box is still populated after navigation",
+          "what_it_checks": "The input area retains the previously uploaded file content when the user navigates away and returns"
+        }
+      ]
+    },
+    {
+      "test_name": "Analysis result persists after navigating away and back",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that previously generated analysis output is still visible when a user leaves and returns to the Analyze page, so they do not lose their results.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel still shows documentation after navigation",
+          "what_it_checks": "Analysis results are retained in the output panel when the user navigates away and returns"
+        }
+      ]
+    },
+    {
+      "test_name": "State resets on logout",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "description": "Verifies that logging out clears all input and analysis output so that a subsequent user session starts with a clean slate.",
+      "test_coverage": [
+        {
+          "verification_step": "Test case box is empty after logout",
+          "what_it_checks": "The input area contains no content when the user returns to the Analyze page after logging out"
+        },
+        {
+          "verification_step": "Output panel is cleared after logout",
+          "what_it_checks": "Any previously generated analysis results are no longer visible after the user logs out"
+        }
+      ]
+    }
+  ]
+}

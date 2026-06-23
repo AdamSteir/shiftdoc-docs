@@ -1,0 +1,84 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:07:57Z",
+    "source_file": "auth.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Register with a valid email",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-36"
+      ],
+      "description": "Verifies that a user can begin registration by submitting their email and receiving a 6-digit verification code.",
+      "test_coverage": [
+        {
+          "verification_step": "Submit email to register",
+          "what_it_checks": "A valid email submission triggers a 6-digit verification code to be sent to the user"
+        }
+      ]
+    },
+    {
+      "test_name": "Verify with a valid code",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-36"
+      ],
+      "description": "Verifies that entering the correct verification code successfully logs the user in and gives them access to their account.",
+      "test_coverage": [
+        {
+          "verification_step": "Submit correct verification code",
+          "what_it_checks": "The user is authenticated and their account is accessible after entering the right code"
+        }
+      ]
+    },
+    {
+      "test_name": "Verify with an invalid code",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-37"
+      ],
+      "description": "Verifies that entering an incorrect verification code prevents login and shows an appropriate error to the user.",
+      "test_coverage": [
+        {
+          "verification_step": "Submit incorrect verification code",
+          "what_it_checks": "The user sees a verification error and is not granted access when submitting a wrong code"
+        }
+      ]
+    },
+    {
+      "test_name": "Logout",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-38"
+      ],
+      "description": "Verifies that a logged-in user can successfully log out and is returned to the home page in an unauthenticated state.",
+      "test_coverage": [
+        {
+          "verification_step": "Log out while authenticated",
+          "what_it_checks": "The user's session is ended and they are redirected to the home page without authentication"
+        }
+      ]
+    },
+    {
+      "test_name": "Delete account",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-39"
+      ],
+      "description": "Verifies that a logged-in user can permanently delete their account, after which the account no longer exists.",
+      "test_coverage": [
+        {
+          "verification_step": "Delete account while logged in",
+          "what_it_checks": "The user's account is fully removed from the system after confirming deletion"
+        }
+      ]
+    }
+  ]
+}

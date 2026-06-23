@@ -1,0 +1,116 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:19:44Z",
+    "source_file": "robot.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Robot Framework - PO - single test, core output structure",
+      "feature": "Robot Framework Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single Robot Framework test fixture and verifies that the analysis produces valid, framework-tagged JSON output with at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Robot Framework - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'robot' and role 'Product Owner', uploads 'robot_single_sample.robot', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'robot', contains 1+ tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - PO - Template data-driven expands one test per row",
+      "feature": "Robot Framework Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven Robot Framework template fixture and verifies that the analysis expands each data row into a separate test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Robot Framework - PO - Template data-driven expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'robot' and role 'Product Owner', uploads 'robot_datadriven_sample.robot', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'robot', contains 3+ tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - PO - FOR loop expands one test per value",
+      "feature": "Robot Framework Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a Robot Framework FOR loop fixture and verifies that the analysis expands each loop iteration into a separate test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Robot Framework - PO - FOR loop expands one test per value",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'robot' and role 'Product Owner', uploads 'robot_forof_sample.robot', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'robot', contains 3+ tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - QAM - single test, coverage matrix populated",
+      "feature": "Robot Framework Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single Robot Framework test fixture and verifies that the analysis produces valid JSON output that includes a populated test_coverage_matrix for the first test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Robot Framework - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'robot' and role 'QA Manager', uploads 'robot_single_sample.robot', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'robot', contains 1+ tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - QAM - Template collapses",
+      "feature": "Robot Framework Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven Robot Framework template fixture and verifies that the analysis collapses all data rows into exactly one test with a correctly structured coverage matrix matching the number of examples.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Robot Framework - QAM - Template collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'robot' and role 'QA Manager', uploads 'robot_datadriven_sample.robot', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'robot', contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the number of data examples, and rows conform to the robot schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - QAM - FOR loop collapses",
+      "feature": "Robot Framework Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a Robot Framework FOR loop fixture and verifies that the analysis collapses loop iterations into exactly two tests, each with a correctly structured coverage matrix matching the number of loop values.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Robot Framework - QAM - FOR loop collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'robot' and role 'QA Manager', uploads 'robot_forof_sample.robot', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'robot', contains exactly 2 tests, every test has a non-empty test_name, coverage matrix row count matches the loop iteration values, and rows conform to the robot schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

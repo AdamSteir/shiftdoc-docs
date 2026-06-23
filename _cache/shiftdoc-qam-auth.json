@@ -1,0 +1,129 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:08:15Z",
+    "source_file": "auth.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Register with a valid email",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-36"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Skip",
+          "value": "@skip"
+        }
+      ],
+      "journey": "A new user submits their email on the Analyze page to begin registration and receives a 6-digit verification code.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Register with a valid email",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User submits their email to register",
+          "then_assertion": "User receives a 6-digit verification code",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Verify with a valid code",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-36"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Skip",
+          "value": "@skip"
+        }
+      ],
+      "journey": "A user who has received a verification code submits the correct code and is granted access to their account.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Verify with a valid code",
+          "given_context": "User has received a verification code",
+          "when_action": "User submits the correct verification code",
+          "then_assertion": "User is logged in and sees their account",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Verify with an invalid code",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-37"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Skip",
+          "value": "@skip"
+        }
+      ],
+      "journey": "A user who has received a verification code submits an incorrect code and is shown a verification error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Verify with an invalid code",
+          "given_context": "User has received a verification code",
+          "when_action": "User submits an incorrect verification code",
+          "then_assertion": "User sees a verification error",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Logout",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-38"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Skip",
+          "value": "@skip"
+        }
+      ],
+      "journey": "An authenticated user logs out and is returned to the home page in an unauthenticated state.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Logout",
+          "given_context": "User is logged in",
+          "when_action": "User logs out",
+          "then_assertion": "User is returned to the home page unauthenticated",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Delete account",
+      "feature": "Authentication",
+      "traceability_annotations": [
+        "@SHIFT-39"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Skip",
+          "value": "@skip"
+        }
+      ],
+      "journey": "An authenticated user permanently deletes their account, after which the account no longer exists in the system.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Delete account",
+          "given_context": "User is logged in",
+          "when_action": "User deletes their account",
+          "then_assertion": "User's account no longer exists",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

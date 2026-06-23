@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:13:32Z",
+    "source_file": "bdd.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "BDD - PO - core output structure",
+      "feature": "BDD Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a BDD feature file and verifies that the documentation output is rendered, downloadable, and structurally valid with at least one named test containing a description and coverage array.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "BDD - PO - core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd' and role 'Product Owner', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 1+ tests, every test has a non-empty test_name, and the first test has a non-empty description and test_coverage array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "BDD - PO - data-driven produces multiple tests",
+      "feature": "BDD Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven BDD feature file and verifies that the output correctly expands into three or more individually named tests.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "BDD - PO - data-driven produces multiple tests",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd' and role 'Product Owner', uploads 'bdd_datadriven_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Panel title is \"Documentation\" when no add-ons are selected",
+      "feature": "BDD Analysis",
+      "traceability_annotations": [
+        "@SHIFT-21"
+      ],
+      "journey": "A Product Owner documents a BDD feature file without any add-ons selected and verifies that the output panel title is 'Documentation' and not the combined 'Documentation and Analysis' label.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Panel title is \"Documentation\" when no add-ons are selected",
+          "given_context": "User is on the Analyze page with no add-ons selected",
+          "when_action": "Selects format 'bdd' and role 'Product Owner', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is visible and its title is 'Documentation', not 'Documentation and Analysis'",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "BDD - QAM - coverage matrix populated",
+      "feature": "BDD Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a BDD feature file and verifies that the output includes the source filename, a valid downloadable JSON with no unresolved values, and a correctly structured coverage matrix for the BDD format.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "BDD - QAM - coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd' and role 'QA Manager', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows the filename 'bdd_sample.feature'; downloaded JSON has no unresolved values; the first test has a non-empty test_coverage_matrix array whose rows conform to the BDD schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

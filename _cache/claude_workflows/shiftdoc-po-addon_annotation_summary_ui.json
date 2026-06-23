@@ -1,0 +1,92 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:08:34Z",
+    "source_file": "addon_annotation_summary_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Annotation Summary renders and JSON is complete for QA Manager",
+      "parameters": {
+        "role": "QA Manager"
+      },
+      "feature": "Annotation Summary UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-27",
+        "@SHIFT-28"
+      ],
+      "description": "Verifies that a QA Manager can upload a BDD test file, trigger analysis with the Annotation Summary add-on, and receive a complete output \u2014 both on screen and as a downloadable JSON \u2014 that includes a fully populated Annotation Health section without any missing or unresolved values.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in the output panel",
+          "what_it_checks": "The analysis result is visible to the user after processing"
+        },
+        {
+          "verification_step": "\"Annotation Health\" appears exactly once in the output content",
+          "what_it_checks": "The Annotation Health section is present without duplication in the on-screen output"
+        },
+        {
+          "verification_step": "The downloaded JSON output has no unresolved values",
+          "what_it_checks": "All fields in the exported JSON are fully populated with no placeholders or missing data"
+        },
+        {
+          "verification_step": "The JSON has a top-level key \"annotation_summary\"",
+          "what_it_checks": "The exported JSON is structured correctly with the expected root section"
+        },
+        {
+          "verification_step": "The \"annotation_summary\" section has a non-empty \"annotation_health\"",
+          "what_it_checks": "The Annotation Health data is present and contains content in the JSON export"
+        },
+        {
+          "verification_step": "\"annotation_health\" appears exactly once inside \"annotation_summary\"",
+          "what_it_checks": "The JSON structure is clean with no duplicate keys or sections"
+        }
+      ]
+    },
+    {
+      "test_name": "Annotation Summary renders and JSON is complete for Product Owner",
+      "parameters": {
+        "role": "Product Owner"
+      },
+      "feature": "Annotation Summary UI",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-27",
+        "@SHIFT-28"
+      ],
+      "description": "Verifies that a Product Owner can upload a BDD test file, trigger analysis with the Annotation Summary add-on, and receive a complete output \u2014 both on screen and as a downloadable JSON \u2014 that includes a fully populated Annotation Health section without any missing or unresolved values.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in the output panel",
+          "what_it_checks": "The analysis result is visible to the user after processing"
+        },
+        {
+          "verification_step": "\"Annotation Health\" appears exactly once in the output content",
+          "what_it_checks": "The Annotation Health section is present without duplication in the on-screen output"
+        },
+        {
+          "verification_step": "The downloaded JSON output has no unresolved values",
+          "what_it_checks": "All fields in the exported JSON are fully populated with no placeholders or missing data"
+        },
+        {
+          "verification_step": "The JSON has a top-level key \"annotation_summary\"",
+          "what_it_checks": "The exported JSON is structured correctly with the expected root section"
+        },
+        {
+          "verification_step": "The \"annotation_summary\" section has a non-empty \"annotation_health\"",
+          "what_it_checks": "The Annotation Health data is present and contains content in the JSON export"
+        },
+        {
+          "verification_step": "\"annotation_health\" appears exactly once inside \"annotation_summary\"",
+          "what_it_checks": "The JSON structure is clean with no duplicate keys or sections"
+        }
+      ]
+    }
+  ]
+}

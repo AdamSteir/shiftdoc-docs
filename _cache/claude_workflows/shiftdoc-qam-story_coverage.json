@@ -1,0 +1,152 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:21:10Z",
+    "source_file": "story_coverage.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Coverage run produces a populated coverage table",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-53"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user pastes a user story with acceptance criteria, uploads a BDD test fixture, runs coverage analysis, and verifies a populated coverage table is returned.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Coverage run produces a populated coverage table",
+          "given_context": "User is on the Story Coverage page with a user story and BDD test fixture uploaded",
+          "when_action": "User clicks Check Coverage",
+          "then_assertion": "Result contains a coverage table with at least one row and is non-empty",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Non-covered AC rows have a risk value",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-53"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user runs a coverage analysis using an incomplete test fixture and verifies that every non-covered acceptance criteria row carries a risk value.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Non-covered AC rows have a risk value",
+          "given_context": "User is on the Story Coverage page with the login story fixture and the incomplete test fixture uploaded",
+          "when_action": "User clicks Check Coverage",
+          "then_assertion": "Every non-covered row in the coverage table has a non-empty risk value",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Fully covered AC rows have no risk value",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-53"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user runs a coverage analysis using a complete test fixture and verifies that covered acceptance criteria rows do not carry any risk value.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Fully covered AC rows have no risk value",
+          "given_context": "User is on the Story Coverage page with the login story fixture and the complete test fixture uploaded",
+          "when_action": "User clicks Check Coverage",
+          "then_assertion": "No covered row in the coverage table has a risk value",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Markdown download works after coverage run",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user who has already produced a coverage result downloads it as a Markdown file and verifies the correct file type is received.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Markdown download works after coverage run",
+          "given_context": "User is on the Story Coverage page and a coverage result has been produced",
+          "when_action": "User clicks the Download MD button",
+          "then_assertion": "A .md file is downloaded",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "HTML download works after coverage run",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user who has already produced a coverage result downloads it as an HTML file and verifies the correct file type is received.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "HTML download works after coverage run",
+          "given_context": "User is on the Story Coverage page and a coverage result has been produced",
+          "when_action": "User clicks the Download HTML button",
+          "then_assertion": "A .html file is downloaded",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "JSON download works after coverage run",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A user who has already produced a coverage result downloads it as a JSON file and verifies the correct file type is received.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JSON download works after coverage run",
+          "given_context": "User is on the Story Coverage page and a coverage result has been produced",
+          "when_action": "User clicks the Download JSON button",
+          "then_assertion": "A .json file is downloaded",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

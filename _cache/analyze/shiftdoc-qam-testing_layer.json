@@ -1,0 +1,187 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:07:15Z",
+    "source_file": "testing_layer.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Testing layer selector renders on the Analyze page",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9"
+      ],
+      "journey": "Verify that the testing layer selector component is visible when a user lands on the Analyze page.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Testing layer selector renders on the Analyze page",
+          "given_context": "User is on the Analyze page",
+          "when_action": "No action \u2014 presence check only",
+          "then_assertion": "The testing layer selector is visible",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Selecting a layer shows it in the dropdown summary",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9"
+      ],
+      "journey": "Verify that selecting a predefined testing layer updates the dropdown summary label to reflect the chosen layer.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selecting a layer shows it in the dropdown summary",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User selects testing layer 'Unit'",
+          "then_assertion": "The testing layer selector displays 'Unit'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Selected testing layers appear in the analysis metadata",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9",
+        "@SHIFT-10"
+      ],
+      "journey": "Verify that a predefined testing layer selected before running analysis is correctly captured and serialised into the downloaded JSON shiftdoc metadata.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selected testing layers appear in the analysis metadata",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'Product Owner', layer 'Unit', and fixture 'bdd_sample.feature' uploaded",
+          "when_action": "User clicks 'Document test cases' and downloads the JSON output",
+          "then_assertion": "JSON output has no unresolved values and shiftdoc metadata includes testing layer 'unit'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Entering a custom layer via Other shows it in the dropdown summary",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9",
+        "@SHIFT-11"
+      ],
+      "journey": "Verify that typing a custom value into the Other layer input updates the dropdown summary to reflect the custom layer name.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Entering a custom layer via Other shows it in the dropdown summary",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User enters custom testing layer 'smoke-only'",
+          "then_assertion": "The testing layer selector displays 'smoke-only'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Typing more than 50 characters in Other shows an error",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "journey": "Verify that exceeding the 50-character limit in the Other layer input triggers an inline validation error message.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Typing more than 50 characters in Other shows an error",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User types a 51-character string into the Other layer input",
+          "then_assertion": "An over-limit error is shown on the testing layer input",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Selecting 4 or more layers falls back silently and analysis still runs",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-12"
+      ],
+      "journey": "Verify that selecting four or more testing layers does not block the analysis workflow and documentation output is still produced without a hard error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selecting 4 or more layers falls back silently and analysis still runs",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'Product Owner', four layers selected, and fixture 'bdd_sample.feature' uploaded",
+          "when_action": "User clicks 'Document test cases'",
+          "then_assertion": "Documentation appears in the output panel",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "A custom layer entered via Other appears in the analysis metadata",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-10",
+        "@SHIFT-11"
+      ],
+      "journey": "Verify that a custom layer name entered via the Other input is correctly propagated into the downloaded JSON shiftdoc metadata after analysis.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "A custom layer entered via Other appears in the analysis metadata",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'Product Owner', custom layer 'smoke-layer', and fixture 'bdd_sample.feature' uploaded",
+          "when_action": "User clicks 'Document test cases' and downloads the JSON output",
+          "then_assertion": "JSON output has no unresolved values and shiftdoc metadata includes testing layer 'smoke-layer'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Error below trigger persists after dropdown is closed with 51+ char Other text",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "journey": "Verify that the over-limit validation error remains visible below the dropdown trigger after the user closes the testing layer dropdown without correcting the input.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Error below trigger persists after dropdown is closed with 51+ char Other text",
+          "given_context": "User is on the Analyze page and has typed a 51-character string into the Other layer input",
+          "when_action": "User closes the testing layer dropdown",
+          "then_assertion": "The collapsed layer error is visible below the trigger",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Analyze button is disabled while Other text exceeds 50 characters",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "journey": "Verify that the Analyze button is disabled and cannot be activated while the Other layer input contains more than 50 characters, preventing invalid submissions.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Analyze button is disabled while Other text exceeds 50 characters",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'Product Owner', fixture uploaded, and a 51-character string in the Other layer input",
+          "when_action": "User views the Analyze button state",
+          "then_assertion": "The Analyze button is disabled",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Analyze button re-enables once the Other text error is fixed",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "journey": "Verify that deleting a character from an over-limit Other layer input to bring it within the 50-character boundary re-enables the Analyze button.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Analyze button re-enables once the Other text error is fixed",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'Product Owner', fixture uploaded, and a 51-character string in the Other layer input",
+          "when_action": "User deletes one character from the Other layer input",
+          "then_assertion": "The Analyze button is enabled",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    }
+  ]
+}

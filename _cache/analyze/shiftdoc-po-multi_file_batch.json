@@ -1,0 +1,112 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:00:00Z",
+    "source_file": "multi_file_batch.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Submit button is disabled when the queue is empty",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that a user cannot submit a batch job when no files have been added to the queue.",
+      "test_coverage": [
+        {
+          "verification_step": "Enable multi-file mode",
+          "what_it_checks": "Multi-file mode can be turned on by the user"
+        },
+        {
+          "verification_step": "Submit button is disabled",
+          "what_it_checks": "The submit action is unavailable when the file queue is empty, preventing accidental empty submissions"
+        }
+      ]
+    },
+    {
+      "test_name": "Submitting a valid multi-file batch shows the batch status card",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that after submitting a batch with at least one file, the user sees a batch status card and the single-file results panel is hidden.",
+      "test_coverage": [
+        {
+          "verification_step": "Select format and role, add a file, click submit",
+          "what_it_checks": "A complete and valid batch submission can be initiated"
+        },
+        {
+          "verification_step": "Batch status card is visible",
+          "what_it_checks": "The user receives confirmation that their batch job has been submitted"
+        },
+        {
+          "verification_step": "Results panel is not visible",
+          "what_it_checks": "The single-file results area does not interfere with the batch workflow"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card shows the job reference and polling message",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that after submitting a batch, the status card displays a unique job reference and a message indicating that results are being processed.",
+      "test_coverage": [
+        {
+          "verification_step": "Batch status card shows a job_id reference",
+          "what_it_checks": "The user can see a traceable identifier for their submitted batch job"
+        },
+        {
+          "verification_step": "Batch status card shows the polling message",
+          "what_it_checks": "The user is informed that processing is underway and results are not yet ready"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card remains visible after switching back to single-file mode",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that the batch status card persists on screen even if the user switches back to single-file mode after submitting a batch.",
+      "test_coverage": [
+        {
+          "verification_step": "Submit batch and then disable multi-file mode",
+          "what_it_checks": "The user can toggle the mode after submission without losing their batch status"
+        },
+        {
+          "verification_step": "Batch status card is still visible",
+          "what_it_checks": "The submitted batch job status is not lost when the user changes the input mode"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card summary row shows format, role and file count",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that the batch status card displays an accurate summary of the submitted job, including the selected format, role, and number of files.",
+      "test_coverage": [
+        {
+          "verification_step": "Batch status card shows the format label",
+          "what_it_checks": "The user can confirm which file format was used for the batch submission"
+        },
+        {
+          "verification_step": "Batch status card shows the role label 'Product Owner'",
+          "what_it_checks": "The user can confirm which role was selected when the batch was submitted"
+        },
+        {
+          "verification_step": "Batch status card shows '1' for file count",
+          "what_it_checks": "The user can see exactly how many files were included in the batch job"
+        }
+      ]
+    }
+  ]
+}

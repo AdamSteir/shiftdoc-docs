@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:18:48Z",
+    "source_file": "results_download.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Markdown download contains rendered content",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-22"
+      ],
+      "journey": "A user with a completed BDD Product Owner analysis downloads a Markdown file and verifies it contains valid Markdown heading syntax.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Markdown download contains rendered content",
+          "given_context": "A completed BDD Product Owner analysis exists",
+          "when_action": "User clicks Download Markdown",
+          "then_assertion": "A .md file is downloaded and its content contains '##'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "HTML download contains rendered content",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-22"
+      ],
+      "journey": "A user with a completed BDD Product Owner analysis downloads an HTML file and verifies it is a well-formed HTML document with opening and closing html tags.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "HTML download contains rendered content",
+          "given_context": "A completed BDD Product Owner analysis exists",
+          "when_action": "User clicks Download HTML",
+          "then_assertion": "A .html file is downloaded and its content contains both '<html lang=' and '</html>'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "JSON download contains complete analysis payload",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-22"
+      ],
+      "journey": "A user with a completed BDD Product Owner analysis downloads a JSON file and verifies it carries the correct shiftdoc framework metadata and at least one test entry.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JSON download contains complete analysis payload",
+          "given_context": "A completed BDD Product Owner analysis exists",
+          "when_action": "User clicks Download JSON",
+          "then_assertion": "A .json file is downloaded, shiftdoc metadata has framework 'bdd', and the JSON contains 1 or more tests",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "JSON download contains add-on sections when add-ons were selected",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-23"
+      ],
+      "journey": "A user who ran a BDD Product Owner analysis with the Gap Analysis add-on downloads a JSON file and verifies the add-on output is present as a top-level key.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JSON download contains add-on sections when add-ons were selected",
+          "given_context": "A completed BDD Product Owner analysis with Gap Analysis add-on exists",
+          "when_action": "User clicks Download JSON",
+          "then_assertion": "A .json file is downloaded and the JSON contains a top-level key 'gap_analysis'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

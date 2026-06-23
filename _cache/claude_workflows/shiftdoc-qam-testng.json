@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:22:36Z",
+    "source_file": "testng.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "TestNG - PO - single test, core output structure",
+      "feature": "TestNG Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single TestNG test fixture and verifies that the documentation output is generated with at least one test entry containing a valid test name.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "TestNG - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'testng' and role 'Product Owner', uploads 'testng_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "TestNG - PO - DataProvider expands one test per row",
+      "feature": "TestNG Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven TestNG fixture and verifies that each DataProvider row is expanded into a separate test entry in the output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "TestNG - PO - DataProvider expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'testng' and role 'Product Owner', uploads 'testng_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "TestNG - QAM - single test, coverage matrix populated",
+      "feature": "TestNG Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single TestNG test fixture and verifies that the output includes a populated test coverage matrix for the first test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "TestNG - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'testng' and role 'QA Manager', uploads 'testng_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test names, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "TestNG - QAM - DataProvider collapses",
+      "feature": "TestNG Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven TestNG fixture and verifies that DataProvider rows collapse into a single test entry whose coverage matrix rows match the number of examples and conform to the generic schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "TestNG - QAM - DataProvider collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'testng' and role 'QA Manager', uploads 'testng_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test name, coverage matrix row count matches the DataProvider examples, and rows conform to the generic coverage matrix schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

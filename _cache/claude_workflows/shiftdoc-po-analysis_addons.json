@@ -1,0 +1,92 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:11:49Z",
+    "source_file": "analysis_addons.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "All add-ons - sections present in JSON output for QA Manager",
+      "feature": "Add-ons Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-15"
+      ],
+      "description": "Verifies that when a QA Manager analyzes a BDD test file with all add-ons enabled, the downloaded JSON output contains fully populated sections for technical review, gap analysis, annotation summary, risk assessment, and recommendations.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The analysis runs successfully and results are visible to the user"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the output are populated \u2014 no placeholders or missing data remain"
+        },
+        {
+          "verification_step": "JSON has top-level key 'technical_review' with non-empty 'test_quality'",
+          "what_it_checks": "The technical review add-on produces quality assessments for the uploaded tests"
+        },
+        {
+          "verification_step": "JSON has top-level key 'gap_analysis' with non-empty 'coverage_gaps'",
+          "what_it_checks": "The gap analysis add-on identifies areas of missing test coverage"
+        },
+        {
+          "verification_step": "JSON has top-level key 'annotation_summary' with non-empty 'annotation_health'",
+          "what_it_checks": "The annotation summary add-on evaluates the health and completeness of test annotations"
+        },
+        {
+          "verification_step": "JSON has top-level key 'risk_assessment' with non-empty 'scenario_risk_ratings'",
+          "what_it_checks": "The risk assessment add-on assigns risk ratings to individual test scenarios"
+        },
+        {
+          "verification_step": "JSON has top-level key 'recommendations' with non-empty 'actions'",
+          "what_it_checks": "The recommendations add-on produces actionable next steps based on the analysis"
+        }
+      ]
+    },
+    {
+      "test_name": "All add-ons - sections present in JSON output for Product Owner",
+      "feature": "Add-ons Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-15"
+      ],
+      "description": "Verifies that when a Product Owner analyzes a BDD test file with all add-ons enabled, the downloaded JSON output contains fully populated sections for technical review, gap analysis, annotation summary, risk assessment, and recommendations.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The analysis runs successfully and results are visible to the user"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the output are populated \u2014 no placeholders or missing data remain"
+        },
+        {
+          "verification_step": "JSON has top-level key 'technical_review' with non-empty 'test_quality'",
+          "what_it_checks": "The technical review add-on produces quality assessments for the uploaded tests"
+        },
+        {
+          "verification_step": "JSON has top-level key 'gap_analysis' with non-empty 'coverage_gaps'",
+          "what_it_checks": "The gap analysis add-on identifies areas of missing test coverage"
+        },
+        {
+          "verification_step": "JSON has top-level key 'annotation_summary' with non-empty 'annotation_health'",
+          "what_it_checks": "The annotation summary add-on evaluates the health and completeness of test annotations"
+        },
+        {
+          "verification_step": "JSON has top-level key 'risk_assessment' with non-empty 'scenario_risk_ratings'",
+          "what_it_checks": "The risk assessment add-on assigns risk ratings to individual test scenarios"
+        },
+        {
+          "verification_step": "JSON has top-level key 'recommendations' with non-empty 'actions'",
+          "what_it_checks": "The recommendations add-on produces actionable next steps based on the analysis"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:06:12Z",
+    "source_file": "story_coverage_results_download_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Download format extension matches selected format",
+      "feature": "Story Coverage download \u2014 filename and format (mocked)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "outline_type": "Scenario Outline",
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Ensures each scenario begins with the user already on the Story Coverage page, avoiding repeated navigation steps inline."
+        }
+      ],
+      "example_groups": [
+        {
+          "label": "Examples",
+          "rows": [
+            {
+              "format": "MD",
+              "expected": "shiftdoc-tca-story_sample.md"
+            },
+            {
+              "format": "HTML",
+              "expected": "shiftdoc-tca-story_sample.html"
+            },
+            {
+              "format": "JSON",
+              "expected": "shiftdoc-tca-story_sample.json"
+            }
+          ]
+        }
+      ],
+      "journey": "A user downloads a coverage result from an uploaded story file and verifies the downloaded filename extension matches the selected export format.",
+      "test_coverage_matrix": [
+        {
+          "example": "MD format",
+          "given_context": "A coverage result is displayed from an uploaded story file",
+          "when_action": "User clicks the Download MD button",
+          "then_assertion": "Downloaded file is named shiftdoc-tca-story_sample.md",
+          "gherkin_type": "Positive"
+        },
+        {
+          "example": "HTML format",
+          "given_context": "A coverage result is displayed from an uploaded story file",
+          "when_action": "User clicks the Download HTML button",
+          "then_assertion": "Downloaded file is named shiftdoc-tca-story_sample.html",
+          "gherkin_type": "Positive"
+        },
+        {
+          "example": "JSON format",
+          "given_context": "A coverage result is displayed from an uploaded story file",
+          "when_action": "User clicks the Download JSON button",
+          "then_assertion": "Downloaded file is named shiftdoc-tca-story_sample.json",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Download filename falls back to date-time when story is pasted",
+      "feature": "Story Coverage download \u2014 filename and format (mocked)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Ensures each scenario begins with the user already on the Story Coverage page, avoiding repeated navigation steps inline."
+        }
+      ],
+      "journey": "A user who pasted story content rather than uploading a file downloads the coverage result and verifies the filename falls back to a date-time stamp pattern instead of a story-derived name.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Download filename falls back to date-time when story is pasted",
+          "given_context": "A coverage result is displayed with no uploaded file (pasted content)",
+          "when_action": "User clicks the Download MD button",
+          "then_assertion": "Downloaded filename matches the pattern shiftdoc-tca-\\d{8}-\\d{6}\\.md",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

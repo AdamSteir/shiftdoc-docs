@@ -1,0 +1,99 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:55:22Z",
+    "source_file": "analysis_addons_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Gap Analysis sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-24"
+      ],
+      "journey": "A Product Owner uploads a BDD feature file and runs documentation without the Gap Analysis add-on, verifying that Coverage Gaps and Robustness Gaps sections are absent from the output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Gap Analysis sections do not appear when add-on is not selected",
+          "given_context": "Analysis API is mocked and user is on the Analyze page",
+          "when_action": "User selects format 'bdd' and role 'Product Owner', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Documentation appears in the output panel but 'Coverage Gaps' and 'Robustness Gaps' sections are not present",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-25"
+      ],
+      "journey": "A QA Manager uploads a BDD feature file and runs documentation without the Technical Review add-on, verifying that Technical Quality and Maintainability Risks sections are absent from the output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Technical Review sections do not appear when add-on is not selected",
+          "given_context": "Analysis API is mocked and user is on the Analyze page",
+          "when_action": "User selects format 'bdd' and role 'QA Manager', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Documentation appears in the output panel but 'Technical Quality' and 'Maintainability Risks' sections are not present",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Annotation Summary sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-27"
+      ],
+      "journey": "A Product Owner uploads a BDD feature file and runs documentation without the Annotation Summary add-on, verifying that the Annotation Health section is absent from the output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Annotation Summary sections do not appear when add-on is not selected",
+          "given_context": "Analysis API is mocked and user is on the Analyze page",
+          "when_action": "User selects format 'bdd' and role 'Product Owner', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Documentation appears in the output panel but 'Annotation Health' section is not present",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Risk Assessment sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-29"
+      ],
+      "journey": "A Product Owner uploads a BDD feature file and runs documentation without the Risk Assessment add-on, verifying that Scenario Risk Ratings and Risk Summary sections are absent from the output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Risk Assessment sections do not appear when add-on is not selected",
+          "given_context": "Analysis API is mocked and user is on the Analyze page",
+          "when_action": "User selects format 'bdd' and role 'Product Owner', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Documentation appears in the output panel but 'Scenario Risk Ratings' and 'Risk Summary' sections are not present",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Recommendations sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-31"
+      ],
+      "journey": "A Product Owner uploads a BDD feature file and runs documentation without the Recommendations add-on, verifying that the Recommended Actions section is absent from the output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Recommendations sections do not appear when add-on is not selected",
+          "given_context": "Analysis API is mocked and user is on the Analyze page",
+          "when_action": "User selects format 'bdd' and role 'Product Owner', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
+          "then_assertion": "Documentation appears in the output panel but 'Recommended Actions' section is not present",
+          "gherkin_type": "Negative"
+        }
+      ]
+    }
+  ]
+}

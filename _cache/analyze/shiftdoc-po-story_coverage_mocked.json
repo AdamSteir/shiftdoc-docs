@@ -1,0 +1,302 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:04:40Z",
+    "source_file": "story_coverage_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Both inputs required before Check Coverage button is enabled",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "The Check Coverage button only becomes available once the user has provided both a user story and test cases, preventing incomplete submissions.",
+      "test_coverage": [
+        {
+          "verification_step": "Button disabled with no inputs",
+          "what_it_checks": "Check Coverage button is inactive when the page is first loaded"
+        },
+        {
+          "verification_step": "Button disabled with only a user story",
+          "what_it_checks": "Check Coverage button remains inactive when only the story field is filled"
+        },
+        {
+          "verification_step": "Button enabled with both inputs",
+          "what_it_checks": "Check Coverage button becomes active only after both the story and test case fields are filled"
+        }
+      ]
+    },
+    {
+      "test_name": "Coverage renders results panel",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "description": "After submitting a story and test cases, the user sees a results panel and download options appear on the page.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is visible",
+          "what_it_checks": "Coverage analysis results are displayed to the user after a successful check"
+        },
+        {
+          "verification_step": "Download buttons are shown",
+          "what_it_checks": "Users are offered download options once results are available"
+        }
+      ]
+    },
+    {
+      "test_name": "Clear button resets all inputs and results",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "description": "Clicking the Clear button wipes both input fields and hides the results panel, returning the page to a blank state.",
+      "test_coverage": [
+        {
+          "verification_step": "Story input is empty",
+          "what_it_checks": "The user story field is cleared after clicking Clear"
+        },
+        {
+          "verification_step": "Test input is empty",
+          "what_it_checks": "The test cases field is cleared after clicking Clear"
+        },
+        {
+          "verification_step": "Results panel is hidden",
+          "what_it_checks": "Previously shown coverage results are removed from the page after clicking Clear"
+        }
+      ]
+    },
+    {
+      "test_name": "API error shows error state",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "description": "When the coverage service fails, the user sees a clear error message instead of a results panel.",
+      "test_coverage": [
+        {
+          "verification_step": "Error message is displayed",
+          "what_it_checks": "Users are informed when the coverage check fails due to a service error"
+        }
+      ]
+    },
+    {
+      "test_name": "Format selector is present and forwarded in payload",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-54"
+      ],
+      "description": "Users can select a test format (e.g. Playwright) and that selection is correctly sent to the coverage service when the check is run.",
+      "test_coverage": [
+        {
+          "verification_step": "Format selector is visible",
+          "what_it_checks": "The test format dropdown is present on the page"
+        },
+        {
+          "verification_step": "Compare request includes test_format 'playwright'",
+          "what_it_checks": "The chosen format is passed correctly to the coverage API when the check is submitted"
+        }
+      ]
+    },
+    {
+      "test_name": "Testing layers selection is forwarded in payload",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-54"
+      ],
+      "description": "When a user selects a testing layer, that selection is correctly included in the request sent to the coverage service.",
+      "test_coverage": [
+        {
+          "verification_step": "Compare request includes the selected testing layer",
+          "what_it_checks": "The chosen testing layer is passed correctly to the coverage API when the check is submitted"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing test format clears test case content and filename",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "Switching the test format removes any previously entered test case content and clears the associated filename, preventing mismatched data.",
+      "test_coverage": [
+        {
+          "verification_step": "Test case content is cleared",
+          "what_it_checks": "Existing test case text is removed when the format is changed"
+        },
+        {
+          "verification_step": "Test case filename is cleared",
+          "what_it_checks": "Any uploaded filename is removed when the format is changed"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing test format does not clear story input",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "Switching the test format leaves the user story field untouched, so users don't lose their story content.",
+      "test_coverage": [
+        {
+          "verification_step": "Story input is unchanged",
+          "what_it_checks": "The user story field retains its content when the test format is changed"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing test format clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "If a coverage result is already displayed, changing the test format hides it so users know they need to re-run the check.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is hidden",
+          "what_it_checks": "Coverage results are dismissed when the test format is changed, signalling that the previous result is no longer valid"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing testing layers clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "If a coverage result is already displayed, changing the testing layer selection hides it so users know the result is stale.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is hidden",
+          "what_it_checks": "Coverage results are dismissed when the testing layer selection is changed"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing data dictionary clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "If a coverage result is already displayed, changing the data dictionary selection hides it so users know the result is stale.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is hidden",
+          "what_it_checks": "Coverage results are dismissed when the data dictionary selection is changed"
+        }
+      ]
+    },
+    {
+      "test_name": "Editing story input clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "If a coverage result is already displayed, editing the story input hides it so users understand they need to re-run the check with the updated content.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is hidden",
+          "what_it_checks": "Coverage results are dismissed when the user modifies the story input"
+        }
+      ]
+    },
+    {
+      "test_name": "Editing test input clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "description": "If a coverage result is already displayed, editing the test input hides it so users understand they need to re-run the check with the updated content.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is hidden",
+          "what_it_checks": "Coverage results are dismissed when the user modifies the test case input"
+        }
+      ]
+    },
+    {
+      "test_name": "Story input persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "description": "A user's story text is preserved when they leave the Story Coverage page and return, so they don't have to re-enter it.",
+      "test_coverage": [
+        {
+          "verification_step": "Story input still contains my text",
+          "what_it_checks": "The user story field retains its content after navigating away and returning to the page"
+        }
+      ]
+    },
+    {
+      "test_name": "Test input persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "description": "A user's test case text is preserved when they leave the Story Coverage page and return, so they don't have to re-enter it.",
+      "test_coverage": [
+        {
+          "verification_step": "Test input still contains my text",
+          "what_it_checks": "The test cases field retains its content after navigating away and returning to the page"
+        }
+      ]
+    },
+    {
+      "test_name": "Selector state persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "description": "A user's chosen test format and testing layer are remembered when they leave the Story Coverage page and return.",
+      "test_coverage": [
+        {
+          "verification_step": "Format selection is unchanged",
+          "what_it_checks": "The previously selected test format is still selected after returning to the page"
+        },
+        {
+          "verification_step": "Testing layer selection is unchanged",
+          "what_it_checks": "The previously selected testing layer is still selected after returning to the page"
+        }
+      ]
+    },
+    {
+      "test_name": "Coverage result persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "description": "A coverage result that was displayed before navigation is still visible when the user returns to the Story Coverage page.",
+      "test_coverage": [
+        {
+          "verification_step": "Results panel is still visible",
+          "what_it_checks": "Previously generated coverage results remain on screen after navigating away and returning"
+        }
+      ]
+    },
+    {
+      "test_name": "State resets on logout",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "description": "All story and test case inputs are cleared when a user logs out, ensuring no data persists into a subsequent session.",
+      "test_coverage": [
+        {
+          "verification_step": "Story input is empty",
+          "what_it_checks": "The user story field is blank when returning to the page after logging out"
+        },
+        {
+          "verification_step": "Test input is empty",
+          "what_it_checks": "The test cases field is blank when returning to the page after logging out"
+        }
+      ]
+    }
+  ]
+}

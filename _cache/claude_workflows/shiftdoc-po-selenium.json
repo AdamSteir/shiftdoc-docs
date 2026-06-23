@@ -1,0 +1,130 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:20:07Z",
+    "source_file": "selenium.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Selenium - PO - single test, core output structure",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "Verifies that a Product Owner uploading a single Selenium test receives valid, complete documentation with at least one named test in the output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing a single Selenium test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or missing data"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test entry is present in the output"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test is identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "Selenium - PO - Parameterized expands one test per row",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "Verifies that a Product Owner uploading a data-driven Selenium test sees each data row expanded into its own separate test entry in the output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing a data-driven Selenium test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or missing data"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Each data row in the parameterized test is expanded into its own test entry, resulting in multiple tests"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each expanded test entry is identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "Selenium - QAM - single test, coverage matrix populated",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "Verifies that a QA Manager uploading a single Selenium test receives documentation that includes a populated test coverage matrix.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing a single Selenium test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or missing data"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test entry is present in the output"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test is identifiable by name"
+        },
+        {
+          "verification_step": "First test has a non-empty array test_coverage_matrix",
+          "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test"
+        }
+      ]
+    },
+    {
+      "test_name": "Selenium - QAM - Parameterized collapses",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "Verifies that a QA Manager uploading a data-driven Selenium test sees all data rows collapsed into a single test entry with a coverage matrix row for each example.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing a data-driven Selenium test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or missing data"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test",
+          "what_it_checks": "All data rows are collapsed into a single test entry rather than expanded"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "The collapsed test entry is identifiable by name"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the examples",
+          "what_it_checks": "Each data row from the parameterized test is represented as a separate row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for generic",
+          "what_it_checks": "Each coverage matrix row conforms to the expected structure for generic test types"
+        }
+      ]
+    }
+  ]
+}

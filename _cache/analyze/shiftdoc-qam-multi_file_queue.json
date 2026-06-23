@@ -1,0 +1,194 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:01:24Z",
+    "source_file": "multi_file_queue.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Logged-in user can enable multi-file mode",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user enables multi-file mode and verifies that the file queue becomes visible while the single-file input area is hidden.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Logged-in user can enable multi-file mode",
+          "given_context": "User is on the Analyze page with APIs mocked",
+          "when_action": "User enables multi-file mode",
+          "then_assertion": "File queue is visible and single-file input area is not visible",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Switching to multi-file mode clears the single-file input",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user who has typed content in the single-file input switches to multi-file mode, and the previously entered content is cleared.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Switching to multi-file mode clears the single-file input",
+          "given_context": "User has typed content in the input area",
+          "when_action": "User enables multi-file mode",
+          "then_assertion": "Input area content is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Switching back to single-file mode clears the queue",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user adds a file to the queue in multi-file mode then switches back to single-file mode, verifying the queue is hidden and the single-file input area is restored.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Switching back to single-file mode clears the queue",
+          "given_context": "User is on the Analyze page with APIs mocked",
+          "when_action": "User enables multi-file mode, adds a file, then disables multi-file mode",
+          "then_assertion": "File queue is not visible and single-file input area is visible",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Files can be added and removed from the queue",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user adds a file to the multi-file queue confirming the count increments, then removes it confirming the queue returns to empty.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Files can be added and removed from the queue",
+          "given_context": "User is in multi-file mode with APIs mocked",
+          "when_action": "User adds a file then removes it from the queue",
+          "then_assertion": "Queue shows 1 file after adding, then queue is empty after removal",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Files can be added to the queue via drag-and-drop",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user drops a file onto the queue drop zone in multi-file mode and verifies it appears in the queue with an ok badge.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Files can be added to the queue via drag-and-drop",
+          "given_context": "User is in multi-file mode with APIs mocked",
+          "when_action": "User drops a fixture file onto the queue drop zone",
+          "then_assertion": "Queue shows 1 file and the file row displays an ok badge",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Adding a file with a duplicate filename shows a toast and does not add it to the queue",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user attempts to add the same file to the queue twice and verifies a warning toast is shown while the queue count remains at one.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Adding a file with a duplicate filename shows a toast and does not add it to the queue",
+          "given_context": "User is in multi-file mode with one file already in the queue",
+          "when_action": "User attempts to add the same fixture file a second time",
+          "then_assertion": "A warning toast containing 'is already in the queue' is shown and the queue still shows 1 file",
+          "gherkin_type": "Negative"
+        }
+      ]
+    }
+  ]
+}

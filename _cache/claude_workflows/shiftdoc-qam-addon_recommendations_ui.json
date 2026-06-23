@@ -1,0 +1,53 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:10:05Z",
+    "source_file": "addon_recommendations_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Recommendations renders and JSON is complete for <role>",
+      "feature": "Recommendations UI",
+      "traceability_annotations": [
+        "@SHIFT-31",
+        "@SHIFT-32"
+      ],
+      "outline_type": "Scenario Outline",
+      "example_groups": [
+        {
+          "label": "Examples",
+          "rows": [
+            {
+              "role": "QA Manager"
+            },
+            {
+              "role": "Product Owner"
+            }
+          ]
+        }
+      ],
+      "journey": "A user selects the Recommendations add-on for a given role, uploads a BDD fixture, triggers analysis, and verifies that the UI renders the output correctly and the downloaded JSON is structurally complete with a valid recommendations section.",
+      "test_coverage_matrix": [
+        {
+          "example": "role: QA Manager",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd' and role 'QA Manager', adds the Recommendations add-on, uploads 'bdd_sample.feature', and clicks 'Document and analyze test cases'",
+          "then_assertion": "Output panel shows documentation and analysis; 'Recommended Actions' appears exactly once; downloaded JSON has no unresolved values, contains top-level key 'recommendations', a non-empty 'actions' list, and 'actions' appears exactly once in the recommendations section",
+          "gherkin_type": "Positive"
+        },
+        {
+          "example": "role: Product Owner",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd' and role 'Product Owner', adds the Recommendations add-on, uploads 'bdd_sample.feature', and clicks 'Document and analyze test cases'",
+          "then_assertion": "Output panel shows documentation and analysis; 'Recommended Actions' appears exactly once; downloaded JSON has no unresolved values, contains top-level key 'recommendations', a non-empty 'actions' list, and 'actions' appears exactly once in the recommendations section",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

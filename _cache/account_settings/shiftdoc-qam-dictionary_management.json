@@ -1,0 +1,399 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:54:36Z",
+    "source_file": "dictionary_management.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Upload a JSON data dictionary",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user uploads a JSON file to create a named data dictionary and verifies it appears in settings.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Upload a JSON data dictionary",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User uploads a JSON dictionary file named 'E2E JSON Dictionary'",
+          "then_assertion": "Dictionary is saved and shown in settings",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload an Excel data dictionary",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user uploads an XLSX file to create a named data dictionary and verifies it appears in settings.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Upload an Excel data dictionary",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User uploads an xlsx dictionary file named 'E2E XLSX Dictionary'",
+          "then_assertion": "Dictionary is saved and shown in settings",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Create dictionary manually without importing a file",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-41"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user manually creates a dictionary with a single term and definition, then verifies it is saved in settings.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Create dictionary manually without importing a file",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User creates a dictionary named 'Manual Dictionary' with term 'TC' defined as 'Test Case'",
+          "then_assertion": "Dictionary is saved and shown in settings",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Edit dictionary name",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-42"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user renames an existing saved dictionary and verifies the new name is reflected in settings.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Edit dictionary name",
+          "given_context": "User is logged in with a saved dictionary named 'E2E Edit Name Dictionary'",
+          "when_action": "User renames the dictionary to 'E2E Renamed Dictionary'",
+          "then_assertion": "Dictionary named 'E2E Renamed Dictionary' is visible",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Edit dictionary entries",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-42"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user edits the term entries of an existing dictionary and verifies the updated entries are saved.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Edit dictionary entries",
+          "given_context": "User is logged in with a saved dictionary named 'E2E Edit Entries Dictionary'",
+          "when_action": "User edits the dictionary entries to set term 'BDD' defined as 'Behaviour Driven Development'",
+          "then_assertion": "Dictionary is saved and shown in settings",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Mark dictionary as default",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-43"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user marks a saved dictionary as the default and verifies the default flag is applied.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Mark dictionary as default",
+          "given_context": "User is logged in with a saved dictionary named 'E2E Default Dictionary'",
+          "when_action": "User marks the dictionary as default",
+          "then_assertion": "Dictionary is marked as default",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing the default dictionary clears the previous default",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-43"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user sets a new dictionary as default and verifies the previously defaulted dictionary is no longer marked as default.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing the default dictionary clears the previous default",
+          "given_context": "User is logged in with two saved dictionaries, 'E2E Old Default' already marked as default",
+          "when_action": "User marks 'E2E New Default' as the default dictionary",
+          "then_assertion": "'E2E New Default' is marked as default and 'E2E Old Default' is not marked as default",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload an unsupported file format shows an import error",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user attempts to upload a dictionary file in an unsupported format and receives a descriptive import error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Upload an unsupported file format shows an import error",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User uploads a file with an unsupported format",
+          "then_assertion": "Import error containing 'Unsupported file type' is displayed",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload a malformed JSON file shows an import error",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user uploads a structurally invalid JSON dictionary file and receives a descriptive parse error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Upload a malformed JSON file shows an import error",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User uploads a malformed JSON dictionary file",
+          "then_assertion": "Import error containing 'Invalid JSON' is displayed",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload a JSON with too many entries shows an import error",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user uploads a JSON dictionary that exceeds the maximum entry count and receives an error citing the 500-entry limit.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Upload a JSON with too many entries shows an import error",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User uploads a JSON dictionary with too many entries",
+          "then_assertion": "Import error containing 'may not exceed 500 entries' is displayed",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload an oversized XLSX file shows an import error",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user uploads an XLSX dictionary file exceeding the allowed size limit and receives a file size error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Upload an oversized XLSX file shows an import error",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User uploads an oversized XLSX dictionary file",
+          "then_assertion": "Import error containing 'File too large' is displayed",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Create dictionary manually with multiple terms",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-41"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user manually creates a dictionary containing multiple terms and verifies it is saved in settings.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Create dictionary manually with multiple terms",
+          "given_context": "User is logged in and on the settings page",
+          "when_action": "User creates a dictionary named 'E2E Multi-Term Dict' with multiple terms",
+          "then_assertion": "Dictionary is saved and shown in settings",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Duplicate dictionary name shows an error",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-41"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user attempts to upload a second dictionary with the same name as an existing one and receives a duplicate name error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Duplicate dictionary name shows an error",
+          "given_context": "User is logged in, on settings page, and has already uploaded a dictionary named 'E2E Duplicate Test'",
+          "when_action": "User uploads another JSON dictionary file named 'E2E Duplicate Test'",
+          "then_assertion": "Duplicate dictionary name error is displayed",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Export dictionary as JSON",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-44"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user exports a saved dictionary in JSON format and verifies a .json file is downloaded.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Export dictionary as JSON",
+          "given_context": "User is logged in with a saved dictionary named 'E2E Export JSON'",
+          "when_action": "User exports the dictionary as JSON",
+          "then_assertion": "A file with extension '.json' is downloaded",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Export dictionary as Excel",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-44"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user exports a saved dictionary in Excel format and verifies a .xlsx file is downloaded.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Export dictionary as Excel",
+          "given_context": "User is logged in with a saved dictionary named 'E2E Export Excel'",
+          "when_action": "User exports the dictionary as Excel",
+          "then_assertion": "A file with extension '.xlsx' is downloaded",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Delete saved dictionary",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-46"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "journey": "A logged-in user deletes an existing saved dictionary and verifies it is no longer listed in settings.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Delete saved dictionary",
+          "given_context": "User is logged in with a saved dictionary named 'E2E Delete Dictionary'",
+          "when_action": "User deletes the dictionary",
+          "then_assertion": "Dictionary is removed from settings",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Override dictionary for a session",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-45"
+      ],
+      "journey": "A user on the Analyze page supplies a dictionary file inline and verifies it overrides the default dictionary for the current analysis session only.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Override dictionary for a session",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User supplies a dictionary file in the analysis panel",
+          "then_assertion": "That dictionary is used for the current analysis only",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

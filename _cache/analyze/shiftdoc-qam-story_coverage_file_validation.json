@@ -1,0 +1,194 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:03:56Z",
+    "source_file": "story_coverage_file_validation.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Story file upload populates story input",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
+        }
+      ],
+      "journey": "A user uploads a story file and verifies the story input is populated, the filename is displayed, and the Check Coverage button stays disabled until test cases are also provided.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Story file upload populates story input",
+          "given_context": "User is on the Story Coverage page",
+          "when_action": "User uploads a story file",
+          "then_assertion": "Story input is populated, story filename is shown, and Check Coverage button remains disabled until test cases are provided",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Test case file upload populates test input",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
+        }
+      ],
+      "journey": "A user uploads a test case file and verifies the test input is populated, the filename is displayed, and the Check Coverage button stays disabled until a story is also provided.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Test case file upload populates test input",
+          "given_context": "User is on the Story Coverage page",
+          "when_action": "User uploads a test case file",
+          "then_assertion": "Test input is populated, test case filename is shown, and Check Coverage button remains disabled until a story is provided",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting a story that exceeds the character limit shows an error",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
+        }
+      ],
+      "journey": "A user pastes content exceeding the 50,000 character limit into the story input and sees a 'too long' error message.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Pasting a story that exceeds the character limit shows an error",
+          "given_context": "User is on the Story Coverage page",
+          "when_action": "User pastes 50001 characters into the story input",
+          "then_assertion": "A story paste error containing 'too long' is displayed",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting a story at exactly the character limit is accepted",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
+        }
+      ],
+      "journey": "A user pastes content at exactly the 50,000 character limit and verifies it is accepted without any error.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Pasting a story at exactly the character limit is accepted",
+          "given_context": "User is on the Story Coverage page",
+          "when_action": "User pastes 50000 characters into the story input",
+          "then_assertion": "No paste error is shown and the story input is populated",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading an unsupported file type to the story input shows an inline error",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
+        }
+      ],
+      "journey": "A user uploads a file with an unsupported type to the story input and sees an inline error while the story input remains empty.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Uploading an unsupported file type to the story input shows an inline error",
+          "given_context": "User is on the Story Coverage page",
+          "when_action": "User uploads an unsupported file to the story input",
+          "then_assertion": "Story dropzone shows an unsupported file type error and the story input remains empty",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Dropping multiple files onto the test case input shows a dismissible warning",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
+        }
+      ],
+      "journey": "A user drops multiple files onto the test case input, sees a dismissible multi-file warning with the input left empty, and then successfully dismisses the warning.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Dropping multiple files onto the test case input shows a dismissible warning",
+          "given_context": "User is on the Story Coverage page",
+          "when_action": "User drops multiple files onto the story coverage test case input, then dismisses the warning",
+          "then_assertion": "A multi-file drop warning is shown and the test input is empty; after dismissal the warning is no longer visible",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

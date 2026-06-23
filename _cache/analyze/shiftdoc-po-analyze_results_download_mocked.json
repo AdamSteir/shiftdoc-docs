@@ -1,0 +1,279 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:58:59Z",
+    "source_file": "analyze_results_download_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Filename reflects role and source file (no add-ons) -- Product Owner, auth.feature, , Documentation, shiftdoc-po-auth.md",
+      "parameters": {
+        "role": "Product Owner",
+        "source": "auth.feature",
+        "add_ons": "",
+        "panel_heading": "Documentation",
+        "expected": "shiftdoc-po-auth.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-5"
+      ],
+      "description": "When a Product Owner uploads a file and runs analysis without any add-ons, the downloaded results file is named using the role abbreviation and source filename.",
+      "test_coverage": [
+        {
+          "verification_step": "Role and source reflected in filename",
+          "what_it_checks": "The downloaded Markdown file is named 'shiftdoc-po-auth.md', correctly encoding the Product Owner role and the uploaded file name"
+        },
+        {
+          "verification_step": "Panel heading shown",
+          "what_it_checks": "The output panel displays the 'Documentation' heading after analysis completes"
+        }
+      ]
+    },
+    {
+      "test_name": "Filename reflects role and source file (no add-ons) -- QA Manager, auth.feature, , Documentation, shiftdoc-qam-auth.md",
+      "parameters": {
+        "role": "QA Manager",
+        "source": "auth.feature",
+        "add_ons": "",
+        "panel_heading": "Documentation",
+        "expected": "shiftdoc-qam-auth.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-5"
+      ],
+      "description": "When a QA Manager uploads a file and runs analysis without any add-ons, the downloaded results file is named using the QA Manager role abbreviation and source filename.",
+      "test_coverage": [
+        {
+          "verification_step": "Role and source reflected in filename",
+          "what_it_checks": "The downloaded Markdown file is named 'shiftdoc-qam-auth.md', correctly encoding the QA Manager role and the uploaded file name"
+        },
+        {
+          "verification_step": "Panel heading shown",
+          "what_it_checks": "The output panel displays the 'Documentation' heading after analysis completes"
+        }
+      ]
+    },
+    {
+      "test_name": "Filename reflects role and source file (no add-ons) -- Product Owner, checkout_flow.feature, , Documentation, shiftdoc-po-checkout_flow.md",
+      "parameters": {
+        "role": "Product Owner",
+        "source": "checkout_flow.feature",
+        "add_ons": "",
+        "panel_heading": "Documentation",
+        "expected": "shiftdoc-po-checkout_flow.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-5"
+      ],
+      "description": "When a Product Owner uploads a differently named file and runs analysis without add-ons, the downloaded file name correctly reflects that source filename.",
+      "test_coverage": [
+        {
+          "verification_step": "Source filename preserved in download name",
+          "what_it_checks": "The downloaded Markdown file is named 'shiftdoc-po-checkout_flow.md', confirming the filename segment changes with the uploaded source file"
+        },
+        {
+          "verification_step": "Panel heading shown",
+          "what_it_checks": "The output panel displays the 'Documentation' heading after analysis completes"
+        }
+      ]
+    },
+    {
+      "test_name": "Filename reflects role and source file (no add-ons) -- Product Owner, login.spec.ts, , Documentation, shiftdoc-po-login.md",
+      "parameters": {
+        "role": "Product Owner",
+        "source": "login.spec.ts",
+        "add_ons": "",
+        "panel_heading": "Documentation",
+        "expected": "shiftdoc-po-login.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-5"
+      ],
+      "description": "When a non-.feature file (TypeScript spec) is uploaded, the downloaded results file name uses only the base name without the original extension.",
+      "test_coverage": [
+        {
+          "verification_step": "Non-feature file extension stripped from download name",
+          "what_it_checks": "The downloaded Markdown file is named 'shiftdoc-po-login.md', confirming the .spec.ts extension is dropped and only the base name is used"
+        },
+        {
+          "verification_step": "Panel heading shown",
+          "what_it_checks": "The output panel displays the 'Documentation' heading after analysis completes"
+        }
+      ]
+    },
+    {
+      "test_name": "Filename appends add-on short codes -- Product Owner, auth.feature, Technical Review, Documentation and Analysis, shiftdoc-po-auth+tr.md",
+      "parameters": {
+        "role": "Product Owner",
+        "source": "auth.feature",
+        "add_ons": "Technical Review",
+        "panel_heading": "Documentation and Analysis",
+        "expected": "shiftdoc-po-auth+tr.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-6"
+      ],
+      "description": "When a single add-on is selected alongside the analysis, the downloaded filename includes the add-on's short code appended after the source name.",
+      "test_coverage": [
+        {
+          "verification_step": "Single add-on short code appended to filename",
+          "what_it_checks": "The downloaded file is named 'shiftdoc-po-auth+tr.md', confirming the Technical Review add-on is encoded as '+tr'"
+        },
+        {
+          "verification_step": "Panel heading reflects add-ons",
+          "what_it_checks": "The output panel heading changes to 'Documentation and Analysis' when add-ons are included"
+        }
+      ]
+    },
+    {
+      "test_name": "Filename appends add-on short codes -- QA Manager, auth.feature, Technical Review, Gap Analysis, Risk Assessment, Documentation and Analysis, shiftdoc-qam-auth+tr+gap+risk.md",
+      "parameters": {
+        "role": "QA Manager",
+        "source": "auth.feature",
+        "add_ons": "Technical Review, Gap Analysis, Risk Assessment",
+        "panel_heading": "Documentation and Analysis",
+        "expected": "shiftdoc-qam-auth+tr+gap+risk.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-6"
+      ],
+      "description": "When three add-ons are selected, the downloaded filename includes all three add-on short codes in order after the source name.",
+      "test_coverage": [
+        {
+          "verification_step": "Multiple add-on short codes appended to filename",
+          "what_it_checks": "The downloaded file is named 'shiftdoc-qam-auth+tr+gap+risk.md', confirming all three add-ons are encoded in sequence"
+        },
+        {
+          "verification_step": "Panel heading reflects add-ons",
+          "what_it_checks": "The output panel heading shows 'Documentation and Analysis' when multiple add-ons are selected"
+        }
+      ]
+    },
+    {
+      "test_name": "Filename appends add-on short codes -- QA Manager, auth.feature, Technical Review, Gap Analysis, Annotation Summary, Risk Assessment, Recommendations, Documentation and Analysis, shiftdoc-qam-auth+tr+gap+ann+risk+rec.md",
+      "parameters": {
+        "role": "QA Manager",
+        "source": "auth.feature",
+        "add_ons": "Technical Review, Gap Analysis, Annotation Summary, Risk Assessment, Recommendations",
+        "panel_heading": "Documentation and Analysis",
+        "expected": "shiftdoc-qam-auth+tr+gap+ann+risk+rec.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-6"
+      ],
+      "description": "When the maximum set of five add-ons is selected, all five short codes are appended to the downloaded filename in the correct order.",
+      "test_coverage": [
+        {
+          "verification_step": "All five add-on short codes appended to filename",
+          "what_it_checks": "The downloaded file is named 'shiftdoc-qam-auth+tr+gap+ann+risk+rec.md', confirming all five add-ons are encoded correctly in sequence"
+        },
+        {
+          "verification_step": "Panel heading reflects add-ons",
+          "what_it_checks": "The output panel heading shows 'Documentation and Analysis' with the full add-on set selected"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasted text with no filename falls back to date-time",
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-7"
+      ],
+      "description": "When a user pastes test content directly instead of uploading a file, the downloaded filename uses a date-time stamp in place of a source filename.",
+      "test_coverage": [
+        {
+          "verification_step": "Date-time fallback in filename",
+          "what_it_checks": "The downloaded file name follows the pattern 'shiftdoc-po-YYYYMMDD-HHMMSS.md', confirming a timestamp is used when no source file is available"
+        },
+        {
+          "verification_step": "Documentation visible in output panel",
+          "what_it_checks": "The output panel shows the generated documentation after pasted content is analysed"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasted text with add-ons falls back to date-time with add-on suffix",
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-7"
+      ],
+      "description": "When a user pastes test content and selects add-ons, the downloaded filename combines a date-time stamp with the add-on short codes.",
+      "test_coverage": [
+        {
+          "verification_step": "Date-time fallback with add-on short codes in filename",
+          "what_it_checks": "The downloaded file name follows the pattern 'shiftdoc-po-YYYYMMDD-HHMMSS+tr+gap.md', confirming both the timestamp fallback and add-on encoding work together"
+        },
+        {
+          "verification_step": "Documentation and analysis visible in output panel",
+          "what_it_checks": "The output panel shows documentation and analysis content after pasted content with add-ons is analysed"
+        }
+      ]
+    },
+    {
+      "test_name": "Download format extension -- Markdown, shiftdoc-po-auth.md",
+      "parameters": {
+        "format": "Markdown",
+        "expected": "shiftdoc-po-auth.md"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-8"
+      ],
+      "description": "When the user downloads results as Markdown, the file is saved with a .md extension.",
+      "test_coverage": [
+        {
+          "verification_step": "Markdown download extension",
+          "what_it_checks": "The downloaded file is named 'shiftdoc-po-auth.md', confirming the correct .md extension is applied for Markdown downloads"
+        }
+      ]
+    },
+    {
+      "test_name": "Download format extension -- HTML, shiftdoc-po-auth.html",
+      "parameters": {
+        "format": "HTML",
+        "expected": "shiftdoc-po-auth.html"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-8"
+      ],
+      "description": "When the user downloads results as HTML, the file is saved with a .html extension.",
+      "test_coverage": [
+        {
+          "verification_step": "HTML download extension",
+          "what_it_checks": "The downloaded file is named 'shiftdoc-po-auth.html', confirming the correct .html extension is applied for HTML downloads"
+        }
+      ]
+    },
+    {
+      "test_name": "Download format extension -- JSON, shiftdoc-po-auth.json",
+      "parameters": {
+        "format": "JSON",
+        "expected": "shiftdoc-po-auth.json"
+      },
+      "feature": "Download Analysis Results - Filename and Format (Mocked)",
+      "traceability_annotations": [
+        "@SHIFT-8"
+      ],
+      "description": "When the user downloads results as JSON, the file is saved with a .json extension.",
+      "test_coverage": [
+        {
+          "verification_step": "JSON download extension",
+          "what_it_checks": "The downloaded file is named 'shiftdoc-po-auth.json', confirming the correct .json extension is applied for JSON downloads"
+        }
+      ]
+    }
+  ]
+}

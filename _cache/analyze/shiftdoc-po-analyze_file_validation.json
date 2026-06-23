@@ -1,0 +1,303 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:56:04Z",
+    "source_file": "analyze_file_validation.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Uploading a test case file with no test cases shows an error toast",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "Uploading a BDD file that contains no test cases blocks the user with an error and leaves the input empty.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload empty BDD file",
+          "what_it_checks": "An error notification appears when the uploaded file contains no test cases"
+        },
+        {
+          "verification_step": "Test case box is empty",
+          "what_it_checks": "No content is loaded into the input area when the file has no usable test cases"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion -- bdd, robot_single_sample.robot, doesn't look like a BDD / Gherkin file, Robot Framework",
+      "parameters": {
+        "selected_format": "bdd",
+        "fixture_file": "robot_single_sample.robot",
+        "mismatch_phrase": "doesn't look like a BDD / Gherkin file",
+        "suggestion": "Robot Framework"
+      },
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "When a user uploads a file that doesn't match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears with mismatch phrase",
+          "what_it_checks": "User is notified that the uploaded file doesn't match the chosen format (BDD)"
+        },
+        {
+          "verification_step": "Toast includes format suggestion",
+          "what_it_checks": "The warning recommends the correct format (Robot Framework) based on the file content"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "Despite the format mismatch, the file content is still loaded so the user can proceed"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion -- robot, playwright_single_sample.spec.ts, doesn't look like a Robot Framework, Playwright",
+      "parameters": {
+        "selected_format": "robot",
+        "fixture_file": "playwright_single_sample.spec.ts",
+        "mismatch_phrase": "doesn't look like a Robot Framework",
+        "suggestion": "Playwright"
+      },
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "When a user uploads a file that doesn't match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears with mismatch phrase",
+          "what_it_checks": "User is notified that the uploaded file doesn't match the chosen format (Robot Framework)"
+        },
+        {
+          "verification_step": "Toast includes format suggestion",
+          "what_it_checks": "The warning recommends the correct format (Playwright) based on the file content"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "Despite the format mismatch, the file content is still loaded so the user can proceed"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion -- playwright, bdd_sample.feature, doesn't look like a Playwright file, BDD / Gherkin",
+      "parameters": {
+        "selected_format": "playwright",
+        "fixture_file": "bdd_sample.feature",
+        "mismatch_phrase": "doesn't look like a Playwright file",
+        "suggestion": "BDD / Gherkin"
+      },
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "When a user uploads a file that doesn't match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears with mismatch phrase",
+          "what_it_checks": "User is notified that the uploaded file doesn't match the chosen format (Playwright)"
+        },
+        {
+          "verification_step": "Toast includes format suggestion",
+          "what_it_checks": "The warning recommends the correct format (BDD / Gherkin) based on the file content"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "Despite the format mismatch, the file content is still loaded so the user can proceed"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion -- cypress, bdd_sample.feature, doesn't look like a Cypress file, BDD / Gherkin",
+      "parameters": {
+        "selected_format": "cypress",
+        "fixture_file": "bdd_sample.feature",
+        "mismatch_phrase": "doesn't look like a Cypress file",
+        "suggestion": "BDD / Gherkin"
+      },
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "When a user uploads a file that doesn't match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears with mismatch phrase",
+          "what_it_checks": "User is notified that the uploaded file doesn't match the chosen format (Cypress)"
+        },
+        {
+          "verification_step": "Toast includes format suggestion",
+          "what_it_checks": "The warning recommends the correct format (BDD / Gherkin) based on the file content"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "Despite the format mismatch, the file content is still loaded so the user can proceed"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion -- swift, playwright_single_sample.spec.ts, doesn't look like a Swift / XCTest, Playwright",
+      "parameters": {
+        "selected_format": "swift",
+        "fixture_file": "playwright_single_sample.spec.ts",
+        "mismatch_phrase": "doesn't look like a Swift / XCTest",
+        "suggestion": "Playwright"
+      },
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "When a user uploads a file that doesn't match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears with mismatch phrase",
+          "what_it_checks": "User is notified that the uploaded file doesn't match the chosen format (Swift / XCTest)"
+        },
+        {
+          "verification_step": "Toast includes format suggestion",
+          "what_it_checks": "The warning recommends the correct format (Playwright) based on the file content"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "Despite the format mismatch, the file content is still loaded so the user can proceed"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion -- espresso, bdd_sample.feature, doesn't look like an Espresso, BDD / Gherkin",
+      "parameters": {
+        "selected_format": "espresso",
+        "fixture_file": "bdd_sample.feature",
+        "mismatch_phrase": "doesn't look like an Espresso",
+        "suggestion": "BDD / Gherkin"
+      },
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "When a user uploads a file that doesn't match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears with mismatch phrase",
+          "what_it_checks": "User is notified that the uploaded file doesn't match the chosen format (Espresso)"
+        },
+        {
+          "verification_step": "Toast includes format suggestion",
+          "what_it_checks": "The warning recommends the correct format (BDD / Gherkin) based on the file content"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "Despite the format mismatch, the file content is still loaded so the user can proceed"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a valid test case file shows no toast",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "Uploading a file that matches the selected format loads the content silently with no warnings or errors.",
+      "test_coverage": [
+        {
+          "verification_step": "No toast is displayed",
+          "what_it_checks": "A correctly matched file upload does not trigger any warning or error notifications"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "The valid file content is successfully loaded into the input area"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting content that exceeds the character limit shows an error and does not load the box",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-35"
+      ],
+      "description": "Pasting content that is too long is blocked with a clear error message, preventing oversized input from being submitted.",
+      "test_coverage": [
+        {
+          "verification_step": "Paste error shown with 'too long' message",
+          "what_it_checks": "Users receive a clear error when their pasted content exceeds the allowed character limit"
+        },
+        {
+          "verification_step": "Test case box is empty",
+          "what_it_checks": "Oversized content is rejected and not loaded into the input area"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting valid matching content shows no toast",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-34",
+        "@SHIFT-35"
+      ],
+      "description": "Pasting content that matches the selected format and is within size limits loads cleanly with no warnings or errors.",
+      "test_coverage": [
+        {
+          "verification_step": "No toast is displayed",
+          "what_it_checks": "Valid pasted content does not trigger any warning or error notifications"
+        },
+        {
+          "verification_step": "Test case box is populated",
+          "what_it_checks": "The pasted content is successfully loaded into the input area"
+        }
+      ]
+    },
+    {
+      "test_name": "Warning toast dismisses and content remains loaded",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "description": "After dismissing a format mismatch warning, the uploaded content remains available so the user can continue working.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast appears on mismatched upload",
+          "what_it_checks": "A format mismatch triggers a warning notification"
+        },
+        {
+          "verification_step": "Toast is dismissed",
+          "what_it_checks": "The user can manually close the warning notification"
+        },
+        {
+          "verification_step": "Test case box is still populated",
+          "what_it_checks": "Dismissing the warning does not clear the loaded content \u2014 the user's work is preserved"
+        }
+      ]
+    },
+    {
+      "test_name": "Dropping multiple test case files in single-file mode shows a dismissible warning",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Dropping multiple files when the page is in single-file mode shows a helpful warning guiding the user to switch modes, and the warning can be dismissed.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning message is visible with multi-file guidance",
+          "what_it_checks": "Users are clearly informed they need to switch to multi-file mode to upload more than one file at once"
+        },
+        {
+          "verification_step": "Dismiss button is visible on the warning",
+          "what_it_checks": "The warning provides a way for users to close it manually"
+        },
+        {
+          "verification_step": "Test case box is empty",
+          "what_it_checks": "No content is loaded when multiple files are dropped in single-file mode"
+        },
+        {
+          "verification_step": "Warning message is no longer visible after dismissal",
+          "what_it_checks": "Clicking the dismiss button successfully removes the warning from view"
+        }
+      ]
+    }
+  ]
+}

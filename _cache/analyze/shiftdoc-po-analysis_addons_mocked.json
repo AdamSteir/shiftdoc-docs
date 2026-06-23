@@ -1,0 +1,121 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:54:56Z",
+    "source_file": "analysis_addons_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Gap Analysis sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-24"
+      ],
+      "description": "Verifies that Coverage Gaps and Robustness Gaps sections are hidden from the output when the Gap Analysis add-on has not been selected.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The base documentation result is shown after analyzing the uploaded test file"
+        },
+        {
+          "verification_step": "Coverage Gaps is absent from output",
+          "what_it_checks": "No Coverage Gaps section is displayed when the add-on is not active"
+        },
+        {
+          "verification_step": "Robustness Gaps is absent from output",
+          "what_it_checks": "No Robustness Gaps section is displayed when the add-on is not active"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-25"
+      ],
+      "description": "Verifies that Technical Quality and Maintainability Risks sections are hidden from the output when the Technical Review add-on has not been selected.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The base documentation result is shown after analyzing the uploaded test file"
+        },
+        {
+          "verification_step": "Technical Quality is absent from output",
+          "what_it_checks": "No Technical Quality section is displayed when the add-on is not active"
+        },
+        {
+          "verification_step": "Maintainability Risks is absent from output",
+          "what_it_checks": "No Maintainability Risks section is displayed when the add-on is not active"
+        }
+      ]
+    },
+    {
+      "test_name": "Annotation Summary sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-27"
+      ],
+      "description": "Verifies that the Annotation Health section is hidden from the output when the Annotation Summary add-on has not been selected.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The base documentation result is shown after analyzing the uploaded test file"
+        },
+        {
+          "verification_step": "Annotation Health is absent from output",
+          "what_it_checks": "No Annotation Health section is displayed when the add-on is not active"
+        }
+      ]
+    },
+    {
+      "test_name": "Risk Assessment sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-29"
+      ],
+      "description": "Verifies that Scenario Risk Ratings and Risk Summary sections are hidden from the output when the Risk Assessment add-on has not been selected.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The base documentation result is shown after analyzing the uploaded test file"
+        },
+        {
+          "verification_step": "Scenario Risk Ratings is absent from output",
+          "what_it_checks": "No Scenario Risk Ratings section is displayed when the add-on is not active"
+        },
+        {
+          "verification_step": "Risk Summary is absent from output",
+          "what_it_checks": "No Risk Summary section is displayed when the add-on is not active"
+        }
+      ]
+    },
+    {
+      "test_name": "Recommendations sections do not appear when add-on is not selected",
+      "feature": "Add-on UI Presence (Mocked)",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-31"
+      ],
+      "description": "Verifies that the Recommended Actions section is hidden from the output when the Recommendations add-on has not been selected.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The base documentation result is shown after analyzing the uploaded test file"
+        },
+        {
+          "verification_step": "Recommended Actions is absent from output",
+          "what_it_checks": "No Recommended Actions section is displayed when the add-on is not active"
+        }
+      ]
+    }
+  ]
+}

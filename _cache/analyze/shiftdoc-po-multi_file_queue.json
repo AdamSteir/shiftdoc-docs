@@ -1,0 +1,154 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:00:56Z",
+    "source_file": "multi_file_queue.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Logged-in user can enable multi-file mode",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that enabling multi-file mode shows the file queue and hides the single-file input area.",
+      "test_coverage": [
+        {
+          "verification_step": "When I enable multi-file mode",
+          "what_it_checks": "The user can switch the Analyze page into multi-file mode"
+        },
+        {
+          "verification_step": "Then the file queue is visible",
+          "what_it_checks": "The file queue appears after enabling multi-file mode"
+        },
+        {
+          "verification_step": "And the single-file input area is not visible",
+          "what_it_checks": "The single-file input is hidden when multi-file mode is active"
+        }
+      ]
+    },
+    {
+      "test_name": "Switching to multi-file mode clears the single-file input",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that any content typed in the single-file input is cleared when the user switches to multi-file mode.",
+      "test_coverage": [
+        {
+          "verification_step": "Given I have typed content in the input area",
+          "what_it_checks": "There is existing content in the single-file input before the mode switch"
+        },
+        {
+          "verification_step": "When I enable multi-file mode",
+          "what_it_checks": "The user switches to multi-file mode"
+        },
+        {
+          "verification_step": "Then the input area content is cleared",
+          "what_it_checks": "Previously entered content is removed to prevent stale data carrying over"
+        }
+      ]
+    },
+    {
+      "test_name": "Switching back to single-file mode clears the queue",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that disabling multi-file mode hides the queue, removes any queued files, and restores the single-file input area.",
+      "test_coverage": [
+        {
+          "verification_step": "When I enable multi-file mode and add a file to the queue",
+          "what_it_checks": "A file is present in the queue before switching back"
+        },
+        {
+          "verification_step": "And I disable multi-file mode",
+          "what_it_checks": "The user switches back to single-file mode"
+        },
+        {
+          "verification_step": "Then the file queue is not visible",
+          "what_it_checks": "The queue is hidden after returning to single-file mode"
+        },
+        {
+          "verification_step": "And the single-file input area is visible",
+          "what_it_checks": "The single-file input is restored when multi-file mode is turned off"
+        }
+      ]
+    },
+    {
+      "test_name": "Files can be added and removed from the queue",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that users can add a file to the queue and then remove it, leaving the queue empty.",
+      "test_coverage": [
+        {
+          "verification_step": "And I add fixture \"bdd_sample.feature\" to the queue",
+          "what_it_checks": "A file can be added to the multi-file queue"
+        },
+        {
+          "verification_step": "Then the queue shows 1 file",
+          "what_it_checks": "The queue correctly reflects the number of files after adding"
+        },
+        {
+          "verification_step": "When I remove \"bdd_sample.feature\" from the queue",
+          "what_it_checks": "A file can be removed from the queue"
+        },
+        {
+          "verification_step": "Then the queue is empty",
+          "what_it_checks": "The queue shows no files after the only file is removed"
+        }
+      ]
+    },
+    {
+      "test_name": "Files can be added to the queue via drag-and-drop",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that users can drag and drop a file onto the queue, which adds it successfully and displays a confirmation badge.",
+      "test_coverage": [
+        {
+          "verification_step": "And I drop fixture \"bdd_sample.feature\" onto the queue drop zone",
+          "what_it_checks": "A file can be added to the queue using drag-and-drop"
+        },
+        {
+          "verification_step": "Then the queue shows 1 file",
+          "what_it_checks": "The queue count updates correctly after a drag-and-drop addition"
+        },
+        {
+          "verification_step": "And the file row for \"bdd_sample.feature\" shows an ok badge",
+          "what_it_checks": "The dropped file is shown with a success indicator confirming it was accepted"
+        }
+      ]
+    },
+    {
+      "test_name": "Adding a file with a duplicate filename shows a toast and does not add it to the queue",
+      "feature": "Multi-file mode \u2014 queue operations",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "description": "Verifies that attempting to add a file that is already in the queue triggers a warning message and does not create a duplicate entry.",
+      "test_coverage": [
+        {
+          "verification_step": "And I add fixture \"bdd_sample.feature\" to the queue again",
+          "what_it_checks": "The user attempts to add the same file a second time"
+        },
+        {
+          "verification_step": "Then I see a warning toast containing \"is already in the queue\"",
+          "what_it_checks": "A clear warning message is shown to inform the user of the duplicate"
+        },
+        {
+          "verification_step": "And the queue shows 1 file",
+          "what_it_checks": "The duplicate file is not added, keeping the queue count unchanged"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:53:55Z",
+    "source_file": "dictionary_management.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Upload a JSON data dictionary",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "description": "A user can upload a JSON file to create a new data dictionary that is saved and visible in settings.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload JSON dictionary file",
+          "what_it_checks": "A JSON file can be successfully imported as a named dictionary"
+        },
+        {
+          "verification_step": "Dictionary is saved and shown in settings",
+          "what_it_checks": "The newly uploaded dictionary appears in the user's settings after import"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload an Excel data dictionary",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "description": "A user can upload an Excel (.xlsx) file to create a new data dictionary that is saved and visible in settings.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload XLSX dictionary file",
+          "what_it_checks": "An Excel file can be successfully imported as a named dictionary"
+        },
+        {
+          "verification_step": "Dictionary is saved and shown in settings",
+          "what_it_checks": "The newly uploaded dictionary appears in the user's settings after import"
+        }
+      ]
+    },
+    {
+      "test_name": "Create dictionary manually without importing a file",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-41"
+      ],
+      "description": "A user can manually create a data dictionary by entering a name and defining terms directly, without uploading a file.",
+      "test_coverage": [
+        {
+          "verification_step": "Create dictionary with a single term manually",
+          "what_it_checks": "A user can define a dictionary name and a term-definition pair without any file upload"
+        },
+        {
+          "verification_step": "Dictionary is saved and shown in settings",
+          "what_it_checks": "The manually created dictionary appears in the user's settings"
+        }
+      ]
+    },
+    {
+      "test_name": "Edit dictionary name",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-42"
+      ],
+      "description": "A user can rename an existing saved dictionary and see the updated name reflected in settings.",
+      "test_coverage": [
+        {
+          "verification_step": "Rename an existing dictionary",
+          "what_it_checks": "A saved dictionary's name can be changed"
+        },
+        {
+          "verification_step": "Renamed dictionary is visible",
+          "what_it_checks": "The new dictionary name is displayed in settings after the rename"
+        }
+      ]
+    },
+    {
+      "test_name": "Edit dictionary entries",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-42"
+      ],
+      "description": "A user can update the terms and definitions within an existing saved dictionary.",
+      "test_coverage": [
+        {
+          "verification_step": "Edit entries in an existing dictionary",
+          "what_it_checks": "A saved dictionary's term and definition can be modified"
+        },
+        {
+          "verification_step": "Updated dictionary is saved and shown in settings",
+          "what_it_checks": "The edited dictionary content is persisted and visible in settings"
+        }
+      ]
+    },
+    {
+      "test_name": "Mark dictionary as default",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-43"
+      ],
+      "description": "A user can designate a saved dictionary as the default dictionary.",
+      "test_coverage": [
+        {
+          "verification_step": "Mark a dictionary as default",
+          "what_it_checks": "A saved dictionary can be set as the default"
+        },
+        {
+          "verification_step": "Dictionary is marked as default",
+          "what_it_checks": "The dictionary correctly reflects its default status in settings"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing the default dictionary clears the previous default",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-43"
+      ],
+      "description": "When a user sets a new default dictionary, the previously defaulted dictionary is automatically unset.",
+      "test_coverage": [
+        {
+          "verification_step": "Set a second dictionary as default",
+          "what_it_checks": "A new dictionary can be promoted to default"
+        },
+        {
+          "verification_step": "New dictionary is marked as default",
+          "what_it_checks": "The newly selected dictionary shows the default status"
+        },
+        {
+          "verification_step": "Old dictionary is no longer marked as default",
+          "what_it_checks": "Only one dictionary can hold the default status at a time"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload an unsupported file format shows an import error",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "description": "When a user uploads a file in an unsupported format, they receive a clear error message.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload an unsupported file format",
+          "what_it_checks": "The system rejects files that are not in a supported format"
+        },
+        {
+          "verification_step": "Error message contains 'Unsupported file type'",
+          "what_it_checks": "The user sees a descriptive error explaining the file type is not accepted"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload a malformed JSON file shows an import error",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "description": "When a user uploads a JSON file with invalid formatting, they receive a clear error message.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload a malformed JSON file",
+          "what_it_checks": "The system rejects JSON files that are not properly formatted"
+        },
+        {
+          "verification_step": "Error message contains 'Invalid JSON'",
+          "what_it_checks": "The user sees a descriptive error indicating the JSON content is invalid"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload a JSON with too many entries shows an import error",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "description": "When a user uploads a JSON dictionary that exceeds the maximum allowed number of entries, they receive a clear error message.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload a JSON dictionary with too many entries",
+          "what_it_checks": "The system enforces an upper limit of 500 entries per dictionary"
+        },
+        {
+          "verification_step": "Error message contains 'may not exceed 500 entries'",
+          "what_it_checks": "The user sees a descriptive error explaining the entry limit has been exceeded"
+        }
+      ]
+    },
+    {
+      "test_name": "Upload an oversized XLSX file shows an import error",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-40"
+      ],
+      "description": "When a user uploads an Excel dictionary file that is too large, they receive a clear error message.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload an oversized XLSX file",
+          "what_it_checks": "The system enforces a maximum file size for Excel uploads"
+        },
+        {
+          "verification_step": "Error message contains 'File too large'",
+          "what_it_checks": "The user sees a descriptive error explaining the file exceeds the size limit"
+        }
+      ]
+    },
+    {
+      "test_name": "Create dictionary manually with multiple terms",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-41"
+      ],
+      "description": "A user can manually create a data dictionary containing multiple terms and definitions.",
+      "test_coverage": [
+        {
+          "verification_step": "Create a dictionary with multiple terms manually",
+          "what_it_checks": "A user can add more than one term-definition pair when creating a dictionary by hand"
+        },
+        {
+          "verification_step": "Dictionary is saved and shown in settings",
+          "what_it_checks": "The multi-term dictionary is persisted and visible in settings"
+        }
+      ]
+    },
+    {
+      "test_name": "Duplicate dictionary name shows an error",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-41"
+      ],
+      "description": "When a user attempts to create a second dictionary with the same name as an existing one, they receive an error preventing duplicates.",
+      "test_coverage": [
+        {
+          "verification_step": "Upload two dictionaries with the same name",
+          "what_it_checks": "The system prevents two dictionaries from sharing the same name"
+        },
+        {
+          "verification_step": "Duplicate dictionary name error is shown",
+          "what_it_checks": "The user sees a clear error message when a duplicate name conflict occurs"
+        }
+      ]
+    },
+    {
+      "test_name": "Export dictionary as JSON",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-44"
+      ],
+      "description": "A user can export a saved dictionary as a JSON file download.",
+      "test_coverage": [
+        {
+          "verification_step": "Export a dictionary as JSON",
+          "what_it_checks": "The export action triggers a file download"
+        },
+        {
+          "verification_step": "Downloaded file has a .json extension",
+          "what_it_checks": "The exported file is in JSON format"
+        }
+      ]
+    },
+    {
+      "test_name": "Export dictionary as Excel",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-44"
+      ],
+      "description": "A user can export a saved dictionary as an Excel file download.",
+      "test_coverage": [
+        {
+          "verification_step": "Export a dictionary as Excel",
+          "what_it_checks": "The export action triggers a file download"
+        },
+        {
+          "verification_step": "Downloaded file has a .xlsx extension",
+          "what_it_checks": "The exported file is in Excel format"
+        }
+      ]
+    },
+    {
+      "test_name": "Delete saved dictionary",
+      "feature": "Data Dictionary Management",
+      "user_role": "logged-in user",
+      "traceability_annotations": [
+        "@SHIFT-46"
+      ],
+      "description": "A user can permanently delete a saved dictionary, removing it from their settings.",
+      "test_coverage": [
+        {
+          "verification_step": "Delete an existing dictionary",
+          "what_it_checks": "A saved dictionary can be removed by the user"
+        },
+        {
+          "verification_step": "Dictionary is removed from settings",
+          "what_it_checks": "The deleted dictionary no longer appears in the user's settings"
+        }
+      ]
+    },
+    {
+      "test_name": "Override dictionary for a session",
+      "feature": "Data Dictionary Management",
+      "traceability_annotations": [
+        "@SHIFT-45"
+      ],
+      "description": "A user can supply a dictionary file during an analysis session to use it for that analysis only, without changing their saved default.",
+      "test_coverage": [
+        {
+          "verification_step": "Supply a dictionary file in the analysis panel",
+          "what_it_checks": "A dictionary can be provided at the point of analysis rather than set up in advance"
+        },
+        {
+          "verification_step": "That dictionary is used for the current analysis only",
+          "what_it_checks": "The session-level dictionary applies only to the current analysis and does not affect saved settings"
+        }
+      ]
+    }
+  ]
+}

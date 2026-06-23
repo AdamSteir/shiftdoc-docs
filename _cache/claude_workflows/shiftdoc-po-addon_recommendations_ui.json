@@ -1,0 +1,92 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:09:50Z",
+    "source_file": "addon_recommendations_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Recommendations renders and JSON is complete for QA Manager",
+      "parameters": {
+        "role": "QA Manager"
+      },
+      "feature": "Recommendations UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-31",
+        "@SHIFT-32"
+      ],
+      "description": "Verifies that a QA Manager using the Recommendations add-on receives a complete, well-structured output with actionable recommendations both in the display panel and in the downloaded JSON.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The Recommendations add-on produces visible output after analyzing a BDD test file for a QA Manager"
+        },
+        {
+          "verification_step": "\"Recommended Actions\" appears exactly once in the output",
+          "what_it_checks": "The recommendations section is rendered without duplication in the displayed results"
+        },
+        {
+          "verification_step": "Downloaded JSON has no unresolved values",
+          "what_it_checks": "The exported JSON is fully populated with no placeholder or missing content"
+        },
+        {
+          "verification_step": "JSON contains top-level key \"recommendations\"",
+          "what_it_checks": "The JSON structure follows the expected schema with a dedicated recommendations section"
+        },
+        {
+          "verification_step": "\"recommendations\" section has a non-empty \"actions\" list",
+          "what_it_checks": "At least one actionable recommendation is generated and included in the output"
+        },
+        {
+          "verification_step": "\"actions\" key appears exactly once in the \"recommendations\" section",
+          "what_it_checks": "The JSON structure is clean with no duplicate keys causing data integrity issues"
+        }
+      ]
+    },
+    {
+      "test_name": "Recommendations renders and JSON is complete for Product Owner",
+      "parameters": {
+        "role": "Product Owner"
+      },
+      "feature": "Recommendations UI",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-31",
+        "@SHIFT-32"
+      ],
+      "description": "Verifies that a Product Owner using the Recommendations add-on receives a complete, well-structured output with actionable recommendations both in the display panel and in the downloaded JSON.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The Recommendations add-on produces visible output after analyzing a BDD test file for a Product Owner"
+        },
+        {
+          "verification_step": "\"Recommended Actions\" appears exactly once in the output",
+          "what_it_checks": "The recommendations section is rendered without duplication in the displayed results"
+        },
+        {
+          "verification_step": "Downloaded JSON has no unresolved values",
+          "what_it_checks": "The exported JSON is fully populated with no placeholder or missing content"
+        },
+        {
+          "verification_step": "JSON contains top-level key \"recommendations\"",
+          "what_it_checks": "The JSON structure follows the expected schema with a dedicated recommendations section"
+        },
+        {
+          "verification_step": "\"recommendations\" section has a non-empty \"actions\" list",
+          "what_it_checks": "At least one actionable recommendation is generated and included in the output"
+        },
+        {
+          "verification_step": "\"actions\" key appears exactly once in the \"recommendations\" section",
+          "what_it_checks": "The JSON structure is clean with no duplicate keys causing data integrity issues"
+        }
+      ]
+    }
+  ]
+}

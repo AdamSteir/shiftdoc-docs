@@ -1,0 +1,128 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:01:47Z",
+    "source_file": "multi_file_toggle.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Multi-file toggle is visible in the input panel",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that the multi-file toggle control is present on the Analyze page for all users.",
+      "test_coverage": [
+        {
+          "verification_step": "Toggle visibility",
+          "what_it_checks": "The multi-file toggle appears in the input area of the Analyze page"
+        }
+      ]
+    },
+    {
+      "test_name": "Multi-file toggle shows a lock icon when not logged in",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that guest users see a lock icon on the multi-file toggle, signaling the feature requires sign-in.",
+      "test_coverage": [
+        {
+          "verification_step": "Lock icon for unauthenticated users",
+          "what_it_checks": "A lock icon is displayed on the multi-file toggle when the user is not signed in"
+        }
+      ]
+    },
+    {
+      "test_name": "Clicking the multi-file toggle when not logged in shows a sign-in prompt",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that guest users who attempt to enable multi-file mode are shown a sign-in prompt and the feature remains disabled.",
+      "test_coverage": [
+        {
+          "verification_step": "Warning toast on toggle click",
+          "what_it_checks": "A 'Sign in to use multi-file mode.' message appears when an unauthenticated user clicks the toggle"
+        },
+        {
+          "verification_step": "Multi-file mode stays off",
+          "what_it_checks": "Multi-file mode is not activated after the click attempt by a guest user"
+        }
+      ]
+    },
+    {
+      "test_name": "Hovering the lock icon shows a tooltip",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that hovering over the lock icon on the multi-file toggle displays a helpful tooltip directing users to sign in.",
+      "test_coverage": [
+        {
+          "verification_step": "Tooltip on lock icon hover",
+          "what_it_checks": "A 'Sign in to unlock' tooltip becomes visible when a guest user hovers over the lock icon"
+        }
+      ]
+    },
+    {
+      "test_name": "Clicking the lock icon navigates to the login page",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that guest users are taken to the login page when they click the lock icon on the multi-file toggle.",
+      "test_coverage": [
+        {
+          "verification_step": "Navigation to login page",
+          "what_it_checks": "Clicking the lock icon redirects an unauthenticated user to the login page"
+        }
+      ]
+    },
+    {
+      "test_name": "Open lock icon is shown when logged in and is not a link",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that signed-in users see an open lock icon on the multi-file toggle and that it does not navigate away from the page.",
+      "test_coverage": [
+        {
+          "verification_step": "Open lock icon for authenticated users",
+          "what_it_checks": "The multi-file toggle shows an open lock icon when the user is signed in"
+        },
+        {
+          "verification_step": "Open lock icon is not clickable as a link",
+          "what_it_checks": "The open lock icon does not function as a navigation link for authenticated users"
+        }
+      ]
+    },
+    {
+      "test_name": "Multi-file mode is disabled and queue is cleared when the user logs out",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "description": "Verifies that when a signed-in user logs out, multi-file mode is automatically turned off and any queued files are removed.",
+      "test_coverage": [
+        {
+          "verification_step": "Multi-file mode disabled after logout",
+          "what_it_checks": "Multi-file mode is no longer active after the user signs out and returns to the Analyze page"
+        },
+        {
+          "verification_step": "File queue cleared after logout",
+          "what_it_checks": "Any files previously added to the multi-file queue are no longer visible after logout"
+        },
+        {
+          "verification_step": "Lock icon restored after logout",
+          "what_it_checks": "The multi-file toggle reverts to showing a lock icon once the user has signed out"
+        }
+      ]
+    }
+  ]
+}

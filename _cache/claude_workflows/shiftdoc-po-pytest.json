@@ -1,0 +1,134 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:17:53Z",
+    "source_file": "pytest.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "pytest - PO - single test, core output structure",
+      "feature": "pytest Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "Verifies that uploading a single pytest file and generating documentation produces valid, complete output with at least one named test case.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The system responds visibly after processing the uploaded test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data exists in the generated documentation"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is captured from the uploaded file"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test case is identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "pytest - PO - parametrize expands one test per row",
+      "feature": "pytest Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "Verifies that a data-driven pytest file with parametrize is expanded so that each parameter combination appears as its own separate test case in the Product Owner output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The system responds visibly after processing the data-driven test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data exists in the generated documentation"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Each parameter row in the data-driven test is expanded into its own test entry"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each expanded test case is individually identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "pytest - QAM - single test, coverage matrix populated",
+      "feature": "pytest Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "Verifies that uploading a single pytest file in QA Manager mode produces valid documentation that includes a populated test coverage matrix for the first test.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The system responds visibly after processing the uploaded test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data exists in the generated documentation"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is captured from the uploaded file"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test case is identifiable by name"
+        },
+        {
+          "verification_step": "First test has a non-empty test_coverage_matrix array",
+          "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test"
+        }
+      ]
+    },
+    {
+      "test_name": "pytest - QAM - parametrize collapses",
+      "feature": "pytest Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "Verifies that a data-driven pytest file in QA Manager mode produces a single collapsed test entry whose coverage matrix rows match the number of parameter combinations and follow the correct schema.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The system responds visibly after processing the data-driven test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data exists in the generated documentation"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test",
+          "what_it_checks": "All parameter combinations are collapsed into a single test entry rather than expanded"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "The collapsed test case is identifiable by name"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the examples",
+          "what_it_checks": "Each parameter combination is represented as its own row within the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for generic",
+          "what_it_checks": "Each coverage matrix row conforms to the expected data structure for generic test types"
+        }
+      ]
+    }
+  ]
+}

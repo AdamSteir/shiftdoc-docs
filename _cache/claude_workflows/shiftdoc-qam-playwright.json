@@ -1,0 +1,116 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:17:30Z",
+    "source_file": "playwright.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Playwright - PO - single test, core output structure",
+      "feature": "Playwright Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single Playwright test fixture and verifies that the documentation panel populates and the downloaded JSON is a valid, fully-resolved Playwright output containing at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Playwright - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'playwright' and role 'Product Owner', uploads 'playwright_single_sample.spec.ts', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'playwright', contains 1+ tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Playwright - PO - test.each expands one test per row",
+      "feature": "Playwright Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven Playwright fixture using test.each and verifies that each data row is expanded into its own separate test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Playwright - PO - test.each expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'playwright' and role 'Product Owner', uploads 'playwright_datadriven_sample.spec.ts', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'playwright', contains 2+ tests (one per data row), and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Playwright - PO - for...of expands one test per row",
+      "feature": "Playwright Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a Playwright fixture using a for...of loop and verifies that each loop iteration is expanded into its own separate test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Playwright - PO - for...of expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'playwright' and role 'Product Owner', uploads 'playwright_forof_sample.spec.ts', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'playwright', contains 3+ tests (one per loop row), and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Playwright - QAM - single test, coverage matrix populated",
+      "feature": "Playwright Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single Playwright test fixture and verifies that the JSON output is valid and that the first test entry contains a populated test_coverage_matrix array.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Playwright - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'playwright' and role 'QA Manager', uploads 'playwright_single_sample.spec.ts', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'playwright', contains 1+ tests with non-empty test_names, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Playwright - QAM - test.each collapses",
+      "feature": "Playwright Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven Playwright fixture using test.each and verifies that the output collapses all rows into a single test entry whose coverage matrix contains one row per data example using the correct Playwright schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Playwright - QAM - test.each collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'playwright' and role 'QA Manager', uploads 'playwright_datadriven_sample.spec.ts', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'playwright', contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the data examples, and rows conform to the Playwright coverage matrix schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Playwright - QAM - for...of collapses",
+      "feature": "Playwright Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a Playwright fixture using a for...of loop and verifies that the output collapses all iterations into a single test entry whose coverage matrix contains one row per loop iteration using the correct Playwright schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Playwright - QAM - for...of collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'playwright' and role 'QA Manager', uploads 'playwright_forof_sample.spec.ts', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'playwright', contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the loop iterations, and rows conform to the Playwright coverage matrix schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

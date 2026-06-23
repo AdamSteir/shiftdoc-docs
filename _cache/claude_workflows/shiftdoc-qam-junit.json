@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:15:54Z",
+    "source_file": "junit.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "JUnit - PO - single test, core output structure",
+      "feature": "JUnit Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single JUnit test fixture and verifies that the analysis produces a valid JSON output with at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JUnit - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User selects format 'junit' and role 'Product Owner', uploads 'junit_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "JUnit - PO - Parameterized expands one test per row",
+      "feature": "JUnit Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a parameterized JUnit fixture and verifies that each data row is expanded into its own named test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JUnit - PO - Parameterized expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User selects format 'junit' and role 'Product Owner', uploads 'junit_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated, downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "JUnit - QAM - single test, coverage matrix populated",
+      "feature": "JUnit Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single JUnit test fixture and verifies that the JSON output includes a populated coverage matrix for the first test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JUnit - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User selects format 'junit' and role 'QA Manager', uploads 'junit_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "JUnit - QAM - Parameterized collapses",
+      "feature": "JUnit Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a parameterized JUnit fixture and verifies that the analysis collapses all data rows into a single test whose coverage matrix rows match the number of examples and conform to the generic schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "JUnit - QAM - Parameterized collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User selects format 'junit' and role 'QA Manager', uploads 'junit_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated, downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows use the correct generic schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

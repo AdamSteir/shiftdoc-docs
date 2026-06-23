@@ -1,0 +1,304 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:56:42Z",
+    "source_file": "analyze_file_validation.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Uploading a test case file with no test cases shows an error toast",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "journey": "A user uploads a BDD file containing no scenarios and expects an error toast confirming no test cases were found, with the input box remaining empty.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Uploading a test case file with no test cases shows an error toast",
+          "given_context": "Format is set to BDD",
+          "when_action": "User uploads a BDD fixture file that contains no scenarios",
+          "then_assertion": "An error toast appears with 'No test cases found' and the test case box is empty",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a test case file in the wrong format shows a warning toast with suggestion",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "outline_type": "Scenario Outline",
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "example_groups": [
+        {
+          "label": "Examples",
+          "rows": [
+            {
+              "selected_format": "bdd",
+              "fixture_file": "robot_single_sample.robot",
+              "mismatch_phrase": "doesn't look like a BDD / Gherkin file",
+              "suggestion": "Robot Framework"
+            },
+            {
+              "selected_format": "robot",
+              "fixture_file": "playwright_single_sample.spec.ts",
+              "mismatch_phrase": "doesn't look like a Robot Framework",
+              "suggestion": "Playwright"
+            },
+            {
+              "selected_format": "playwright",
+              "fixture_file": "bdd_sample.feature",
+              "mismatch_phrase": "doesn't look like a Playwright file",
+              "suggestion": "BDD / Gherkin"
+            },
+            {
+              "selected_format": "cypress",
+              "fixture_file": "bdd_sample.feature",
+              "mismatch_phrase": "doesn't look like a Cypress file",
+              "suggestion": "BDD / Gherkin"
+            },
+            {
+              "selected_format": "swift",
+              "fixture_file": "playwright_single_sample.spec.ts",
+              "mismatch_phrase": "doesn't look like a Swift / XCTest",
+              "suggestion": "Playwright"
+            },
+            {
+              "selected_format": "espresso",
+              "fixture_file": "bdd_sample.feature",
+              "mismatch_phrase": "doesn't look like an Espresso",
+              "suggestion": "BDD / Gherkin"
+            }
+          ]
+        }
+      ],
+      "journey": "A user uploads a file whose format does not match the selected parser and expects a warning toast identifying the mismatch and suggesting the correct format, while the file content is still loaded into the input box.",
+      "test_coverage_matrix": [
+        {
+          "example": "bdd selected, Robot Framework file uploaded",
+          "given_context": "Format is set to BDD",
+          "when_action": "User uploads a Robot Framework fixture file",
+          "then_assertion": "Warning toast appears citing BDD/Gherkin mismatch with a Robot Framework suggestion, and the test case box is populated",
+          "gherkin_type": "Negative"
+        },
+        {
+          "example": "robot selected, Playwright file uploaded",
+          "given_context": "Format is set to Robot Framework",
+          "when_action": "User uploads a Playwright fixture file",
+          "then_assertion": "Warning toast appears citing Robot Framework mismatch with a Playwright suggestion, and the test case box is populated",
+          "gherkin_type": "Negative"
+        },
+        {
+          "example": "playwright selected, BDD file uploaded",
+          "given_context": "Format is set to Playwright",
+          "when_action": "User uploads a BDD fixture file",
+          "then_assertion": "Warning toast appears citing Playwright mismatch with a BDD/Gherkin suggestion, and the test case box is populated",
+          "gherkin_type": "Negative"
+        },
+        {
+          "example": "cypress selected, BDD file uploaded",
+          "given_context": "Format is set to Cypress",
+          "when_action": "User uploads a BDD fixture file",
+          "then_assertion": "Warning toast appears citing Cypress mismatch with a BDD/Gherkin suggestion, and the test case box is populated",
+          "gherkin_type": "Negative"
+        },
+        {
+          "example": "swift selected, Playwright file uploaded",
+          "given_context": "Format is set to Swift / XCTest",
+          "when_action": "User uploads a Playwright fixture file",
+          "then_assertion": "Warning toast appears citing Swift/XCTest mismatch with a Playwright suggestion, and the test case box is populated",
+          "gherkin_type": "Negative"
+        },
+        {
+          "example": "espresso selected, BDD file uploaded",
+          "given_context": "Format is set to Espresso",
+          "when_action": "User uploads a BDD fixture file",
+          "then_assertion": "Warning toast appears citing Espresso mismatch with a BDD/Gherkin suggestion, and the test case box is populated",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading a valid test case file shows no toast",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "journey": "A user uploads a Playwright file that correctly matches the selected format and expects no toast to appear while the content loads successfully into the input box.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Uploading a valid test case file shows no toast",
+          "given_context": "Format is set to Playwright",
+          "when_action": "User uploads a matching Playwright fixture file",
+          "then_assertion": "No toast is displayed and the test case box is populated",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting content that exceeds the character limit shows an error and does not load the box",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-35"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "journey": "A user pastes content exceeding the 100,000-character limit into the test case box and expects a paste error indicating the content is too long, with the input box remaining empty.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Pasting content that exceeds the character limit shows an error and does not load the box",
+          "given_context": "Format is set to BDD",
+          "when_action": "User pastes 100,001 characters into the test case box",
+          "then_assertion": "A paste error containing 'too long' is shown and the test case box remains empty",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting valid matching content shows no toast",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-34",
+        "@SHIFT-35"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "journey": "A user pastes the contents of a valid BDD file that matches the selected format and expects no toast while the content loads successfully into the input box.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Pasting valid matching content shows no toast",
+          "given_context": "Format is set to BDD",
+          "when_action": "User pastes the contents of a valid BDD fixture file into the test case box",
+          "then_assertion": "No toast is displayed and the test case box is populated",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Warning toast dismisses and content remains loaded",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-33"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "journey": "A user uploads a mismatched file, receives a warning toast, dismisses it, and expects the file content to remain loaded in the input box.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Warning toast dismisses and content remains loaded",
+          "given_context": "Format is set to Robot Framework and a mismatched Playwright file has been uploaded, producing a warning toast",
+          "when_action": "User dismisses the warning toast",
+          "then_assertion": "The test case box remains populated after the toast is dismissed",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Dropping multiple test case files in single-file mode shows a dismissible warning",
+      "feature": "Test case file validation on the Analyze page",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@file-validation"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates the user to the Analyze page before each scenario runs."
+        }
+      ],
+      "journey": "A user drops multiple files onto the test case input while in single-file mode, sees a dismissible warning prompting them to switch to multi-file mode, and can dismiss it to clear the message.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Dropping multiple test case files in single-file mode shows a dismissible warning",
+          "given_context": "Format is set to BDD and the page is in single-file mode",
+          "when_action": "User drops multiple files onto the test case input, then clicks the dismiss button on the warning",
+          "then_assertion": "A warning message advising multi-file mode is shown with a dismiss button and an empty test case box; after dismissal the warning is no longer visible",
+          "gherkin_type": "Negative"
+        }
+      ]
+    }
+  ]
+}

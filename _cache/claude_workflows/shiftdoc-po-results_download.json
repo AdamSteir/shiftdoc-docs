@@ -1,0 +1,90 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:18:31Z",
+    "source_file": "results_download.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Markdown download contains rendered content",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-22"
+      ],
+      "description": "Users can download their completed analysis as a properly formatted Markdown file.",
+      "test_coverage": [
+        {
+          "verification_step": "A .md file is downloaded",
+          "what_it_checks": "The download produces a file with the correct Markdown format"
+        },
+        {
+          "verification_step": "The downloaded file content contains '##'",
+          "what_it_checks": "The Markdown file includes structured headings, confirming the analysis content was rendered correctly"
+        }
+      ]
+    },
+    {
+      "test_name": "HTML download contains rendered content",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-22"
+      ],
+      "description": "Users can download their completed analysis as a valid, fully-formed HTML file.",
+      "test_coverage": [
+        {
+          "verification_step": "A .html file is downloaded",
+          "what_it_checks": "The download produces a file with the correct HTML format"
+        },
+        {
+          "verification_step": "The downloaded file content contains '<html lang=' and '</html>'",
+          "what_it_checks": "The HTML file has a proper opening and closing structure, confirming it is a complete, valid web page"
+        }
+      ]
+    },
+    {
+      "test_name": "JSON download contains complete analysis payload",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-22"
+      ],
+      "description": "Users can download their completed analysis as a structured JSON file that includes framework metadata and all analyzed test data.",
+      "test_coverage": [
+        {
+          "verification_step": "A .json file is downloaded",
+          "what_it_checks": "The download produces a file in JSON format"
+        },
+        {
+          "verification_step": "The JSON shiftdoc metadata has framework 'bdd'",
+          "what_it_checks": "The file correctly identifies the analysis framework as BDD in its metadata"
+        },
+        {
+          "verification_step": "The JSON has 1 or more tests",
+          "what_it_checks": "The downloaded file contains the actual test analysis content and is not empty"
+        }
+      ]
+    },
+    {
+      "test_name": "JSON download contains add-on sections when add-ons were selected",
+      "feature": "Download Analysis Results - Content Verification (Claude)",
+      "traceability_annotations": [
+        "@SHIFT-23"
+      ],
+      "description": "When a user runs an analysis with optional add-ons such as Gap Analysis, those add-on results are included in the downloaded JSON file.",
+      "test_coverage": [
+        {
+          "verification_step": "A .json file is downloaded",
+          "what_it_checks": "The download produces a file in JSON format"
+        },
+        {
+          "verification_step": "The JSON has top-level key 'gap_analysis'",
+          "what_it_checks": "The Gap Analysis add-on results are present as a distinct section in the downloaded file, confirming add-on data is not lost during export"
+        }
+      ]
+    }
+  ]
+}

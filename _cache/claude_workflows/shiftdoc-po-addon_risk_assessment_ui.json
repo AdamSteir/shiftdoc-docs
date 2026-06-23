@@ -1,0 +1,100 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:10:25Z",
+    "source_file": "addon_risk_assessment_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Risk Assessment renders and JSON is complete for QA Manager",
+      "parameters": {
+        "role": "QA Manager"
+      },
+      "feature": "Risk Assessment UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-29",
+        "@SHIFT-30"
+      ],
+      "description": "Verifies that a QA Manager can run a Risk Assessment add-on on a BDD test file and receive complete, well-formed output \u2014 including scenario risk ratings and a risk summary \u2014 in both the display panel and the downloaded JSON.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in the output panel",
+          "what_it_checks": "The Analyze page returns visible results after processing the uploaded test file with the Risk Assessment add-on"
+        },
+        {
+          "verification_step": "Scenario Risk Ratings appears exactly once in the output",
+          "what_it_checks": "The risk ratings section is present and not duplicated in the displayed results"
+        },
+        {
+          "verification_step": "Risk Summary appears exactly once in the output",
+          "what_it_checks": "The risk summary section is present and not duplicated in the displayed results"
+        },
+        {
+          "verification_step": "Downloaded JSON has no unresolved values",
+          "what_it_checks": "The exported JSON contains no placeholder or missing data fields"
+        },
+        {
+          "verification_step": "JSON contains a top-level risk_assessment key",
+          "what_it_checks": "The JSON output is structured correctly with the expected root section"
+        },
+        {
+          "verification_step": "risk_assessment section contains a non-empty scenario_risk_ratings",
+          "what_it_checks": "Actual risk rating data was generated and included for at least one scenario"
+        },
+        {
+          "verification_step": "scenario_risk_ratings appears exactly once in the risk_assessment section",
+          "what_it_checks": "The JSON structure is clean with no duplicate risk rating entries"
+        }
+      ]
+    },
+    {
+      "test_name": "Risk Assessment renders and JSON is complete for Product Owner",
+      "parameters": {
+        "role": "Product Owner"
+      },
+      "feature": "Risk Assessment UI",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-29",
+        "@SHIFT-30"
+      ],
+      "description": "Verifies that a Product Owner can run a Risk Assessment add-on on a BDD test file and receive complete, well-formed output \u2014 including scenario risk ratings and a risk summary \u2014 in both the display panel and the downloaded JSON.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in the output panel",
+          "what_it_checks": "The Analyze page returns visible results after processing the uploaded test file with the Risk Assessment add-on"
+        },
+        {
+          "verification_step": "Scenario Risk Ratings appears exactly once in the output",
+          "what_it_checks": "The risk ratings section is present and not duplicated in the displayed results"
+        },
+        {
+          "verification_step": "Risk Summary appears exactly once in the output",
+          "what_it_checks": "The risk summary section is present and not duplicated in the displayed results"
+        },
+        {
+          "verification_step": "Downloaded JSON has no unresolved values",
+          "what_it_checks": "The exported JSON contains no placeholder or missing data fields"
+        },
+        {
+          "verification_step": "JSON contains a top-level risk_assessment key",
+          "what_it_checks": "The JSON output is structured correctly with the expected root section"
+        },
+        {
+          "verification_step": "risk_assessment section contains a non-empty scenario_risk_ratings",
+          "what_it_checks": "Actual risk rating data was generated and included for at least one scenario"
+        },
+        {
+          "verification_step": "scenario_risk_ratings appears exactly once in the risk_assessment section",
+          "what_it_checks": "The JSON structure is clean with no duplicate risk rating entries"
+        }
+      ]
+    }
+  ]
+}

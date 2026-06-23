@@ -1,0 +1,201 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:11:09Z",
+    "source_file": "addon_technical_review_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Technical Review renders and JSON is complete for QA Manager with bdd_datadriven_sample.feature",
+      "parameters": {
+        "role": "QA Manager",
+        "fixture": "bdd_datadriven_sample.feature"
+      },
+      "feature": "Technical Review Add-on UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-25",
+        "@SHIFT-26"
+      ],
+      "description": "Verifies that the Technical Review add-on produces complete, correctly structured output for a QA Manager analyzing a data-driven BDD test file.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel displays results",
+          "what_it_checks": "The analysis output appears after submitting the test file for documentation and analysis"
+        },
+        {
+          "verification_step": "Technical Review section is present",
+          "what_it_checks": "The output includes a clearly labeled Technical Review section"
+        },
+        {
+          "verification_step": "Technical Quality content appears",
+          "what_it_checks": "Each test case includes a technical quality assessment in the output"
+        },
+        {
+          "verification_step": "Maintainability Risks content appears",
+          "what_it_checks": "Each test case includes a maintainability risks assessment in the output"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON contains no placeholder or missing values"
+        },
+        {
+          "verification_step": "Every test case has required technical review fields",
+          "what_it_checks": "The JSON includes both technical_quality and maintainability_risks for every test case"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review renders and JSON is complete for Product Owner with bdd_datadriven_sample.feature",
+      "parameters": {
+        "role": "Product Owner",
+        "fixture": "bdd_datadriven_sample.feature"
+      },
+      "feature": "Technical Review Add-on UI",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-25",
+        "@SHIFT-26"
+      ],
+      "description": "Verifies that the Technical Review add-on produces complete, correctly structured output for a Product Owner analyzing a data-driven BDD test file.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel displays results",
+          "what_it_checks": "The analysis output appears after submitting the test file for documentation and analysis"
+        },
+        {
+          "verification_step": "Technical Review section is present",
+          "what_it_checks": "The output includes a clearly labeled Technical Review section"
+        },
+        {
+          "verification_step": "Technical Quality content appears",
+          "what_it_checks": "Each test case includes a technical quality assessment in the output"
+        },
+        {
+          "verification_step": "Maintainability Risks content appears",
+          "what_it_checks": "Each test case includes a maintainability risks assessment in the output"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON contains no placeholder or missing values"
+        },
+        {
+          "verification_step": "Every test case has required technical review fields",
+          "what_it_checks": "The JSON includes both technical_quality and maintainability_risks for every test case"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review renders and JSON is complete for QA Manager with bdd_sample.feature",
+      "parameters": {
+        "role": "QA Manager",
+        "fixture": "bdd_sample.feature"
+      },
+      "feature": "Technical Review Add-on UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-25",
+        "@SHIFT-26"
+      ],
+      "description": "Verifies that the Technical Review add-on produces complete, correctly structured output for a QA Manager analyzing a standard BDD test file.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel displays results",
+          "what_it_checks": "The analysis output appears after submitting the test file for documentation and analysis"
+        },
+        {
+          "verification_step": "Technical Review section is present",
+          "what_it_checks": "The output includes a clearly labeled Technical Review section"
+        },
+        {
+          "verification_step": "Technical Quality content appears",
+          "what_it_checks": "Each test case includes a technical quality assessment in the output"
+        },
+        {
+          "verification_step": "Maintainability Risks content appears",
+          "what_it_checks": "Each test case includes a maintainability risks assessment in the output"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON contains no placeholder or missing values"
+        },
+        {
+          "verification_step": "Every test case has required technical review fields",
+          "what_it_checks": "The JSON includes both technical_quality and maintainability_risks for every test case"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review renders and JSON is complete for Product Owner with bdd_sample.feature",
+      "parameters": {
+        "role": "Product Owner",
+        "fixture": "bdd_sample.feature"
+      },
+      "feature": "Technical Review Add-on UI",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-25",
+        "@SHIFT-26"
+      ],
+      "description": "Verifies that the Technical Review add-on produces complete, correctly structured output for a Product Owner analyzing a standard BDD test file.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel displays results",
+          "what_it_checks": "The analysis output appears after submitting the test file for documentation and analysis"
+        },
+        {
+          "verification_step": "Technical Review section is present",
+          "what_it_checks": "The output includes a clearly labeled Technical Review section"
+        },
+        {
+          "verification_step": "Technical Quality content appears",
+          "what_it_checks": "Each test case includes a technical quality assessment in the output"
+        },
+        {
+          "verification_step": "Maintainability Risks content appears",
+          "what_it_checks": "Each test case includes a maintainability risks assessment in the output"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON contains no placeholder or missing values"
+        },
+        {
+          "verification_step": "Every test case has required technical review fields",
+          "what_it_checks": "The JSON includes both technical_quality and maintainability_risks for every test case"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review batch mode covers all tests with no gaps or duplicates",
+      "feature": "Technical Review Add-on UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-26"
+      ],
+      "description": "Verifies that when analyzing a large BDD test file, the Technical Review add-on processes every test case exactly once with no missing entries or repeated results.",
+      "test_coverage": [
+        {
+          "verification_step": "Output panel displays results",
+          "what_it_checks": "The analysis output appears after submitting a large test file for documentation and analysis"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON contains no placeholder or missing values across all batch-processed test cases"
+        },
+        {
+          "verification_step": "No duplicate test names in technical review",
+          "what_it_checks": "Each test case appears only once in the output, confirming no duplication during batch processing"
+        },
+        {
+          "verification_step": "Every test case has required technical review fields",
+          "what_it_checks": "All test cases in the large file have both technical_quality and maintainability_risks populated, with no gaps"
+        }
+      ]
+    }
+  ]
+}

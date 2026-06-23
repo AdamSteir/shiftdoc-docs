@@ -1,0 +1,134 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:15:35Z",
+    "source_file": "junit.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "JUnit - PO - single test, core output structure",
+      "feature": "JUnit Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "Verifies that a Product Owner uploading a single JUnit test file receives a valid, fully-resolved JSON output containing at least one named test case.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing a JUnit file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are populated \u2014 no placeholders or missing data remain"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is detected and documented from the uploaded file"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test case is identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "JUnit - PO - Parameterized expands one test per row",
+      "feature": "JUnit Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "Verifies that a Product Owner uploading a data-driven JUnit test file sees each parameter row expanded into its own separate test case in the output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing a parameterized JUnit file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no gaps"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Each data row from the parameterized test is treated as a distinct test case, resulting in multiple entries"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each expanded test case is individually named"
+        }
+      ]
+    },
+    {
+      "test_name": "JUnit - QAM - single test, coverage matrix populated",
+      "feature": "JUnit Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "Verifies that a QA Manager uploading a single JUnit test file receives output that includes a populated test coverage matrix alongside standard test documentation.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing a JUnit file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no gaps"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is detected and documented from the uploaded file"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test case is identifiable by name"
+        },
+        {
+          "verification_step": "First test has a non-empty test_coverage_matrix array",
+          "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test case"
+        }
+      ]
+    },
+    {
+      "test_name": "JUnit - QAM - Parameterized collapses",
+      "feature": "JUnit Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "Verifies that a QA Manager uploading a data-driven JUnit test file sees the parameterized test collapsed into a single test case whose coverage matrix rows represent each data example using the correct structure.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing a parameterized JUnit file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded output are fully populated with no gaps"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test",
+          "what_it_checks": "All parameter rows are collapsed into a single test case entry rather than expanded individually"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "The collapsed test case is identifiable by name"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the examples",
+          "what_it_checks": "Each data row from the parameterized test is represented as a row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for generic",
+          "what_it_checks": "Each coverage matrix row conforms to the expected generic format with all required fields present"
+        }
+      ]
+    }
+  ]
+}

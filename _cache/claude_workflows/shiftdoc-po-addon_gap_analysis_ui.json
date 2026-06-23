@@ -1,0 +1,144 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:09:12Z",
+    "source_file": "addon_gap_analysis_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Gap Analysis renders and JSON is complete for QA Manager",
+      "parameters": {
+        "role": "QA Manager"
+      },
+      "feature": "Gap Analysis UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-24"
+      ],
+      "description": "Verifies that a QA Manager can run a Gap Analysis on a BDD test file and receive complete, well-structured output covering both coverage and robustness gaps.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The Gap Analysis add-on produces visible results after submission"
+        },
+        {
+          "verification_step": "Coverage Gaps appears exactly once",
+          "what_it_checks": "The output contains a single, non-duplicated Coverage Gaps section"
+        },
+        {
+          "verification_step": "Robustness Gaps appears exactly once",
+          "what_it_checks": "The output contains a single, non-duplicated Robustness Gaps section"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders or template tokens in the downloaded JSON are fully populated"
+        },
+        {
+          "verification_step": "JSON has top-level key gap_analysis",
+          "what_it_checks": "The downloaded JSON follows the expected schema structure"
+        },
+        {
+          "verification_step": "gap_analysis section has a non-empty coverage_gaps",
+          "what_it_checks": "At least one coverage gap was identified and recorded in the output"
+        },
+        {
+          "verification_step": "coverage_gaps appears exactly once in gap_analysis",
+          "what_it_checks": "The JSON structure is clean with no duplicated keys"
+        }
+      ]
+    },
+    {
+      "test_name": "Gap Analysis renders and JSON is complete for Product Owner",
+      "parameters": {
+        "role": "Product Owner"
+      },
+      "feature": "Gap Analysis UI",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-24"
+      ],
+      "description": "Verifies that a Product Owner can run a Gap Analysis on a BDD test file and receive complete, well-structured output covering both coverage and robustness gaps.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The Gap Analysis add-on produces visible results after submission"
+        },
+        {
+          "verification_step": "Coverage Gaps appears exactly once",
+          "what_it_checks": "The output contains a single, non-duplicated Coverage Gaps section"
+        },
+        {
+          "verification_step": "Robustness Gaps appears exactly once",
+          "what_it_checks": "The output contains a single, non-duplicated Robustness Gaps section"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders or template tokens in the downloaded JSON are fully populated"
+        },
+        {
+          "verification_step": "JSON has top-level key gap_analysis",
+          "what_it_checks": "The downloaded JSON follows the expected schema structure"
+        },
+        {
+          "verification_step": "gap_analysis section has a non-empty coverage_gaps",
+          "what_it_checks": "At least one coverage gap was identified and recorded in the output"
+        },
+        {
+          "verification_step": "coverage_gaps appears exactly once in gap_analysis",
+          "what_it_checks": "The JSON structure is clean with no duplicated keys"
+        }
+      ]
+    },
+    {
+      "test_name": "Gap analysis with regression layer passes layer context through to metadata",
+      "feature": "Gap Analysis UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-10"
+      ],
+      "description": "Verifies that selecting the Regression / Smoke testing layer correctly records that context in the output metadata when running a Gap Analysis.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The Gap Analysis add-on produces visible results after submission with a testing layer selected"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders or template tokens in the downloaded JSON are fully populated"
+        },
+        {
+          "verification_step": "JSON shiftdoc metadata includes testing layer regression",
+          "what_it_checks": "The chosen testing layer is correctly passed through and stored in the output metadata"
+        }
+      ]
+    },
+    {
+      "test_name": "Gap analysis with unit layer passes layer context through to metadata",
+      "feature": "Gap Analysis UI",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-10"
+      ],
+      "description": "Verifies that selecting the Unit testing layer correctly records that context in the output metadata when running a Gap Analysis.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation and analysis appears in output panel",
+          "what_it_checks": "The Gap Analysis add-on produces visible results after submission with a testing layer selected"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders or template tokens in the downloaded JSON are fully populated"
+        },
+        {
+          "verification_step": "JSON shiftdoc metadata includes testing layer unit",
+          "what_it_checks": "The chosen testing layer is correctly passed through and stored in the output metadata"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:20:49Z",
+    "source_file": "story_coverage.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Coverage run produces a populated coverage table",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-53"
+      ],
+      "description": "Verifies that submitting a user story with acceptance criteria alongside a BDD test file produces a coverage table with results.",
+      "test_coverage": [
+        {
+          "verification_step": "Paste a user story with explicit acceptance criteria",
+          "what_it_checks": "The page accepts a user story as input"
+        },
+        {
+          "verification_step": "Upload a BDD test case fixture",
+          "what_it_checks": "The page accepts a test file upload"
+        },
+        {
+          "verification_step": "Click Check Coverage",
+          "what_it_checks": "The coverage analysis is triggered"
+        },
+        {
+          "verification_step": "Result contains a coverage table with at least one row",
+          "what_it_checks": "The analysis produces a non-empty coverage table mapping acceptance criteria to tests"
+        },
+        {
+          "verification_step": "Result is non-empty",
+          "what_it_checks": "The overall output is populated and not blank"
+        }
+      ]
+    },
+    {
+      "test_name": "Non-covered AC rows have a risk value",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-53"
+      ],
+      "description": "Verifies that acceptance criteria not covered by any test are flagged with a risk value in the coverage table.",
+      "test_coverage": [
+        {
+          "verification_step": "Paste the story coverage login story fixture",
+          "what_it_checks": "A known user story is submitted for analysis"
+        },
+        {
+          "verification_step": "Upload the story coverage incomplete test fixture",
+          "what_it_checks": "A test file that does not cover all acceptance criteria is provided"
+        },
+        {
+          "verification_step": "Click Check Coverage",
+          "what_it_checks": "The coverage analysis is triggered"
+        },
+        {
+          "verification_step": "Every non-covered row has a non-empty risk value",
+          "what_it_checks": "Uncovered acceptance criteria display a risk assessment so stakeholders understand the gap"
+        }
+      ]
+    },
+    {
+      "test_name": "Fully covered AC rows have no risk value",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-53"
+      ],
+      "description": "Verifies that acceptance criteria fully covered by tests do not show a risk value, keeping the report clean and unambiguous.",
+      "test_coverage": [
+        {
+          "verification_step": "Paste the story coverage login story fixture",
+          "what_it_checks": "A known user story is submitted for analysis"
+        },
+        {
+          "verification_step": "Upload the story coverage complete test fixture",
+          "what_it_checks": "A test file that covers all acceptance criteria is provided"
+        },
+        {
+          "verification_step": "Click Check Coverage",
+          "what_it_checks": "The coverage analysis is triggered"
+        },
+        {
+          "verification_step": "No covered row has a risk value",
+          "what_it_checks": "Fully covered acceptance criteria are not incorrectly flagged with risk"
+        }
+      ]
+    },
+    {
+      "test_name": "Markdown download works after coverage run",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "description": "Verifies that once a coverage result is available, the user can download it as a Markdown file.",
+      "test_coverage": [
+        {
+          "verification_step": "A coverage result has been produced",
+          "what_it_checks": "A completed coverage analysis is available on the page"
+        },
+        {
+          "verification_step": "Click the Download MD button",
+          "what_it_checks": "The Markdown export action is triggered"
+        },
+        {
+          "verification_step": "A .md file is downloaded",
+          "what_it_checks": "The coverage report is successfully exported in Markdown format"
+        }
+      ]
+    },
+    {
+      "test_name": "HTML download works after coverage run",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "description": "Verifies that once a coverage result is available, the user can download it as an HTML file.",
+      "test_coverage": [
+        {
+          "verification_step": "A coverage result has been produced",
+          "what_it_checks": "A completed coverage analysis is available on the page"
+        },
+        {
+          "verification_step": "Click the Download HTML button",
+          "what_it_checks": "The HTML export action is triggered"
+        },
+        {
+          "verification_step": "A .html file is downloaded",
+          "what_it_checks": "The coverage report is successfully exported in HTML format"
+        }
+      ]
+    },
+    {
+      "test_name": "JSON download works after coverage run",
+      "feature": "Story vs. Test Coverage \u2014 real Claude scenarios",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "description": "Verifies that once a coverage result is available, the user can download it as a JSON file.",
+      "test_coverage": [
+        {
+          "verification_step": "A coverage result has been produced",
+          "what_it_checks": "A completed coverage analysis is available on the page"
+        },
+        {
+          "verification_step": "Click the Download JSON button",
+          "what_it_checks": "The JSON export action is triggered"
+        },
+        {
+          "verification_step": "A .json file is downloaded",
+          "what_it_checks": "The coverage report is successfully exported in JSON format for programmatic use"
+        }
+      ]
+    }
+  ]
+}

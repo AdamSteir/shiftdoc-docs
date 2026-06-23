@@ -1,0 +1,94 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:11:30Z",
+    "source_file": "addon_technical_review_ui.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Technical Review renders and JSON is complete for <role> with <fixture>",
+      "feature": "Technical Review Add-on UI",
+      "traceability_annotations": [
+        "@SHIFT-25",
+        "@SHIFT-26"
+      ],
+      "outline_type": "Scenario Outline",
+      "example_groups": [
+        {
+          "label": "Examples",
+          "rows": [
+            {
+              "role": "QA Manager",
+              "fixture": "bdd_datadriven_sample.feature"
+            },
+            {
+              "role": "Product Owner",
+              "fixture": "bdd_datadriven_sample.feature"
+            },
+            {
+              "role": "QA Manager",
+              "fixture": "bdd_sample.feature"
+            },
+            {
+              "role": "Product Owner",
+              "fixture": "bdd_sample.feature"
+            }
+          ]
+        }
+      ],
+      "journey": "A user selects a role and uploads a BDD fixture with the Technical Review add-on enabled, then verifies that the output panel renders the expected review sections and the downloaded JSON is fully resolved with required technical_quality and maintainability_risks fields on every test case.",
+      "test_coverage_matrix": [
+        {
+          "example": "QA Manager / bdd_datadriven_sample.feature",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd', role 'QA Manager', add-on 'Technical Review', uploads bdd_datadriven_sample.feature, and clicks Document and analyze test cases",
+          "then_assertion": "Output panel shows documentation and analysis including 'Technical Review', 'Technical Quality', and 'Maintainability Risks'; downloaded JSON has no unresolved values and every test case contains technical_quality and maintainability_risks",
+          "gherkin_type": "Positive"
+        },
+        {
+          "example": "Product Owner / bdd_datadriven_sample.feature",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd', role 'Product Owner', add-on 'Technical Review', uploads bdd_datadriven_sample.feature, and clicks Document and analyze test cases",
+          "then_assertion": "Output panel shows documentation and analysis including 'Technical Review', 'Technical Quality', and 'Maintainability Risks'; downloaded JSON has no unresolved values and every test case contains technical_quality and maintainability_risks",
+          "gherkin_type": "Positive"
+        },
+        {
+          "example": "QA Manager / bdd_sample.feature",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd', role 'QA Manager', add-on 'Technical Review', uploads bdd_sample.feature, and clicks Document and analyze test cases",
+          "then_assertion": "Output panel shows documentation and analysis including 'Technical Review', 'Technical Quality', and 'Maintainability Risks'; downloaded JSON has no unresolved values and every test case contains technical_quality and maintainability_risks",
+          "gherkin_type": "Positive"
+        },
+        {
+          "example": "Product Owner / bdd_sample.feature",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd', role 'Product Owner', add-on 'Technical Review', uploads bdd_sample.feature, and clicks Document and analyze test cases",
+          "then_assertion": "Output panel shows documentation and analysis including 'Technical Review', 'Technical Quality', and 'Maintainability Risks'; downloaded JSON has no unresolved values and every test case contains technical_quality and maintainability_risks",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Technical Review batch mode covers all tests with no gaps or duplicates",
+      "feature": "Technical Review Add-on UI",
+      "traceability_annotations": [
+        "@SHIFT-26"
+      ],
+      "journey": "A QA Manager uploads a large BDD fixture with the Technical Review add-on and verifies that the downloaded JSON is fully resolved, contains no duplicate test names, and every test case carries both required technical review fields \u2014 confirming complete and accurate batch processing coverage.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Technical Review batch mode covers all tests with no gaps or duplicates",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'bdd', role 'QA Manager', add-on 'Technical Review', uploads bdd_large_sample.feature, and clicks Document and analyze test cases",
+          "then_assertion": "Output panel shows documentation and analysis; downloaded JSON has no unresolved values, no duplicate test names, and every test case contains technical_quality and maintainability_risks",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

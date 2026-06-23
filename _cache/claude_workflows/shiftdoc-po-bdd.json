@@ -1,0 +1,126 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:13:11Z",
+    "source_file": "bdd.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "BDD - PO - core output structure",
+      "feature": "BDD Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "A Product Owner uploading a BDD feature file receives structured documentation with named tests, descriptions, and coverage details in the output panel.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing a BDD feature file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded JSON are fully populated with no placeholder or missing values"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test entry is generated from the uploaded feature file"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each test in the output is identifiable by a name"
+        },
+        {
+          "verification_step": "First test has a non-empty description",
+          "what_it_checks": "The first test includes a human-readable description of what it covers"
+        },
+        {
+          "verification_step": "First test has a non-empty test_coverage array",
+          "what_it_checks": "The first test includes at least one coverage detail entry"
+        }
+      ]
+    },
+    {
+      "test_name": "BDD - PO - data-driven produces multiple tests",
+      "feature": "BDD Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "A Product Owner uploading a data-driven BDD feature file receives separate documentation entries for each data row, resulting in multiple distinct tests in the output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing a data-driven BDD feature file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded JSON are fully populated with no placeholder or missing values"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Data-driven scenarios expand into multiple individual test entries (at least 3)"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each expanded test entry is identifiable by a name"
+        }
+      ]
+    },
+    {
+      "test_name": "Panel title is \"Documentation\" when no add-ons are selected",
+      "feature": "BDD Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-21"
+      ],
+      "description": "When a Product Owner runs documentation without selecting any add-ons, the output panel title shows 'Documentation' rather than a combined label.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing the feature file"
+        },
+        {
+          "verification_step": "Panel title is not 'Documentation and Analysis'",
+          "what_it_checks": "The output panel title reflects only the base documentation mode and does not include add-on labels when none are selected"
+        }
+      ]
+    },
+    {
+      "test_name": "BDD - QAM - coverage matrix populated",
+      "feature": "BDD Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "A QA Manager uploading a BDD feature file receives documentation that includes a properly structured coverage matrix linking tests to coverage areas.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after processing the BDD feature file"
+        },
+        {
+          "verification_step": "Filename appears in output",
+          "what_it_checks": "The source file is referenced in the output, confirming the correct file was processed"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the downloaded JSON are fully populated with no placeholder or missing values"
+        },
+        {
+          "verification_step": "First test has a non-empty test_coverage_matrix array",
+          "what_it_checks": "The first test includes at least one coverage matrix entry for QA Manager reporting"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for BDD",
+          "what_it_checks": "Each row in the coverage matrix conforms to the expected structure for BDD-format inputs"
+        }
+      ]
+    }
+  ]
+}

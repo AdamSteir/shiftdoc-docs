@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:18:12Z",
+    "source_file": "pytest.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "pytest - PO - single test, core output structure",
+      "feature": "pytest Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single pytest fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "pytest - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'pytest' and role 'Product Owner', uploads 'pytest_single_sample.py', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "pytest - PO - parametrize expands one test per row",
+      "feature": "pytest Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven pytest fixture and verifies that each parametrize row is expanded into its own test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "pytest - PO - parametrize expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'pytest' and role 'Product Owner', uploads 'pytest_datadriven_sample.py', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "pytest - QAM - single test, coverage matrix populated",
+      "feature": "pytest Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single pytest fixture and verifies that the JSON output contains at least one named test with a fully populated coverage matrix.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "pytest - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'pytest' and role 'QA Manager', uploads 'pytest_single_sample.py', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "pytest - QAM - parametrize collapses",
+      "feature": "pytest Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven pytest fixture and verifies that parametrize rows collapse into a single test with a coverage matrix whose row count matches the number of examples and conforms to the generic schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "pytest - QAM - parametrize collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'pytest' and role 'QA Manager', uploads 'pytest_datadriven_sample.py', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the parametrize examples, and rows conform to the generic schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

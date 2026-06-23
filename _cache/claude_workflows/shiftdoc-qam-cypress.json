@@ -1,0 +1,116 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:14:26Z",
+    "source_file": "cypress.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Cypress - PO - single test, core output structure",
+      "feature": "Cypress Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single Cypress test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Cypress - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'cypress' and role 'Product Owner', uploads 'cypress_single_sample.cy.js', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON is framework='cypress', has no unresolved values, has 1+ tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - PO - forEach data-driven expands one test per row",
+      "feature": "Cypress Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a forEach data-driven Cypress fixture and verifies that the pipeline expands each data row into a separate test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Cypress - PO - forEach data-driven expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'cypress' and role 'Product Owner', uploads 'cypress_datadriven_sample.cy.js', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON is framework='cypress', has no unresolved values, has 3+ tests (one per data row), and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - PO - for...of expands one test per row",
+      "feature": "Cypress Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a for...of data-driven Cypress fixture and verifies that the pipeline expands each iteration into a separate test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Cypress - PO - for...of expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'cypress' and role 'Product Owner', uploads 'cypress_forof_sample.cy.js', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON is framework='cypress', has no unresolved values, has 3+ tests (one per iteration), and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - QAM - single test, coverage matrix populated",
+      "feature": "Cypress Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single Cypress test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test in addition to core structural requirements.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Cypress - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'cypress' and role 'QA Manager', uploads 'cypress_single_sample.cy.js', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON is framework='cypress', has no unresolved values, has 1+ tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - QAM - forEach collapses",
+      "feature": "Cypress Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a forEach data-driven Cypress fixture and verifies that the pipeline collapses all data rows into a single test whose coverage matrix contains one row per data example using the correct Cypress schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Cypress - QAM - forEach collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'cypress' and role 'QA Manager', uploads 'cypress_datadriven_sample.cy.js', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON is framework='cypress', has no unresolved values, has exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of data examples, and rows conform to the Cypress coverage matrix schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - QAM - for...of collapses",
+      "feature": "Cypress Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a for...of data-driven Cypress fixture and verifies that the pipeline collapses all iterations into a single test whose coverage matrix contains one row per iteration using the correct Cypress schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Cypress - QAM - for...of collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'cypress' and role 'QA Manager', uploads 'cypress_forof_sample.cy.js', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON is framework='cypress', has no unresolved values, has exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of iterations, and rows conform to the Cypress coverage matrix schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:02:15Z",
+    "source_file": "multi_file_toggle.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Multi-file toggle is visible in the input panel",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A user visiting the Analyze page can see the multi-file toggle in the input panel.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Multi-file toggle is visible in the input panel",
+          "given_context": "Analysis API and multi-file API are mocked; user is on the Analyze page",
+          "when_action": "No action taken",
+          "then_assertion": "The multi-file toggle is visible in the input panel",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Multi-file toggle shows a lock icon when not logged in",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "An unauthenticated user sees a lock icon on the multi-file toggle, indicating the feature requires sign-in.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Multi-file toggle shows a lock icon when not logged in",
+          "given_context": "User is not logged in",
+          "when_action": "No action taken",
+          "then_assertion": "The multi-file toggle displays a lock icon",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Clicking the multi-file toggle when not logged in shows a sign-in prompt",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "An unauthenticated user who clicks the multi-file toggle receives a warning toast and multi-file mode remains disabled.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Clicking the multi-file toggle when not logged in shows a sign-in prompt",
+          "given_context": "User is not logged in",
+          "when_action": "User clicks the multi-file toggle",
+          "then_assertion": "A warning toast 'Sign in to use multi-file mode.' is shown and multi-file mode is not enabled",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Hovering the lock icon shows a tooltip",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "An unauthenticated user hovering over the lock icon on the multi-file toggle sees a tooltip prompting them to sign in.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Hovering the lock icon shows a tooltip",
+          "given_context": "User is not logged in",
+          "when_action": "User hovers over the lock icon on the multi-file toggle",
+          "then_assertion": "A tooltip reading 'Sign in to unlock' is visible",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Clicking the lock icon navigates to the login page",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "An unauthenticated user clicking the lock icon is redirected to the login page.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Clicking the lock icon navigates to the login page",
+          "given_context": "User is not logged in",
+          "when_action": "User clicks the lock icon on the multi-file toggle",
+          "then_assertion": "The user is on the login page",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Open lock icon is shown when logged in and is not a link",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "An authenticated user sees an open lock icon on the multi-file toggle that is purely decorative and not a navigation link.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Open lock icon is shown when logged in and is not a link",
+          "given_context": "User is logged in and on the Analyze page",
+          "when_action": "No action taken",
+          "then_assertion": "The multi-file toggle shows an open lock icon and that icon is not a link",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Multi-file mode is disabled and queue is cleared when the user logs out",
+      "feature": "Multi-file mode \u2014 toggle and lock behavior",
+      "traceability_annotations": [
+        "@SHIFT-49"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user who enables multi-file mode and adds a file to the queue finds both features reset and the toggle locked after logging out.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Multi-file mode is disabled and queue is cleared when the user logs out",
+          "given_context": "APIs are mocked and user is on the Analyze page (via Background)",
+          "when_action": "User enables multi-file mode, adds a fixture file to the queue, logs out, and returns to the Analyze page",
+          "then_assertion": "Multi-file mode is not enabled, the file queue is not visible, and the toggle shows a lock icon",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

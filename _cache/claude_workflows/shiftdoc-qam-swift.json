@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:21:54Z",
+    "source_file": "swift.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Swift - PO - single test, core output structure",
+      "feature": "Swift Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single Swift test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Swift - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'swift' and role 'Product Owner', uploads 'swift_single_sample.swift', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains 1 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Swift - PO - struct+for data-driven expands one test per row",
+      "feature": "Swift Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven Swift fixture and verifies that the analyser expands struct+for loops into individual tests, producing at least three distinct named test entries in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Swift - PO - struct+for data-driven expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'swift' and role 'Product Owner', uploads 'swift_datadriven_sample.swift', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Swift - QAM - single test, coverage matrix populated",
+      "feature": "Swift Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single Swift test fixture and verifies that the analysis returns valid JSON with a fully populated coverage matrix on the first test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Swift - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'swift' and role 'QA Manager', uploads 'swift_single_sample.swift', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Swift - QAM - data-driven collapses",
+      "feature": "Swift Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven Swift fixture and verifies that the analyser collapses all data rows into a single test entry whose coverage matrix rows match the number of examples and conform to the Swift schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Swift - QAM - data-driven collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'swift' and role 'QA Manager', uploads 'swift_datadriven_sample.swift', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the data-driven examples, and coverage matrix rows use the correct Swift schema",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

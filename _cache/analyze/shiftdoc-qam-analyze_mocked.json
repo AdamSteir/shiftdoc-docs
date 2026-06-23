@@ -1,0 +1,422 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T21:58:10Z",
+    "source_file": "analyze_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Analyze button is disabled when no input is provided",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user who has not yet provided any input sees the Analyze button in a disabled state, preventing premature submission.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Analyze button is disabled when no input is provided",
+          "given_context": "User is on the Analyze page with no input provided",
+          "when_action": "No action taken",
+          "then_assertion": "The Analyze button is disabled",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Analyze button is enabled when test case content is provided",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user uploads a test case fixture file and the Analyze button becomes enabled, signalling readiness to submit.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Analyze button is enabled when test case content is provided",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User uploads the test case fixture 'bdd_sample.feature'",
+          "then_assertion": "The Analyze button is enabled",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Analysis renders the output panel",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user uploads a fixture, submits the analysis against a mocked API, and sees documentation rendered in the output panel.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Analysis renders the output panel",
+          "given_context": "Analyze page is open and the analysis API is mocked",
+          "when_action": "User uploads 'bdd_sample.feature' and submits the analysis",
+          "then_assertion": "Documentation is displayed in the output panel",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Clear button resets input and output",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user who has existing output clears the analysis results, leaving both the test case input box and the output panel empty.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Clear button resets input and output",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User clears the analysis results",
+          "then_assertion": "The output panel is cleared and the test case input box is empty",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "API error shows an error message",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user submits an analysis when the API is mocked to return a 500 error and sees an appropriate error message instead of output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "API error shows an error message",
+          "given_context": "Analyze page is open and the analysis API is mocked to return HTTP 500",
+          "when_action": "User uploads 'bdd_sample.feature' and submits the analysis",
+          "then_assertion": "An analysis error message is displayed",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Format selection is forwarded in the analysis payload",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user selects a specific format and role, uploads a fixture, and submits; the analysis request payload correctly includes the chosen format.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Format selection is forwarded in the analysis payload",
+          "given_context": "API is mocked and the Analyze page is open",
+          "when_action": "User selects format 'playwright' and role 'Product Owner', uploads 'bdd_sample.feature', and submits the analysis",
+          "then_assertion": "The analysis request payload includes format 'playwright'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Testing layer selection is forwarded in the analysis payload",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user selects a testing layer, uploads a fixture, and submits; the analysis request payload correctly includes the chosen testing layer.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Testing layer selection is forwarded in the analysis payload",
+          "given_context": "API is mocked and the Analyze page is open",
+          "when_action": "User selects testing layer 'unit', uploads 'bdd_sample.feature', and submits the analysis",
+          "then_assertion": "The analysis request payload includes testing layer 'unit'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Output panel clears when new content is pasted",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output in the panel pastes new content into the text box, automatically clearing stale results.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Output panel clears when new content is pasted",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User pastes new content into the text box",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Output panel clears when a new test case file is uploaded",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output uploads a new test case file, automatically clearing the stale output panel.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Output panel clears when a new test case file is uploaded",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User uploads a new test case file",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing format clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output changes the selected format, automatically clearing the output panel to prevent stale results.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing format clears analysis result",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User changes the format selection",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing role clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output changes the selected role, automatically clearing the output panel to prevent stale results.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing role clears analysis result",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User changes the role selection",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing add-ons selection clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output selects an add-on ('Technical Review'), automatically clearing the output panel to prevent stale results.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing add-ons selection clears analysis result",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User selects add-on 'Technical Review'",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing data dictionary clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output changes the data dictionary selection, automatically clearing the output panel to prevent stale results.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing data dictionary clears analysis result",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User changes the analysis dictionary selection",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing testing layers clears analysis result",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing output selects a testing layer ('unit'), automatically clearing the output panel to prevent stale results.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing testing layers clears analysis result",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User selects testing layer 'unit'",
+          "then_assertion": "The output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Test case input persists after navigating away and back",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user uploads a test case fixture, navigates away from the Analyze page, and returns to find their input still populated.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Test case input persists after navigating away and back",
+          "given_context": "User is on the Analyze page",
+          "when_action": "User uploads 'bdd_sample.feature' then navigates away and returns to the Analyze page",
+          "then_assertion": "The test case input box is still populated",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Analysis result persists after navigating away and back",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A user with existing analysis output navigates away and returns to the Analyze page, finding their results still visible in the output panel.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Analysis result persists after navigating away and back",
+          "given_context": "API is mocked and existing output is present in the panel",
+          "when_action": "User navigates away from and then returns to the Analyze page",
+          "then_assertion": "Documentation is still visible in the output panel",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "State resets on logout",
+      "feature": "Analyze page \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-16"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Analyze page",
+          "explanation": "Navigates to the Analyze page before each scenario to establish a consistent starting state."
+        }
+      ],
+      "journey": "A logged-in user with existing analysis output logs out and returns to the Analyze page, finding both the input box and output panel fully cleared.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "State resets on logout",
+          "given_context": "User is logged in, API is mocked, and existing output is present in the panel",
+          "when_action": "User logs out and returns to the Analyze page",
+          "then_assertion": "The test case input box is empty and the output panel is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

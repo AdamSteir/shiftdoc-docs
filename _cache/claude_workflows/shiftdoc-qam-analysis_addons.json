@@ -1,0 +1,48 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:12:04Z",
+    "source_file": "analysis_addons.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "All add-ons - sections present in JSON output for QA Manager",
+      "feature": "Add-ons Analysis",
+      "traceability_annotations": [
+        "@SHIFT-15"
+      ],
+      "journey": "A QA Manager selects all add-ons, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON output contains all five expected top-level add-on sections with non-empty content.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "All add-ons - sections present in JSON output for QA Manager",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'QA Manager', and all add-ons selected",
+          "when_action": "User uploads 'bdd_sample.feature' and clicks 'Document and analyze test cases', then downloads the JSON output",
+          "then_assertion": "JSON output contains no unresolved values and has non-empty top-level keys: technical_review (test_quality), gap_analysis (coverage_gaps), annotation_summary (annotation_health), risk_assessment (scenario_risk_ratings), recommendations (actions)",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "All add-ons - sections present in JSON output for Product Owner",
+      "feature": "Add-ons Analysis",
+      "traceability_annotations": [
+        "@SHIFT-15"
+      ],
+      "journey": "A Product Owner selects all add-ons, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON output contains all five expected top-level add-on sections with non-empty content.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "All add-ons - sections present in JSON output for Product Owner",
+          "given_context": "User is on the Analyze page with format 'bdd', role 'Product Owner', and all add-ons selected",
+          "when_action": "User uploads 'bdd_sample.feature' and clicks 'Document and analyze test cases', then downloads the JSON output",
+          "then_assertion": "JSON output contains no unresolved values and has non-empty top-level keys: technical_review (test_quality), gap_analysis (coverage_gaps), annotation_summary (annotation_health), risk_assessment (scenario_risk_ratings), recommendations (actions)",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

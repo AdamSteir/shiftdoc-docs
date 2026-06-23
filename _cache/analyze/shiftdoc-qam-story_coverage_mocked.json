@@ -1,0 +1,446 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:05:33Z",
+    "source_file": "story_coverage_mocked.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Both inputs required before Check Coverage button is enabled",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "A user must provide both a user story and test cases before the Check Coverage button becomes interactive, preventing incomplete submissions.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Both inputs required before Check Coverage button is enabled",
+          "given_context": "Story Coverage page is loaded with no inputs entered",
+          "when_action": "User enters a user story only, then enters test cases",
+          "then_assertion": "Button remains disabled with only one input; button becomes enabled only when both inputs are present",
+          "gherkin_type": "Boundary"
+        }
+      ]
+    },
+    {
+      "test_name": "Coverage renders results panel",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "After submitting both inputs against a mocked valid API, the user sees a results panel and download buttons confirming a successful coverage check.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Coverage renders results panel",
+          "given_context": "Coverage API is mocked to return a valid result",
+          "when_action": "User fills both inputs and clicks Check Coverage",
+          "then_assertion": "Results panel is visible and download buttons are shown",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Clear button resets all inputs and results",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "A user who wants to start over can click Clear to wipe all inputs and hide the results panel, returning the page to its initial state.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Clear button resets all inputs and results",
+          "given_context": "A coverage result is currently displayed on the page",
+          "when_action": "User clicks the Clear button",
+          "then_assertion": "Story input is empty, test input is empty, and the results panel is hidden",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "API error shows error state",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-56"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "When the coverage API returns a 500 error, the user is shown a meaningful error message rather than a blank or broken results panel.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "API error shows error state",
+          "given_context": "Coverage API is mocked to return HTTP 500",
+          "when_action": "User fills both inputs and clicks Check Coverage",
+          "then_assertion": "An error message is displayed to the user",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Format selector is present and forwarded in payload",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-54"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "The format selector is visible to the user and the selected format value is correctly included in the API request payload when coverage is checked.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Format selector is present and forwarded in payload",
+          "given_context": "Coverage API is mocked with a valid result and the format selector is visible",
+          "when_action": "User selects format 'playwright', fills both inputs, and clicks Check Coverage",
+          "then_assertion": "The compare request includes test_format 'playwright'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Testing layers selection is forwarded in payload",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-54"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "When a user selects a testing layer, that selection is correctly forwarded in the API request payload on coverage check.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Testing layers selection is forwarded in payload",
+          "given_context": "Coverage API is mocked with a valid result",
+          "when_action": "User selects a testing layer, fills both inputs, and clicks Check Coverage",
+          "then_assertion": "The compare request includes the selected testing layer",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing test format clears test case content and filename",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "Switching the test format resets the test case content and filename to prevent mismatched data from being submitted.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing test format clears test case content and filename",
+          "given_context": "Test input is populated with content",
+          "when_action": "User changes the test format",
+          "then_assertion": "Test case content is cleared and test case filename is cleared",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing test format does not clear story input",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "When the user changes the test format, the story input is preserved so the user does not need to re-enter their user story.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing test format does not clear story input",
+          "given_context": "Story input is populated with content",
+          "when_action": "User changes the test format",
+          "then_assertion": "Story input remains unchanged",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing test format clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "Changing the test format after a coverage result is shown hides the stale results panel to avoid presenting misleading data.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing test format clears coverage result",
+          "given_context": "A coverage result is currently displayed",
+          "when_action": "User changes the test format",
+          "then_assertion": "Results panel is hidden",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing testing layers clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "Changing the testing layer selection after a result is displayed hides the stale results panel to avoid presenting misleading data.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing testing layers clears coverage result",
+          "given_context": "A coverage result is currently displayed",
+          "when_action": "User changes the testing layer selection",
+          "then_assertion": "Results panel is hidden",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Changing data dictionary clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "Changing the data dictionary selection after a result is displayed hides the stale results panel to avoid presenting misleading data.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Changing data dictionary clears coverage result",
+          "given_context": "A coverage result is currently displayed",
+          "when_action": "User changes the data dictionary selection",
+          "then_assertion": "Results panel is hidden",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Editing story input clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "When a user edits the story input after viewing a result, the results panel is hidden so only up-to-date coverage data is shown.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Editing story input clears coverage result",
+          "given_context": "A coverage result is currently displayed",
+          "when_action": "User edits the story input",
+          "then_assertion": "Results panel is hidden",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Editing test input clears coverage result",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-60"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "When a user edits the test input after viewing a result, the results panel is hidden so only up-to-date coverage data is shown.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Editing test input clears coverage result",
+          "given_context": "A coverage result is currently displayed",
+          "when_action": "User edits the test input",
+          "then_assertion": "Results panel is hidden",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Story input persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "A user's story input is preserved in state so that navigating away and returning to the page does not lose their entered text.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Story input persists after navigating away and back",
+          "given_context": "User has entered a user story on the Story Coverage page",
+          "when_action": "User navigates to another page and returns to Story Coverage",
+          "then_assertion": "Story input still contains the previously entered text",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Test input persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "A user's test case input is preserved in state so that navigating away and returning to the page does not lose their entered text.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Test input persists after navigating away and back",
+          "given_context": "User has entered test cases on the Story Coverage page",
+          "when_action": "User navigates to another page and returns to Story Coverage",
+          "then_assertion": "Test input still contains the previously entered text",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Selector state persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "A user's format and testing layer selections are preserved so that navigating away and returning to the page restores their chosen configuration.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selector state persists after navigating away and back",
+          "given_context": "User has selected a test format and a testing layer",
+          "when_action": "User navigates to another page and returns to Story Coverage",
+          "then_assertion": "Format selection and testing layer selection are both unchanged",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Coverage result persists after navigating away and back",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "A previously generated coverage result remains visible when the user navigates away and returns, avoiding the need to re-run the check.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Coverage result persists after navigating away and back",
+          "given_context": "A coverage result is currently displayed",
+          "when_action": "User navigates to another page and returns to Story Coverage",
+          "then_assertion": "Results panel is still visible",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "State resets on logout",
+      "feature": "Story vs. Test Coverage \u2014 UI behaviour (mocked API)",
+      "traceability_annotations": [
+        "@SHIFT-61"
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given I am on the Story Coverage page",
+          "explanation": "Navigates to the Story Coverage page before each scenario to establish a clean starting state."
+        }
+      ],
+      "journey": "When a user logs out, all Story Coverage page state is cleared so that a subsequent session starts fresh with no residual data.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "State resets on logout",
+          "given_context": "User is logged in, on the Story Coverage page, with a user story and test cases entered",
+          "when_action": "User logs out and returns to the Story Coverage page",
+          "then_assertion": "Story input and test input are both empty",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

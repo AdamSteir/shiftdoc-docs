@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:20:26Z",
+    "source_file": "selenium.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Selenium - PO - single test, core output structure",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single Selenium test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selenium - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'selenium' and role 'Product Owner', uploads 'selenium_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Selenium - PO - Parameterized expands one test per row",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven Selenium fixture and verifies that the analysis expands parameterized tests so the JSON output contains one entry per data row (3 or more tests).",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selenium - PO - Parameterized expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'selenium' and role 'Product Owner', uploads 'selenium_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Selenium - QAM - single test, coverage matrix populated",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single Selenium test fixture and verifies that the analysis produces valid JSON output where the first test includes a populated test_coverage_matrix array.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selenium - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'selenium' and role 'QA Manager', uploads 'selenium_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Selenium - QAM - Parameterized collapses",
+      "feature": "Selenium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven Selenium fixture and verifies that the analysis collapses parameterized tests into exactly one test entry whose coverage matrix rows match the number of data examples and conform to the generic schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Selenium - QAM - Parameterized collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'selenium' and role 'QA Manager', uploads 'selenium_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows use the correct generic schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

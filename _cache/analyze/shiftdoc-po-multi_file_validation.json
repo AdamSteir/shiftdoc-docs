@@ -1,0 +1,138 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:02:40Z",
+    "source_file": "multi_file_validation.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Adding more than the maximum files shows a warning toast and rejects the file",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "description": "Verifies that attempting to add a file beyond the maximum queue limit is blocked and the user is notified with a warning.",
+      "test_coverage": [
+        {
+          "verification_step": "Fill queue to maximum and attempt to add another file",
+          "what_it_checks": "The system prevents adding files beyond the maximum allowed limit"
+        },
+        {
+          "verification_step": "Warning toast appears",
+          "what_it_checks": "The user receives a visible notification explaining the file limit has been reached"
+        },
+        {
+          "verification_step": "Queue file count does not increase",
+          "what_it_checks": "The rejected file is not added to the queue"
+        }
+      ]
+    },
+    {
+      "test_name": "Adding two files when one slot remains toasts and accepts only the first",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "description": "Verifies that when only one queue slot remains and two files are added simultaneously, the system accepts the first file, rejects the second, and notifies the user.",
+      "test_coverage": [
+        {
+          "verification_step": "Fill queue to 19 files and attempt to add 2 at once",
+          "what_it_checks": "The system handles partial acceptance when the batch addition would exceed the limit"
+        },
+        {
+          "verification_step": "Warning toast appears",
+          "what_it_checks": "The user is informed that the file limit was hit during the batch upload"
+        },
+        {
+          "verification_step": "Queue shows 20 files",
+          "what_it_checks": "Exactly one of the two files was accepted, filling the queue to its maximum"
+        }
+      ]
+    },
+    {
+      "test_name": "A file with no test cases shows an error badge at selection time",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "description": "Verifies that a BDD file containing no test cases is immediately flagged with an error badge and a descriptive message when added to the queue.",
+      "test_coverage": [
+        {
+          "verification_step": "Add a BDD fixture file with no scenarios",
+          "what_it_checks": "The system detects that the file contains no test cases at the point of selection"
+        },
+        {
+          "verification_step": "File row shows an error badge",
+          "what_it_checks": "The user can clearly see which file in the queue is invalid"
+        },
+        {
+          "verification_step": "Error message mentions 'No test cases found'",
+          "what_it_checks": "The user receives a clear explanation of why the file is invalid"
+        }
+      ]
+    },
+    {
+      "test_name": "A file in the wrong format shows a warning badge at selection time",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "description": "Verifies that adding a file whose format does not match the selected analysis format results in a warning badge on that file's queue entry.",
+      "test_coverage": [
+        {
+          "verification_step": "Select BDD format and add a Playwright spec file",
+          "what_it_checks": "The system detects a mismatch between the selected analysis format and the file's actual format"
+        },
+        {
+          "verification_step": "File row shows a warning badge",
+          "what_it_checks": "The user is alerted that the file may not be compatible with the chosen analysis format"
+        }
+      ]
+    },
+    {
+      "test_name": "A file that exceeds the size limit shows an error badge at selection time",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "description": "Verifies that a file exceeding the allowed size limit is immediately flagged with an error badge and a descriptive message when added to the queue.",
+      "test_coverage": [
+        {
+          "verification_step": "Add an oversized file to the queue",
+          "what_it_checks": "The system detects that the file exceeds the permitted size at the point of selection"
+        },
+        {
+          "verification_step": "File row shows an error badge",
+          "what_it_checks": "The user can clearly see which file in the queue is too large"
+        },
+        {
+          "verification_step": "Error message mentions 'File too large'",
+          "what_it_checks": "The user receives a clear explanation of why the file was rejected"
+        }
+      ]
+    },
+    {
+      "test_name": "A valid file shows an ok badge",
+      "feature": "Multi-file mode \u2014 file limits and validation",
+      "traceability_annotations": [
+        "@SHIFT-50"
+      ],
+      "description": "Verifies that a well-formed BDD file matching the selected analysis format is accepted and shown with a positive status badge in the queue.",
+      "test_coverage": [
+        {
+          "verification_step": "Select BDD format and add a valid BDD fixture file",
+          "what_it_checks": "The system correctly identifies the file as valid for the chosen analysis format"
+        },
+        {
+          "verification_step": "File row shows an ok badge",
+          "what_it_checks": "The user receives clear confirmation that the file is ready for analysis"
+        }
+      ]
+    }
+  ]
+}

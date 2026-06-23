@@ -1,0 +1,31 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:07:41Z",
+    "source_file": "version_check.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Stale frontend shows update modal when Analyze is clicked",
+      "feature": "Version mismatch detection",
+      "traceability_annotations": [
+        "@SHIFT-47"
+      ],
+      "journey": "A user with a stale frontend attempts to run an analysis and is blocked by an update-required modal prompting them to reload.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Stale frontend shows update modal when Analyze is clicked",
+          "given_context": "User is on the Analyze page and the backend reports a version mismatch",
+          "when_action": "User selects format 'bdd' and role 'QA Manager', uploads fixture 'bdd_sample.feature', and clicks Analyze",
+          "then_assertion": "An update-required modal is displayed containing a reload button",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    }
+  ]
+}

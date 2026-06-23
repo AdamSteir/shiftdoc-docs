@@ -1,0 +1,82 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:12:48Z",
+    "source_file": "appium.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Appium - PO - single test, core output structure",
+      "feature": "Appium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "journey": "A Product Owner uploads a single Appium test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Appium - PO - single test, core output structure",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'appium' and role 'Product Owner', uploads 'appium_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Appium - PO - DataProvider expands one test per row",
+      "feature": "Appium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "journey": "A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own named test entry in the JSON output.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Appium - PO - DataProvider expands one test per row",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'appium' and role 'Product Owner', uploads 'appium_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Appium - QAM - single test, coverage matrix populated",
+      "feature": "Appium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "journey": "A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Appium - QAM - single test, coverage matrix populated",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'appium' and role 'QA Manager', uploads 'appium_single_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Appium - QAM - DataProvider collapses",
+      "feature": "Appium Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "journey": "A QA Manager uploads a data-driven Appium fixture and verifies that DataProvider rows collapse into a single named test whose coverage matrix rows match the example count and conform to the generic schema.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Appium - QAM - DataProvider collapses",
+          "given_context": "User is on the Analyze page",
+          "when_action": "Selects format 'appium' and role 'QA Manager', uploads 'appium_datadriven_sample.java', and clicks 'Document test cases'",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains exactly 1 test, that test has a non-empty test_name, coverage matrix row count matches the DataProvider examples, and all coverage matrix rows use the correct generic schema",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

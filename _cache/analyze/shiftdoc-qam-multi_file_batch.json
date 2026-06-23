@@ -1,0 +1,164 @@
+{
+  "shiftdoc": {
+    "schema": "qa-manager",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:00:31Z",
+    "source_file": "multi_file_batch.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "qam",
+    "role_label": "QA Manager"
+  },
+  "tests": [
+    {
+      "test_name": "Submit button is disabled when the queue is empty",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-48"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user enables multi-file mode and sees the submit button disabled when no files have been added to the queue.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Submit button is disabled when the queue is empty",
+          "given_context": "Analysis and multi-file APIs are mocked; user is on the Analyze page",
+          "when_action": "User enables multi-file mode",
+          "then_assertion": "The submit button is disabled",
+          "gherkin_type": "Negative"
+        }
+      ]
+    },
+    {
+      "test_name": "Submitting a valid multi-file batch shows the batch status card",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user enables multi-file mode, configures format and role, adds a file, submits the batch, and verifies the batch status card appears while the results panel remains hidden.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Submitting a valid multi-file batch shows the batch status card",
+          "given_context": "Analysis and multi-file APIs are mocked; user is on the Analyze page",
+          "when_action": "User enables multi-file mode, selects format 'bdd' and role 'Product Owner', adds a fixture file, and clicks submit",
+          "then_assertion": "The batch status card is visible and the results panel is not visible",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card shows the job reference and polling message",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user submits a valid multi-file batch and verifies that the resulting batch status card displays both a job ID reference and a polling status message.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Batch status card shows the job reference and polling message",
+          "given_context": "Analysis and multi-file APIs are mocked; user is on the Analyze page",
+          "when_action": "User enables multi-file mode, selects format 'bdd' and role 'Product Owner', adds a fixture file, and clicks submit",
+          "then_assertion": "The batch status card is visible, shows a job_id reference, and shows the polling message",
+          "gherkin_type": "Positive"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card remains visible after switching back to single-file mode",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user submits a multi-file batch, then switches back to single-file mode, and verifies the batch status card persists and is not dismissed by the mode toggle.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Batch status card remains visible after switching back to single-file mode",
+          "given_context": "Analysis and multi-file APIs are mocked; user is on the Analyze page; a batch has been submitted and the status card is visible",
+          "when_action": "User disables multi-file mode",
+          "then_assertion": "The batch status card is still visible",
+          "gherkin_type": "Edge Case"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card summary row shows format, role and file count",
+      "feature": "Multi-file mode \u2014 submit and batch status card",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "execution_annotations": [
+        {
+          "type": "Tag",
+          "value": "@requires_login"
+        }
+      ],
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked; And the multi-file API is mocked; And I am on the Analyze page",
+          "explanation": "Mocks both the analysis and multi-file APIs and navigates to the Analyze page before each scenario."
+        }
+      ],
+      "journey": "A logged-in user submits a single-file multi-file batch and verifies that the batch status card summary row accurately reflects the selected format, role, and a file count of one.",
+      "test_coverage_matrix": [
+        {
+          "scenario": "Batch status card summary row shows format, role and file count",
+          "given_context": "Analysis and multi-file APIs are mocked; user is on the Analyze page",
+          "when_action": "User enables multi-file mode, selects format 'bdd' and role 'Product Owner', adds one fixture file, and clicks submit",
+          "then_assertion": "The batch status card shows the format label, the role label 'Product Owner', and a file count of '1'",
+          "gherkin_type": "Positive"
+        }
+      ]
+    }
+  ]
+}

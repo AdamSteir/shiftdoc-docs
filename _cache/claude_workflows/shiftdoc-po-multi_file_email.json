@@ -1,0 +1,106 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:16:15Z",
+    "source_file": "multi_file_email.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Submitting a multi-file batch returns 202 Accepted",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that when a Product Owner submits multiple files for batch analysis, the system accepts the request and confirms it is being processed.",
+      "test_coverage": [
+        {
+          "verification_step": "Enable multi-file mode and queue two files",
+          "what_it_checks": "The user can add multiple files to a batch submission queue"
+        },
+        {
+          "verification_step": "Click the submit button",
+          "what_it_checks": "The batch submission can be triggered by the user"
+        },
+        {
+          "verification_step": "Batch status card appears",
+          "what_it_checks": "The user receives visible confirmation that their batch is being processed"
+        },
+        {
+          "verification_step": "Backend accepted the request with status 202",
+          "what_it_checks": "The system correctly acknowledges the batch request as accepted for async processing"
+        }
+      ]
+    },
+    {
+      "test_name": "A multifile_batch_complete event is logged after the batch completes",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-52"
+      ],
+      "description": "Verifies that completing a multi-file batch submission generates a usage log event with a valid processing time, supporting analytics and monitoring.",
+      "test_coverage": [
+        {
+          "verification_step": "Submit a single-file batch",
+          "what_it_checks": "A minimal batch submission triggers the completion event flow"
+        },
+        {
+          "verification_step": "A multifile_batch_complete usage log event is recorded",
+          "what_it_checks": "The system logs a completion event for auditing and usage tracking purposes"
+        },
+        {
+          "verification_step": "The event has a positive processing_ms value",
+          "what_it_checks": "The logged event captures a meaningful processing duration, confirming timing data is recorded"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card transitions to complete state after processing finishes",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that the batch status card progresses from a processing state to a completion state and notifies the user that results have been emailed.",
+      "test_coverage": [
+        {
+          "verification_step": "Batch status card shown in polling state",
+          "what_it_checks": "The user can see that their batch is actively being processed after submission"
+        },
+        {
+          "verification_step": "Wait for batch status card to show completion",
+          "what_it_checks": "The status card updates automatically when processing finishes without requiring user action"
+        },
+        {
+          "verification_step": "Batch status card shows 'Results emailed'",
+          "what_it_checks": "The user is clearly informed that their results have been delivered to their email"
+        }
+      ]
+    },
+    {
+      "test_name": "Batch status card can be dismissed after completion",
+      "feature": "Multi-file batch processing and email delivery",
+      "traceability_annotations": [
+        "@SHIFT-51"
+      ],
+      "description": "Verifies that once batch processing is complete, the user can dismiss the status card to clean up their workspace.",
+      "test_coverage": [
+        {
+          "verification_step": "Wait for batch status card to show completion",
+          "what_it_checks": "The dismiss option is only available after the batch has fully completed"
+        },
+        {
+          "verification_step": "Click the dismiss button on the batch status card",
+          "what_it_checks": "The user can actively remove the status card from view"
+        },
+        {
+          "verification_step": "Batch status card is not visible",
+          "what_it_checks": "The card is fully removed from the page after dismissal, keeping the interface uncluttered"
+        }
+      ]
+    }
+  ]
+}

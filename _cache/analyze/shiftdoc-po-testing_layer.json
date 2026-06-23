@@ -1,0 +1,209 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T22:06:44Z",
+    "source_file": "testing_layer.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Testing layer selector renders on the Analyze page",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9"
+      ],
+      "description": "Verifies that the testing layer selector is visible to users when they arrive on the Analyze page.",
+      "test_coverage": [
+        {
+          "verification_step": "Then the testing layer selector is visible",
+          "what_it_checks": "The testing layer selector is present and visible on the Analyze page"
+        }
+      ]
+    },
+    {
+      "test_name": "Selecting a layer shows it in the dropdown summary",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9"
+      ],
+      "description": "Verifies that when a user selects a testing layer, the selection is reflected in the dropdown summary display.",
+      "test_coverage": [
+        {
+          "verification_step": "When I select testing layer \"Unit\"",
+          "what_it_checks": "User can select a predefined testing layer"
+        },
+        {
+          "verification_step": "Then the testing layer selector shows \"Unit\"",
+          "what_it_checks": "The selected layer name appears in the dropdown summary"
+        }
+      ]
+    },
+    {
+      "test_name": "Selected testing layers appear in the analysis metadata",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9",
+        "@SHIFT-10"
+      ],
+      "description": "Verifies that a testing layer selected by the user is recorded in the JSON output metadata produced by the analysis.",
+      "test_coverage": [
+        {
+          "verification_step": "When I select testing layer \"Unit\"",
+          "what_it_checks": "User selects a testing layer before running analysis"
+        },
+        {
+          "verification_step": "And the JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON output is complete with no missing or placeholder values"
+        },
+        {
+          "verification_step": "And the JSON shiftdoc metadata includes testing layer \"unit\"",
+          "what_it_checks": "The selected testing layer is correctly captured in the analysis output metadata"
+        }
+      ]
+    },
+    {
+      "test_name": "Entering a custom layer via Other shows it in the dropdown summary",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-9",
+        "@SHIFT-11"
+      ],
+      "description": "Verifies that a custom testing layer name typed by the user appears in the dropdown summary.",
+      "test_coverage": [
+        {
+          "verification_step": "When I enter custom testing layer \"smoke-only\"",
+          "what_it_checks": "User can type a custom testing layer name using the Other option"
+        },
+        {
+          "verification_step": "Then the testing layer selector shows \"smoke-only\"",
+          "what_it_checks": "The custom layer name is displayed in the dropdown summary"
+        }
+      ]
+    },
+    {
+      "test_name": "Typing more than 50 characters in Other shows an error",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "description": "Verifies that the application shows an error when a user types a custom testing layer name exceeding the 50-character limit.",
+      "test_coverage": [
+        {
+          "verification_step": "When I type a 51-character string into the Other layer input",
+          "what_it_checks": "User enters a custom layer name that exceeds the allowed character limit"
+        },
+        {
+          "verification_step": "Then the testing layer shows an over-limit error",
+          "what_it_checks": "An error message is displayed indicating the input is too long"
+        }
+      ]
+    },
+    {
+      "test_name": "Selecting 4 or more layers falls back silently and analysis still runs",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-12"
+      ],
+      "description": "Verifies that selecting four or more testing layers does not break the analysis and output is still produced without disrupting the user experience.",
+      "test_coverage": [
+        {
+          "verification_step": "When I select testing layers Unit, Integration, API / Contract, and UI / Component",
+          "what_it_checks": "User selects four or more testing layers simultaneously"
+        },
+        {
+          "verification_step": "Then I see documentation in the output panel",
+          "what_it_checks": "Analysis completes successfully and results are shown despite the high number of layers selected"
+        }
+      ]
+    },
+    {
+      "test_name": "A custom layer entered via Other appears in the analysis metadata",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-10",
+        "@SHIFT-11"
+      ],
+      "description": "Verifies that a custom testing layer name entered by the user is correctly included in the JSON analysis output metadata.",
+      "test_coverage": [
+        {
+          "verification_step": "And I enter custom testing layer \"smoke-layer\"",
+          "what_it_checks": "User provides a custom testing layer name before running analysis"
+        },
+        {
+          "verification_step": "And the JSON output has no unresolved values",
+          "what_it_checks": "The downloaded JSON output is complete with no missing or placeholder values"
+        },
+        {
+          "verification_step": "And the JSON shiftdoc metadata includes testing layer \"smoke-layer\"",
+          "what_it_checks": "The custom testing layer name is correctly saved in the analysis output metadata"
+        }
+      ]
+    },
+    {
+      "test_name": "Error below trigger persists after dropdown is closed with 51+ char Other text",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "description": "Verifies that the character-limit error for a custom testing layer remains visible even after the user closes the dropdown.",
+      "test_coverage": [
+        {
+          "verification_step": "When I type a 51-character string into the Other layer input",
+          "what_it_checks": "User enters a custom layer name exceeding the character limit"
+        },
+        {
+          "verification_step": "And I close the testing layer dropdown",
+          "what_it_checks": "User closes the dropdown after triggering the error"
+        },
+        {
+          "verification_step": "Then the collapsed layer error is visible below the trigger",
+          "what_it_checks": "The error message persists and remains visible in the collapsed state"
+        }
+      ]
+    },
+    {
+      "test_name": "Analyze button is disabled while Other text exceeds 50 characters",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "description": "Verifies that users cannot run analysis when a custom testing layer name exceeds the 50-character limit, preventing invalid submissions.",
+      "test_coverage": [
+        {
+          "verification_step": "And I type a 51-character string into the Other layer input",
+          "what_it_checks": "User enters an over-limit custom layer name with a file already uploaded"
+        },
+        {
+          "verification_step": "Then the Analyze button is disabled",
+          "what_it_checks": "The Analyze button is blocked from submission while the input error exists"
+        }
+      ]
+    },
+    {
+      "test_name": "Analyze button re-enables once the Other text error is fixed",
+      "feature": "Testing Layer Selection",
+      "traceability_annotations": [
+        "@SHIFT-13"
+      ],
+      "description": "Verifies that the Analyze button becomes available again once the user corrects a custom testing layer name that was over the character limit.",
+      "test_coverage": [
+        {
+          "verification_step": "And I type a 51-character string into the Other layer input",
+          "what_it_checks": "User enters an over-limit custom layer name, disabling the Analyze button"
+        },
+        {
+          "verification_step": "And I delete one character from the Other layer input",
+          "what_it_checks": "User corrects the input by reducing it to within the allowed limit"
+        },
+        {
+          "verification_step": "Then the Analyze button is enabled",
+          "what_it_checks": "The Analyze button becomes active again once the error is resolved"
+        }
+      ]
+    }
+  ]
+}
