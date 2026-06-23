@@ -1,0 +1,74 @@
+name: Generate and Deploy Docs
+
+on:
+  workflow_dispatch:
+    inputs:
+      files:
+        description: "Space-separated file stems to re-run (e.g. multi_file_queue story_coverage_mocked). Leave blank to run all."
+        required: false
+        default: ""
+      limit:
+        description: "Cap the number of files processed (for smoke testing). Leave blank for no limit."
+        required: false
+        default: ""
+  repository_dispatch:
+    types: [tests-updated]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout shiftdoc-docs
+        uses: actions/checkout@v4
+
+      - name: Checkout shiftdoc-tests
+        uses: actions/checkout@v4
+        with:
+          repository: AdamSteir/shiftdoc-tests
+          path: shiftdoc-tests
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate cache
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.files }}" ]; then
+            ARGS="--files ${{ github.event.inputs.files }}"
+          elif [ -n "${{ github.event.inputs.limit }}" ]; then
+            ARGS="--limit ${{ github.event.inputs.limit }}"
+          fi
+          python generate.py shiftdoc-tests/features $ARGS
+
+      - name: Build site
+        run: python build.py
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
