@@ -11,6 +11,10 @@ on:
         description: "Cap the number of files processed (for smoke testing). Leave blank for no limit."
         required: false
         default: ""
+      rebuild_only:
+        description: "Skip generate entirely and just rebuild + deploy from existing cache. Set to 'true'."
+        required: false
+        default: ""
   repository_dispatch:
     types: [tests-updated]
 
@@ -44,6 +48,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate cache
+        if: github.event.inputs.rebuild_only != 'true'
         run: |
           if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
             FILES="${{ github.event.client_payload.files }}"
