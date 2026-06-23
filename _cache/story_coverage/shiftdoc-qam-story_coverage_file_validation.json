@@ -3,7 +3,7 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:03:56Z",
+    "generated": "2026-06-23T23:33:31Z",
     "source_file": "story_coverage_file_validation.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
@@ -29,13 +29,13 @@
           "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user uploads a story file and verifies the story input is populated, the filename is displayed, and the Check Coverage button stays disabled until test cases are also provided.",
+      "journey": "A user uploads a story file and verifies the story input is populated with the filename displayed, while the Check Coverage button remains disabled until test cases are also provided.",
       "test_coverage_matrix": [
         {
           "scenario": "Story file upload populates story input",
           "given_context": "User is on the Story Coverage page",
           "when_action": "User uploads a story file",
-          "then_assertion": "Story input is populated, story filename is shown, and Check Coverage button remains disabled until test cases are provided",
+          "then_assertion": "Story input is populated, story filename is shown, and Check Coverage button remains disabled without test cases",
           "gherkin_type": "Positive"
         }
       ]
@@ -59,13 +59,13 @@
           "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user uploads a test case file and verifies the test input is populated, the filename is displayed, and the Check Coverage button stays disabled until a story is also provided.",
+      "journey": "A user uploads a test case file and verifies the test input is populated with the filename displayed, while the Check Coverage button remains disabled until a story is also provided.",
       "test_coverage_matrix": [
         {
           "scenario": "Test case file upload populates test input",
           "given_context": "User is on the Story Coverage page",
           "when_action": "User uploads a test case file",
-          "then_assertion": "Test input is populated, test case filename is shown, and Check Coverage button remains disabled until a story is provided",
+          "then_assertion": "Test input is populated, test case filename is shown, and Check Coverage button remains disabled without a story",
           "gherkin_type": "Positive"
         }
       ]
@@ -89,13 +89,13 @@
           "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user pastes content exceeding the 50,000 character limit into the story input and sees a 'too long' error message.",
+      "journey": "A user pastes content exceeding the 50,000 character limit into the story input and sees an error indicating the pasted text is too long.",
       "test_coverage_matrix": [
         {
           "scenario": "Pasting a story that exceeds the character limit shows an error",
           "given_context": "User is on the Story Coverage page",
           "when_action": "User pastes 50001 characters into the story input",
-          "then_assertion": "A story paste error containing 'too long' is displayed",
+          "then_assertion": "A paste error message containing 'too long' is displayed",
           "gherkin_type": "Boundary"
         }
       ]
@@ -119,7 +119,7 @@
           "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user pastes content at exactly the 50,000 character limit and verifies it is accepted without any error.",
+      "journey": "A user pastes content at exactly the 50,000 character limit into the story input and verifies no error is shown and the input is successfully populated.",
       "test_coverage_matrix": [
         {
           "scenario": "Pasting a story at exactly the character limit is accepted",
@@ -149,7 +149,7 @@
           "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user uploads a file with an unsupported type to the story input and sees an inline error while the story input remains empty.",
+      "journey": "A user uploads a file of an unsupported type to the story dropzone and verifies an inline error is shown while the story input remains empty.",
       "test_coverage_matrix": [
         {
           "scenario": "Uploading an unsupported file type to the story input shows an inline error",
@@ -179,12 +179,12 @@
           "explanation": "Navigates the user to the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user drops multiple files onto the test case input, sees a dismissible multi-file warning with the input left empty, and then successfully dismisses the warning.",
+      "journey": "A user drops multiple files onto the test case input, sees a multi-file drop warning with the input remaining empty, and then dismisses the warning successfully.",
       "test_coverage_matrix": [
         {
           "scenario": "Dropping multiple files onto the test case input shows a dismissible warning",
           "given_context": "User is on the Story Coverage page",
-          "when_action": "User drops multiple files onto the story coverage test case input, then dismisses the warning",
+          "when_action": "User drops multiple files onto the test case input, then dismisses the warning",
           "then_assertion": "A multi-file drop warning is shown and the test input is empty; after dismissal the warning is no longer visible",
           "gherkin_type": "Edge Case"
         }

@@ -3,7 +3,7 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:06:12Z",
+    "generated": "2026-06-23T23:35:47Z",
     "source_file": "story_coverage_results_download_mocked.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
@@ -21,7 +21,7 @@
         {
           "type": "Background",
           "name": "Given I am on the Story Coverage page",
-          "explanation": "Ensures each scenario begins with the user already on the Story Coverage page, avoiding repeated navigation steps inline."
+          "explanation": "Ensures the user starts on the Story Coverage page before each scenario runs."
         }
       ],
       "example_groups": [
@@ -43,24 +43,24 @@
           ]
         }
       ],
-      "journey": "A user downloads a coverage result from an uploaded story file and verifies the downloaded filename extension matches the selected export format.",
+      "journey": "A user downloads a coverage result derived from an uploaded story file and verifies the downloaded file carries the correct extension for each supported format.",
       "test_coverage_matrix": [
         {
-          "example": "MD format",
+          "example": "MD download",
           "given_context": "A coverage result is displayed from an uploaded story file",
           "when_action": "User clicks the Download MD button",
           "then_assertion": "Downloaded file is named shiftdoc-tca-story_sample.md",
           "gherkin_type": "Positive"
         },
         {
-          "example": "HTML format",
+          "example": "HTML download",
           "given_context": "A coverage result is displayed from an uploaded story file",
           "when_action": "User clicks the Download HTML button",
           "then_assertion": "Downloaded file is named shiftdoc-tca-story_sample.html",
           "gherkin_type": "Positive"
         },
         {
-          "example": "JSON format",
+          "example": "JSON download",
           "given_context": "A coverage result is displayed from an uploaded story file",
           "when_action": "User clicks the Download JSON button",
           "then_assertion": "Downloaded file is named shiftdoc-tca-story_sample.json",
@@ -78,16 +78,16 @@
         {
           "type": "Background",
           "name": "Given I am on the Story Coverage page",
-          "explanation": "Ensures each scenario begins with the user already on the Story Coverage page, avoiding repeated navigation steps inline."
+          "explanation": "Ensures the user starts on the Story Coverage page before each scenario runs."
         }
       ],
-      "journey": "A user who pasted story content rather than uploading a file downloads the coverage result and verifies the filename falls back to a date-time stamp pattern instead of a story-derived name.",
+      "journey": "A user who pasted story content rather than uploading a file downloads a coverage result and verifies the filename falls back to a date-time-stamped pattern instead of a story-derived name.",
       "test_coverage_matrix": [
         {
           "scenario": "Download filename falls back to date-time when story is pasted",
-          "given_context": "A coverage result is displayed with no uploaded file (pasted content)",
+          "given_context": "A coverage result is displayed with no uploaded story file (pasted input)",
           "when_action": "User clicks the Download MD button",
-          "then_assertion": "Downloaded filename matches the pattern shiftdoc-tca-\\d{8}-\\d{6}\\.md",
+          "then_assertion": "Downloaded filename matches the regex pattern shiftdoc-tca-\\d{8}-\\d{6}\\.md",
           "gherkin_type": "Edge Case"
         }
       ]

@@ -3,7 +3,7 @@
     "schema": "product-owner",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:05:54Z",
+    "generated": "2026-06-23T23:35:29Z",
     "source_file": "story_coverage_results_download_mocked.feature",
     "model": "claude-sonnet-4-6",
     "role": "po",
@@ -20,19 +20,19 @@
       "traceability_annotations": [
         "@SHIFT-56"
       ],
-      "description": "Verifies that downloading coverage results in MD format produces a file with the correct .md extension and the original story filename.",
+      "description": "Verifies that downloading coverage results in MD format produces a file with the correct name and extension based on the uploaded story file.",
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed from an uploaded story file",
-          "what_it_checks": "A coverage result is available based on a story file the user uploaded"
+          "what_it_checks": "Coverage results are available from a named uploaded story file"
         },
         {
           "verification_step": "When I click the Download MD button",
-          "what_it_checks": "The user initiates a download in Markdown format"
+          "what_it_checks": "User can trigger a download in Markdown format"
         },
         {
           "verification_step": "Then the downloaded file is named \"shiftdoc-tca-story_sample.md\"",
-          "what_it_checks": "The downloaded file carries the correct name derived from the uploaded story file and the .md extension"
+          "what_it_checks": "Downloaded file name reflects the original story filename and uses the .md extension"
         }
       ]
     },
@@ -46,19 +46,19 @@
       "traceability_annotations": [
         "@SHIFT-56"
       ],
-      "description": "Verifies that downloading coverage results in HTML format produces a file with the correct .html extension and the original story filename.",
+      "description": "Verifies that downloading coverage results in HTML format produces a file with the correct name and extension based on the uploaded story file.",
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed from an uploaded story file",
-          "what_it_checks": "A coverage result is available based on a story file the user uploaded"
+          "what_it_checks": "Coverage results are available from a named uploaded story file"
         },
         {
           "verification_step": "When I click the Download HTML button",
-          "what_it_checks": "The user initiates a download in HTML format"
+          "what_it_checks": "User can trigger a download in HTML format"
         },
         {
           "verification_step": "Then the downloaded file is named \"shiftdoc-tca-story_sample.html\"",
-          "what_it_checks": "The downloaded file carries the correct name derived from the uploaded story file and the .html extension"
+          "what_it_checks": "Downloaded file name reflects the original story filename and uses the .html extension"
         }
       ]
     },
@@ -72,19 +72,19 @@
       "traceability_annotations": [
         "@SHIFT-56"
       ],
-      "description": "Verifies that downloading coverage results in JSON format produces a file with the correct .json extension and the original story filename.",
+      "description": "Verifies that downloading coverage results in JSON format produces a file with the correct name and extension based on the uploaded story file.",
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed from an uploaded story file",
-          "what_it_checks": "A coverage result is available based on a story file the user uploaded"
+          "what_it_checks": "Coverage results are available from a named uploaded story file"
         },
         {
           "verification_step": "When I click the Download JSON button",
-          "what_it_checks": "The user initiates a download in JSON format"
+          "what_it_checks": "User can trigger a download in JSON format"
         },
         {
           "verification_step": "Then the downloaded file is named \"shiftdoc-tca-story_sample.json\"",
-          "what_it_checks": "The downloaded file carries the correct name derived from the uploaded story file and the .json extension"
+          "what_it_checks": "Downloaded file name reflects the original story filename and uses the .json extension"
         }
       ]
     },
@@ -94,19 +94,19 @@
       "traceability_annotations": [
         "@SHIFT-56"
       ],
-      "description": "Verifies that when a user pastes story content instead of uploading a file, the downloaded coverage report uses a date-time stamp in its filename rather than a story-derived name.",
+      "description": "Verifies that when coverage results come from pasted story text (no file name available), the downloaded file is automatically named using a date-time timestamp instead.",
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed",
-          "what_it_checks": "A coverage result is available from pasted story content (no uploaded file)"
+          "what_it_checks": "Coverage results are available from pasted story text with no associated filename"
         },
         {
           "verification_step": "When I click the Download MD button",
-          "what_it_checks": "The user initiates a download in Markdown format"
+          "what_it_checks": "User triggers a download in Markdown format"
         },
         {
           "verification_step": "Then the downloaded file matches \"shiftdoc-tca-\\d{8}-\\d{6}\\.md\"",
-          "what_it_checks": "The downloaded filename contains a date-time stamp instead of a story name, ensuring a meaningful fallback when no filename is available"
+          "what_it_checks": "Downloaded file is automatically named with a date-time stamp when no story filename exists"
         }
       ]
     }

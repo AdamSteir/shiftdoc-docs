@@ -1,0 +1,158 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-23T23:33:05Z",
+    "source_file": "story_coverage_file_validation.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Story file upload populates story input",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "Verifies that uploading a story file correctly populates the story input area, displays the filename, and keeps the Check Coverage button disabled until test cases are also provided.",
+      "test_coverage": [
+        {
+          "verification_step": "When I upload a story file",
+          "what_it_checks": "A story file can be uploaded to the Story Coverage page"
+        },
+        {
+          "verification_step": "Then the story input is populated",
+          "what_it_checks": "The story content appears in the input area after upload"
+        },
+        {
+          "verification_step": "And the story filename is shown",
+          "what_it_checks": "The uploaded file's name is displayed to the user"
+        },
+        {
+          "verification_step": "And the Check Coverage button remains disabled until test cases are provided",
+          "what_it_checks": "The action button stays inactive when only a story is provided and test cases are still missing"
+        }
+      ]
+    },
+    {
+      "test_name": "Test case file upload populates test input",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "Verifies that uploading a test case file correctly populates the test input area, displays the filename, and keeps the Check Coverage button disabled until a story is also provided.",
+      "test_coverage": [
+        {
+          "verification_step": "When I upload a test case file",
+          "what_it_checks": "A test case file can be uploaded to the Story Coverage page"
+        },
+        {
+          "verification_step": "Then the test input is populated",
+          "what_it_checks": "The test case content appears in the input area after upload"
+        },
+        {
+          "verification_step": "And the test case filename is shown",
+          "what_it_checks": "The uploaded file's name is displayed to the user"
+        },
+        {
+          "verification_step": "And the Check Coverage button remains disabled until a story is provided",
+          "what_it_checks": "The action button stays inactive when only test cases are provided and a story is still missing"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting a story that exceeds the character limit shows an error",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "Verifies that pasting story content exceeding the 50,000-character limit produces a clear error message indicating the content is too long.",
+      "test_coverage": [
+        {
+          "verification_step": "When I paste 50001 characters into the story input",
+          "what_it_checks": "The system enforces the maximum character limit when content is pasted"
+        },
+        {
+          "verification_step": "Then I see a story paste error containing 'too long'",
+          "what_it_checks": "A meaningful error message is shown to the user when the character limit is exceeded"
+        }
+      ]
+    },
+    {
+      "test_name": "Pasting a story at exactly the character limit is accepted",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "Verifies that pasting story content at exactly the 50,000-character limit is accepted without errors and the input is populated.",
+      "test_coverage": [
+        {
+          "verification_step": "When I paste 50000 characters into the story input",
+          "what_it_checks": "Content at the exact character boundary is not rejected"
+        },
+        {
+          "verification_step": "Then no paste error is shown",
+          "what_it_checks": "No error message appears when the content is within the allowed limit"
+        },
+        {
+          "verification_step": "And the story input is populated",
+          "what_it_checks": "The pasted content is successfully placed into the story input area"
+        }
+      ]
+    },
+    {
+      "test_name": "Uploading an unsupported file type to the story input shows an inline error",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "Verifies that uploading a file of an unsupported type to the story input displays an inline error and leaves the story input empty.",
+      "test_coverage": [
+        {
+          "verification_step": "When I upload an unsupported file to the story input",
+          "what_it_checks": "The system handles files with unsupported formats gracefully"
+        },
+        {
+          "verification_step": "Then the story dropzone shows an unsupported file type error",
+          "what_it_checks": "A clear error message is shown within the upload area informing the user the file type is not accepted"
+        },
+        {
+          "verification_step": "And the story input is empty",
+          "what_it_checks": "No content is loaded into the story input when an unsupported file is rejected"
+        }
+      ]
+    },
+    {
+      "test_name": "Dropping multiple files onto the test case input shows a dismissible warning",
+      "feature": "Story Coverage file upload validation",
+      "traceability_annotations": [
+        "@SHIFT-55"
+      ],
+      "description": "Verifies that dropping multiple files onto the test case upload area shows a warning, leaves the input empty, and allows the user to dismiss the warning.",
+      "test_coverage": [
+        {
+          "verification_step": "When I drop multiple files onto the story coverage test case input",
+          "what_it_checks": "The system detects and responds to a multi-file drop on the test case upload area"
+        },
+        {
+          "verification_step": "Then the test case input shows a multi-file drop warning",
+          "what_it_checks": "A warning message is displayed informing the user that only one file is accepted"
+        },
+        {
+          "verification_step": "And the test input is empty",
+          "what_it_checks": "No content is loaded into the test case input when multiple files are dropped"
+        },
+        {
+          "verification_step": "When I dismiss the test case multi-file drop warning",
+          "what_it_checks": "The user can actively close the warning message"
+        },
+        {
+          "verification_step": "Then the test case multi-file drop warning is dismissed",
+          "what_it_checks": "The warning disappears from the page after the user dismisses it"
+        }
+      ]
+    }
+  ]
+}
