@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when the file queue is already at its maximum capacity, attempting to add another file is blocked and the user receives a warning notification.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that attempting to add a file beyond the maximum queue limit is blocked and the user is notified with a warning.</span></div>
     
 
     
@@ -239,18 +239,18 @@
       <tbody>
         
         <tr>
-          <td>Fill queue to maximum then add one more</td>
-          <td>The system prevents exceeding the maximum file limit by rejecting the additional file</td>
+          <td>Fill queue to maximum and attempt to add another file</td>
+          <td>The system prevents adding files beyond the maximum allowed limit</td>
         </tr>
         
         <tr>
-          <td>Warning toast is displayed</td>
-          <td>The user is clearly notified that the file limit has been reached</td>
+          <td>Warning toast appears</td>
+          <td>The user receives a visible notification explaining the file limit has been reached</td>
         </tr>
         
         <tr>
           <td>Queue file count does not increase</td>
-          <td>The rejected file is not added to the queue, keeping the count at the maximum</td>
+          <td>The rejected file is not added to the queue</td>
         </tr>
         
       </tbody>
@@ -271,7 +271,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when only one slot remains in the queue and two files are added simultaneously, only the first file is accepted, the second is rejected, and the user receives a warning notification.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when only one queue slot remains and two files are added simultaneously, the system accepts the first file, rejects the second, and notifies the user.</span></div>
     
 
     
@@ -281,18 +281,18 @@
       <tbody>
         
         <tr>
-          <td>Fill queue to 19 files then add 2 at once</td>
-          <td>The system partially accepts a batch upload, taking only as many files as there are remaining slots</td>
+          <td>Fill queue to 19 files and attempt to add 2 at once</td>
+          <td>The system handles partial acceptance when the batch addition would exceed the limit</td>
         </tr>
         
         <tr>
-          <td>Warning toast is displayed</td>
-          <td>The user is notified that the file limit was reached and not all files could be added</td>
+          <td>Warning toast appears</td>
+          <td>The user is informed that the file limit was hit during the batch upload</td>
         </tr>
         
         <tr>
           <td>Queue shows 20 files</td>
-          <td>The queue reached the maximum of 20 and the overflow file was discarded</td>
+          <td>Exactly one of the two files was accepted, filling the queue to its maximum</td>
         </tr>
         
       </tbody>
@@ -323,13 +323,13 @@
       <tbody>
         
         <tr>
-          <td>Add a BDD file with no scenarios to the queue</td>
-          <td>The system detects that the file contains no runnable test cases at the point of selection</td>
+          <td>Add a BDD fixture file with no scenarios</td>
+          <td>The system detects that the file contains no test cases at the point of selection</td>
         </tr>
         
         <tr>
-          <td>Error badge appears on the file row</td>
-          <td>The user can visually identify which queued file has a problem</td>
+          <td>File row shows an error badge</td>
+          <td>The user can clearly see which file in the queue is invalid</td>
         </tr>
         
         <tr>
@@ -365,13 +365,13 @@
       <tbody>
         
         <tr>
-          <td>Select BDD format then add a Playwright file</td>
-          <td>The system detects a mismatch between the chosen analysis format and the file type being uploaded</td>
+          <td>Select BDD format and add a Playwright spec file</td>
+          <td>The system detects a mismatch between the selected analysis format and the file&#39;s actual format</td>
         </tr>
         
         <tr>
-          <td>Warning badge appears on the file row</td>
-          <td>The user is alerted that the file may not be processed correctly given the selected format</td>
+          <td>File row shows a warning badge</td>
+          <td>The user is alerted that the file may not be compatible with the chosen analysis format</td>
         </tr>
         
       </tbody>
@@ -403,12 +403,12 @@
         
         <tr>
           <td>Add an oversized file to the queue</td>
-          <td>The system enforces a maximum file size and flags violations at the point of selection</td>
+          <td>The system detects that the file exceeds the permitted size at the point of selection</td>
         </tr>
         
         <tr>
-          <td>Error badge appears on the file row</td>
-          <td>The user can visually identify that the oversized file cannot be processed</td>
+          <td>File row shows an error badge</td>
+          <td>The user can clearly see which file in the queue is too large</td>
         </tr>
         
         <tr>
@@ -434,7 +434,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a well-formed BDD file matching the selected analysis format receives a positive confirmation badge when added to the queue.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a well-formed BDD file matching the selected analysis format is accepted and shown with a positive status badge in the queue.</span></div>
     
 
     
@@ -444,13 +444,13 @@
       <tbody>
         
         <tr>
-          <td>Select BDD format then add a valid BDD file</td>
-          <td>The system correctly recognises a file that meets all format and content requirements</td>
+          <td>Select BDD format and add a valid BDD fixture file</td>
+          <td>The system correctly identifies the file as valid for the chosen analysis format</td>
         </tr>
         
         <tr>
-          <td>Ok badge appears on the file row</td>
-          <td>The user receives clear visual confirmation that the file is ready to be analysed</td>
+          <td>File row shows an ok badge</td>
+          <td>The user receives clear confirmation that the file is ready for analysis</td>
         </tr>
         
       </tbody>
@@ -485,7 +485,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who has filled the queue to the maximum file limit attempts to add one more file and is blocked by a warning toast with no change to the queue count.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who has already filled the queue to the maximum limit attempts to add one more file and is blocked with a warning toast, confirming the hard cap is enforced.</span></div>
     
 
     
@@ -566,7 +566,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with one slot remaining attempts to add two files simultaneously, resulting in a warning toast while only the first file is accepted to reach exactly the maximum queue size.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with one slot remaining in the queue attempts to add two files simultaneously; only the first is accepted, the second is rejected with a warning toast, verifying partial-batch boundary enforcement.</span></div>
     
 
     
@@ -647,7 +647,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user adds a BDD fixture file that contains no test cases and immediately sees an error badge on the file row with a message indicating no test cases were found.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects BDD format and adds a feature file that contains no scenarios; the queue immediately flags the file with an error badge and a descriptive message, preventing silent submission of empty files.</span></div>
     
 
     
@@ -677,7 +677,7 @@
           
           <td>
             
-              Multi-file mode is enabled and BDD analysis format is selected
+              Multi-file mode is enabled and analysis format is set to BDD
             
           </td>
           
@@ -728,7 +728,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with BDD format selected adds a Playwright TypeScript file and immediately sees a warning badge on the file row indicating a format mismatch.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects BDD format but adds a Playwright TypeScript spec file; the queue immediately flags the format mismatch with a warning badge, alerting the user before any analysis is triggered.</span></div>
     
 
     
@@ -758,7 +758,7 @@
           
           <td>
             
-              Multi-file mode is enabled and BDD analysis format is selected
+              Multi-file mode is enabled and analysis format is set to BDD
             
           </td>
           
@@ -809,7 +809,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user adds a file that exceeds the permitted size limit and immediately sees an error badge on the file row with a message indicating the file is too large.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user adds a file that exceeds the allowed size limit; the queue immediately rejects it with an error badge and a &#39;File too large&#39; message, enforcing the upload size constraint at selection time.</span></div>
     
 
     
@@ -890,7 +890,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user adds a well-formed BDD fixture file matching the selected format and sees an ok badge confirming the file passed all validations.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects BDD format and adds a well-formed feature file; the queue immediately confirms the file is valid by displaying an ok badge, providing positive feedback before submission.</span></div>
     
 
     
@@ -920,7 +920,7 @@
           
           <td>
             
-              Multi-file mode is enabled and BDD analysis format is selected
+              Multi-file mode is enabled and analysis format is set to BDD
             
           </td>
           

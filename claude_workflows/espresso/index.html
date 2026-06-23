@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Espresso test file receives valid, fully-resolved JSON documentation with at least one named test case.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Espresso test file receives properly structured documentation output with no missing or unresolved content.</span></div>
     
 
     
@@ -240,12 +240,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The analyze page produces visible output after processing the uploaded file</td>
+          <td>The system produces visible output after processing the uploaded test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All placeholders or template tokens in the output are fully populated</td>
+          <td>No placeholder or unfilled fields remain in the downloaded output</td>
         </tr>
         
         <tr>
@@ -255,12 +255,12 @@
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is extracted and represented in the output</td>
+          <td>At least one test case is represented in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test case is assigned a meaningful name</td>
+          <td>Each documented test case is assigned a readable name</td>
         </tr>
         
       </tbody>
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Espresso test file sees the parameterized test expanded into one documented test case per data row, yielding at least three named tests.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Espresso test file, each data row is expanded into its own individual test entry in the output.</span></div>
     
 
     
@@ -292,12 +292,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The analyze page produces visible output after processing the data-driven file</td>
+          <td>The system produces visible output after processing the data-driven test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All placeholders or template tokens in the output are fully populated</td>
+          <td>No placeholder or unfilled fields remain in the downloaded output</td>
         </tr>
         
         <tr>
@@ -307,12 +307,12 @@
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>The data-driven test is expanded so each parameter row becomes its own documented test case</td>
+          <td>Data rows are expanded so that each row results in a separate test entry, producing at least 3 tests</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test case is assigned a meaningful name</td>
+          <td>Each expanded test case is assigned a readable name</td>
         </tr>
         
       </tbody>
@@ -333,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Espresso test file receives documentation that includes a populated test coverage matrix alongside the standard test details.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Espresso test file receives output that includes a populated test coverage matrix alongside the standard documentation.</span></div>
     
 
     
@@ -344,12 +344,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The analyze page produces visible output after processing the uploaded file</td>
+          <td>The system produces visible output after processing the uploaded test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All placeholders or template tokens in the output are fully populated</td>
+          <td>No placeholder or unfilled fields remain in the downloaded output</td>
         </tr>
         
         <tr>
@@ -359,17 +359,17 @@
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is extracted and represented in the output</td>
+          <td>At least one test case is represented in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test case is assigned a meaningful name</td>
+          <td>Each documented test case is assigned a readable name</td>
         </tr>
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes coverage matrix data for the test, confirming the role-specific output is generated</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
       </tbody>
@@ -390,7 +390,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Espresso test file sees the parameterized test collapsed into a single documented test case whose coverage matrix rows reflect each data example with the correct Espresso-specific schema.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager uploads a data-driven Espresso test file, all data rows are collapsed into a single test entry with a coverage matrix that reflects each data row using the correct Espresso schema.</span></div>
     
 
     
@@ -401,12 +401,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The analyze page produces visible output after processing the data-driven file</td>
+          <td>The system produces visible output after processing the data-driven test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All placeholders or template tokens in the output are fully populated</td>
+          <td>No placeholder or unfilled fields remain in the downloaded output</td>
         </tr>
         
         <tr>
@@ -416,22 +416,22 @@
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven tests are collapsed into a single test entry for the QA Manager view, rather than expanded</td>
+          <td>Data rows are collapsed so the output contains a single test entry rather than one per row</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test case is assigned a meaningful name</td>
+          <td>The collapsed test case is assigned a readable name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>The number of rows in the coverage matrix corresponds exactly to the number of data examples in the parameterized test</td>
+          <td>The coverage matrix contains one row for each data example, preserving full data-driven traceability</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for &#39;espresso&#39;</td>
-          <td>Each coverage matrix row conforms to the expected Espresso-specific data structure</td>
+          <td>Each coverage matrix row follows the expected Espresso-specific structure and field format</td>
         </tr>
         
       </tbody>
@@ -461,7 +461,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Espresso test fixture and verifies that the documented JSON output is well-formed, framework-labelled, and contains at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Espresso test fixture and verifies that the documented JSON output is structurally valid with at least one named test.</span></div>
     
 
     
@@ -503,7 +503,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, declares framework &#39;espresso&#39;, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -537,7 +537,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Espresso fixture and verifies that each parameterized row is expanded into its own named test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Espresso fixture and verifies that parameterized rows are expanded into individual tests in the JSON output.</span></div>
     
 
     
@@ -579,7 +579,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, declares framework &#39;espresso&#39;, contains 3 or more tests (one per data row), and every test has a non-empty test_name
             
           </td>
           
@@ -613,7 +613,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Espresso test fixture and verifies that the JSON output is well-formed and includes a populated test_coverage_matrix on the first test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Espresso test fixture and verifies that the JSON output includes a populated test_coverage_matrix for the first test.</span></div>
     
 
     
@@ -655,7 +655,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel is populated; downloaded JSON has no unresolved values, declares framework &#39;espresso&#39;, contains 1 or more tests with non-empty test_name values, and the first test includes a non-empty test_coverage_matrix array
             
           </td>
           
@@ -689,7 +689,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Espresso fixture and verifies that all parameterized rows are collapsed into exactly one test whose coverage matrix rows match the example count and conform to the Espresso schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Espresso fixture and verifies that all parameterized rows collapse into a single test entry whose coverage matrix rows match the example count and conform to the Espresso schema.</span></div>
     
 
     
@@ -731,14 +731,14 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows use the correct schema for &#39;espresso&#39;
+              Output panel is populated; downloaded JSON has no unresolved values, declares framework &#39;espresso&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of data examples, and each row uses the correct Espresso schema
             
           </td>
           
           <td>
             
               
-              <span class="gherkin-type gherkin-positive">Positive</span>
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
             
           </td>
           

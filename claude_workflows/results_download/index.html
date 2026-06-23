@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that users can download their completed analysis as a properly formatted Markdown file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can download their completed analysis as a properly formatted Markdown file.</span></div>
     
 
     
@@ -239,18 +239,13 @@
       <tbody>
         
         <tr>
-          <td>A completed analysis is available</td>
-          <td>The download option is available only when an analysis has been completed</td>
+          <td>A .md file is downloaded</td>
+          <td>The download produces a file with the correct Markdown format</td>
         </tr>
         
         <tr>
-          <td>Clicking Download Markdown produces a .md file</td>
-          <td>The downloaded file uses the correct Markdown file format</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file contains Markdown heading syntax</td>
-          <td>The file content is rendered Markdown with proper structure, not raw or empty output</td>
+          <td>The downloaded file content contains &#39;##&#39;</td>
+          <td>The Markdown file includes structured headings, confirming the analysis content was rendered correctly</td>
         </tr>
         
       </tbody>
@@ -271,7 +266,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that users can download their completed analysis as a valid, fully-formed HTML file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can download their completed analysis as a valid, fully-formed HTML file.</span></div>
     
 
     
@@ -281,18 +276,13 @@
       <tbody>
         
         <tr>
-          <td>A completed analysis is available</td>
-          <td>The download option is available only when an analysis has been completed</td>
+          <td>A .html file is downloaded</td>
+          <td>The download produces a file with the correct HTML format</td>
         </tr>
         
         <tr>
-          <td>Clicking Download HTML produces a .html file</td>
-          <td>The downloaded file uses the correct HTML file format</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file contains opening and closing HTML tags</td>
-          <td>The file is a complete, valid HTML document with proper structure</td>
+          <td>The downloaded file content contains &#39;&lt;html lang=&#39; and &#39;&lt;/html&gt;&#39;</td>
+          <td>The HTML file has a proper opening and closing structure, confirming it is a complete, valid web page</td>
         </tr>
         
       </tbody>
@@ -313,7 +303,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that users can download their completed analysis as a structured JSON file containing the full analysis payload with correct metadata.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can download their completed analysis as a structured JSON file that includes framework metadata and all analyzed test data.</span></div>
     
 
     
@@ -323,23 +313,18 @@
       <tbody>
         
         <tr>
-          <td>A completed analysis is available</td>
-          <td>The download option is available only when an analysis has been completed</td>
+          <td>A .json file is downloaded</td>
+          <td>The download produces a file in JSON format</td>
         </tr>
         
         <tr>
-          <td>Clicking Download JSON produces a .json file</td>
-          <td>The downloaded file uses the correct JSON file format</td>
+          <td>The JSON shiftdoc metadata has framework &#39;bdd&#39;</td>
+          <td>The file correctly identifies the analysis framework as BDD in its metadata</td>
         </tr>
         
         <tr>
-          <td>JSON metadata has framework set to &#39;bdd&#39;</td>
-          <td>The file includes correct ShiftDoc metadata identifying the analysis framework</td>
-        </tr>
-        
-        <tr>
-          <td>JSON contains one or more tests</td>
-          <td>The file includes the actual test analysis content and is not empty</td>
+          <td>The JSON has 1 or more tests</td>
+          <td>The downloaded file contains the actual test analysis content and is not empty</td>
         </tr>
         
       </tbody>
@@ -360,7 +345,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user runs an analysis with optional add-ons such as Gap Analysis, those add-on results are included in the downloaded JSON file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user runs an analysis with optional add-ons such as Gap Analysis, those add-on results are included in the downloaded JSON file.</span></div>
     
 
     
@@ -370,18 +355,13 @@
       <tbody>
         
         <tr>
-          <td>A completed analysis with Gap Analysis add-on is available</td>
-          <td>The download reflects the full scope of the analysis including selected add-ons</td>
+          <td>A .json file is downloaded</td>
+          <td>The download produces a file in JSON format</td>
         </tr>
         
         <tr>
-          <td>Clicking Download JSON produces a .json file</td>
-          <td>The downloaded file uses the correct JSON file format</td>
-        </tr>
-        
-        <tr>
-          <td>JSON contains a top-level &#39;gap_analysis&#39; key</td>
-          <td>Add-on results are present and correctly structured in the downloaded output</td>
+          <td>The JSON has top-level key &#39;gap_analysis&#39;</td>
+          <td>The Gap Analysis add-on results are present as a distinct section in the downloaded file, confirming add-on data is not lost during export</td>
         </tr>
         
       </tbody>
@@ -411,7 +391,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads the Markdown file and verifies it contains expected heading syntax.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads a Markdown file and verifies it contains valid Markdown heading syntax.</span></div>
     
 
     
@@ -447,7 +427,7 @@
           
           <td>
             
-              User clicks &#39;Download Markdown&#39;
+              User clicks Download Markdown
             
           </td>
           
@@ -487,7 +467,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads the HTML file and verifies it contains well-formed HTML document tags.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads an HTML file and verifies it is a well-formed HTML document with opening and closing html tags.</span></div>
     
 
     
@@ -523,7 +503,7 @@
           
           <td>
             
-              User clicks &#39;Download HTML&#39;
+              User clicks Download HTML
             
           </td>
           
@@ -563,7 +543,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads the JSON file and verifies it contains valid shiftdoc metadata and at least one test entry.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads a JSON file and verifies it carries the correct shiftdoc framework metadata and at least one test entry.</span></div>
     
 
     
@@ -599,13 +579,13 @@
           
           <td>
             
-              User clicks &#39;Download JSON&#39;
+              User clicks Download JSON
             
           </td>
           
           <td>
             
-              A .json file is downloaded with shiftdoc metadata framework set to &#39;bdd&#39; and containing one or more tests
+              A .json file is downloaded, shiftdoc metadata has framework &#39;bdd&#39;, and the JSON contains 1 or more tests
             
           </td>
           
@@ -639,7 +619,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who ran a BDD Product Owner analysis with Gap Analysis enabled downloads the JSON file and verifies the add-on output is included as a top-level key.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who ran a BDD Product Owner analysis with the Gap Analysis add-on downloads a JSON file and verifies the add-on output is present as a top-level key.</span></div>
     
 
     
@@ -675,13 +655,13 @@
           
           <td>
             
-              User clicks &#39;Download JSON&#39;
+              User clicks Download JSON
             
           </td>
           
           <td>
             
-              A .json file is downloaded and contains the top-level key &#39;gap_analysis&#39;
+              A .json file is downloaded and the JSON contains a top-level key &#39;gap_analysis&#39;
             
           </td>
           

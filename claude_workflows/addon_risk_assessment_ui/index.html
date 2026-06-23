@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can run the Risk Assessment add-on on a BDD test file and receive complete, well-structured risk output — both in the on-screen panel and as a downloadable JSON report.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can run a Risk Assessment add-on on a BDD test file and receive complete, well-formed output — including scenario risk ratings and a risk summary — in both the display panel and the downloaded JSON.</span></div>
     
 
     
@@ -240,36 +240,36 @@
         
         <tr>
           <td>Documentation and analysis appears in the output panel</td>
-          <td>The Analyze page displays results after processing the uploaded test file with the Risk Assessment add-on</td>
+          <td>The Analyze page returns visible results after processing the uploaded test file with the Risk Assessment add-on</td>
         </tr>
         
         <tr>
           <td>Scenario Risk Ratings appears exactly once in the output</td>
-          <td>The risk rating section for individual scenarios is present and not duplicated in the displayed output</td>
+          <td>The risk ratings section is present and not duplicated in the displayed results</td>
         </tr>
         
         <tr>
           <td>Risk Summary appears exactly once in the output</td>
-          <td>An overall risk summary section is present and not duplicated in the displayed output</td>
+          <td>The risk summary section is present and not duplicated in the displayed results</td>
         </tr>
         
         <tr>
           <td>Downloaded JSON has no unresolved values</td>
-          <td>The exported report contains no placeholder or missing data fields</td>
+          <td>The exported JSON contains no placeholder or missing data fields</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;risk_assessment&#39;</td>
-          <td>The exported report follows the expected structure with a dedicated risk assessment section</td>
+          <td>JSON contains a top-level risk_assessment key</td>
+          <td>The JSON output is structured correctly with the expected root section</td>
         </tr>
         
         <tr>
-          <td>&#39;risk_assessment&#39; section has a non-empty &#39;scenario_risk_ratings&#39;</td>
-          <td>The exported report includes actual risk ratings for the uploaded scenarios, not an empty result</td>
+          <td>risk_assessment section contains a non-empty scenario_risk_ratings</td>
+          <td>Actual risk rating data was generated and included for at least one scenario</td>
         </tr>
         
         <tr>
-          <td>&#39;scenario_risk_ratings&#39; appears exactly once in the &#39;risk_assessment&#39; section</td>
+          <td>scenario_risk_ratings appears exactly once in the risk_assessment section</td>
           <td>The JSON structure is clean with no duplicate risk rating entries</td>
         </tr>
         
@@ -291,7 +291,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can run the Risk Assessment add-on on a BDD test file and receive complete, well-structured risk output — both in the on-screen panel and as a downloadable JSON report.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can run a Risk Assessment add-on on a BDD test file and receive complete, well-formed output — including scenario risk ratings and a risk summary — in both the display panel and the downloaded JSON.</span></div>
     
 
     
@@ -302,36 +302,36 @@
         
         <tr>
           <td>Documentation and analysis appears in the output panel</td>
-          <td>The Analyze page displays results after processing the uploaded test file with the Risk Assessment add-on</td>
+          <td>The Analyze page returns visible results after processing the uploaded test file with the Risk Assessment add-on</td>
         </tr>
         
         <tr>
           <td>Scenario Risk Ratings appears exactly once in the output</td>
-          <td>The risk rating section for individual scenarios is present and not duplicated in the displayed output</td>
+          <td>The risk ratings section is present and not duplicated in the displayed results</td>
         </tr>
         
         <tr>
           <td>Risk Summary appears exactly once in the output</td>
-          <td>An overall risk summary section is present and not duplicated in the displayed output</td>
+          <td>The risk summary section is present and not duplicated in the displayed results</td>
         </tr>
         
         <tr>
           <td>Downloaded JSON has no unresolved values</td>
-          <td>The exported report contains no placeholder or missing data fields</td>
+          <td>The exported JSON contains no placeholder or missing data fields</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;risk_assessment&#39;</td>
-          <td>The exported report follows the expected structure with a dedicated risk assessment section</td>
+          <td>JSON contains a top-level risk_assessment key</td>
+          <td>The JSON output is structured correctly with the expected root section</td>
         </tr>
         
         <tr>
-          <td>&#39;risk_assessment&#39; section has a non-empty &#39;scenario_risk_ratings&#39;</td>
-          <td>The exported report includes actual risk ratings for the uploaded scenarios, not an empty result</td>
+          <td>risk_assessment section contains a non-empty scenario_risk_ratings</td>
+          <td>Actual risk rating data was generated and included for at least one scenario</td>
         </tr>
         
         <tr>
-          <td>&#39;scenario_risk_ratings&#39; appears exactly once in the &#39;risk_assessment&#39; section</td>
+          <td>scenario_risk_ratings appears exactly once in the risk_assessment section</td>
           <td>The JSON structure is clean with no duplicate risk rating entries</td>
         </tr>
         
@@ -362,7 +362,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Risk Assessment add-on with a specific role, uploads a BDD fixture, triggers analysis, and verifies that both the rendered output panel and the downloaded JSON contain complete, well-structured risk assessment data.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Risk Assessment add-on for a given role, uploads a BDD fixture, triggers analysis, and verifies that both the UI output and downloaded JSON are complete and correctly structured.</span></div>
     
 
     

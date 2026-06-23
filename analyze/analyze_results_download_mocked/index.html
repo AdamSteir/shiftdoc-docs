@@ -219,7 +219,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- Product Owner, auth.feature, , Documentation, shiftdoc-po-auth.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a test file and downloads the analysis with no add-ons selected, the downloaded file is named using the role abbreviation and source filename.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a file and runs analysis without any add-ons, the downloaded results file is named using the role abbreviation and source filename.</span></div>
     
 
     
@@ -239,18 +239,13 @@
       <tbody>
         
         <tr>
-          <td>Select role and upload file</td>
-          <td>The Product Owner role and auth.feature file are accepted for analysis</td>
+          <td>Role and source reflected in filename</td>
+          <td>The downloaded Markdown file is named &#39;shiftdoc-po-auth.md&#39;, correctly encoding the Product Owner role and the uploaded file name</td>
         </tr>
         
         <tr>
-          <td>Panel heading shown as Documentation</td>
-          <td>The output panel correctly reflects a base analysis with no add-ons</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file is named shiftdoc-po-auth.md</td>
-          <td>The filename encodes the role (po) and source file (auth) with a .md extension</td>
+          <td>Panel heading shown</td>
+          <td>The output panel displays the &#39;Documentation&#39; heading after analysis completes</td>
         </tr>
         
       </tbody>
@@ -261,7 +256,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- QA Manager, auth.feature, , Documentation, shiftdoc-qam-auth.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+    
 
     
     <div class="label-row">
@@ -271,7 +266,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a QA Manager uploads a test file and downloads the analysis with no add-ons selected, the downloaded file is named using the QA Manager role abbreviation and source filename.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a QA Manager uploads a file and runs analysis without any add-ons, the downloaded results file is named using the QA Manager role abbreviation and source filename.</span></div>
     
 
     
@@ -281,18 +276,13 @@
       <tbody>
         
         <tr>
-          <td>Select QA Manager role and upload auth.feature</td>
-          <td>The QA Manager role is correctly encoded in the output filename</td>
+          <td>Role and source reflected in filename</td>
+          <td>The downloaded Markdown file is named &#39;shiftdoc-qam-auth.md&#39;, correctly encoding the QA Manager role and the uploaded file name</td>
         </tr>
         
         <tr>
-          <td>Panel heading shown as Documentation</td>
-          <td>The output panel reflects a base analysis with no add-ons</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file is named shiftdoc-qam-auth.md</td>
-          <td>The filename uses the qam abbreviation for the QA Manager role</td>
+          <td>Panel heading shown</td>
+          <td>The output panel displays the &#39;Documentation&#39; heading after analysis completes</td>
         </tr>
         
       </tbody>
@@ -303,7 +293,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- Product Owner, checkout_flow.feature, , Documentation, shiftdoc-po-checkout_flow.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -313,7 +303,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a differently named test file, the downloaded filename correctly reflects that source file&#39;s name.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a differently named file and runs analysis without add-ons, the downloaded file name correctly reflects that source filename.</span></div>
     
 
     
@@ -323,13 +313,13 @@
       <tbody>
         
         <tr>
-          <td>Upload checkout_flow.feature</td>
-          <td>Source filenames with underscores are preserved in the download filename</td>
+          <td>Source filename preserved in download name</td>
+          <td>The downloaded Markdown file is named &#39;shiftdoc-po-checkout_flow.md&#39;, confirming the filename segment changes with the uploaded source file</td>
         </tr>
         
         <tr>
-          <td>Downloaded file is named shiftdoc-po-checkout_flow.md</td>
-          <td>The full source filename (including underscores) is used in the output filename</td>
+          <td>Panel heading shown</td>
+          <td>The output panel displays the &#39;Documentation&#39; heading after analysis completes</td>
         </tr>
         
       </tbody>
@@ -340,7 +330,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename reflects role and source file (no add-ons) -- Product Owner, login.spec.ts, , Documentation, shiftdoc-po-login.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -350,7 +340,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner uploads a non-Gherkin test file (e.g. a TypeScript spec file), the downloaded filename uses only the base name without the original extension.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a non-.feature file (TypeScript spec) is uploaded, the downloaded results file name uses only the base name without the original extension.</span></div>
     
 
     
@@ -360,13 +350,13 @@
       <tbody>
         
         <tr>
-          <td>Upload login.spec.ts</td>
-          <td>Non-.feature file types are accepted and handled correctly</td>
+          <td>Non-feature file extension stripped from download name</td>
+          <td>The downloaded Markdown file is named &#39;shiftdoc-po-login.md&#39;, confirming the .spec.ts extension is dropped and only the base name is used</td>
         </tr>
         
         <tr>
-          <td>Downloaded file is named shiftdoc-po-login.md</td>
-          <td>The source file extension is stripped and only the base name is used in the download filename</td>
+          <td>Panel heading shown</td>
+          <td>The output panel displays the &#39;Documentation&#39; heading after analysis completes</td>
         </tr>
         
       </tbody>
@@ -377,7 +367,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes -- Product Owner, auth.feature, Technical Review, Documentation and Analysis, shiftdoc-po-auth+tr.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -387,7 +377,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a single add-on is selected, its short code is appended to the downloaded filename after a plus sign.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a single add-on is selected alongside the analysis, the downloaded filename includes the add-on&#39;s short code appended after the source name.</span></div>
     
 
     
@@ -397,18 +387,13 @@
       <tbody>
         
         <tr>
-          <td>Select Technical Review add-on</td>
-          <td>A single add-on is accepted and reflected in the analysis output</td>
+          <td>Single add-on short code appended to filename</td>
+          <td>The downloaded file is named &#39;shiftdoc-po-auth+tr.md&#39;, confirming the Technical Review add-on is encoded as &#39;+tr&#39;</td>
         </tr>
         
         <tr>
-          <td>Panel heading shown as Documentation and Analysis</td>
-          <td>The output panel label changes to reflect that add-ons were included</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file is named shiftdoc-po-auth+tr.md</td>
-          <td>The Technical Review add-on short code (+tr) is correctly appended to the filename</td>
+          <td>Panel heading reflects add-ons</td>
+          <td>The output panel heading changes to &#39;Documentation and Analysis&#39; when add-ons are included</td>
         </tr>
         
       </tbody>
@@ -419,7 +404,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes -- QA Manager, auth.feature, Technical Review, Gap Analysis, Risk Assessment, Documentation and Analysis, shiftdoc-qam-auth+tr+gap+risk.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+    
 
     
     <div class="label-row">
@@ -429,7 +414,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When multiple add-ons are selected, all their short codes are appended in order to the downloaded filename.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When three add-ons are selected, the downloaded filename includes all three add-on short codes in order after the source name.</span></div>
     
 
     
@@ -439,13 +424,13 @@
       <tbody>
         
         <tr>
-          <td>Select Technical Review, Gap Analysis, and Risk Assessment add-ons</td>
-          <td>Multiple add-ons are all accepted and applied to the analysis</td>
+          <td>Multiple add-on short codes appended to filename</td>
+          <td>The downloaded file is named &#39;shiftdoc-qam-auth+tr+gap+risk.md&#39;, confirming all three add-ons are encoded in sequence</td>
         </tr>
         
         <tr>
-          <td>Downloaded file is named shiftdoc-qam-auth+tr+gap+risk.md</td>
-          <td>All three add-on short codes are appended in sequence to the filename</td>
+          <td>Panel heading reflects add-ons</td>
+          <td>The output panel heading shows &#39;Documentation and Analysis&#39; when multiple add-ons are selected</td>
         </tr>
         
       </tbody>
@@ -456,7 +441,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Filename appends add-on short codes -- QA Manager, auth.feature, Technical Review, Gap Analysis, Annotation Summary, Risk Assessment, Recommendations, Documentation and Analysis, shiftdoc-qam-auth+tr+gap+ann+risk+rec.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
+    
 
     
     <div class="label-row">
@@ -466,7 +451,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the maximum set of add-ons is selected, all their short codes appear in the downloaded filename in the correct order.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the maximum set of five add-ons is selected, all five short codes are appended to the downloaded filename in the correct order.</span></div>
     
 
     
@@ -476,13 +461,13 @@
       <tbody>
         
         <tr>
-          <td>Select all five add-ons</td>
-          <td>The system handles the full complement of add-ons without error</td>
+          <td>All five add-on short codes appended to filename</td>
+          <td>The downloaded file is named &#39;shiftdoc-qam-auth+tr+gap+ann+risk+rec.md&#39;, confirming all five add-ons are encoded correctly in sequence</td>
         </tr>
         
         <tr>
-          <td>Downloaded file is named shiftdoc-qam-auth+tr+gap+ann+risk+rec.md</td>
-          <td>All five add-on short codes are correctly encoded in sequence in the filename</td>
+          <td>Panel heading reflects add-ons</td>
+          <td>The output panel heading shows &#39;Documentation and Analysis&#39; with the full add-on set selected</td>
         </tr>
         
       </tbody>
@@ -493,7 +478,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasted text with no filename falls back to date-time</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -503,7 +488,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user pastes test content directly instead of uploading a file, the downloaded filename uses a date-time stamp since there is no source filename to reference.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user pastes test content directly instead of uploading a file, the downloaded filename uses a date-time stamp in place of a source filename.</span></div>
     
 
     
@@ -513,13 +498,13 @@
       <tbody>
         
         <tr>
-          <td>Paste BDD test case content instead of uploading a file</td>
-          <td>The system accepts pasted content as a valid input for analysis</td>
+          <td>Date-time fallback in filename</td>
+          <td>The downloaded file name follows the pattern &#39;shiftdoc-po-YYYYMMDD-HHMMSS.md&#39;, confirming a timestamp is used when no source file is available</td>
         </tr>
         
         <tr>
-          <td>Downloaded file matches shiftdoc-po-{date}-{time}.md pattern</td>
-          <td>A date-time fallback filename is generated when no source file is available</td>
+          <td>Documentation visible in output panel</td>
+          <td>The output panel shows the generated documentation after pasted content is analysed</td>
         </tr>
         
       </tbody>
@@ -530,7 +515,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Pasted text with add-ons falls back to date-time with add-on suffix</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -540,7 +525,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user pastes content and selects add-ons, the downloaded filename combines the date-time fallback with the add-on short codes.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user pastes test content and selects add-ons, the downloaded filename combines a date-time stamp with the add-on short codes.</span></div>
     
 
     
@@ -550,13 +535,13 @@
       <tbody>
         
         <tr>
-          <td>Select Technical Review and Gap Analysis add-ons, then paste content</td>
-          <td>Add-ons are correctly combined with pasted input</td>
+          <td>Date-time fallback with add-on short codes in filename</td>
+          <td>The downloaded file name follows the pattern &#39;shiftdoc-po-YYYYMMDD-HHMMSS+tr+gap.md&#39;, confirming both the timestamp fallback and add-on encoding work together</td>
         </tr>
         
         <tr>
-          <td>Downloaded file matches shiftdoc-po-{date}-{time}+tr+gap.md pattern</td>
-          <td>The filename includes both the date-time fallback and the add-on short codes in the correct format</td>
+          <td>Documentation and analysis visible in output panel</td>
+          <td>The output panel shows documentation and analysis content after pasted content with add-ons is analysed</td>
         </tr>
         
       </tbody>
@@ -567,7 +552,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension -- Markdown, shiftdoc-po-auth.md</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -577,7 +562,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user downloads analysis results in Markdown format, the file is saved with a .md extension.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user downloads results as Markdown, the file is saved with a .md extension.</span></div>
     
 
     
@@ -587,13 +572,8 @@
       <tbody>
         
         <tr>
-          <td>Click Download Markdown</td>
-          <td>The Markdown download option produces a file with a .md extension</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file is named shiftdoc-po-auth.md</td>
-          <td>The correct file extension is applied for the Markdown format</td>
+          <td>Markdown download extension</td>
+          <td>The downloaded file is named &#39;shiftdoc-po-auth.md&#39;, confirming the correct .md extension is applied for Markdown downloads</td>
         </tr>
         
       </tbody>
@@ -604,7 +584,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension -- HTML, shiftdoc-po-auth.html</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -614,7 +594,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user downloads analysis results in HTML format, the file is saved with a .html extension.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user downloads results as HTML, the file is saved with a .html extension.</span></div>
     
 
     
@@ -624,13 +604,8 @@
       <tbody>
         
         <tr>
-          <td>Click Download HTML</td>
-          <td>The HTML download option produces a file with a .html extension</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file is named shiftdoc-po-auth.html</td>
-          <td>The correct file extension is applied for the HTML format</td>
+          <td>HTML download extension</td>
+          <td>The downloaded file is named &#39;shiftdoc-po-auth.html&#39;, confirming the correct .html extension is applied for HTML downloads</td>
         </tr>
         
       </tbody>
@@ -641,7 +616,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Download format extension -- JSON, shiftdoc-po-auth.json</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Filename and Format (Mocked)</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+    
 
     
     <div class="label-row">
@@ -651,7 +626,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user downloads analysis results in JSON format, the file is saved with a .json extension.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When the user downloads results as JSON, the file is saved with a .json extension.</span></div>
     
 
     
@@ -661,13 +636,8 @@
       <tbody>
         
         <tr>
-          <td>Click Download JSON</td>
-          <td>The JSON download option produces a file with a .json extension</td>
-        </tr>
-        
-        <tr>
-          <td>Downloaded file is named shiftdoc-po-auth.json</td>
-          <td>The correct file extension is applied for the JSON format</td>
+          <td>JSON download extension</td>
+          <td>The downloaded file is named &#39;shiftdoc-po-auth.json&#39;, confirming the correct .json extension is applied for JSON downloads</td>
         </tr>
         
       </tbody>
@@ -697,7 +667,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects a role, uploads a source file with no add-ons, submits the analysis, and verifies that the downloaded Markdown filename encodes only the role slug and source filename.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects a role and uploads a source file with no add-ons, submits analysis, and verifies that the downloaded Markdown filename encodes both role and source filename correctly.</span></div>
     
 
     
@@ -797,7 +767,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects a role, uploads a source file, activates one or more add-ons, submits the analysis, and verifies that each active add-on appends its short code to the downloaded Markdown filename in selection order.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects a role, uploads a source file, and enables one or more add-ons, then verifies that each selected add-on contributes its short code to the downloaded Markdown filename in the correct order.</span></div>
     
 
     
@@ -883,7 +853,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes raw BDD content (providing no source filename), submits the analysis, and verifies that the downloaded Markdown filename falls back to a date-time stamp pattern.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes BDD content directly (providing no source filename) and verifies that the downloaded Markdown filename falls back to a date-time-stamped pattern instead of a source-derived name.</span></div>
     
 
     
@@ -913,19 +883,19 @@
           
           <td>
             
-              Analysis API is mocked; user is on the Analyze page with role &#39;Product Owner&#39; and format &#39;bdd&#39; selected
+              User is on the Analyze page with API mocked
             
           </td>
           
           <td>
             
-              User pastes BDD test case content (no file upload), submits the analysis, and clicks Download Markdown
+              Selects format &#39;bdd&#39;, role &#39;Product Owner&#39;, pastes BDD content, submits analysis, clicks Download Markdown
             
           </td>
           
           <td>
             
-              Downloaded filename matches the regex &#39;shiftdoc-po-\d{8}-\d{6}\.md&#39;
+              Downloaded filename matches the regex shiftdoc-po-\d{8}-\d{6}\.md
             
           </td>
           
@@ -959,7 +929,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes raw BDD content with add-ons selected but no source file, submits the analysis, and verifies that the downloaded Markdown filename combines the date-time fallback with the add-on short codes.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes BDD content with add-ons selected and no source file, then verifies that the downloaded filename combines the date-time fallback with the appropriate add-on short codes.</span></div>
     
 
     
@@ -989,19 +959,19 @@
           
           <td>
             
-              Analysis API is mocked; user is on the Analyze page with role &#39;Product Owner&#39;, format &#39;bdd&#39;, and add-ons &#39;Technical Review, Gap Analysis&#39; selected
+              User is on the Analyze page with API mocked
             
           </td>
           
           <td>
             
-              User pastes BDD test case content (no file upload), submits the analysis, and clicks Download Markdown
+              Selects format &#39;bdd&#39;, role &#39;Product Owner&#39;, add-ons &#39;Technical Review, Gap Analysis&#39;, pastes BDD content, submits analysis, clicks Download Markdown
             
           </td>
           
           <td>
             
-              Downloaded filename matches the regex &#39;shiftdoc-po-\d{8}-\d{6}\+tr\+gap\.md&#39;
+              Downloaded filename matches the regex shiftdoc-po-\d{8}-\d{6}\+tr\+gap\.md
             
           </td>
           
@@ -1035,7 +1005,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a source file and selects each available download format, verifying that the downloaded filename carries the correct file extension for each format.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads analysis results in each supported format and verifies that the file extension in the downloaded filename matches the chosen format.</span></div>
     
 
     

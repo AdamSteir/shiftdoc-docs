@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user cannot accidentally submit a batch job when no files have been added to the queue.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user cannot submit a batch job when no files have been added to the queue.</span></div>
     
 
     
@@ -240,12 +240,12 @@
         
         <tr>
           <td>Enable multi-file mode</td>
-          <td>Multi-file mode can be activated by the user</td>
+          <td>Multi-file mode can be turned on by the user</td>
         </tr>
         
         <tr>
           <td>Submit button is disabled</td>
-          <td>The submit button is unavailable when the file queue is empty, preventing empty submissions</td>
+          <td>The submit action is unavailable when the file queue is empty, preventing accidental empty submissions</td>
         </tr>
         
       </tbody>
@@ -266,7 +266,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that after submitting a batch with at least one file, the user sees a batch status card instead of an immediate results panel.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that after submitting a batch with at least one file, the user sees a batch status card and the single-file results panel is hidden.</span></div>
     
 
     
@@ -276,8 +276,8 @@
       <tbody>
         
         <tr>
-          <td>Select format and role, add a file, and submit</td>
-          <td>A complete batch submission can be initiated with a format, role, and at least one file</td>
+          <td>Select format and role, add a file, click submit</td>
+          <td>A complete and valid batch submission can be initiated</td>
         </tr>
         
         <tr>
@@ -287,7 +287,7 @@
         
         <tr>
           <td>Results panel is not visible</td>
-          <td>Batch jobs do not immediately show results — the user is directed to the status card instead</td>
+          <td>The single-file results area does not interfere with the batch workflow</td>
         </tr>
         
       </tbody>
@@ -308,7 +308,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card gives the user a job reference ID and a message indicating their results are being processed.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that after submitting a batch, the status card displays a unique job reference and a message indicating that results are being processed.</span></div>
     
 
     
@@ -319,12 +319,12 @@
         
         <tr>
           <td>Batch status card shows a job_id reference</td>
-          <td>Users can identify and track their submitted batch job by a unique reference</td>
+          <td>The user can see a traceable identifier for their submitted batch job</td>
         </tr>
         
         <tr>
           <td>Batch status card shows the polling message</td>
-          <td>Users are informed that processing is underway and results will be available shortly</td>
+          <td>The user is informed that processing is underway and results are not yet ready</td>
         </tr>
         
       </tbody>
@@ -345,7 +345,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a submitted batch job&#39;s status card persists even if the user switches back to single-file mode, so they do not lose track of an in-progress job.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card persists on screen even if the user switches back to single-file mode after submitting a batch.</span></div>
     
 
     
@@ -355,18 +355,13 @@
       <tbody>
         
         <tr>
-          <td>Submit a batch job in multi-file mode</td>
-          <td>A batch job is successfully submitted and the status card appears</td>
-        </tr>
-        
-        <tr>
-          <td>Disable multi-file mode</td>
-          <td>The user can switch back to single-file mode after submitting a batch</td>
+          <td>Submit batch and then disable multi-file mode</td>
+          <td>The user can toggle the mode after submission without losing their batch status</td>
         </tr>
         
         <tr>
           <td>Batch status card is still visible</td>
-          <td>The in-progress batch status card is not removed when the user changes modes, preventing loss of job tracking</td>
+          <td>The submitted batch job status is not lost when the user changes the input mode</td>
         </tr>
         
       </tbody>
@@ -387,7 +382,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card displays a summary of the submitted job&#39;s key details — the format, role, and number of files — so users can confirm what was submitted.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card displays an accurate summary of the submitted job, including the selected format, role, and number of files.</span></div>
     
 
     
@@ -398,17 +393,17 @@
         
         <tr>
           <td>Batch status card shows the format label</td>
-          <td>The selected file format is clearly shown on the status card</td>
+          <td>The user can confirm which file format was used for the batch submission</td>
         </tr>
         
         <tr>
           <td>Batch status card shows the role label &#39;Product Owner&#39;</td>
-          <td>The selected audience role is displayed so the user can confirm the correct role was applied</td>
+          <td>The user can confirm which role was selected when the batch was submitted</td>
         </tr>
         
         <tr>
           <td>Batch status card shows &#39;1&#39; for file count</td>
-          <td>The number of files included in the batch is accurately reflected on the status card</td>
+          <td>The user can see exactly how many files were included in the batch job</td>
         </tr>
         
       </tbody>
@@ -443,7 +438,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode with an empty queue and verifies the submit button is disabled to prevent empty batch submissions.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode and sees the submit button disabled when no files have been added to the queue.</span></div>
     
 
     
@@ -524,7 +519,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a valid single-file batch in multi-file mode and verifies that the batch status card appears while the results panel remains hidden.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode, configures format and role, adds a file, submits the batch, and verifies the batch status card appears while the results panel remains hidden.</span></div>
     
 
     
@@ -560,7 +555,7 @@
           
           <td>
             
-              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds fixture &#39;bdd_sample.feature&#39;, and clicks submit
+              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds a fixture file, and clicks submit
             
           </td>
           
@@ -605,7 +600,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a valid batch and verifies that the batch status card displays both a job_id reference and a polling status message confirming asynchronous processing has started.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a valid multi-file batch and verifies that the resulting batch status card displays both a job ID reference and a polling status message.</span></div>
     
 
     
@@ -641,13 +636,13 @@
           
           <td>
             
-              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds fixture &#39;bdd_sample.feature&#39;, and clicks submit
+              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds a fixture file, and clicks submit
             
           </td>
           
           <td>
             
-              The batch status card is visible, displays a job_id reference, and shows the polling message
+              The batch status card is visible, shows a job_id reference, and shows the polling message
             
           </td>
           
@@ -686,7 +681,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a batch in multi-file mode, switches back to single-file mode, and verifies the batch status card persists to avoid losing batch progress context.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a multi-file batch, then switches back to single-file mode, and verifies the batch status card persists and is not dismissed by the mode toggle.</span></div>
     
 
     
@@ -716,13 +711,13 @@
           
           <td>
             
-              Analysis and multi-file APIs are mocked; user is on the Analyze page; a batch has been submitted in multi-file mode
+              Analysis and multi-file APIs are mocked; user is on the Analyze page; a batch has been submitted and the status card is visible
             
           </td>
           
           <td>
             
-              User disables multi-file mode after submission
+              User disables multi-file mode
             
           </td>
           
@@ -767,7 +762,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a single-file batch and verifies that the batch status card summary row accurately reflects the selected format, role, and file count of the submitted job.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a single-file multi-file batch and verifies that the batch status card summary row accurately reflects the selected format, role, and a file count of one.</span></div>
     
 
     
@@ -803,13 +798,13 @@
           
           <td>
             
-              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds fixture &#39;bdd_sample.feature&#39;, and clicks submit
+              User enables multi-file mode, selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, adds one fixture file, and clicks submit
             
           </td>
           
           <td>
             
-              The batch status card shows the format label, role label &#39;Product Owner&#39;, and file count of &#39;1&#39;
+              The batch status card shows the format label, the role label &#39;Product Owner&#39;, and a file count of &#39;1&#39;
             
           </td>
           

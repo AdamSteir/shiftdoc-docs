@@ -240,7 +240,7 @@
         
         <tr>
           <td>When I enable multi-file mode</td>
-          <td>The user can switch the page into multi-file mode</td>
+          <td>The user can switch the Analyze page into multi-file mode</td>
         </tr>
         
         <tr>
@@ -282,7 +282,7 @@
         
         <tr>
           <td>Given I have typed content in the input area</td>
-          <td>A baseline of pre-existing content in the single-file input is established</td>
+          <td>There is existing content in the single-file input before the mode switch</td>
         </tr>
         
         <tr>
@@ -292,7 +292,7 @@
         
         <tr>
           <td>Then the input area content is cleared</td>
-          <td>Previously entered content is removed when switching modes, preventing stale data carry-over</td>
+          <td>Previously entered content is removed to prevent stale data carrying over</td>
         </tr>
         
       </tbody>
@@ -313,7 +313,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that switching back to single-file mode hides the queue (including any queued files) and restores the single-file input area.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that disabling multi-file mode hides the queue, removes any queued files, and restores the single-file input area.</span></div>
     
 
     
@@ -324,7 +324,7 @@
         
         <tr>
           <td>When I enable multi-file mode and add a file to the queue</td>
-          <td>A file is staged in the queue while in multi-file mode</td>
+          <td>A file is present in the queue before switching back</td>
         </tr>
         
         <tr>
@@ -339,7 +339,7 @@
         
         <tr>
           <td>And the single-file input area is visible</td>
-          <td>The single-file input area is restored when multi-file mode is turned off</td>
+          <td>The single-file input is restored when multi-file mode is turned off</td>
         </tr>
         
       </tbody>
@@ -360,7 +360,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can add a file to the queue and then remove it, leaving the queue empty.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that users can add a file to the queue and then remove it, leaving the queue empty.</span></div>
     
 
     
@@ -370,23 +370,23 @@
       <tbody>
         
         <tr>
-          <td>When I add a fixture file to the queue</td>
-          <td>A file can be successfully added to the multi-file queue</td>
+          <td>And I add fixture &#34;bdd_sample.feature&#34; to the queue</td>
+          <td>A file can be added to the multi-file queue</td>
         </tr>
         
         <tr>
           <td>Then the queue shows 1 file</td>
-          <td>The queue count accurately reflects the number of staged files</td>
+          <td>The queue correctly reflects the number of files after adding</td>
         </tr>
         
         <tr>
-          <td>When I remove the file from the queue</td>
-          <td>A file can be removed from the queue by the user</td>
+          <td>When I remove &#34;bdd_sample.feature&#34; from the queue</td>
+          <td>A file can be removed from the queue</td>
         </tr>
         
         <tr>
           <td>Then the queue is empty</td>
-          <td>The queue correctly shows as empty after removal</td>
+          <td>The queue shows no files after the only file is removed</td>
         </tr>
         
       </tbody>
@@ -407,7 +407,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can drag and drop a file onto the queue drop zone and it appears in the queue with a success status.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that users can drag and drop a file onto the queue, which adds it successfully and displays a confirmation badge.</span></div>
     
 
     
@@ -417,18 +417,18 @@
       <tbody>
         
         <tr>
-          <td>When I drop a fixture file onto the queue drop zone</td>
-          <td>Drag-and-drop is a supported method for adding files to the queue</td>
+          <td>And I drop fixture &#34;bdd_sample.feature&#34; onto the queue drop zone</td>
+          <td>A file can be added to the queue using drag-and-drop</td>
         </tr>
         
         <tr>
           <td>Then the queue shows 1 file</td>
-          <td>The dropped file is registered in the queue</td>
+          <td>The queue count updates correctly after a drag-and-drop addition</td>
         </tr>
         
         <tr>
-          <td>And the file row shows an ok badge</td>
-          <td>The file is accepted and marked with a positive status indicator</td>
+          <td>And the file row for &#34;bdd_sample.feature&#34; shows an ok badge</td>
+          <td>The dropped file is shown with a success indicator confirming it was accepted</td>
         </tr>
         
       </tbody>
@@ -449,7 +449,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that attempting to add a file that is already in the queue shows a warning message and prevents a duplicate entry.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that attempting to add a file that is already in the queue triggers a warning message and does not create a duplicate entry.</span></div>
     
 
     
@@ -459,18 +459,18 @@
       <tbody>
         
         <tr>
-          <td>When I add the same fixture file to the queue a second time</td>
-          <td>The system detects a duplicate filename being added to the queue</td>
+          <td>And I add fixture &#34;bdd_sample.feature&#34; to the queue again</td>
+          <td>The user attempts to add the same file a second time</td>
         </tr>
         
         <tr>
-          <td>Then I see a warning toast containing &#39;is already in the queue&#39;</td>
-          <td>The user is notified with a clear warning message about the duplicate</td>
+          <td>Then I see a warning toast containing &#34;is already in the queue&#34;</td>
+          <td>A clear warning message is shown to inform the user of the duplicate</td>
         </tr>
         
         <tr>
           <td>And the queue shows 1 file</td>
-          <td>The duplicate file is not added, keeping the queue count accurate</td>
+          <td>The duplicate file is not added, keeping the queue count unchanged</td>
         </tr>
         
       </tbody>
@@ -505,7 +505,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode and verifies the file queue appears while the single-file input is hidden.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode and verifies that the file queue becomes visible while the single-file input area is hidden.</span></div>
     
 
     
@@ -586,7 +586,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user who has typed content in the single-file input switches to multi-file mode and verifies the input content is cleared.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user who has typed content in the single-file input switches to multi-file mode, and the previously entered content is cleared.</span></div>
     
 
     
@@ -616,7 +616,7 @@
           
           <td>
             
-              User has typed content in the input area on the Analyze page
+              User has typed content in the input area
             
           </td>
           
@@ -628,7 +628,7 @@
           
           <td>
             
-              The input area content is cleared
+              Input area content is cleared
             
           </td>
           
@@ -667,7 +667,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode, adds a file to the queue, then switches back to single-file mode and verifies the queue is gone and the single-file input is restored.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user adds a file to the queue in multi-file mode then switches back to single-file mode, verifying the queue is hidden and the single-file input area is restored.</span></div>
     
 
     
@@ -697,13 +697,13 @@
           
           <td>
             
-              User is on the Analyze page with multi-file mode enabled and one file in the queue
+              User is on the Analyze page with APIs mocked
             
           </td>
           
           <td>
             
-              User disables multi-file mode
+              User enables multi-file mode, adds a file, then disables multi-file mode
             
           </td>
           
@@ -748,7 +748,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user adds a file to the multi-file queue and then removes it, verifying the queue count updates correctly at each step.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user adds a file to the multi-file queue confirming the count increments, then removes it confirming the queue returns to empty.</span></div>
     
 
     
@@ -778,19 +778,19 @@
           
           <td>
             
-              User is on the Analyze page with multi-file mode enabled
+              User is in multi-file mode with APIs mocked
             
           </td>
           
           <td>
             
-              User adds a fixture file to the queue, then removes it
+              User adds a file then removes it from the queue
             
           </td>
           
           <td>
             
-              Queue shows 1 file after adding, then queue is empty after removing
+              Queue shows 1 file after adding, then queue is empty after removal
             
           </td>
           
@@ -829,7 +829,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user adds a file to the multi-file queue via drag-and-drop and verifies the file appears in the queue with a valid status badge.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user drops a file onto the queue drop zone in multi-file mode and verifies it appears in the queue with an ok badge.</span></div>
     
 
     
@@ -859,7 +859,7 @@
           
           <td>
             
-              User is on the Analyze page with multi-file mode enabled
+              User is in multi-file mode with APIs mocked
             
           </td>
           
@@ -910,7 +910,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to add the same file twice to the multi-file queue and verifies a warning toast is shown and the queue count remains at one.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user attempts to add the same file to the queue twice and verifies a warning toast is shown while the queue count remains at one.</span></div>
     
 
     
@@ -940,7 +940,7 @@
           
           <td>
             
-              User is on the Analyze page with multi-file mode enabled and one file already in the queue
+              User is in multi-file mode with one file already in the queue
             
           </td>
           
@@ -952,7 +952,7 @@
           
           <td>
             
-              A warning toast containing &#39;is already in the queue&#39; is shown and the queue still shows only 1 file
+              A warning toast containing &#39;is already in the queue&#39; is shown and the queue still shows 1 file
             
           </td>
           

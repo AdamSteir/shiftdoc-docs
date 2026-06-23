@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a BDD feature file and generating documentation produces a valid, complete JSON output with named tests, descriptions, and coverage details.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A Product Owner uploading a BDD feature file receives structured documentation with named tests, descriptions, and coverage details in the output panel.</span></div>
     
 
     
@@ -239,33 +239,33 @@
       <tbody>
         
         <tr>
-          <td>I see documentation in the output panel</td>
-          <td>Documentation is displayed to the user after processing</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after processing a BDD feature file</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are fully populated with no placeholder or missing values</td>
         </tr>
         
         <tr>
-          <td>The JSON has 1 or more tests</td>
-          <td>At least one test entry is generated from the uploaded file</td>
+          <td>JSON has 1 or more tests</td>
+          <td>At least one test entry is generated from the uploaded feature file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each generated test is identifiable by a name</td>
+          <td>Each test in the output is identifiable by a name</td>
         </tr>
         
         <tr>
-          <td>The first test has a non-empty string description</td>
+          <td>First test has a non-empty description</td>
           <td>The first test includes a human-readable description of what it covers</td>
         </tr>
         
         <tr>
-          <td>The first test has a non-empty array test_coverage</td>
-          <td>The first test includes at least one coverage step detailing what is verified</td>
+          <td>First test has a non-empty test_coverage array</td>
+          <td>The first test includes at least one coverage detail entry</td>
         </tr>
         
       </tbody>
@@ -286,7 +286,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven BDD feature file with multiple parameter sets produces a separate test entry for each scenario variation.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A Product Owner uploading a data-driven BDD feature file receives separate documentation entries for each data row, resulting in multiple distinct tests in the output.</span></div>
     
 
     
@@ -296,23 +296,23 @@
       <tbody>
         
         <tr>
-          <td>I see documentation in the output panel</td>
-          <td>Documentation is displayed after processing a data-driven feature file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after processing a data-driven BDD feature file</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>All fields across all generated tests are fully populated</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are fully populated with no placeholder or missing values</td>
         </tr>
         
         <tr>
-          <td>The JSON has 3 or more tests</td>
-          <td>Each data-driven scenario variation is captured as its own test entry</td>
+          <td>JSON has 3 or more tests</td>
+          <td>Data-driven scenarios expand into multiple individual test entries (at least 3)</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each generated test, including parameterized variants, is identifiable by name</td>
+          <td>Each expanded test entry is identifiable by a name</td>
         </tr>
         
       </tbody>
@@ -333,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the output panel title displays only &#34;Documentation&#34; and not an extended title when no additional add-ons are enabled.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a Product Owner runs documentation without selecting any add-ons, the output panel title shows &#39;Documentation&#39; rather than a combined label.</span></div>
     
 
     
@@ -343,13 +343,13 @@
       <tbody>
         
         <tr>
-          <td>I see documentation in the output panel</td>
-          <td>Documentation output is shown after processing</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after processing the feature file</td>
         </tr>
         
         <tr>
-          <td>I do not see &#34;Documentation and Analysis&#34; as the panel title</td>
-          <td>The panel title reflects the basic documentation mode, not an enhanced add-on mode</td>
+          <td>Panel title is not &#39;Documentation and Analysis&#39;</td>
+          <td>The output panel title reflects only the base documentation mode and does not include add-on labels when none are selected</td>
         </tr>
         
       </tbody>
@@ -370,7 +370,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager viewing BDD documentation sees a fully populated coverage matrix with correctly structured rows for each test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A QA Manager uploading a BDD feature file receives documentation that includes a properly structured coverage matrix linking tests to coverage areas.</span></div>
     
 
     
@@ -380,28 +380,28 @@
       <tbody>
         
         <tr>
-          <td>I see documentation in the output panel</td>
-          <td>Documentation is displayed after processing</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after processing the BDD feature file</td>
         </tr>
         
         <tr>
-          <td>The filename bdd_sample.feature appears in the output</td>
-          <td>The source file is attributed in the generated output</td>
+          <td>Filename appears in output</td>
+          <td>The source file is referenced in the output, confirming the correct file was processed</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are fully populated with no placeholder or missing values</td>
         </tr>
         
         <tr>
-          <td>The first test has a non-empty array test_coverage_matrix</td>
-          <td>The first test includes a coverage matrix with at least one entry</td>
+          <td>First test has a non-empty test_coverage_matrix array</td>
+          <td>The first test includes at least one coverage matrix entry for QA Manager reporting</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for bdd</td>
-          <td>Each row in the coverage matrix conforms to the expected BDD-specific data structure</td>
+          <td>Coverage matrix rows use the correct schema for BDD</td>
+          <td>Each row in the coverage matrix conforms to the expected structure for BDD-format inputs</td>
         </tr>
         
       </tbody>
@@ -431,7 +431,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a BDD feature file and verifies that the documentation output is generated with valid structure, including named tests and a description and coverage array on the first test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a BDD feature file and verifies that the documentation output is rendered, downloadable, and structurally valid with at least one named test containing a description and coverage array.</span></div>
     
 
     
@@ -467,13 +467,13 @@
           
           <td>
             
-              User selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1+ tests each with a non-empty test_name, and the first test has a non-empty description string and non-empty test_coverage array
+              Output panel is populated; downloaded JSON has no unresolved values, contains 1+ tests, every test has a non-empty test_name, and the first test has a non-empty description and test_coverage array
             
           </td>
           
@@ -507,7 +507,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven BDD feature file and verifies that the system expands it into three or more individually named tests in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven BDD feature file and verifies that the output correctly expands into three or more individually named tests.</span></div>
     
 
     
@@ -543,13 +543,13 @@
           
           <td>
             
-              User selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_datadriven_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_datadriven_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -583,7 +583,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner documents a BDD file without any add-ons selected and verifies that the output panel title is &#39;Documentation&#39; and not the combined &#39;Documentation and Analysis&#39; title.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner documents a BDD feature file without any add-ons selected and verifies that the output panel title is &#39;Documentation&#39; and not the combined &#39;Documentation and Analysis&#39; label.</span></div>
     
 
     
@@ -619,7 +619,7 @@
           
           <td>
             
-              User selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
@@ -659,7 +659,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a BDD feature file and verifies that the JSON output contains a correctly structured coverage matrix with schema-compliant rows for the BDD format.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a BDD feature file and verifies that the output includes the source filename, a valid downloadable JSON with no unresolved values, and a correctly structured coverage matrix for the BDD format.</span></div>
     
 
     
@@ -695,13 +695,13 @@
           
           <td>
             
-              User selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation with the filename &#39;bdd_sample.feature&#39; visible; downloaded JSON has no unresolved values, the first test has a non-empty test_coverage_matrix array, and coverage matrix rows conform to the BDD schema
+              Output panel shows the filename &#39;bdd_sample.feature&#39;; downloaded JSON has no unresolved values; the first test has a non-empty test_coverage_matrix array whose rows conform to the BDD schema
             
           </td>
           

@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a story file correctly loads the story content and displays the filename, while keeping the Check Coverage button disabled until test cases are also provided.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a story file correctly loads its content into the story field and keeps the Check Coverage button disabled until test cases are also provided.</span></div>
     
 
     
@@ -239,23 +239,18 @@
       <tbody>
         
         <tr>
-          <td>When I upload a story file</td>
-          <td>A story file can be successfully uploaded to the story input area</td>
+          <td>Story input is populated</td>
+          <td>The story file&#39;s content appears in the story input after upload</td>
         </tr>
         
         <tr>
-          <td>Then the story input is populated</td>
-          <td>The story content from the uploaded file appears in the story input</td>
+          <td>Story filename is shown</td>
+          <td>The name of the uploaded file is displayed to confirm successful upload</td>
         </tr>
         
         <tr>
-          <td>And the story filename is shown</td>
-          <td>The name of the uploaded file is displayed to the user for confirmation</td>
-        </tr>
-        
-        <tr>
-          <td>And the Check Coverage button remains disabled until test cases are provided</td>
-          <td>The user cannot run a coverage check with only a story — test cases are also required</td>
+          <td>Check Coverage button remains disabled</td>
+          <td>The action button cannot be used until both a story and test cases are provided</td>
         </tr>
         
       </tbody>
@@ -276,7 +271,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a test case file correctly loads the test content and displays the filename, while keeping the Check Coverage button disabled until a story is also provided.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a test case file correctly loads its content into the test cases field and keeps the Check Coverage button disabled until a story is also provided.</span></div>
     
 
     
@@ -286,23 +281,18 @@
       <tbody>
         
         <tr>
-          <td>When I upload a test case file</td>
-          <td>A test case file can be successfully uploaded to the test case input area</td>
+          <td>Test input is populated</td>
+          <td>The test case file&#39;s content appears in the test input after upload</td>
         </tr>
         
         <tr>
-          <td>Then the test input is populated</td>
-          <td>The test case content from the uploaded file appears in the test input</td>
+          <td>Test case filename is shown</td>
+          <td>The name of the uploaded file is displayed to confirm successful upload</td>
         </tr>
         
         <tr>
-          <td>And the test case filename is shown</td>
-          <td>The name of the uploaded file is displayed to the user for confirmation</td>
-        </tr>
-        
-        <tr>
-          <td>And the Check Coverage button remains disabled until a story is provided</td>
-          <td>The user cannot run a coverage check with only test cases — a story is also required</td>
+          <td>Check Coverage button remains disabled</td>
+          <td>The action button cannot be used until both a story and test cases are provided</td>
         </tr>
         
       </tbody>
@@ -323,7 +313,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting text exceeding the 50,000-character limit into the story input displays a clear error message to the user.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting text into the story input that exceeds the 50,000-character limit shows a clear error message to the user.</span></div>
     
 
     
@@ -333,13 +323,8 @@
       <tbody>
         
         <tr>
-          <td>When I paste 50001 characters into the story input</td>
-          <td>The input enforces an upper character limit when content is pasted</td>
-        </tr>
-        
-        <tr>
-          <td>Then I see a story paste error containing &#39;too long&#39;</td>
-          <td>A meaningful error message is shown telling the user their pasted content is too long</td>
+          <td>Story paste error containing &#39;too long&#39;</td>
+          <td>An error message is shown when pasted content exceeds the allowed character limit</td>
         </tr>
         
       </tbody>
@@ -360,7 +345,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting text at exactly the 50,000-character boundary is accepted without errors and the story input is populated.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting text into the story input at exactly the 50,000-character boundary is accepted without error.</span></div>
     
 
     
@@ -370,18 +355,13 @@
       <tbody>
         
         <tr>
-          <td>When I paste 50000 characters into the story input</td>
-          <td>Content at the exact character limit boundary is treated as valid</td>
+          <td>No paste error is shown</td>
+          <td>Content at the exact character limit does not trigger an error message</td>
         </tr>
         
         <tr>
-          <td>Then no paste error is shown</td>
-          <td>No error message appears when the input is at the maximum allowed length</td>
-        </tr>
-        
-        <tr>
-          <td>And the story input is populated</td>
-          <td>The pasted content is successfully loaded into the story input</td>
+          <td>Story input is populated</td>
+          <td>The pasted content is successfully loaded into the story field at the boundary value</td>
         </tr>
         
       </tbody>
@@ -402,7 +382,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file in an unsupported format to the story input displays an inline error and leaves the story input empty.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file with an unsupported format to the story input shows an inline error and leaves the story field empty.</span></div>
     
 
     
@@ -412,18 +392,13 @@
       <tbody>
         
         <tr>
-          <td>When I upload an unsupported file to the story input</td>
-          <td>The story upload area rejects files that are not in a supported format</td>
+          <td>Story dropzone shows an unsupported file type error</td>
+          <td>An inline error is displayed when an unsupported file type is dropped or selected</td>
         </tr>
         
         <tr>
-          <td>Then the story dropzone shows an unsupported file type error</td>
-          <td>A clear error message is displayed inline to inform the user the file type is not accepted</td>
-        </tr>
-        
-        <tr>
-          <td>And the story input is empty</td>
-          <td>No content is loaded into the story input when an invalid file is uploaded</td>
+          <td>Story input is empty</td>
+          <td>No content is loaded into the story field when the file type is not supported</td>
         </tr>
         
       </tbody>
@@ -444,7 +419,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that dropping multiple files onto the test case upload area shows a warning that the action is not supported, and that the warning can be dismissed by the user.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that dropping multiple files onto the test case upload area shows a warning, leaves the test input empty, and allows the user to dismiss the warning.</span></div>
     
 
     
@@ -454,28 +429,18 @@
       <tbody>
         
         <tr>
-          <td>When I drop multiple files onto the story coverage test case input</td>
-          <td>The test case upload area detects and handles a multi-file drop attempt</td>
+          <td>Test case input shows a multi-file drop warning</td>
+          <td>A warning is displayed when more than one file is dropped onto the test case upload area</td>
         </tr>
         
         <tr>
-          <td>Then the test case input shows a multi-file drop warning</td>
-          <td>A warning is displayed to inform the user that only a single file is accepted</td>
+          <td>Test input is empty</td>
+          <td>No content is loaded into the test case field when multiple files are dropped</td>
         </tr>
         
         <tr>
-          <td>And the test input is empty</td>
-          <td>No content is loaded when multiple files are dropped simultaneously</td>
-        </tr>
-        
-        <tr>
-          <td>When I dismiss the test case multi-file drop warning</td>
-          <td>The user can actively close the warning message</td>
-        </tr>
-        
-        <tr>
-          <td>Then the test case multi-file drop warning is dismissed</td>
-          <td>The warning disappears after the user dismisses it, leaving a clean interface</td>
+          <td>Multi-file drop warning is dismissed</td>
+          <td>The user can close the warning message after it appears</td>
         </tr>
         
       </tbody>
@@ -510,7 +475,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a story file and verifies the story input is populated with the filename shown, while the Check Coverage button stays disabled until test cases are also provided.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a story file and verifies the story input is populated, the filename is displayed, and the Check Coverage button stays disabled until test cases are also provided.</span></div>
     
 
     
@@ -552,7 +517,7 @@
           
           <td>
             
-              Story input is populated, filename is shown, and Check Coverage button remains disabled without test cases
+              Story input is populated, story filename is shown, and Check Coverage button remains disabled until test cases are provided
             
           </td>
           
@@ -591,7 +556,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a test case file and verifies the test input is populated with the filename shown, while the Check Coverage button stays disabled until a story is also provided.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a test case file and verifies the test input is populated, the filename is displayed, and the Check Coverage button stays disabled until a story is also provided.</span></div>
     
 
     
@@ -633,7 +598,7 @@
           
           <td>
             
-              Test input is populated, filename is shown, and Check Coverage button remains disabled without a story
+              Test input is populated, test case filename is shown, and Check Coverage button remains disabled until a story is provided
             
           </td>
           
@@ -672,7 +637,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content exceeding the 50,000-character limit into the story input and receives an error indicating the text is too long.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content exceeding the 50,000 character limit into the story input and sees a &#39;too long&#39; error message.</span></div>
     
 
     
@@ -714,7 +679,7 @@
           
           <td>
             
-              A paste error containing &#39;too long&#39; is displayed
+              A story paste error containing &#39;too long&#39; is displayed
             
           </td>
           
@@ -753,7 +718,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content at exactly the 50,000-character boundary into the story input and verifies it is accepted without any error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content at exactly the 50,000 character limit and verifies it is accepted without any error.</span></div>
     
 
     
@@ -834,7 +799,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user attempts to upload a file with an unsupported type to the story input and receives an inline error with the story input remaining empty.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a file with an unsupported type to the story input and sees an inline error while the story input remains empty.</span></div>
     
 
     
@@ -876,7 +841,7 @@
           
           <td>
             
-              The story dropzone shows an unsupported file type error and the story input remains empty
+              Story dropzone shows an unsupported file type error and the story input remains empty
             
           </td>
           
@@ -915,7 +880,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user drops multiple files onto the test case input, sees a warning with the input remaining empty, then dismisses the warning and confirms it is gone.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user drops multiple files onto the test case input, sees a dismissible multi-file warning with the input left empty, and then successfully dismisses the warning.</span></div>
     
 
     
@@ -951,13 +916,13 @@
           
           <td>
             
-              User drops multiple files onto the test case input, then dismisses the multi-file drop warning
+              User drops multiple files onto the story coverage test case input, then dismisses the warning
             
           </td>
           
           <td>
             
-              A multi-file drop warning is shown with the test input empty, and after dismissal the warning is no longer visible
+              A multi-file drop warning is shown and the test input is empty; after dismissal the warning is no longer visible
             
           </td>
           

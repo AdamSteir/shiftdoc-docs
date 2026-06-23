@@ -239,33 +239,23 @@
       <tbody>
         
         <tr>
-          <td>I select format &#39;appium&#39; and role &#39;Product Owner&#39;</td>
-          <td>The correct analysis format and audience role are applied before processing</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded test file</td>
         </tr>
         
         <tr>
-          <td>I upload the test case fixture &#39;appium_single_sample.java&#39;</td>
-          <td>A single Appium test file can be successfully submitted for analysis</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data remain</td>
         </tr>
         
         <tr>
-          <td>I see documentation in the output panel</td>
-          <td>The product produces visible documentation output after analysis</td>
+          <td>JSON has 1 or more tests</td>
+          <td>At least one test entry is present in the output for a single uploaded test case</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
-        </tr>
-        
-        <tr>
-          <td>The JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output</td>
-        </tr>
-        
-        <tr>
-          <td>Every test has a non-empty &#39;test_name&#39;</td>
-          <td>Each test in the output is identifiable by a meaningful name</td>
+          <td>Every test has a non-empty test_name</td>
+          <td>Each documented test is identifiable by a meaningful name</td>
         </tr>
         
       </tbody>
@@ -286,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Appium test file, each data row is expanded into its own separate test entry in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Appium test file sees the output expanded into one separate test entry per data row, yielding three or more documented tests.</span></div>
     
 
     
@@ -296,23 +286,23 @@
       <tbody>
         
         <tr>
-          <td>I upload the test case fixture &#39;appium_datadriven_sample.java&#39;</td>
-          <td>A data-driven Appium test file with multiple data rows can be submitted for analysis</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the data-driven test file</td>
         </tr>
         
         <tr>
-          <td>The JSON has 3 or more tests</td>
-          <td>The data provider rows are expanded so that each row produces a distinct test entry in the output</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are fully populated with no placeholders</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty &#39;test_name&#39;</td>
-          <td>Each expanded test entry is identifiable by a meaningful name</td>
+          <td>JSON has 3 or more tests</td>
+          <td>Data rows are each expanded into individual test entries rather than collapsed into one</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>All fields across all expanded test entries are fully resolved with no missing data</td>
+          <td>Every test has a non-empty test_name</td>
+          <td>Each expanded test variant is identifiable by a meaningful name</td>
         </tr>
         
       </tbody>
@@ -333,7 +323,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Appium test file receives output that includes a populated test coverage matrix alongside core test documentation.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Appium test file receives a valid JSON output where each test includes a populated test coverage matrix.</span></div>
     
 
     
@@ -343,28 +333,28 @@
       <tbody>
         
         <tr>
-          <td>I select format &#39;appium&#39; and role &#39;QA Manager&#39;</td>
-          <td>The QA Manager role produces output enriched with coverage matrix information</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded test file</td>
         </tr>
         
         <tr>
-          <td>I upload the test case fixture &#39;appium_single_sample.java&#39;</td>
-          <td>A single Appium test file is successfully analysed under the QA Manager role</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are fully populated with no placeholders</td>
         </tr>
         
         <tr>
-          <td>The JSON has 1 or more tests</td>
+          <td>JSON has 1 or more tests</td>
           <td>At least one test entry is present in the output</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty &#39;test_name&#39;</td>
-          <td>Each test is identifiable by a meaningful name</td>
+          <td>Every test has a non-empty test_name</td>
+          <td>Each documented test is identifiable by a meaningful name</td>
         </tr>
         
         <tr>
-          <td>The first test has a non-empty array &#39;test_coverage_matrix&#39;</td>
-          <td>The QA Manager output includes a coverage matrix with at least one entry for the analysed test</td>
+          <td>First test has a non-empty test_coverage_matrix array</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry, providing traceability detail not present in the Product Owner view</td>
         </tr>
         
       </tbody>
@@ -385,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Appium test file receives a single collapsed test entry whose coverage matrix rows reflect each data example using the correct schema.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Appium test file sees the output collapsed into a single test entry whose coverage matrix rows represent each data example using the correct schema.</span></div>
     
 
     
@@ -395,28 +385,33 @@
       <tbody>
         
         <tr>
-          <td>I select format &#39;appium&#39; and role &#39;QA Manager&#39;</td>
-          <td>The QA Manager role collapses data-driven tests rather than expanding them</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the data-driven test file</td>
         </tr>
         
         <tr>
-          <td>I upload the test case fixture &#39;appium_datadriven_sample.java&#39;</td>
-          <td>A data-driven Appium test file is successfully submitted for analysis</td>
+          <td>JSON output has no unresolved values</td>
+          <td>All fields in the downloaded JSON are fully populated with no placeholders</td>
         </tr>
         
         <tr>
-          <td>The JSON has exactly 1 tests</td>
-          <td>Multiple data rows are collapsed into a single test entry in the QA Manager output</td>
+          <td>JSON has exactly 1 test</td>
+          <td>Data-driven tests are collapsed into a single logical test entry in the QA Manager view, contrasting with the Product Owner expansion behavior</td>
         </tr>
         
         <tr>
-          <td>For data-driven tests the coverage matrix row count matches the examples</td>
-          <td>The coverage matrix contains one row per data example, preserving full data-driven coverage detail</td>
+          <td>Every test has a non-empty test_name</td>
+          <td>The collapsed test entry is identifiable by a meaningful name</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for &#39;generic&#39;</td>
-          <td>Each coverage matrix row conforms to the expected generic schema format</td>
+          <td>Coverage matrix row count matches the examples</td>
+          <td>Each data row from the DataProvider is represented as a distinct row in the coverage matrix</td>
+        </tr>
+        
+        <tr>
+          <td>Coverage matrix rows use the correct schema for generic</td>
+          <td>Each coverage matrix row conforms to the expected data structure for generic-type test documentation</td>
         </tr>
         
       </tbody>
@@ -446,7 +441,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Appium test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Appium test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
     
 
     
@@ -488,7 +483,7 @@
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -522,7 +517,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own distinct test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own named test entry in the JSON output.</span></div>
     
 
     
@@ -564,7 +559,7 @@
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains 3 or more tests (one per DataProvider row), and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -598,7 +593,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test entry.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test.</span></div>
     
 
     
@@ -640,7 +635,7 @@
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test_names, and the first test has a non-empty test_coverage_matrix array
+              Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -674,7 +669,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Appium fixture and verifies that all DataProvider rows collapse into a single test entry whose coverage matrix rows match the number of data rows and conform to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Appium fixture and verifies that DataProvider rows collapse into a single named test whose coverage matrix rows match the example count and conform to the generic schema.</span></div>
     
 
     
@@ -716,7 +711,7 @@
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the DataProvider examples, and each row uses the correct generic schema
+              Output panel is populated; downloaded JSON has no unresolved values, contains exactly 1 test, that test has a non-empty test_name, coverage matrix row count matches the DataProvider examples, and all coverage matrix rows use the correct generic schema
             
           </td>
           

@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner submits multiple BDD files for analysis, the system accepts the batch request and confirms receipt.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner submits multiple files for batch analysis, the system accepts the request and confirms it is being processed.</span></div>
     
 
     
@@ -239,18 +239,23 @@
       <tbody>
         
         <tr>
-          <td>Enable multi-file mode and queue files</td>
-          <td>The user can switch to multi-file mode, select the BDD format and Product Owner role, and add multiple files to the processing queue</td>
+          <td>Enable multi-file mode and queue two files</td>
+          <td>The user can add multiple files to a batch submission queue</td>
         </tr>
         
         <tr>
-          <td>Submit the batch</td>
-          <td>Clicking submit triggers the batch job and displays a status card to the user</td>
+          <td>Click the submit button</td>
+          <td>The batch submission can be triggered by the user</td>
+        </tr>
+        
+        <tr>
+          <td>Batch status card appears</td>
+          <td>The user receives visible confirmation that their batch is being processed</td>
         </tr>
         
         <tr>
           <td>Backend accepted the request with status 202</td>
-          <td>The system successfully acknowledges the batch submission without errors</td>
+          <td>The system correctly acknowledges the batch request as accepted for async processing</td>
         </tr>
         
       </tbody>
@@ -271,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a batch job finishes processing, a usage event is recorded with valid performance timing data.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that completing a multi-file batch submission generates a usage log event with a valid processing time, supporting analytics and monitoring.</span></div>
     
 
     
@@ -281,18 +286,18 @@
       <tbody>
         
         <tr>
-          <td>Submit a single-file batch in multi-file mode</td>
-          <td>The user can submit a file through the multi-file workflow</td>
+          <td>Submit a single-file batch</td>
+          <td>A minimal batch submission triggers the completion event flow</td>
         </tr>
         
         <tr>
           <td>A multifile_batch_complete usage log event is recorded</td>
-          <td>The system logs a completion event for analytics and audit purposes after the batch finishes</td>
+          <td>The system logs a completion event for auditing and usage tracking purposes</td>
         </tr>
         
         <tr>
           <td>The event has a positive processing_ms value</td>
-          <td>The logged event captures a meaningful processing duration, confirming timing data is being tracked correctly</td>
+          <td>The logged event captures a meaningful processing duration, confirming timing data is recorded</td>
         </tr>
         
       </tbody>
@@ -313,7 +318,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status indicator progresses from a processing/polling state to a completed state and informs the user that results have been emailed.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the batch status card progresses from a processing state to a completion state and notifies the user that results have been emailed.</span></div>
     
 
     
@@ -324,17 +329,17 @@
         
         <tr>
           <td>Batch status card shown in polling state</td>
-          <td>The user sees real-time feedback that their batch is actively being processed</td>
+          <td>The user can see that their batch is actively being processed after submission</td>
         </tr>
         
         <tr>
-          <td>Batch status card shows completion</td>
-          <td>The status card updates to reflect that processing has finished</td>
+          <td>Wait for batch status card to show completion</td>
+          <td>The status card updates automatically when processing finishes without requiring user action</td>
         </tr>
         
         <tr>
           <td>Batch status card shows &#39;Results emailed&#39;</td>
-          <td>The user is clearly informed that the output has been delivered to their email</td>
+          <td>The user is clearly informed that their results have been delivered to their email</td>
         </tr>
         
       </tbody>
@@ -355,7 +360,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that once a batch has completed, the user can dismiss the status card to clean up their workspace.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that once batch processing is complete, the user can dismiss the status card to clean up their workspace.</span></div>
     
 
     
@@ -366,17 +371,17 @@
         
         <tr>
           <td>Wait for batch status card to show completion</td>
-          <td>The batch finishes processing and the completion state is displayed</td>
+          <td>The dismiss option is only available after the batch has fully completed</td>
         </tr>
         
         <tr>
           <td>Click the dismiss button on the batch status card</td>
-          <td>The user has a clear way to close the status notification when they are done with it</td>
+          <td>The user can actively remove the status card from view</td>
         </tr>
         
         <tr>
           <td>Batch status card is not visible</td>
-          <td>The status card is fully removed from view after dismissal, keeping the interface uncluttered</td>
+          <td>The card is fully removed from the page after dismissal, keeping the interface uncluttered</td>
         </tr>
         
       </tbody>
@@ -411,7 +416,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user enables multi-file mode, queues two BDD fixture files, submits the batch, and confirms the backend acknowledges the request with a 202 Accepted status.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user submits a multi-file batch with two fixtures and verifies the backend acknowledges the request with HTTP 202 Accepted and displays a batch status card.</span></div>
     
 
     
@@ -453,7 +458,7 @@
           
           <td>
             
-              Batch status card is visible and the backend responded with HTTP 202
+              Batch status card is visible and backend responded with status 202
             
           </td>
           
@@ -492,7 +497,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a single-file batch in multi-file mode and verifies that a usage analytics event named &#39;multifile_batch_complete&#39; is recorded with a positive processing duration.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user submits a single-file batch and verifies that a usage log event of type &#39;multifile_batch_complete&#39; is recorded with a positive processing duration.</span></div>
     
 
     
@@ -573,7 +578,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a batch and observes the status card polling until processing completes, confirming the final UI state displays a &#39;Results emailed&#39; message.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user submits a batch and observes the status card moving through a polling state before settling on a completion state that confirms results were emailed.</span></div>
     
 
     
@@ -609,13 +614,13 @@
           
           <td>
             
-              User enables multi-file mode, selects format and role, adds a fixture file, and submits; then waits for the status card to reach completion
+              User enables multi-file mode, selects format and role, adds one fixture file, and submits
             
           </td>
           
           <td>
             
-              Batch status card first shows polling state and then displays &#39;Results emailed&#39; upon completion
+              Status card first shows polling state, then transitions to completion state displaying &#39;Results emailed&#39;
             
           </td>
           
@@ -654,7 +659,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user submits a batch, waits for it to complete, dismisses the status card, and confirms it is no longer visible in the UI.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user submits a batch, waits for it to complete, then dismisses the status card and verifies it is no longer visible.</span></div>
     
 
     
@@ -684,7 +689,7 @@
           
           <td>
             
-              User is on the Analyze page and has submitted a batch that has reached completion state
+              User is on the Analyze page with a completed batch status card visible
             
           </td>
           
@@ -696,7 +701,7 @@
           
           <td>
             
-              The batch status card is no longer visible
+              The batch status card is no longer visible on the page
             
           </td>
           

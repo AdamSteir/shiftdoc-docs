@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single pytest file produces valid, complete documentation output with at least one named test case.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single pytest file and generating documentation produces valid, complete output with at least one named test case.</span></div>
     
 
     
@@ -239,18 +239,18 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system responds to a single test file by generating visible documentation</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system responds visibly after processing the uploaded test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated — no placeholders or blanks</td>
+          <td>No placeholder or missing data exists in the generated documentation</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is represented in the output</td>
+          <td>At least one test case is captured from the uploaded file</td>
         </tr>
         
         <tr>
@@ -276,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven pytest file using parametrize generates a separate test entry for each parameter row in the Product Owner view.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven pytest file with parametrize is expanded so that each parameter combination appears as its own separate test case in the Product Owner output.</span></div>
     
 
     
@@ -286,23 +286,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system processes a data-driven test file and generates visible output</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system responds visibly after processing the data-driven test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated — no placeholders or blanks</td>
+          <td>No placeholder or missing data exists in the generated documentation</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each parameter combination is expanded into its own test entry</td>
+          <td>Each parameter row in the data-driven test is expanded into its own test entry</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test case is identifiable by name</td>
+          <td>Each expanded test case is individually identifiable by name</td>
         </tr>
         
       </tbody>
@@ -323,7 +323,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single pytest file in the QA Manager view produces a complete test coverage matrix alongside the standard test documentation.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single pytest file in QA Manager mode produces valid documentation that includes a populated test coverage matrix for the first test.</span></div>
     
 
     
@@ -333,18 +333,18 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system generates visible documentation for a QA Manager audience</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system responds visibly after processing the uploaded test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated — no placeholders or blanks</td>
+          <td>No placeholder or missing data exists in the generated documentation</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is represented in the output</td>
+          <td>At least one test case is captured from the uploaded file</td>
         </tr>
         
         <tr>
@@ -354,7 +354,7 @@
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a populated coverage matrix, not just a name and description</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
       </tbody>
@@ -375,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven pytest file is collapsed into a single test entry in the QA Manager view, with coverage matrix rows representing each parameter combination using the correct schema.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven pytest file in QA Manager mode produces a single collapsed test entry whose coverage matrix rows match the number of parameter combinations and follow the correct schema.</span></div>
     
 
     
@@ -385,33 +385,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system processes a data-driven test file and generates visible output for a QA Manager</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system responds visibly after processing the data-driven test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated — no placeholders or blanks</td>
+          <td>No placeholder or missing data exists in the generated documentation</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Parametrized variants are collapsed into a single test entry rather than expanded</td>
+          <td>All parameter combinations are collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is identifiable by name</td>
+          <td>The collapsed test case is identifiable by name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each parameter row from the test file is represented as a row in the coverage matrix</td>
+          <td>Each parameter combination is represented as its own row within the coverage matrix</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>The structure of each coverage matrix row conforms to the expected generic format</td>
+          <td>Each coverage matrix row conforms to the expected data structure for generic test types</td>
         </tr>
         
       </tbody>
@@ -441,7 +441,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single pytest fixture and verifies that the documentation pipeline produces at least one fully-named test entry in a clean JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single pytest fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
     
 
     
@@ -517,7 +517,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven pytest fixture and verifies that each parametrize row is expanded into its own named test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven pytest fixture and verifies that each parametrize row is expanded into its own test entry in the JSON output.</span></div>
     
 
     
@@ -559,7 +559,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests (one per parametrize row), and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -593,7 +593,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single pytest fixture and verifies that the output JSON contains a fully-named test with a populated coverage matrix array.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single pytest fixture and verifies that the JSON output contains at least one named test with a fully populated coverage matrix.</span></div>
     
 
     
@@ -635,7 +635,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test_name values, and the first test has a non-empty test_coverage_matrix array
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -669,7 +669,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven pytest fixture and verifies that all parametrize rows collapse into a single test entry whose coverage matrix rows match the example count and conform to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven pytest fixture and verifies that parametrize rows collapse into a single test with a coverage matrix whose row count matches the number of examples and conforms to the generic schema.</span></div>
     
 
     
@@ -711,7 +711,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the parametrize examples, and rows conform to the generic schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the parametrize examples, and rows conform to the generic schema
             
           </td>
           

@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Selenium test receives structured documentation with at least one named test in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Selenium test receives valid, complete documentation with at least one named test in the output.</span></div>
     
 
     
@@ -240,12 +240,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing a Selenium file</td>
+          <td>The system produces visible output after processing a single Selenium test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded report are populated — no placeholders or blanks remain</td>
+          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -287,17 +287,17 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing a data-driven Selenium file</td>
+          <td>The system produces visible output after processing a data-driven Selenium test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded report are fully populated</td>
+          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each data row from the parameterized test is represented as its own test entry</td>
+          <td>Each data row in the parameterized test is expanded into its own test entry, resulting in multiple tests</td>
         </tr>
         
         <tr>
@@ -334,12 +334,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing the Selenium file</td>
+          <td>The system produces visible output after processing a single Selenium test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded report are fully populated</td>
+          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -375,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Selenium test sees a single collapsed test entry whose coverage matrix rows reflect each data example using the correct structure.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Selenium test sees all data rows collapsed into a single test entry with a coverage matrix row for each example.</span></div>
     
 
     
@@ -386,17 +386,17 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing the data-driven Selenium file</td>
+          <td>The system produces visible output after processing a data-driven Selenium test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded report are fully populated</td>
+          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven tests are collapsed into a single test entry for the QA Manager view</td>
+          <td>All data rows are collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
@@ -406,12 +406,12 @@
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from the parameterized test is represented as a row in the coverage matrix</td>
+          <td>Each data row from the parameterized test is represented as a separate row in the coverage matrix</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>Each coverage matrix row conforms to the expected generic format</td>
+          <td>Each coverage matrix row conforms to the expected structure for generic test types</td>
         </tr>
         
       </tbody>
@@ -441,7 +441,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Selenium test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Selenium test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.</span></div>
     
 
     
@@ -517,7 +517,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Selenium fixture and verifies that the system expands parameterized rows into individual tests, producing at least three distinct named test entries in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Selenium fixture and verifies that the analysis expands parameterized tests so the JSON output contains one entry per data row (3 or more tests).</span></div>
     
 
     
@@ -593,7 +593,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Selenium test fixture and verifies that the JSON output is valid, fully resolved, contains at least one named test, and that the first test includes a populated coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Selenium test fixture and verifies that the analysis produces valid JSON output where the first test includes a populated test_coverage_matrix array.</span></div>
     
 
     
@@ -669,7 +669,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Selenium fixture and verifies that parameterized tests collapse into a single test entry whose coverage matrix row count matches the number of examples and conforms to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Selenium fixture and verifies that the analysis collapses parameterized tests into exactly one test entry whose coverage matrix rows match the number of data examples and conform to the generic schema.</span></div>
     
 
     
@@ -711,7 +711,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the examples count, and rows conform to the generic schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows use the correct generic schema
             
           </td>
           

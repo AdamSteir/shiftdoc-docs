@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager runs a full analysis with all add-ons enabled, the downloaded JSON output contains all expected sections with meaningful content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager analyzes a BDD test file with all add-ons enabled, the downloaded JSON output contains fully populated sections for technical review, gap analysis, annotation summary, risk assessment, and recommendations.</span></div>
     
 
     
@@ -240,62 +240,37 @@
         
         <tr>
           <td>Documentation and analysis appears in output panel</td>
-          <td>The analyze page produces visible results after uploading a BDD test file with all add-ons selected</td>
+          <td>The analysis runs successfully and results are visible to the user</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>The downloaded report is fully populated with no placeholder or missing data</td>
+          <td>All fields in the output are populated — no placeholders or missing data remain</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;technical_review&#39;</td>
-          <td>The technical review section is present in the report</td>
+          <td>JSON has top-level key &#39;technical_review&#39; with non-empty &#39;test_quality&#39;</td>
+          <td>The technical review add-on produces quality assessments for the uploaded tests</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;gap_analysis&#39;</td>
-          <td>The gap analysis section is present in the report</td>
+          <td>JSON has top-level key &#39;gap_analysis&#39; with non-empty &#39;coverage_gaps&#39;</td>
+          <td>The gap analysis add-on identifies areas of missing test coverage</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;annotation_summary&#39;</td>
-          <td>The annotation summary section is present in the report</td>
+          <td>JSON has top-level key &#39;annotation_summary&#39; with non-empty &#39;annotation_health&#39;</td>
+          <td>The annotation summary add-on evaluates the health and completeness of test annotations</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;risk_assessment&#39;</td>
-          <td>The risk assessment section is present in the report</td>
+          <td>JSON has top-level key &#39;risk_assessment&#39; with non-empty &#39;scenario_risk_ratings&#39;</td>
+          <td>The risk assessment add-on assigns risk ratings to individual test scenarios</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;recommendations&#39;</td>
-          <td>The recommendations section is present in the report</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;technical_review&#39; has non-empty &#39;test_quality&#39;</td>
-          <td>The technical review section includes actual test quality findings</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;gap_analysis&#39; has non-empty &#39;coverage_gaps&#39;</td>
-          <td>The gap analysis section identifies real coverage gaps</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;annotation_summary&#39; has non-empty &#39;annotation_health&#39;</td>
-          <td>The annotation summary section provides meaningful annotation health data</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;risk_assessment&#39; has non-empty &#39;scenario_risk_ratings&#39;</td>
-          <td>The risk assessment section includes risk ratings for scenarios</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;recommendations&#39; has non-empty &#39;actions&#39;</td>
-          <td>The recommendations section provides actionable next steps</td>
+          <td>JSON has top-level key &#39;recommendations&#39; with non-empty &#39;actions&#39;</td>
+          <td>The recommendations add-on produces actionable next steps based on the analysis</td>
         </tr>
         
       </tbody>
@@ -316,7 +291,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner runs a full analysis with all add-ons enabled, the downloaded JSON output contains all expected sections with meaningful content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner analyzes a BDD test file with all add-ons enabled, the downloaded JSON output contains fully populated sections for technical review, gap analysis, annotation summary, risk assessment, and recommendations.</span></div>
     
 
     
@@ -327,62 +302,37 @@
         
         <tr>
           <td>Documentation and analysis appears in output panel</td>
-          <td>The analyze page produces visible results after uploading a BDD test file with all add-ons selected</td>
+          <td>The analysis runs successfully and results are visible to the user</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>The downloaded report is fully populated with no placeholder or missing data</td>
+          <td>All fields in the output are populated — no placeholders or missing data remain</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;technical_review&#39;</td>
-          <td>The technical review section is present in the report</td>
+          <td>JSON has top-level key &#39;technical_review&#39; with non-empty &#39;test_quality&#39;</td>
+          <td>The technical review add-on produces quality assessments for the uploaded tests</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;gap_analysis&#39;</td>
-          <td>The gap analysis section is present in the report</td>
+          <td>JSON has top-level key &#39;gap_analysis&#39; with non-empty &#39;coverage_gaps&#39;</td>
+          <td>The gap analysis add-on identifies areas of missing test coverage</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;annotation_summary&#39;</td>
-          <td>The annotation summary section is present in the report</td>
+          <td>JSON has top-level key &#39;annotation_summary&#39; with non-empty &#39;annotation_health&#39;</td>
+          <td>The annotation summary add-on evaluates the health and completeness of test annotations</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;risk_assessment&#39;</td>
-          <td>The risk assessment section is present in the report</td>
+          <td>JSON has top-level key &#39;risk_assessment&#39; with non-empty &#39;scenario_risk_ratings&#39;</td>
+          <td>The risk assessment add-on assigns risk ratings to individual test scenarios</td>
         </tr>
         
         <tr>
-          <td>JSON contains top-level key &#39;recommendations&#39;</td>
-          <td>The recommendations section is present in the report</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;technical_review&#39; has non-empty &#39;test_quality&#39;</td>
-          <td>The technical review section includes actual test quality findings</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;gap_analysis&#39; has non-empty &#39;coverage_gaps&#39;</td>
-          <td>The gap analysis section identifies real coverage gaps</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;annotation_summary&#39; has non-empty &#39;annotation_health&#39;</td>
-          <td>The annotation summary section provides meaningful annotation health data</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;risk_assessment&#39; has non-empty &#39;scenario_risk_ratings&#39;</td>
-          <td>The risk assessment section includes risk ratings for scenarios</td>
-        </tr>
-        
-        <tr>
-          <td>&#39;recommendations&#39; has non-empty &#39;actions&#39;</td>
-          <td>The recommendations section provides actionable next steps</td>
+          <td>JSON has top-level key &#39;recommendations&#39; with non-empty &#39;actions&#39;</td>
+          <td>The recommendations add-on produces actionable next steps based on the analysis</td>
         </tr>
         
       </tbody>
@@ -412,7 +362,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager selects all add-ons, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON output contains all five expected top-level sections with non-empty key fields.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager selects all add-ons, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON output contains all five expected top-level add-on sections with non-empty content.</span></div>
     
 
     
@@ -442,19 +392,19 @@
           
           <td>
             
-              User is on the Analyze page
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;QA Manager&#39;, and all add-ons selected
             
           </td>
           
           <td>
             
-              Selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, selects all add-ons, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document and analyze test cases&#39;
+              User uploads &#39;bdd_sample.feature&#39; and clicks &#39;Document and analyze test cases&#39;, then downloads the JSON output
             
           </td>
           
           <td>
             
-              Output panel shows documentation and analysis; downloaded JSON has no unresolved values and contains non-empty top-level keys: technical_review, gap_analysis, annotation_summary, risk_assessment, and recommendations with their respective sub-fields
+              JSON output contains no unresolved values and has non-empty top-level keys: technical_review (test_quality), gap_analysis (coverage_gaps), annotation_summary (annotation_health), risk_assessment (scenario_risk_ratings), recommendations (actions)
             
           </td>
           
@@ -488,7 +438,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner selects all add-ons, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON output contains all five expected top-level sections with non-empty key fields.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner selects all add-ons, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON output contains all five expected top-level add-on sections with non-empty content.</span></div>
     
 
     
@@ -518,19 +468,19 @@
           
           <td>
             
-              User is on the Analyze page
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, and all add-ons selected
             
           </td>
           
           <td>
             
-              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, selects all add-ons, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document and analyze test cases&#39;
+              User uploads &#39;bdd_sample.feature&#39; and clicks &#39;Document and analyze test cases&#39;, then downloads the JSON output
             
           </td>
           
           <td>
             
-              Output panel shows documentation and analysis; downloaded JSON has no unresolved values and contains non-empty top-level keys: technical_review, gap_analysis, annotation_summary, risk_assessment, and recommendations with their respective sub-fields
+              JSON output contains no unresolved values and has non-empty top-level keys: technical_review (test_quality), gap_analysis (coverage_gaps), annotation_summary (annotation_health), risk_assessment (scenario_risk_ratings), recommendations (actions)
             
           </td>
           

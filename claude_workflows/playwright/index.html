@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Playwright test file produces valid, complete JSON documentation with at least one named test entry.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Playwright test file produces valid, complete documentation output with at least one named test entry.</span></div>
     
 
     
@@ -240,12 +240,12 @@
         
         <tr>
           <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing the file</td>
+          <td>The system successfully processes the uploaded file and displays results to the user</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no placeholders or nulls</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -255,12 +255,12 @@
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test is documented in the output</td>
+          <td>At least one test case is documented from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a name</td>
+          <td>Each documented test is identifiable by a meaningful name</td>
         </tr>
         
       </tbody>
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Playwright data-driven test using test.each is expanded into one separate documented test entry per data row.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using test.each is expanded into individual test entries — one per data row — in the Product Owner output.</span></div>
     
 
     
@@ -292,12 +292,12 @@
         
         <tr>
           <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing the file</td>
+          <td>The system successfully processes the data-driven test file and displays results</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -307,12 +307,12 @@
         
         <tr>
           <td>JSON has 2 or more tests</td>
-          <td>Each data row from test.each results in its own documented test entry</td>
+          <td>Each data row in test.each produces its own distinct test entry in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is identifiable by a name</td>
+          <td>Each expanded test case is identifiable by a meaningful name</td>
         </tr>
         
       </tbody>
@@ -333,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Playwright data-driven test using a for...of loop is expanded into one separate documented test entry per iteration.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using a for...of loop is expanded into individual test entries — one per iteration — in the Product Owner output.</span></div>
     
 
     
@@ -344,12 +344,12 @@
         
         <tr>
           <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing the file</td>
+          <td>The system successfully processes the for...of test file and displays results</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -359,12 +359,12 @@
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each loop iteration results in its own documented test entry</td>
+          <td>Each iteration of the for...of loop produces its own distinct test entry in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is identifiable by a name</td>
+          <td>Each expanded test case is identifiable by a meaningful name</td>
         </tr>
         
       </tbody>
@@ -385,7 +385,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager documents a single Playwright test, the output includes a populated test coverage matrix in addition to the core test details.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Playwright test file in QA Manager mode produces documentation that includes a populated test coverage matrix.</span></div>
     
 
     
@@ -396,12 +396,12 @@
         
         <tr>
           <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing the file</td>
+          <td>The system successfully processes the uploaded file and displays results to the user</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -411,16 +411,16 @@
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test is documented in the output</td>
+          <td>At least one test case is documented from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a name</td>
+          <td>Each documented test is identifiable by a meaningful name</td>
         </tr>
         
         <tr>
-          <td>First test has a non-empty test_coverage_matrix array</td>
+          <td>The first test has a non-empty test_coverage_matrix array</td>
           <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
@@ -442,7 +442,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager documents a Playwright test.each data-driven test, multiple data rows are collapsed into a single test entry with a coverage matrix row for each example.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using test.each is collapsed into a single test entry in QA Manager mode, with coverage matrix rows representing each data scenario.</span></div>
     
 
     
@@ -453,12 +453,12 @@
         
         <tr>
           <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing the file</td>
+          <td>The system successfully processes the data-driven test file and displays results</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -468,22 +468,22 @@
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>All data rows are collapsed into a single documented test rather than expanded</td>
+          <td>All data rows from test.each are collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is identifiable by a name</td>
+          <td>The collapsed test is identifiable by a meaningful name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from test.each is represented as a separate row in the coverage matrix</td>
+          <td>Each data row from test.each is represented as its own row in the coverage matrix</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for &#39;playwright&#39;</td>
-          <td>Each matrix row conforms to the expected Playwright-specific structure</td>
+          <td>Each coverage matrix row conforms to the expected Playwright-specific structure</td>
         </tr>
         
       </tbody>
@@ -504,7 +504,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager documents a Playwright for...of data-driven test, all loop iterations are collapsed into a single test entry with a coverage matrix row for each iteration.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using a for...of loop is collapsed into a single test entry in QA Manager mode, with coverage matrix rows representing each iteration.</span></div>
     
 
     
@@ -515,12 +515,12 @@
         
         <tr>
           <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing the file</td>
+          <td>The system successfully processes the for...of test file and displays results</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -530,22 +530,22 @@
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>All loop iterations are collapsed into a single documented test rather than expanded</td>
+          <td>All iterations of the for...of loop are collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is identifiable by a name</td>
+          <td>The collapsed test is identifiable by a meaningful name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each loop iteration is represented as a separate row in the coverage matrix</td>
+          <td>Each loop iteration is represented as its own row in the coverage matrix</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for &#39;playwright&#39;</td>
-          <td>Each matrix row conforms to the expected Playwright-specific structure</td>
+          <td>Each coverage matrix row conforms to the expected Playwright-specific structure</td>
         </tr>
         
       </tbody>
@@ -575,7 +575,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Playwright test fixture and verifies that the documentation pipeline produces valid, framework-tagged JSON output with at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Playwright test fixture and verifies that the documentation panel populates and the downloaded JSON is a valid, fully-resolved Playwright output containing at least one named test.</span></div>
     
 
     
@@ -617,7 +617,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 1+ tests, and every test has a non-empty test_name
             
           </td>
           
@@ -651,7 +651,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Playwright fixture using test.each and verifies that the output expands into one discrete test entry per data row.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Playwright fixture using test.each and verifies that each data row is expanded into its own separate test entry in the JSON output.</span></div>
     
 
     
@@ -693,7 +693,7 @@
           
           <td>
             
-              Downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 2 or more tests (one per data row), and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 2+ tests (one per data row), and every test has a non-empty test_name
             
           </td>
           
@@ -727,7 +727,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a Playwright fixture using a for...of loop and verifies that the output expands into one discrete test entry per loop iteration.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a Playwright fixture using a for...of loop and verifies that each loop iteration is expanded into its own separate test entry in the JSON output.</span></div>
     
 
     
@@ -769,7 +769,7 @@
           
           <td>
             
-              Downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 3 or more tests (one per iteration), and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 3+ tests (one per loop row), and every test has a non-empty test_name
             
           </td>
           
@@ -803,7 +803,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Playwright test fixture and verifies that the output includes a populated test_coverage_matrix on the first test in addition to core structural requirements.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Playwright test fixture and verifies that the JSON output is valid and that the first test entry contains a populated test_coverage_matrix array.</span></div>
     
 
     
@@ -845,7 +845,7 @@
           
           <td>
             
-              Downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 1 or more tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 1+ tests with non-empty test_names, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -879,7 +879,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Playwright fixture using test.each and verifies that the output collapses into exactly one test whose coverage matrix rows match the number of data rows and conform to the Playwright schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Playwright fixture using test.each and verifies that the output collapses all rows into a single test entry whose coverage matrix contains one row per data example using the correct Playwright schema.</span></div>
     
 
     
@@ -921,7 +921,7 @@
           
           <td>
             
-              Downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the example data rows, and rows conform to the Playwright coverage matrix schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the data examples, and rows conform to the Playwright coverage matrix schema
             
           </td>
           
@@ -955,7 +955,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a Playwright fixture using a for...of loop and verifies that the output collapses into exactly one test whose coverage matrix rows match the number of loop iterations and conform to the Playwright schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a Playwright fixture using a for...of loop and verifies that the output collapses all iterations into a single test entry whose coverage matrix contains one row per loop iteration using the correct Playwright schema.</span></div>
     
 
     
@@ -997,7 +997,7 @@
           
           <td>
             
-              Downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the loop iteration data, and rows conform to the Playwright coverage matrix schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the loop iterations, and rows conform to the Playwright coverage matrix schema
             
           </td>
           

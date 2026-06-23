@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can upload a BDD test file, run a Gap Analysis, and receive a complete output that clearly identifies both coverage and robustness gaps — with a well-formed, fully resolved JSON download.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can run a Gap Analysis on a BDD test file and receive complete, well-structured output covering both coverage and robustness gaps.</span></div>
     
 
     
@@ -239,38 +239,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation and analysis appear in output panel</td>
-          <td>The Gap Analysis results are displayed to the user after submitting a test file</td>
+          <td>Documentation and analysis appears in output panel</td>
+          <td>The Gap Analysis add-on produces visible results after submission</td>
         </tr>
         
         <tr>
           <td>Coverage Gaps appears exactly once</td>
-          <td>The output contains one and only one Coverage Gaps section, avoiding duplication or omission</td>
+          <td>The output contains a single, non-duplicated Coverage Gaps section</td>
         </tr>
         
         <tr>
           <td>Robustness Gaps appears exactly once</td>
-          <td>The output contains one and only one Robustness Gaps section, avoiding duplication or omission</td>
+          <td>The output contains a single, non-duplicated Robustness Gaps section</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>The downloaded JSON contains no placeholder or unfilled template values</td>
+          <td>All placeholders or template tokens in the downloaded JSON are fully populated</td>
         </tr>
         
         <tr>
           <td>JSON has top-level key gap_analysis</td>
-          <td>The JSON structure is correctly formed with the expected root-level section</td>
+          <td>The downloaded JSON follows the expected schema structure</td>
         </tr>
         
         <tr>
           <td>gap_analysis section has a non-empty coverage_gaps</td>
-          <td>The analysis actually identified and returned coverage gap content rather than an empty result</td>
+          <td>At least one coverage gap was identified and recorded in the output</td>
         </tr>
         
         <tr>
           <td>coverage_gaps appears exactly once in gap_analysis</td>
-          <td>The JSON structure is clean with no duplicate keys that could cause parsing or display issues</td>
+          <td>The JSON structure is clean with no duplicated keys</td>
         </tr>
         
       </tbody>
@@ -291,7 +291,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can upload a BDD test file, run a Gap Analysis, and receive a complete output that clearly identifies both coverage and robustness gaps — with a well-formed, fully resolved JSON download.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can run a Gap Analysis on a BDD test file and receive complete, well-structured output covering both coverage and robustness gaps.</span></div>
     
 
     
@@ -301,38 +301,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation and analysis appear in output panel</td>
-          <td>The Gap Analysis results are displayed to the user after submitting a test file</td>
+          <td>Documentation and analysis appears in output panel</td>
+          <td>The Gap Analysis add-on produces visible results after submission</td>
         </tr>
         
         <tr>
           <td>Coverage Gaps appears exactly once</td>
-          <td>The output contains one and only one Coverage Gaps section, avoiding duplication or omission</td>
+          <td>The output contains a single, non-duplicated Coverage Gaps section</td>
         </tr>
         
         <tr>
           <td>Robustness Gaps appears exactly once</td>
-          <td>The output contains one and only one Robustness Gaps section, avoiding duplication or omission</td>
+          <td>The output contains a single, non-duplicated Robustness Gaps section</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>The downloaded JSON contains no placeholder or unfilled template values</td>
+          <td>All placeholders or template tokens in the downloaded JSON are fully populated</td>
         </tr>
         
         <tr>
           <td>JSON has top-level key gap_analysis</td>
-          <td>The JSON structure is correctly formed with the expected root-level section</td>
+          <td>The downloaded JSON follows the expected schema structure</td>
         </tr>
         
         <tr>
           <td>gap_analysis section has a non-empty coverage_gaps</td>
-          <td>The analysis actually identified and returned coverage gap content rather than an empty result</td>
+          <td>At least one coverage gap was identified and recorded in the output</td>
         </tr>
         
         <tr>
           <td>coverage_gaps appears exactly once in gap_analysis</td>
-          <td>The JSON structure is clean with no duplicate keys that could cause parsing or display issues</td>
+          <td>The JSON structure is clean with no duplicated keys</td>
         </tr>
         
       </tbody>
@@ -353,7 +353,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user selects the Regression / Smoke testing layer before running a Gap Analysis, that layer context is correctly recorded in the downloaded JSON metadata.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that selecting the Regression / Smoke testing layer correctly records that context in the output metadata when running a Gap Analysis.</span></div>
     
 
     
@@ -363,18 +363,18 @@
       <tbody>
         
         <tr>
-          <td>Documentation and analysis appear in output panel</td>
-          <td>The Gap Analysis results are displayed after submitting with a testing layer selected</td>
+          <td>Documentation and analysis appears in output panel</td>
+          <td>The Gap Analysis add-on produces visible results after submission with a testing layer selected</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>The downloaded JSON contains no placeholder or unfilled template values</td>
+          <td>All placeholders or template tokens in the downloaded JSON are fully populated</td>
         </tr>
         
         <tr>
-          <td>JSON metadata includes testing layer regression</td>
-          <td>The selected testing layer is passed through and correctly stored in the output metadata</td>
+          <td>JSON shiftdoc metadata includes testing layer regression</td>
+          <td>The chosen testing layer is correctly passed through and stored in the output metadata</td>
         </tr>
         
       </tbody>
@@ -395,7 +395,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user selects the Unit testing layer before running a Gap Analysis, that layer context is correctly recorded in the downloaded JSON metadata.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that selecting the Unit testing layer correctly records that context in the output metadata when running a Gap Analysis.</span></div>
     
 
     
@@ -405,18 +405,18 @@
       <tbody>
         
         <tr>
-          <td>Documentation and analysis appear in output panel</td>
-          <td>The Gap Analysis results are displayed after submitting with a testing layer selected</td>
+          <td>Documentation and analysis appears in output panel</td>
+          <td>The Gap Analysis add-on produces visible results after submission with a testing layer selected</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>The downloaded JSON contains no placeholder or unfilled template values</td>
+          <td>All placeholders or template tokens in the downloaded JSON are fully populated</td>
         </tr>
         
         <tr>
-          <td>JSON metadata includes testing layer unit</td>
-          <td>The selected testing layer is passed through and correctly stored in the output metadata</td>
+          <td>JSON shiftdoc metadata includes testing layer unit</td>
+          <td>The chosen testing layer is correctly passed through and stored in the output metadata</td>
         </tr>
         
       </tbody>
@@ -446,7 +446,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Gap Analysis add-on for a given role, uploads a BDD fixture, triggers analysis, and verifies that the output panel and downloaded JSON contain complete, well-structured gap analysis data with no unresolved values.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Gap Analysis add-on for a given role, uploads a BDD fixture, triggers analysis, and verifies that the output panel and downloaded JSON both contain complete, well-formed gap analysis data with no unresolved values.</span></div>
     
 
     
@@ -494,7 +494,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager selects the Gap Analysis add-on with the &#39;Regression / Smoke&#39; testing layer, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON metadata correctly reflects the &#39;regression&#39; layer with no unresolved values.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager selects the Gap Analysis add-on with the &#39;Regression / Smoke&#39; testing layer, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON metadata correctly reflects the &#39;regression&#39; testing layer.</span></div>
     
 
     
@@ -570,7 +570,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager selects the Gap Analysis add-on with the &#39;Unit&#39; testing layer, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON metadata correctly reflects the &#39;unit&#39; layer with no unresolved values.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager selects the Gap Analysis add-on with the &#39;Unit&#39; testing layer, uploads a BDD fixture, triggers analysis, and verifies that the downloaded JSON metadata correctly reflects the &#39;unit&#39; testing layer.</span></div>
     
 
     

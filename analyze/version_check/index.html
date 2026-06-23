@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user attempts to analyze a test file but their frontend is out of date, they are shown a modal prompting them to reload and update before proceeding.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user tries to analyze a test file but their frontend is out of date, they are shown a modal prompting them to reload and get the latest version.</span></div>
     
 
     
@@ -239,23 +239,23 @@
       <tbody>
         
         <tr>
-          <td>the backend reports a mismatched version</td>
-          <td>The system detects that the user&#39;s frontend version does not match the backend version</td>
+          <td>Backend reports a mismatched version</td>
+          <td>The system detects that the user&#39;s frontend version does not match the backend</td>
         </tr>
         
         <tr>
-          <td>I click the analyze button</td>
-          <td>Submitting an analysis request triggers the version mismatch check</td>
+          <td>User selects format and role, uploads a file, and clicks Analyze</td>
+          <td>The version check is triggered as part of the normal analysis workflow, not just on page load</td>
         </tr>
         
         <tr>
-          <td>I see the update required modal</td>
-          <td>Users are blocked from proceeding and clearly informed that an update is required</td>
+          <td>Update required modal appears</td>
+          <td>Users are clearly informed that their version is stale and action is required before they can proceed</td>
         </tr>
         
         <tr>
-          <td>the modal has a reload button</td>
-          <td>Users have a clear, actionable way to reload and get the latest version without hunting for it themselves</td>
+          <td>Modal contains a reload button</td>
+          <td>Users have a clear, one-click path to refresh and get the latest frontend version</td>
         </tr>
         
       </tbody>
@@ -285,7 +285,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user on a stale frontend receives an update required modal with a reload button when they attempt to analyze a test case file after the backend has reported a version mismatch.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a stale frontend attempts to run an analysis and is blocked by an update-required modal prompting them to reload.</span></div>
     
 
     
@@ -315,19 +315,19 @@
           
           <td>
             
-              User is on the Analyze page and the backend reports a mismatched version
+              User is on the Analyze page and the backend reports a version mismatch
             
           </td>
           
           <td>
             
-              User selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads fixture &#39;bdd_sample.feature&#39;, and clicks the analyze button
+              User selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads fixture &#39;bdd_sample.feature&#39;, and clicks Analyze
             
           </td>
           
           <td>
             
-              The update required modal is displayed and contains a reload button
+              An update-required modal is displayed containing a reload button
             
           </td>
           

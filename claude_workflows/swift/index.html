@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a single Swift test file uploaded by a Product Owner produces valid, complete documentation output with at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Swift test file produces valid, well-formed documentation output with at least one named test case.</span></div>
     
 
     
@@ -239,28 +239,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing a Swift test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing a Swift file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholder or missing data</td>
+          <td>All placeholders or template tokens in the output are fully resolved</td>
         </tr>
         
         <tr>
           <td>JSON framework is &#39;swift&#39;</td>
-          <td>The output correctly identifies the test framework as Swift</td>
+          <td>The output correctly identifies the source language as Swift</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test is extracted from the uploaded file</td>
+          <td>At least one test case is detected and documented from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is given a meaningful, non-blank name</td>
+          <td>Each documented test case is assigned a meaningful name</td>
         </tr>
         
       </tbody>
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Swift test file uploaded by a Product Owner expands into one separate test entry per data row, producing at least three individual tests.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Swift test using struct and for-loop patterns is expanded into one documented test entry per data row.</span></div>
     
 
     
@@ -291,28 +291,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing a data-driven Swift test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing a data-driven Swift file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholder or missing data</td>
+          <td>All placeholders or template tokens in the output are fully resolved</td>
         </tr>
         
         <tr>
           <td>JSON framework is &#39;swift&#39;</td>
-          <td>The output correctly identifies the test framework as Swift</td>
+          <td>The output correctly identifies the source language as Swift</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Data-driven tests are expanded so each input row becomes its own documented test case</td>
+          <td>Data-driven rows are each expanded into their own separate test entry, yielding at least 3 tests</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is given a meaningful, non-blank name</td>
+          <td>Each expanded test case is assigned a meaningful name</td>
         </tr>
         
       </tbody>
@@ -333,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a single Swift test file uploaded by a QA Manager produces documentation that includes a populated coverage matrix alongside the standard test output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager analyzes a single Swift test file, the output includes a populated test coverage matrix for each test case.</span></div>
     
 
     
@@ -343,33 +343,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing a Swift test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing a Swift file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholder or missing data</td>
+          <td>All placeholders or template tokens in the output are fully resolved</td>
         </tr>
         
         <tr>
           <td>JSON framework is &#39;swift&#39;</td>
-          <td>The output correctly identifies the test framework as Swift</td>
+          <td>The output correctly identifies the source language as Swift</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test is extracted from the uploaded file</td>
+          <td>At least one test case is detected and documented from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is given a meaningful, non-blank name</td>
+          <td>Each documented test case is assigned a meaningful name</td>
         </tr>
         
         <tr>
-          <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
+          <td>First test has a non-empty array test_coverage_matrix</td>
+          <td>The QA Manager role triggers generation of a coverage matrix with at least one entry</td>
         </tr>
         
       </tbody>
@@ -390,7 +390,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Swift test file uploaded by a QA Manager is collapsed into a single test entry whose coverage matrix contains one row per data example, using the correct Swift schema.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager analyzes a data-driven Swift test file, the multiple data rows are collapsed into a single test entry whose coverage matrix rows match the number of examples and follow the correct schema.</span></div>
     
 
     
@@ -400,38 +400,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The tool produces visible output after processing a data-driven Swift test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing a data-driven Swift file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholder or missing data</td>
+          <td>All placeholders or template tokens in the output are fully resolved</td>
         </tr>
         
         <tr>
           <td>JSON framework is &#39;swift&#39;</td>
-          <td>The output correctly identifies the test framework as Swift</td>
+          <td>The output correctly identifies the source language as Swift</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven tests are collapsed into a single test entry rather than expanded for the QA Manager view</td>
+          <td>Data-driven rows are collapsed into a single test entry under the QA Manager role</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is given a meaningful, non-blank name</td>
+          <td>The collapsed test case is assigned a meaningful name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>The number of rows in the coverage matrix equals the number of data input rows in the original test</td>
+          <td>The number of rows in the coverage matrix equals the number of data-driven input rows</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for &#39;swift&#39;</td>
-          <td>Each row in the coverage matrix conforms to the expected field structure for Swift tests</td>
+          <td>Each coverage matrix row conforms to the expected Swift-specific structure</td>
         </tr>
         
       </tbody>
@@ -497,13 +497,13 @@
           
           <td>
             
-              User selects format &#39;swift&#39; and role &#39;Product Owner&#39;, uploads &#39;swift_single_sample.swift&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;swift&#39; and role &#39;Product Owner&#39;, uploads &#39;swift_single_sample.swift&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON is framework &#39;swift&#39;, has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;swift&#39;, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -537,7 +537,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Swift fixture and verifies that the analyser expands struct+for constructs into individual tests, producing at least three named tests in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Swift fixture and verifies that the analyser expands struct+for loops into individual tests, producing at least three distinct named test entries in the JSON output.</span></div>
     
 
     
@@ -573,13 +573,13 @@
           
           <td>
             
-              User selects format &#39;swift&#39; and role &#39;Product Owner&#39;, uploads &#39;swift_datadriven_sample.swift&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;swift&#39; and role &#39;Product Owner&#39;, uploads &#39;swift_datadriven_sample.swift&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON is framework &#39;swift&#39;, has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;swift&#39;, contains 3 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -613,7 +613,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Swift test fixture and verifies that the analysis returns valid JSON with at least one named test and a populated coverage matrix on the first test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Swift test fixture and verifies that the analysis returns valid JSON with a fully populated coverage matrix on the first test.</span></div>
     
 
     
@@ -649,13 +649,13 @@
           
           <td>
             
-              User selects format &#39;swift&#39; and role &#39;QA Manager&#39;, uploads &#39;swift_single_sample.swift&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;swift&#39; and role &#39;QA Manager&#39;, uploads &#39;swift_single_sample.swift&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON is framework &#39;swift&#39;, has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;swift&#39;, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -689,7 +689,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Swift fixture and verifies that the analyser collapses all data rows into exactly one test whose coverage matrix row count matches the number of examples and conforms to the Swift schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Swift fixture and verifies that the analyser collapses all data rows into a single test entry whose coverage matrix rows match the number of examples and conform to the Swift schema.</span></div>
     
 
     
@@ -725,13 +725,13 @@
           
           <td>
             
-              User selects format &#39;swift&#39; and role &#39;QA Manager&#39;, uploads &#39;swift_datadriven_sample.swift&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;swift&#39; and role &#39;QA Manager&#39;, uploads &#39;swift_datadriven_sample.swift&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON is framework &#39;swift&#39;, has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the data-driven examples, and rows conform to the Swift coverage matrix schema
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;swift&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the data-driven examples, and coverage matrix rows use the correct Swift schema
             
           </td>
           

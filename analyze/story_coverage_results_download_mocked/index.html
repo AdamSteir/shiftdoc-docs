@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in MD format produces a file with the correct name and extension based on the uploaded story file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in MD format produces a file with the correct .md extension and the original story filename.</span></div>
     
 
     
@@ -240,7 +240,7 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>A coverage result is available from a named uploaded file</td>
+          <td>A coverage result is available based on a story file the user uploaded</td>
         </tr>
         
         <tr>
@@ -250,7 +250,7 @@
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.md&#34;</td>
-          <td>The downloaded file uses the original story filename with an .md extension</td>
+          <td>The downloaded file carries the correct name derived from the uploaded story file and the .md extension</td>
         </tr>
         
       </tbody>
@@ -271,7 +271,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in HTML format produces a file with the correct name and extension based on the uploaded story file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in HTML format produces a file with the correct .html extension and the original story filename.</span></div>
     
 
     
@@ -282,7 +282,7 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>A coverage result is available from a named uploaded file</td>
+          <td>A coverage result is available based on a story file the user uploaded</td>
         </tr>
         
         <tr>
@@ -292,7 +292,7 @@
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.html&#34;</td>
-          <td>The downloaded file uses the original story filename with an .html extension</td>
+          <td>The downloaded file carries the correct name derived from the uploaded story file and the .html extension</td>
         </tr>
         
       </tbody>
@@ -313,7 +313,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in JSON format produces a file with the correct name and extension based on the uploaded story file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that downloading coverage results in JSON format produces a file with the correct .json extension and the original story filename.</span></div>
     
 
     
@@ -324,7 +324,7 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>A coverage result is available from a named uploaded file</td>
+          <td>A coverage result is available based on a story file the user uploaded</td>
         </tr>
         
         <tr>
@@ -334,7 +334,7 @@
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.json&#34;</td>
-          <td>The downloaded file uses the original story filename with a .json extension</td>
+          <td>The downloaded file carries the correct name derived from the uploaded story file and the .json extension</td>
         </tr>
         
       </tbody>
@@ -355,7 +355,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when story content is pasted rather than uploaded as a file, the downloaded coverage report uses a date-time stamp in its filename instead of a story name.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user pastes story content instead of uploading a file, the downloaded coverage report uses a date-time stamp in its filename rather than a story-derived name.</span></div>
     
 
     
@@ -366,7 +366,7 @@
         
         <tr>
           <td>Given a coverage result is displayed</td>
-          <td>A coverage result is available without an associated uploaded filename (e.g. story was pasted)</td>
+          <td>A coverage result is available from pasted story content (no uploaded file)</td>
         </tr>
         
         <tr>
@@ -376,7 +376,7 @@
         
         <tr>
           <td>Then the downloaded file matches &#34;shiftdoc-tca-\d{8}-\d{6}\.md&#34;</td>
-          <td>The downloaded file is named using a date-time stamp pattern since no original filename is available</td>
+          <td>The downloaded filename contains a date-time stamp instead of a story name, ensuring a meaningful fallback when no filename is available</td>
         </tr>
         
       </tbody>
@@ -406,7 +406,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result from an uploaded story file and verifies the downloaded filename extension matches the selected format (MD, HTML, or JSON).</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result from an uploaded story file and verifies the downloaded filename extension matches the selected export format.</span></div>
     
 
     
@@ -468,7 +468,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content (rather than uploading a file) downloads a coverage result and verifies the filename falls back to a date-time stamp pattern instead of a source filename.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content rather than uploading a file downloads the coverage result and verifies the filename falls back to a date-time stamp pattern instead of a story-derived name.</span></div>
     
 
     
@@ -498,7 +498,7 @@
           
           <td>
             
-              A coverage result is displayed with no uploaded file (story was pasted)
+              A coverage result is displayed with no uploaded file (pasted content)
             
           </td>
           

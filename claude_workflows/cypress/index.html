@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Cypress test receives a valid, fully resolved JSON documentation output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can upload a single Cypress test file and receive a properly structured JSON documentation output.</span></div>
     
 
     
@@ -239,18 +239,18 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and visible</td>
-          <td>The output panel displays documentation after the user requests it</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a single Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data appears in the downloaded output</td>
+          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
         </tr>
         
         <tr>
           <td>JSON framework is identified as cypress</td>
-          <td>The output correctly tags itself as a Cypress test suite</td>
+          <td>The output correctly labels the test framework as Cypress</td>
         </tr>
         
         <tr>
@@ -260,7 +260,7 @@
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by name</td>
+          <td>Each documented test is given a meaningful name</td>
         </tr>
         
       </tbody>
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Cypress test using forEach receives an expanded output with one documented test per data row.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Cypress test using forEach, each data row is expanded into its own separate test entry in the output.</span></div>
     
 
     
@@ -291,28 +291,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and visible</td>
-          <td>The output panel displays documentation after the user requests it</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a forEach data-driven Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data appears in the downloaded output</td>
+          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
         </tr>
         
         <tr>
           <td>JSON framework is identified as cypress</td>
-          <td>The output correctly tags itself as a Cypress test suite</td>
+          <td>The output correctly labels the test framework as Cypress</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each data row from the forEach loop produces its own separate test entry</td>
+          <td>The forEach loop is expanded so that each data row produces its own distinct test entry</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test is identifiable by name</td>
+          <td>Each expanded test entry is given a meaningful name</td>
         </tr>
         
       </tbody>
@@ -333,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Cypress test using for...of receives an expanded output with one documented test per data row.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Cypress test using for...of, each data row is expanded into its own separate test entry in the output.</span></div>
     
 
     
@@ -343,28 +343,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and visible</td>
-          <td>The output panel displays documentation after the user requests it</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a for...of data-driven Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data appears in the downloaded output</td>
+          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
         </tr>
         
         <tr>
           <td>JSON framework is identified as cypress</td>
-          <td>The output correctly tags itself as a Cypress test suite</td>
+          <td>The output correctly labels the test framework as Cypress</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each data row from the for...of loop produces its own separate test entry</td>
+          <td>The for...of loop is expanded so that each data row produces its own distinct test entry</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test is identifiable by name</td>
+          <td>Each expanded test entry is given a meaningful name</td>
         </tr>
         
       </tbody>
@@ -385,7 +385,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Cypress test receives a valid JSON output that includes a populated test coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager receives a documentation output that includes a populated test coverage matrix when uploading a single Cypress test file.</span></div>
     
 
     
@@ -395,18 +395,18 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and visible</td>
-          <td>The output panel displays documentation after the user requests it</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a single Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data appears in the downloaded output</td>
+          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
         </tr>
         
         <tr>
           <td>JSON framework is identified as cypress</td>
-          <td>The output correctly tags itself as a Cypress test suite</td>
+          <td>The output correctly labels the test framework as Cypress</td>
         </tr>
         
         <tr>
@@ -416,12 +416,12 @@
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by name</td>
+          <td>Each documented test is given a meaningful name</td>
         </tr>
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a populated coverage matrix for the test</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
       </tbody>
@@ -442,7 +442,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Cypress test using forEach receives a collapsed single test entry with a coverage matrix row for each data example.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager uploads a data-driven Cypress test using forEach, all data rows are collapsed into a single test entry with a coverage matrix row for each example.</span></div>
     
 
     
@@ -452,38 +452,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and visible</td>
-          <td>The output panel displays documentation after the user requests it</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a forEach data-driven Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data appears in the downloaded output</td>
+          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
         </tr>
         
         <tr>
           <td>JSON framework is identified as cypress</td>
-          <td>The output correctly tags itself as a Cypress test suite</td>
+          <td>The output correctly labels the test framework as Cypress</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven forEach loops are collapsed into a single test entry rather than expanded</td>
+          <td>The forEach data-driven test is collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test is identifiable by name</td>
+          <td>The collapsed test entry is given a meaningful name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from the forEach loop appears as a row in the coverage matrix</td>
+          <td>The number of rows in the coverage matrix equals the number of data rows in the forEach loop</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for cypress</td>
-          <td>Each matrix row follows the expected structure for Cypress test documentation</td>
+          <td>Each coverage matrix row follows the expected structure for Cypress test documentation</td>
         </tr>
         
       </tbody>
@@ -504,7 +504,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Cypress test using for...of receives a collapsed single test entry with a coverage matrix row for each data example.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager uploads a data-driven Cypress test using for...of, all data rows are collapsed into a single test entry with a coverage matrix row for each example.</span></div>
     
 
     
@@ -514,38 +514,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and visible</td>
-          <td>The output panel displays documentation after the user requests it</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a for...of data-driven Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data appears in the downloaded output</td>
+          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
         </tr>
         
         <tr>
           <td>JSON framework is identified as cypress</td>
-          <td>The output correctly tags itself as a Cypress test suite</td>
+          <td>The output correctly labels the test framework as Cypress</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven for...of loops are collapsed into a single test entry rather than expanded</td>
+          <td>The for...of data-driven test is collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test is identifiable by name</td>
+          <td>The collapsed test entry is given a meaningful name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from the for...of loop appears as a row in the coverage matrix</td>
+          <td>The number of rows in the coverage matrix equals the number of data rows in the for...of loop</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for cypress</td>
-          <td>Each matrix row follows the expected structure for Cypress test documentation</td>
+          <td>Each coverage matrix row follows the expected structure for Cypress test documentation</td>
         </tr>
         
       </tbody>
@@ -575,7 +575,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Cypress test fixture and verifies that the documentation panel produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Cypress test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
     
 
     
@@ -617,7 +617,7 @@
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 1+ tests, and every test has a non-empty test_name
             
           </td>
           
@@ -651,7 +651,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a forEach data-driven Cypress fixture and verifies that the system expands each data row into its own discrete test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a forEach data-driven Cypress fixture and verifies that the pipeline expands each data row into a separate test entry in the JSON output.</span></div>
     
 
     
@@ -693,7 +693,7 @@
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 3+ tests (one per data row), and every test has a non-empty test_name
             
           </td>
           
@@ -727,7 +727,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a for...of data-driven Cypress fixture and verifies that the system expands each iteration into its own discrete test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a for...of data-driven Cypress fixture and verifies that the pipeline expands each iteration into a separate test entry in the JSON output.</span></div>
     
 
     
@@ -769,7 +769,7 @@
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 3+ tests (one per iteration), and every test has a non-empty test_name
             
           </td>
           
@@ -803,7 +803,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Cypress test fixture and verifies that the JSON output is valid and the first test contains a populated coverage matrix array.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Cypress test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test in addition to core structural requirements.</span></div>
     
 
     
@@ -845,7 +845,7 @@
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 1+ tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -879,7 +879,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a forEach data-driven Cypress fixture and verifies that the system collapses all data rows into a single test with a correctly-sized and correctly-schemed coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a forEach data-driven Cypress fixture and verifies that the pipeline collapses all data rows into a single test whose coverage matrix contains one row per data example using the correct Cypress schema.</span></div>
     
 
     
@@ -921,7 +921,7 @@
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the number of data examples, and coverage matrix rows conform to the cypress schema
+              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of data examples, and rows conform to the Cypress coverage matrix schema
             
           </td>
           
@@ -955,7 +955,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a for...of data-driven Cypress fixture and verifies that the system collapses all iterations into a single test with a correctly-sized and correctly-schemed coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a for...of data-driven Cypress fixture and verifies that the pipeline collapses all iterations into a single test whose coverage matrix contains one row per iteration using the correct Cypress schema.</span></div>
     
 
     
@@ -997,7 +997,7 @@
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the number of data iterations, and coverage matrix rows conform to the cypress schema
+              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of iterations, and rows conform to the Cypress coverage matrix schema
             
           </td>
           

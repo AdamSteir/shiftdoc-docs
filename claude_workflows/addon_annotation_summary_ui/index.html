@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can upload a BDD test file, run the Annotation Summary add-on, and receive complete, well-formed output including a populated Annotation Health section both on screen and in the downloaded JSON.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager can upload a BDD test file, trigger analysis with the Annotation Summary add-on, and receive a complete output — both on screen and as a downloadable JSON — that includes a fully populated Annotation Health section without any missing or unresolved values.</span></div>
     
 
     
@@ -239,33 +239,33 @@
       <tbody>
         
         <tr>
-          <td>I see documentation and analysis in the output panel</td>
-          <td>The results panel displays content after analysis is triggered</td>
+          <td>Documentation and analysis appears in the output panel</td>
+          <td>The analysis result is visible to the user after processing</td>
         </tr>
         
         <tr>
-          <td>I see &#39;Annotation Health&#39; exactly once in the output content</td>
-          <td>The Annotation Health section appears in the UI exactly one time, with no duplication or omission</td>
+          <td>&#34;Annotation Health&#34; appears exactly once in the output content</td>
+          <td>The Annotation Health section is present without duplication in the on-screen output</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>The downloaded JSON contains no placeholder or missing data values</td>
+          <td>The downloaded JSON output has no unresolved values</td>
+          <td>All fields in the exported JSON are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>The JSON has top-level key &#39;annotation_summary&#39;</td>
-          <td>The JSON structure includes the expected top-level section for annotation results</td>
+          <td>The JSON has a top-level key &#34;annotation_summary&#34;</td>
+          <td>The exported JSON is structured correctly with the expected root section</td>
         </tr>
         
         <tr>
-          <td>The &#39;annotation_summary&#39; section has a non-empty &#39;annotation_health&#39;</td>
-          <td>The annotation health field is populated with actual content, not blank or null</td>
+          <td>The &#34;annotation_summary&#34; section has a non-empty &#34;annotation_health&#34;</td>
+          <td>The Annotation Health data is present and contains content in the JSON export</td>
         </tr>
         
         <tr>
-          <td>The &#39;annotation_summary&#39; section contains &#39;annotation_health&#39; exactly once</td>
-          <td>The annotation health key appears exactly one time in the JSON, with no duplication</td>
+          <td>&#34;annotation_health&#34; appears exactly once inside &#34;annotation_summary&#34;</td>
+          <td>The JSON structure is clean with no duplicate keys or sections</td>
         </tr>
         
       </tbody>
@@ -286,7 +286,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can upload a BDD test file, run the Annotation Summary add-on, and receive complete, well-formed output including a populated Annotation Health section both on screen and in the downloaded JSON.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can upload a BDD test file, trigger analysis with the Annotation Summary add-on, and receive a complete output — both on screen and as a downloadable JSON — that includes a fully populated Annotation Health section without any missing or unresolved values.</span></div>
     
 
     
@@ -296,33 +296,33 @@
       <tbody>
         
         <tr>
-          <td>I see documentation and analysis in the output panel</td>
-          <td>The results panel displays content after analysis is triggered</td>
+          <td>Documentation and analysis appears in the output panel</td>
+          <td>The analysis result is visible to the user after processing</td>
         </tr>
         
         <tr>
-          <td>I see &#39;Annotation Health&#39; exactly once in the output content</td>
-          <td>The Annotation Health section appears in the UI exactly one time, with no duplication or omission</td>
+          <td>&#34;Annotation Health&#34; appears exactly once in the output content</td>
+          <td>The Annotation Health section is present without duplication in the on-screen output</td>
         </tr>
         
         <tr>
-          <td>The JSON output has no unresolved values</td>
-          <td>The downloaded JSON contains no placeholder or missing data values</td>
+          <td>The downloaded JSON output has no unresolved values</td>
+          <td>All fields in the exported JSON are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>The JSON has top-level key &#39;annotation_summary&#39;</td>
-          <td>The JSON structure includes the expected top-level section for annotation results</td>
+          <td>The JSON has a top-level key &#34;annotation_summary&#34;</td>
+          <td>The exported JSON is structured correctly with the expected root section</td>
         </tr>
         
         <tr>
-          <td>The &#39;annotation_summary&#39; section has a non-empty &#39;annotation_health&#39;</td>
-          <td>The annotation health field is populated with actual content, not blank or null</td>
+          <td>The &#34;annotation_summary&#34; section has a non-empty &#34;annotation_health&#34;</td>
+          <td>The Annotation Health data is present and contains content in the JSON export</td>
         </tr>
         
         <tr>
-          <td>The &#39;annotation_summary&#39; section contains &#39;annotation_health&#39; exactly once</td>
-          <td>The annotation health key appears exactly one time in the JSON, with no duplication</td>
+          <td>&#34;annotation_health&#34; appears exactly once inside &#34;annotation_summary&#34;</td>
+          <td>The JSON structure is clean with no duplicate keys or sections</td>
         </tr>
         
       </tbody>
@@ -352,7 +352,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Annotation Summary add-on for a given role, uploads a BDD fixture, triggers analysis, and verifies that the output panel renders correctly and the downloaded JSON is structurally complete with a single, non-empty annotation_health entry.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user selects the Annotation Summary add-on for a BDD fixture file and verifies that the output panel renders exactly one Annotation Health section and the downloaded JSON is structurally complete with no unresolved values.</span></div>
     
 
     

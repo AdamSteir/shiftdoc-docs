@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the testing layer selector is present and visible when a user opens the Analyze page.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the testing layer selector is visible to users when they arrive on the Analyze page.</span></div>
     
 
     
@@ -239,8 +239,8 @@
       <tbody>
         
         <tr>
-          <td>Testing layer selector is visible</td>
-          <td>The testing layer selection control appears on the Analyze page</td>
+          <td>Then the testing layer selector is visible</td>
+          <td>The testing layer selector is present and visible on the Analyze page</td>
         </tr>
         
       </tbody>
@@ -261,7 +261,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user selects a predefined testing layer, the chosen layer is reflected in the dropdown summary.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user selects a testing layer, the selection is reflected in the dropdown summary display.</span></div>
     
 
     
@@ -271,13 +271,13 @@
       <tbody>
         
         <tr>
-          <td>Select testing layer &#39;Unit&#39;</td>
-          <td>User can pick a layer from the available options</td>
+          <td>When I select testing layer &#34;Unit&#34;</td>
+          <td>User can select a predefined testing layer</td>
         </tr>
         
         <tr>
-          <td>Testing layer selector shows &#39;Unit&#39;</td>
-          <td>The dropdown summary updates to display the selected layer</td>
+          <td>Then the testing layer selector shows &#34;Unit&#34;</td>
+          <td>The selected layer name appears in the dropdown summary</td>
         </tr>
         
       </tbody>
@@ -298,7 +298,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a testing layer chosen before running analysis is recorded in the JSON output metadata.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a testing layer selected by the user is recorded in the JSON output metadata produced by the analysis.</span></div>
     
 
     
@@ -308,23 +308,18 @@
       <tbody>
         
         <tr>
-          <td>Select format, role, and testing layer</td>
-          <td>User can configure analysis with a specific testing layer</td>
+          <td>When I select testing layer &#34;Unit&#34;</td>
+          <td>User selects a testing layer before running analysis</td>
         </tr>
         
         <tr>
-          <td>Upload fixture and run documentation</td>
-          <td>Analysis completes with the chosen layer in context</td>
+          <td>And the JSON output has no unresolved values</td>
+          <td>The downloaded JSON output is complete with no missing or placeholder values</td>
         </tr>
         
         <tr>
-          <td>JSON output has no unresolved values</td>
-          <td>Output is complete and well-formed</td>
-        </tr>
-        
-        <tr>
-          <td>JSON shiftdoc metadata includes testing layer &#39;unit&#39;</td>
-          <td>The selected layer is correctly embedded in the analysis metadata</td>
+          <td>And the JSON shiftdoc metadata includes testing layer &#34;unit&#34;</td>
+          <td>The selected testing layer is correctly captured in the analysis output metadata</td>
         </tr>
         
       </tbody>
@@ -345,7 +340,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user-typed custom testing layer name appears in the dropdown summary after entry.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a custom testing layer name typed by the user appears in the dropdown summary.</span></div>
     
 
     
@@ -355,13 +350,13 @@
       <tbody>
         
         <tr>
-          <td>Enter custom testing layer &#39;smoke-only&#39;</td>
-          <td>User can type a free-text layer name in the Other field</td>
+          <td>When I enter custom testing layer &#34;smoke-only&#34;</td>
+          <td>User can type a custom testing layer name using the Other option</td>
         </tr>
         
         <tr>
-          <td>Testing layer selector shows &#39;smoke-only&#39;</td>
-          <td>The custom layer name is reflected in the dropdown summary</td>
+          <td>Then the testing layer selector shows &#34;smoke-only&#34;</td>
+          <td>The custom layer name is displayed in the dropdown summary</td>
         </tr>
         
       </tbody>
@@ -382,7 +377,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that entering more than 50 characters in the custom layer field triggers a visible error message.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the application shows an error when a user types a custom testing layer name exceeding the 50-character limit.</span></div>
     
 
     
@@ -392,13 +387,13 @@
       <tbody>
         
         <tr>
-          <td>Type 51 characters into the Other layer input</td>
-          <td>The character limit of 50 is enforced on the custom layer field</td>
+          <td>When I type a 51-character string into the Other layer input</td>
+          <td>User enters a custom layer name that exceeds the allowed character limit</td>
         </tr>
         
         <tr>
-          <td>Testing layer shows an over-limit error</td>
-          <td>An error is displayed to inform the user the input is too long</td>
+          <td>Then the testing layer shows an over-limit error</td>
+          <td>An error message is displayed indicating the input is too long</td>
         </tr>
         
       </tbody>
@@ -419,7 +414,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that selecting four or more testing layers does not block analysis from completing and still produces output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that selecting four or more testing layers does not break the analysis and output is still produced without disrupting the user experience.</span></div>
     
 
     
@@ -429,18 +424,13 @@
       <tbody>
         
         <tr>
-          <td>Select four testing layers</td>
-          <td>The UI accepts multiple layer selections without crashing or blocking</td>
+          <td>When I select testing layers Unit, Integration, API / Contract, and UI / Component</td>
+          <td>User selects four or more testing layers simultaneously</td>
         </tr>
         
         <tr>
-          <td>Upload fixture and run documentation</td>
-          <td>Analysis runs successfully despite the high layer count</td>
-        </tr>
-        
-        <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>Results are returned to the user with no visible failure</td>
+          <td>Then I see documentation in the output panel</td>
+          <td>Analysis completes successfully and results are shown despite the high number of layers selected</td>
         </tr>
         
       </tbody>
@@ -461,7 +451,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user-defined custom testing layer is correctly saved in the JSON analysis metadata.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a custom testing layer name entered by the user is correctly included in the JSON analysis output metadata.</span></div>
     
 
     
@@ -471,18 +461,18 @@
       <tbody>
         
         <tr>
-          <td>Enter custom testing layer &#39;smoke-layer&#39; and run analysis</td>
-          <td>Analysis executes with a free-text layer name provided by the user</td>
+          <td>And I enter custom testing layer &#34;smoke-layer&#34;</td>
+          <td>User provides a custom testing layer name before running analysis</td>
         </tr>
         
         <tr>
-          <td>JSON output has no unresolved values</td>
-          <td>Output is complete and well-formed</td>
+          <td>And the JSON output has no unresolved values</td>
+          <td>The downloaded JSON output is complete with no missing or placeholder values</td>
         </tr>
         
         <tr>
-          <td>JSON shiftdoc metadata includes testing layer &#39;smoke-layer&#39;</td>
-          <td>The custom layer name is correctly stored in the output metadata</td>
+          <td>And the JSON shiftdoc metadata includes testing layer &#34;smoke-layer&#34;</td>
+          <td>The custom testing layer name is correctly saved in the analysis output metadata</td>
         </tr>
         
       </tbody>
@@ -503,7 +493,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the over-limit error for the custom layer field remains visible even after the user collapses the dropdown.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the character-limit error for a custom testing layer remains visible even after the user closes the dropdown.</span></div>
     
 
     
@@ -513,13 +503,18 @@
       <tbody>
         
         <tr>
-          <td>Type 51 characters and close the dropdown</td>
-          <td>Closing the dropdown does not hide an active validation error</td>
+          <td>When I type a 51-character string into the Other layer input</td>
+          <td>User enters a custom layer name exceeding the character limit</td>
         </tr>
         
         <tr>
-          <td>Collapsed layer error is visible below the trigger</td>
-          <td>The error persists in a collapsed state so the user is still informed</td>
+          <td>And I close the testing layer dropdown</td>
+          <td>User closes the dropdown after triggering the error</td>
+        </tr>
+        
+        <tr>
+          <td>Then the collapsed layer error is visible below the trigger</td>
+          <td>The error message persists and remains visible in the collapsed state</td>
         </tr>
         
       </tbody>
@@ -540,7 +535,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the Analyze button is blocked from use when the custom layer field contains an invalid over-limit value.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that users cannot run analysis when a custom testing layer name exceeds the 50-character limit, preventing invalid submissions.</span></div>
     
 
     
@@ -550,13 +545,13 @@
       <tbody>
         
         <tr>
-          <td>Configure analysis and type 51 characters in the Other layer input</td>
-          <td>The form is otherwise ready but the layer validation error is present</td>
+          <td>And I type a 51-character string into the Other layer input</td>
+          <td>User enters an over-limit custom layer name with a file already uploaded</td>
         </tr>
         
         <tr>
-          <td>Analyze button is disabled</td>
-          <td>Users cannot submit the form while the custom layer input is invalid</td>
+          <td>Then the Analyze button is disabled</td>
+          <td>The Analyze button is blocked from submission while the input error exists</td>
         </tr>
         
       </tbody>
@@ -577,7 +572,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the Analyze button becomes available again as soon as the user corrects the over-limit custom layer text.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the Analyze button becomes available again once the user corrects a custom testing layer name that was over the character limit.</span></div>
     
 
     
@@ -587,18 +582,18 @@
       <tbody>
         
         <tr>
-          <td>Type 51 characters in the Other layer input</td>
-          <td>The button is disabled due to the validation error</td>
+          <td>And I type a 51-character string into the Other layer input</td>
+          <td>User enters an over-limit custom layer name, disabling the Analyze button</td>
         </tr>
         
         <tr>
-          <td>Delete one character to bring input within the limit</td>
-          <td>Reducing the text to 50 characters clears the error</td>
+          <td>And I delete one character from the Other layer input</td>
+          <td>User corrects the input by reducing it to within the allowed limit</td>
         </tr>
         
         <tr>
-          <td>Analyze button is enabled</td>
-          <td>The user can immediately proceed to run analysis once the error is resolved</td>
+          <td>Then the Analyze button is enabled</td>
+          <td>The Analyze button becomes active again once the error is resolved</td>
         </tr>
         
       </tbody>
@@ -628,7 +623,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the testing layer selector UI component is present and visible when a user lands on the Analyze page.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the testing layer selector component is visible when a user lands on the Analyze page.</span></div>
     
 
     
@@ -670,7 +665,7 @@
           
           <td>
             
-              Testing layer selector is visible
+              The testing layer selector is visible
             
           </td>
           
@@ -704,7 +699,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that when a user selects a predefined testing layer, the dropdown summary reflects the selection immediately.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that selecting a predefined testing layer updates the dropdown summary label to reflect the chosen layer.</span></div>
     
 
     
@@ -746,7 +741,7 @@
           
           <td>
             
-              Testing layer selector shows &#39;Unit&#39;
+              The testing layer selector displays &#39;Unit&#39;
             
           </td>
           
@@ -780,7 +775,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that a predefined testing layer selected before running analysis is correctly persisted in the downloaded JSON shiftdoc metadata output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that a predefined testing layer selected before running analysis is correctly captured and serialised into the downloaded JSON shiftdoc metadata.</span></div>
     
 
     
@@ -810,7 +805,7 @@
           
           <td>
             
-              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, testing layer &#39;Unit&#39;, and fixture uploaded
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, layer &#39;Unit&#39;, and fixture &#39;bdd_sample.feature&#39; uploaded
             
           </td>
           
@@ -856,7 +851,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that a custom testing layer value entered via the &#39;Other&#39; input is reflected in the dropdown summary.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that typing a custom value into the Other layer input updates the dropdown summary to reflect the custom layer name.</span></div>
     
 
     
@@ -892,13 +887,13 @@
           
           <td>
             
-              User enters custom testing layer &#39;smoke-only&#39; via the Other input
+              User enters custom testing layer &#39;smoke-only&#39;
             
           </td>
           
           <td>
             
-              Testing layer selector shows &#39;smoke-only&#39;
+              The testing layer selector displays &#39;smoke-only&#39;
             
           </td>
           
@@ -932,7 +927,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that exceeding the 50-character limit in the Other layer input triggers a visible validation error.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that exceeding the 50-character limit in the Other layer input triggers an inline validation error message.</span></div>
     
 
     
@@ -1008,7 +1003,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that selecting four or more testing layers does not block the analysis from completing and documentation still appears in the output panel.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that selecting four or more testing layers does not block the analysis workflow and documentation output is still produced without a hard error.</span></div>
     
 
     
@@ -1038,19 +1033,19 @@
           
           <td>
             
-              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, and fixture uploaded
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, four layers selected, and fixture &#39;bdd_sample.feature&#39; uploaded
             
           </td>
           
           <td>
             
-              User selects four testing layers (Unit, Integration, API / Contract, UI / Component) and clicks &#39;Document test cases&#39;
+              User clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Documentation is visible in the output panel
+              Documentation appears in the output panel
             
           </td>
           
@@ -1084,7 +1079,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that a custom testing layer entered via the Other input is correctly persisted in the downloaded JSON shiftdoc metadata output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that a custom layer name entered via the Other input is correctly propagated into the downloaded JSON shiftdoc metadata after analysis.</span></div>
     
 
     
@@ -1114,7 +1109,7 @@
           
           <td>
             
-              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, custom layer &#39;smoke-layer&#39;, and fixture uploaded
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, custom layer &#39;smoke-layer&#39;, and fixture &#39;bdd_sample.feature&#39; uploaded
             
           </td>
           
@@ -1160,7 +1155,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the over-limit validation error remains visible below the dropdown trigger even after the user closes the testing layer dropdown.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the over-limit validation error remains visible below the dropdown trigger after the user closes the testing layer dropdown without correcting the input.</span></div>
     
 
     
@@ -1190,7 +1185,7 @@
           
           <td>
             
-              User is on the Analyze page with a 51-character string typed into the Other layer input
+              User is on the Analyze page and has typed a 51-character string into the Other layer input
             
           </td>
           
@@ -1202,14 +1197,14 @@
           
           <td>
             
-              The collapsed layer error is visible below the dropdown trigger
+              The collapsed layer error is visible below the trigger
             
           </td>
           
           <td>
             
               
-              <span class="gherkin-type gherkin-edge">Edge Case</span>
+              <span class="gherkin-type gherkin-negative">Negative</span>
             
           </td>
           
@@ -1236,7 +1231,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the Analyze button is disabled when the Other layer input contains an invalid (over-limit) value, preventing premature submission.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that the Analyze button is disabled and cannot be activated while the Other layer input contains more than 50 characters, preventing invalid submissions.</span></div>
     
 
     
@@ -1266,13 +1261,13 @@
           
           <td>
             
-              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, and fixture uploaded
+              User is on the Analyze page with format &#39;bdd&#39;, role &#39;Product Owner&#39;, fixture uploaded, and a 51-character string in the Other layer input
             
           </td>
           
           <td>
             
-              User types a 51-character string into the Other layer input
+              User views the Analyze button state
             
           </td>
           
@@ -1312,7 +1307,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verifies that the Analyze button becomes re-enabled once the user corrects the Other layer input to fall within the 50-character limit.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">Verify that deleting a character from an over-limit Other layer input to bring it within the 50-character boundary re-enables the Analyze button.</span></div>
     
 
     
@@ -1348,7 +1343,7 @@
           
           <td>
             
-              User deletes one character from the Other layer input to bring it to 50 characters
+              User deletes one character from the Other layer input
             
           </td>
           

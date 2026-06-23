@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single TestNG test file and documenting it as a Product Owner produces valid, complete JSON output with at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single TestNG test file produces valid, fully-resolved documentation output with at least one named test entry.</span></div>
     
 
     
@@ -239,23 +239,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system responds with visible output after processing the uploaded file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system returns visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
+          <td>All fields in the output are populated — no placeholders or nulls remain</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output</td>
+          <td>At least one test entry is generated from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a name</td>
+          <td>Each test entry is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -276,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a data-driven TestNG test using a DataProvider is analyzed as a Product Owner, each data row is expanded into its own separate test entry in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven TestNG test using a DataProvider is expanded into one separate test entry per data row in the Product Owner output.</span></div>
     
 
     
@@ -286,23 +286,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system responds with visible output after processing the data-driven test file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system returns visible output after processing the data-driven file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
+          <td>All fields in the expanded output are fully populated</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each DataProvider row is expanded into an individual test entry, producing multiple results</td>
+          <td>Each DataProvider row produces its own distinct test entry</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is identifiable by a name</td>
+          <td>Each expanded test entry is individually named</td>
         </tr>
         
       </tbody>
@@ -323,7 +323,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single TestNG test file and documenting it as a QA Manager produces output that includes a populated test coverage matrix alongside the standard test name.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a single TestNG test file processed for a QA Manager produces output that includes a populated test coverage matrix.</span></div>
     
 
     
@@ -333,28 +333,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system responds with visible output after processing the uploaded file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system returns visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
+          <td>All fields in the output are fully populated</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output</td>
+          <td>At least one test entry is generated</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a name</td>
+          <td>Each test entry is identifiable by name</td>
         </tr>
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry</td>
         </tr>
         
       </tbody>
@@ -375,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a data-driven TestNG test is analyzed as a QA Manager, all DataProvider rows are collapsed into a single test entry whose coverage matrix rows match the number of data examples and follow the correct schema.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven TestNG test processed for a QA Manager is collapsed into a single test entry, with the coverage matrix rows reflecting each data example using the correct schema.</span></div>
     
 
     
@@ -385,33 +385,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system responds with visible output after processing the data-driven test file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The system returns visible output after processing the data-driven file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
+          <td>All fields in the output are fully populated</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven tests are collapsed into a single test entry rather than expanded per row</td>
+          <td>Data-driven tests are collapsed into a single entry rather than expanded for this role</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is identifiable by a name</td>
+          <td>The collapsed test entry is identifiable by name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>The number of coverage matrix rows corresponds exactly to the number of DataProvider data rows</td>
+          <td>The number of rows in the coverage matrix corresponds to the number of DataProvider rows</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>Each coverage matrix row conforms to the expected generic schema structure</td>
+          <td>Coverage matrix rows use the correct schema for &#39;generic&#39;</td>
+          <td>Each row in the matrix conforms to the expected generic schema structure</td>
         </tr>
         
       </tbody>
@@ -441,7 +441,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single TestNG test fixture and verifies that the documented JSON output is well-formed with at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single TestNG test fixture and verifies that the documentation output is generated with at least one test entry containing a valid test name.</span></div>
     
 
     
@@ -517,7 +517,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven TestNG fixture and verifies that the DataProvider rows are expanded into individual test entries in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven TestNG fixture and verifies that each DataProvider row is expanded into a separate test entry in the output.</span></div>
     
 
     
@@ -593,7 +593,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single TestNG test fixture and verifies that the JSON output is well-formed with at least one named test that includes a populated coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single TestNG test fixture and verifies that the output includes a populated test coverage matrix for the first test.</span></div>
     
 
     
@@ -635,7 +635,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test names, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -669,7 +669,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven TestNG fixture and verifies that DataProvider rows are collapsed into a single test entry whose coverage matrix row count matches the number of data examples and conforms to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven TestNG fixture and verifies that DataProvider rows collapse into a single test entry whose coverage matrix rows match the number of examples and conform to the generic schema.</span></div>
     
 
     
@@ -711,7 +711,7 @@
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, test has a non-empty test_name, coverage matrix row count matches the DataProvider examples, and rows conform to the generic schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test name, coverage matrix row count matches the DataProvider examples, and rows conform to the generic coverage matrix schema
             
           </td>
           

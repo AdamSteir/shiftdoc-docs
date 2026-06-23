@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that the multi-file toggle control is present on the Analyze page for all users.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the multi-file toggle control is present on the Analyze page for all users.</span></div>
     
 
     
@@ -261,7 +261,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that unauthenticated users see a lock icon on the multi-file toggle, indicating the feature is restricted.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that guest users see a lock icon on the multi-file toggle, signaling the feature requires sign-in.</span></div>
     
 
     
@@ -271,7 +271,7 @@
       <tbody>
         
         <tr>
-          <td>Lock icon for guests</td>
+          <td>Lock icon for unauthenticated users</td>
           <td>A lock icon is displayed on the multi-file toggle when the user is not signed in</td>
         </tr>
         
@@ -293,7 +293,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that unauthenticated users who attempt to enable multi-file mode are prompted to sign in and the feature remains off.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that guest users who attempt to enable multi-file mode are shown a sign-in prompt and the feature remains disabled.</span></div>
     
 
     
@@ -303,13 +303,13 @@
       <tbody>
         
         <tr>
-          <td>Sign-in warning toast</td>
-          <td>A &#39;Sign in to use multi-file mode.&#39; warning message is displayed when a guest clicks the toggle</td>
+          <td>Warning toast on toggle click</td>
+          <td>A &#39;Sign in to use multi-file mode.&#39; message appears when an unauthenticated user clicks the toggle</td>
         </tr>
         
         <tr>
-          <td>Feature stays disabled</td>
-          <td>Multi-file mode is not activated after the click attempt by an unauthenticated user</td>
+          <td>Multi-file mode stays off</td>
+          <td>Multi-file mode is not activated after the click attempt by a guest user</td>
         </tr>
         
       </tbody>
@@ -330,7 +330,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that unauthenticated users see a helpful &#39;Sign in to unlock&#39; tooltip when hovering over the lock icon.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that hovering over the lock icon on the multi-file toggle displays a helpful tooltip directing users to sign in.</span></div>
     
 
     
@@ -340,8 +340,8 @@
       <tbody>
         
         <tr>
-          <td>Lock icon tooltip</td>
-          <td>A &#39;Sign in to unlock&#39; tooltip appears when a guest hovers over the lock icon on the multi-file toggle</td>
+          <td>Tooltip on lock icon hover</td>
+          <td>A &#39;Sign in to unlock&#39; tooltip becomes visible when a guest user hovers over the lock icon</td>
         </tr>
         
       </tbody>
@@ -362,7 +362,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that unauthenticated users are taken to the login page when they click the lock icon on the multi-file toggle.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that guest users are taken to the login page when they click the lock icon on the multi-file toggle.</span></div>
     
 
     
@@ -372,8 +372,8 @@
       <tbody>
         
         <tr>
-          <td>Navigation to login</td>
-          <td>Clicking the lock icon redirects the unauthenticated user to the login page</td>
+          <td>Navigation to login page</td>
+          <td>Clicking the lock icon redirects an unauthenticated user to the login page</td>
         </tr>
         
       </tbody>
@@ -384,7 +384,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Open lock icon is shown when logged in and is not a link</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — toggle and lock behavior</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged in user</span></div>
+    
 
     
     <div class="label-row">
@@ -394,7 +394,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that authenticated users see an open lock icon on the multi-file toggle that does not navigate away from the page.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that signed-in users see an open lock icon on the multi-file toggle and that it does not navigate away from the page.</span></div>
     
 
     
@@ -405,12 +405,12 @@
         
         <tr>
           <td>Open lock icon for authenticated users</td>
-          <td>An open lock icon is shown on the multi-file toggle when the user is signed in</td>
+          <td>The multi-file toggle shows an open lock icon when the user is signed in</td>
         </tr>
         
         <tr>
-          <td>Open lock is non-navigable</td>
-          <td>The open lock icon is not a clickable link, so authenticated users are not redirected when interacting with it</td>
+          <td>Open lock icon is not clickable as a link</td>
+          <td>The open lock icon does not function as a navigation link for authenticated users</td>
         </tr>
         
       </tbody>
@@ -421,7 +421,7 @@
   <div class="test-card">
     <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Multi-file mode is disabled and queue is cleared when the user logs out</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Multi-file mode — toggle and lock behavior</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">logged in user</span></div>
+    
 
     
     <div class="label-row">
@@ -431,7 +431,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Confirms that when a user logs out after enabling multi-file mode and queuing files, the feature is turned off and the file queue is cleared upon returning to the Analyze page.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a signed-in user logs out, multi-file mode is automatically turned off and any queued files are removed.</span></div>
     
 
     
@@ -442,17 +442,17 @@
         
         <tr>
           <td>Multi-file mode disabled after logout</td>
-          <td>Multi-file mode is no longer active on the Analyze page after the user signs out</td>
+          <td>Multi-file mode is no longer active after the user signs out and returns to the Analyze page</td>
         </tr>
         
         <tr>
           <td>File queue cleared after logout</td>
-          <td>Previously queued files are no longer visible after the user signs out and returns to the Analyze page</td>
+          <td>Any files previously added to the multi-file queue are no longer visible after logout</td>
         </tr>
         
         <tr>
           <td>Lock icon restored after logout</td>
-          <td>The lock icon reappears on the multi-file toggle after the user logs out, reflecting their unauthenticated state</td>
+          <td>The multi-file toggle reverts to showing a lock icon once the user has signed out</td>
         </tr>
         
       </tbody>
@@ -482,7 +482,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user visiting the Analyze page can see the multi-file toggle present in the input panel.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user visiting the Analyze page can see the multi-file toggle in the input panel.</span></div>
     
 
     
@@ -518,7 +518,7 @@
           
           <td>
             
-              No explicit user action
+              No action taken
             
           </td>
           
@@ -558,7 +558,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user on the Analyze page sees a lock icon on the multi-file toggle, signalling the feature is gated behind login.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user sees a lock icon on the multi-file toggle, indicating the feature requires sign-in.</span></div>
     
 
     
@@ -594,7 +594,7 @@
           
           <td>
             
-              No explicit user action
+              No action taken
             
           </td>
           
@@ -634,7 +634,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user who clicks the multi-file toggle receives a warning toast prompting sign-in and the mode remains disabled.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user who clicks the multi-file toggle receives a warning toast and multi-file mode remains disabled.</span></div>
     
 
     
@@ -710,7 +710,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user who hovers over the lock icon on the multi-file toggle sees a &#39;Sign in to unlock&#39; tooltip.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user hovering over the lock icon on the multi-file toggle sees a tooltip prompting them to sign in.</span></div>
     
 
     
@@ -786,7 +786,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user who clicks the lock icon on the multi-file toggle is redirected to the login page.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An unauthenticated user clicking the lock icon is redirected to the login page.</span></div>
     
 
     
@@ -862,7 +862,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An authenticated user on the Analyze page sees an open lock icon on the multi-file toggle that is purely decorative and not a navigation link.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">An authenticated user sees an open lock icon on the multi-file toggle that is purely decorative and not a navigation link.</span></div>
     
 
     
@@ -898,7 +898,7 @@
           
           <td>
             
-              No explicit user action
+              No action taken
             
           </td>
           
@@ -943,7 +943,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user who enables multi-file mode and queues a file finds the mode disabled, the queue cleared, and the lock icon restored after logging out and returning to the Analyze page.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A logged-in user who enables multi-file mode and adds a file to the queue finds both features reset and the toggle locked after logging out.</span></div>
     
 
     
@@ -973,19 +973,19 @@
           
           <td>
             
-              APIs are mocked and user is on the Analyze page
+              APIs are mocked and user is on the Analyze page (via Background)
             
           </td>
           
           <td>
             
-              User enables multi-file mode, adds a file to the queue, logs out, and navigates back to the Analyze page
+              User enables multi-file mode, adds a fixture file to the queue, logs out, and returns to the Analyze page
             
           </td>
           
           <td>
             
-              Multi-file mode is not enabled, the file queue is not visible, and the multi-file toggle shows a lock icon
+              Multi-file mode is not enabled, the file queue is not visible, and the toggle shows a lock icon
             
           </td>
           

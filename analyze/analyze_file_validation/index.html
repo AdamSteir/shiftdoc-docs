@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a BDD file containing no test cases blocks the content from loading and clearly notifies the user with an error.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a BDD file that contains no test cases blocks the user with an error and leaves the input empty.</span></div>
     
 
     
@@ -239,13 +239,13 @@
       <tbody>
         
         <tr>
-          <td>Upload a BDD file with no scenarios</td>
-          <td>An error notification appears stating no test cases were found</td>
+          <td>Upload empty BDD file</td>
+          <td>An error notification appears when the uploaded file contains no test cases</td>
         </tr>
         
         <tr>
           <td>Test case box is empty</td>
-          <td>No content is loaded into the editor when the file is invalid</td>
+          <td>No content is loaded into the input area when the file has no usable test cases</td>
         </tr>
         
       </tbody>
@@ -266,7 +266,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user uploads a file that doesn&#39;t match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.</span></div>
     
 
     
@@ -276,18 +276,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a Robot Framework file when BDD format is selected</td>
-          <td>A warning notification appears indicating the file doesn&#39;t look like a BDD / Gherkin file</td>
+          <td>Warning toast appears with mismatch phrase</td>
+          <td>User is notified that the uploaded file doesn&#39;t match the chosen format (BDD)</td>
         </tr>
         
         <tr>
-          <td>Toast suggests Robot Framework</td>
-          <td>The warning guides the user toward the correct format</td>
+          <td>Toast includes format suggestion</td>
+          <td>The warning recommends the correct format (Robot Framework) based on the file content</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+          <td>Despite the format mismatch, the file content is still loaded so the user can proceed</td>
         </tr>
         
       </tbody>
@@ -308,7 +308,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user uploads a file that doesn&#39;t match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.</span></div>
     
 
     
@@ -318,18 +318,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a Playwright file when Robot Framework format is selected</td>
-          <td>A warning notification appears indicating the file doesn&#39;t look like a Robot Framework file</td>
+          <td>Warning toast appears with mismatch phrase</td>
+          <td>User is notified that the uploaded file doesn&#39;t match the chosen format (Robot Framework)</td>
         </tr>
         
         <tr>
-          <td>Toast suggests Playwright</td>
-          <td>The warning guides the user toward the correct format</td>
+          <td>Toast includes format suggestion</td>
+          <td>The warning recommends the correct format (Playwright) based on the file content</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+          <td>Despite the format mismatch, the file content is still loaded so the user can proceed</td>
         </tr>
         
       </tbody>
@@ -350,7 +350,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user uploads a file that doesn&#39;t match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.</span></div>
     
 
     
@@ -360,18 +360,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a BDD file when Playwright format is selected</td>
-          <td>A warning notification appears indicating the file doesn&#39;t look like a Playwright file</td>
+          <td>Warning toast appears with mismatch phrase</td>
+          <td>User is notified that the uploaded file doesn&#39;t match the chosen format (Playwright)</td>
         </tr>
         
         <tr>
-          <td>Toast suggests BDD / Gherkin</td>
-          <td>The warning guides the user toward the correct format</td>
+          <td>Toast includes format suggestion</td>
+          <td>The warning recommends the correct format (BDD / Gherkin) based on the file content</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+          <td>Despite the format mismatch, the file content is still loaded so the user can proceed</td>
         </tr>
         
       </tbody>
@@ -392,7 +392,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user uploads a file that doesn&#39;t match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.</span></div>
     
 
     
@@ -402,18 +402,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a BDD file when Cypress format is selected</td>
-          <td>A warning notification appears indicating the file doesn&#39;t look like a Cypress file</td>
+          <td>Warning toast appears with mismatch phrase</td>
+          <td>User is notified that the uploaded file doesn&#39;t match the chosen format (Cypress)</td>
         </tr>
         
         <tr>
-          <td>Toast suggests BDD / Gherkin</td>
-          <td>The warning guides the user toward the correct format</td>
+          <td>Toast includes format suggestion</td>
+          <td>The warning recommends the correct format (BDD / Gherkin) based on the file content</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+          <td>Despite the format mismatch, the file content is still loaded so the user can proceed</td>
         </tr>
         
       </tbody>
@@ -434,7 +434,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user uploads a file that doesn&#39;t match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.</span></div>
     
 
     
@@ -444,18 +444,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a Playwright file when Swift / XCTest format is selected</td>
-          <td>A warning notification appears indicating the file doesn&#39;t look like a Swift / XCTest file</td>
+          <td>Warning toast appears with mismatch phrase</td>
+          <td>User is notified that the uploaded file doesn&#39;t match the chosen format (Swift / XCTest)</td>
         </tr>
         
         <tr>
-          <td>Toast suggests Playwright</td>
-          <td>The warning guides the user toward the correct format</td>
+          <td>Toast includes format suggestion</td>
+          <td>The warning recommends the correct format (Playwright) based on the file content</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+          <td>Despite the format mismatch, the file content is still loaded so the user can proceed</td>
         </tr>
         
       </tbody>
@@ -476,7 +476,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that does not match the selected format shows a warning with a suggested correct format, while still loading the file content.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user uploads a file that doesn&#39;t match the selected format, a warning is shown with a suggestion of the correct format, while still loading the file content.</span></div>
     
 
     
@@ -486,18 +486,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a BDD file when Espresso format is selected</td>
-          <td>A warning notification appears indicating the file doesn&#39;t look like an Espresso file</td>
+          <td>Warning toast appears with mismatch phrase</td>
+          <td>User is notified that the uploaded file doesn&#39;t match the chosen format (Espresso)</td>
         </tr>
         
         <tr>
-          <td>Toast suggests BDD / Gherkin</td>
-          <td>The warning guides the user toward the correct format</td>
+          <td>Toast includes format suggestion</td>
+          <td>The warning recommends the correct format (BDD / Gherkin) based on the file content</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content is still loaded despite the format mismatch, allowing the user to proceed</td>
+          <td>Despite the format mismatch, the file content is still loaded so the user can proceed</td>
         </tr>
         
       </tbody>
@@ -518,7 +518,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a file that matches the selected format loads content silently without any notification.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Uploading a file that matches the selected format loads the content silently with no warnings or errors.</span></div>
     
 
     
@@ -528,13 +528,13 @@
       <tbody>
         
         <tr>
-          <td>Upload a Playwright file when Playwright format is selected</td>
-          <td>No notification is shown when the file format matches the selection</td>
+          <td>No toast is displayed</td>
+          <td>A correctly matched file upload does not trigger any warning or error notifications</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Content loads successfully into the editor</td>
+          <td>The valid file content is successfully loaded into the input area</td>
         </tr>
         
       </tbody>
@@ -555,7 +555,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting content exceeding the allowed character limit is rejected with an error message and leaves the editor empty.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Pasting content that is too long is blocked with a clear error message, preventing oversized input from being submitted.</span></div>
     
 
     
@@ -565,13 +565,13 @@
       <tbody>
         
         <tr>
-          <td>Paste 100,001 characters into the test case box</td>
-          <td>An error message appears indicating the content is too long</td>
+          <td>Paste error shown with &#39;too long&#39; message</td>
+          <td>Users receive a clear error when their pasted content exceeds the allowed character limit</td>
         </tr>
         
         <tr>
           <td>Test case box is empty</td>
-          <td>Oversized content is not loaded into the editor</td>
+          <td>Oversized content is rejected and not loaded into the input area</td>
         </tr>
         
       </tbody>
@@ -592,7 +592,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that pasting content that matches the selected format and is within the character limit loads silently without any notification.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Pasting content that matches the selected format and is within size limits loads cleanly with no warnings or errors.</span></div>
     
 
     
@@ -602,13 +602,13 @@
       <tbody>
         
         <tr>
-          <td>Paste the contents of a BDD file when BDD format is selected</td>
-          <td>No notification is shown when pasted content matches the selected format</td>
+          <td>No toast is displayed</td>
+          <td>Valid pasted content does not trigger any warning or error notifications</td>
         </tr>
         
         <tr>
           <td>Test case box is populated</td>
-          <td>Valid pasted content loads successfully into the editor</td>
+          <td>The pasted content is successfully loaded into the input area</td>
         </tr>
         
       </tbody>
@@ -629,7 +629,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that dismissing a format mismatch warning does not remove the uploaded content from the editor.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">After dismissing a format mismatch warning, the uploaded content remains available so the user can continue working.</span></div>
     
 
     
@@ -639,18 +639,18 @@
       <tbody>
         
         <tr>
-          <td>Upload a mismatched file and receive a warning toast</td>
-          <td>A warning notification appears for the format mismatch</td>
+          <td>Warning toast appears on mismatched upload</td>
+          <td>A format mismatch triggers a warning notification</td>
         </tr>
         
         <tr>
-          <td>Dismiss the toast</td>
-          <td>The user can close the warning notification</td>
+          <td>Toast is dismissed</td>
+          <td>The user can manually close the warning notification</td>
         </tr>
         
         <tr>
-          <td>Test case box is still populated after dismissal</td>
-          <td>Dismissing the warning does not clear the loaded content</td>
+          <td>Test case box is still populated</td>
+          <td>Dismissing the warning does not clear the loaded content — the user&#39;s work is preserved</td>
         </tr>
         
       </tbody>
@@ -671,7 +671,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that dropping multiple files onto the input area in single-file mode shows a clear guidance message that the user can dismiss, and prevents any content from being loaded.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Dropping multiple files when the page is in single-file mode shows a helpful warning guiding the user to switch modes, and the warning can be dismissed.</span></div>
     
 
     
@@ -681,13 +681,13 @@
       <tbody>
         
         <tr>
-          <td>Drop multiple files onto the test case input in single-file mode</td>
-          <td>A warning message appears prompting the user to switch to multi-file mode</td>
+          <td>Warning message is visible with multi-file guidance</td>
+          <td>Users are clearly informed they need to switch to multi-file mode to upload more than one file at once</td>
         </tr>
         
         <tr>
           <td>Dismiss button is visible on the warning</td>
-          <td>The user has a clear way to close the warning message</td>
+          <td>The warning provides a way for users to close it manually</td>
         </tr>
         
         <tr>
@@ -696,8 +696,8 @@
         </tr>
         
         <tr>
-          <td>Click the dismiss button</td>
-          <td>The warning message disappears after the user dismisses it</td>
+          <td>Warning message is no longer visible after dismissal</td>
+          <td>Clicking the dismiss button successfully removes the warning from view</td>
         </tr>
         
       </tbody>
@@ -732,7 +732,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a BDD feature file that contains no test cases and expects an error toast informing them that no test cases were found, with the test case box remaining empty.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a BDD file containing no scenarios and expects an error toast confirming no test cases were found, with the input box remaining empty.</span></div>
     
 
     
@@ -768,7 +768,7 @@
           
           <td>
             
-              User uploads a BDD fixture file containing no scenarios
+              User uploads a BDD fixture file that contains no scenarios
             
           </td>
           
@@ -813,7 +813,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a test case file whose format does not match the selected format, and expects a warning toast identifying the mismatch and suggesting the correct format, while the test case box is still populated with the file content.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a file whose format does not match the selected parser and expects a warning toast identifying the mismatch and suggesting the correct format, while the file content is still loaded into the input box.</span></div>
     
 
     
@@ -932,7 +932,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a Playwright test file that matches the selected Playwright format and expects no toast notification, with the test case box successfully populated.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a Playwright file that correctly matches the selected format and expects no toast to appear while the content loads successfully into the input box.</span></div>
     
 
     
@@ -962,7 +962,7 @@
           
           <td>
             
-              Format is set to playwright
+              Format is set to Playwright
             
           </td>
           
@@ -1013,7 +1013,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content exceeding the 100,000-character limit into the test case box and expects a paste error indicating the content is too long, with the box remaining empty.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes content exceeding the 100,000-character limit into the test case box and expects a paste error indicating the content is too long, with the input box remaining empty.</span></div>
     
 
     
@@ -1043,7 +1043,7 @@
           
           <td>
             
-              Format is set to bdd
+              Format is set to BDD
             
           </td>
           
@@ -1055,7 +1055,7 @@
           
           <td>
             
-              A paste error containing &#39;too long&#39; is shown and the test case box is empty
+              A paste error containing &#39;too long&#39; is shown and the test case box remains empty
             
           </td>
           
@@ -1094,7 +1094,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes the contents of a valid BDD feature file into the test case box and expects no toast to appear, with the box successfully populated.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes the contents of a valid BDD file that matches the selected format and expects no toast while the content loads successfully into the input box.</span></div>
     
 
     
@@ -1124,7 +1124,7 @@
           
           <td>
             
-              Format is set to bdd
+              Format is set to BDD
             
           </td>
           
@@ -1175,7 +1175,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a mismatched file triggering a warning toast, then dismisses the toast, and expects the test case box to remain populated confirming the file content is retained.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user uploads a mismatched file, receives a warning toast, dismisses it, and expects the file content to remain loaded in the input box.</span></div>
     
 
     
@@ -1205,7 +1205,7 @@
           
           <td>
             
-              Format is set to robot and a mismatched Playwright file has been uploaded, showing a warning toast
+              Format is set to Robot Framework and a mismatched Playwright file has been uploaded, producing a warning toast
             
           </td>
           
@@ -1217,7 +1217,7 @@
           
           <td>
             
-              The test case box is still populated after the toast is dismissed
+              The test case box remains populated after the toast is dismissed
             
           </td>
           
@@ -1256,7 +1256,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user in single-file mode drops multiple files onto the test case input and expects a dismissible warning suggesting they switch to multi-file mode, with the test case box remaining empty, and the warning disappearing after dismissal.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user drops multiple files onto the test case input while in single-file mode, sees a dismissible warning prompting them to switch to multi-file mode, and can dismiss it to clear the message.</span></div>
     
 
     
@@ -1286,19 +1286,19 @@
           
           <td>
             
-              Format is set to bdd and the page is in single-file mode
+              Format is set to BDD and the page is in single-file mode
             
           </td>
           
           <td>
             
-              User drops multiple files onto the test case input
+              User drops multiple files onto the test case input, then clicks the dismiss button on the warning
             
           </td>
           
           <td>
             
-              A warning message advising multi-file mode is visible with a dismiss button, and the test case box is empty; after dismissal the warning is no longer visible
+              A warning message advising multi-file mode is shown with a dismiss button and an empty test case box; after dismissal the warning is no longer visible
             
           </td>
           

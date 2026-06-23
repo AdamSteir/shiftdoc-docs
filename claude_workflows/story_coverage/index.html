@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that submitting a user story with acceptance criteria alongside a BDD test file produces a non-empty coverage table showing which criteria are covered.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that submitting a user story with acceptance criteria alongside a BDD test file produces a coverage table with results.</span></div>
     
 
     
@@ -245,7 +245,7 @@
         
         <tr>
           <td>Upload a BDD test case fixture</td>
-          <td>The page accepts a BDD test file as input</td>
+          <td>The page accepts a test file upload</td>
         </tr>
         
         <tr>
@@ -255,12 +255,12 @@
         
         <tr>
           <td>Result contains a coverage table with at least one row</td>
-          <td>The output includes a populated coverage table mapping criteria to tests</td>
+          <td>The analysis produces a non-empty coverage table mapping acceptance criteria to tests</td>
         </tr>
         
         <tr>
           <td>Result is non-empty</td>
-          <td>The overall result is not blank or missing</td>
+          <td>The overall output is populated and not blank</td>
         </tr>
         
       </tbody>
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that acceptance criteria not covered by any test are flagged with a risk value to highlight gaps for the product team.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that acceptance criteria not covered by any test are flagged with a risk value in the coverage table.</span></div>
     
 
     
@@ -292,12 +292,12 @@
         
         <tr>
           <td>Paste the story coverage login story fixture</td>
-          <td>A known user story with defined acceptance criteria is loaded</td>
+          <td>A known user story is submitted for analysis</td>
         </tr>
         
         <tr>
           <td>Upload the story coverage incomplete test fixture</td>
-          <td>A test file that does not cover all criteria is loaded</td>
+          <td>A test file that does not cover all acceptance criteria is provided</td>
         </tr>
         
         <tr>
@@ -307,7 +307,7 @@
         
         <tr>
           <td>Every non-covered row has a non-empty risk value</td>
-          <td>Uncovered acceptance criteria surface an associated risk to signal potential gaps</td>
+          <td>Uncovered acceptance criteria display a risk assessment so stakeholders understand the gap</td>
         </tr>
         
       </tbody>
@@ -328,7 +328,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that acceptance criteria fully covered by tests are not incorrectly flagged with a risk value.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that acceptance criteria fully covered by tests do not show a risk value, keeping the report clean and unambiguous.</span></div>
     
 
     
@@ -339,12 +339,12 @@
         
         <tr>
           <td>Paste the story coverage login story fixture</td>
-          <td>A known user story with defined acceptance criteria is loaded</td>
+          <td>A known user story is submitted for analysis</td>
         </tr>
         
         <tr>
           <td>Upload the story coverage complete test fixture</td>
-          <td>A test file that covers all criteria is loaded</td>
+          <td>A test file that covers all acceptance criteria is provided</td>
         </tr>
         
         <tr>
@@ -354,7 +354,7 @@
         
         <tr>
           <td>No covered row has a risk value</td>
-          <td>Acceptance criteria with passing test coverage are not falsely marked as risky</td>
+          <td>Fully covered acceptance criteria are not incorrectly flagged with risk</td>
         </tr>
         
       </tbody>
@@ -375,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can download the coverage report as a Markdown file after a coverage analysis has been completed.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that once a coverage result is available, the user can download it as a Markdown file.</span></div>
     
 
     
@@ -391,12 +391,12 @@
         
         <tr>
           <td>Click the Download MD button</td>
-          <td>The Markdown download action is triggered</td>
+          <td>The Markdown export action is triggered</td>
         </tr>
         
         <tr>
           <td>A .md file is downloaded</td>
-          <td>The browser receives a valid Markdown file as the download output</td>
+          <td>The coverage report is successfully exported in Markdown format</td>
         </tr>
         
       </tbody>
@@ -417,7 +417,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can download the coverage report as an HTML file after a coverage analysis has been completed.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that once a coverage result is available, the user can download it as an HTML file.</span></div>
     
 
     
@@ -433,12 +433,12 @@
         
         <tr>
           <td>Click the Download HTML button</td>
-          <td>The HTML download action is triggered</td>
+          <td>The HTML export action is triggered</td>
         </tr>
         
         <tr>
           <td>A .html file is downloaded</td>
-          <td>The browser receives a valid HTML file as the download output</td>
+          <td>The coverage report is successfully exported in HTML format</td>
         </tr>
         
       </tbody>
@@ -459,7 +459,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a user can download the coverage report as a JSON file after a coverage analysis has been completed.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that once a coverage result is available, the user can download it as a JSON file.</span></div>
     
 
     
@@ -475,12 +475,12 @@
         
         <tr>
           <td>Click the Download JSON button</td>
-          <td>The JSON download action is triggered</td>
+          <td>The JSON export action is triggered</td>
         </tr>
         
         <tr>
           <td>A .json file is downloaded</td>
-          <td>The browser receives a valid JSON file as the download output</td>
+          <td>The coverage report is successfully exported in JSON format for programmatic use</td>
         </tr>
         
       </tbody>
@@ -515,7 +515,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes a user story with acceptance criteria and uploads a BDD test fixture, then runs a coverage check and verifies a non-empty coverage table is returned.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user pastes a user story with acceptance criteria, uploads a BDD test fixture, runs coverage analysis, and verifies a populated coverage table is returned.</span></div>
     
 
     
@@ -545,7 +545,7 @@
           
           <td>
             
-              User is on the Story Coverage page with a user story containing explicit AC and a BDD test fixture uploaded
+              User is on the Story Coverage page with a user story and BDD test fixture uploaded
             
           </td>
           
@@ -596,7 +596,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user runs a coverage check against an incomplete test fixture and verifies that every non-covered acceptance criteria row carries a populated risk value.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user runs a coverage analysis using an incomplete test fixture and verifies that every non-covered acceptance criteria row carries a risk value.</span></div>
     
 
     
@@ -626,13 +626,13 @@
           
           <td>
             
-              User is on the Story Coverage page with the login story fixture and an incomplete test fixture uploaded, and coverage has been checked
+              User is on the Story Coverage page with the login story fixture and the incomplete test fixture uploaded
             
           </td>
           
           <td>
             
-              Coverage check completes against an incomplete test fixture
+              User clicks Check Coverage
             
           </td>
           
@@ -677,7 +677,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user runs a coverage check against a complete test fixture and verifies that fully covered acceptance criteria rows do not carry a risk value.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user runs a coverage analysis using a complete test fixture and verifies that covered acceptance criteria rows do not carry any risk value.</span></div>
     
 
     
@@ -707,13 +707,13 @@
           
           <td>
             
-              User is on the Story Coverage page with the login story fixture and a complete test fixture uploaded, and coverage has been checked
+              User is on the Story Coverage page with the login story fixture and the complete test fixture uploaded
             
           </td>
           
           <td>
             
-              Coverage check completes against a complete test fixture
+              User clicks Check Coverage
             
           </td>
           
@@ -758,7 +758,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After a coverage result has been produced, a user downloads the result as a Markdown file and verifies the correct file type is returned.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who has already produced a coverage result downloads it as a Markdown file and verifies the correct file type is received.</span></div>
     
 
     
@@ -788,7 +788,7 @@
           
           <td>
             
-              User is on the Story Coverage page and a coverage result has already been produced
+              User is on the Story Coverage page and a coverage result has been produced
             
           </td>
           
@@ -839,7 +839,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After a coverage result has been produced, a user downloads the result as an HTML file and verifies the correct file type is returned.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who has already produced a coverage result downloads it as an HTML file and verifies the correct file type is received.</span></div>
     
 
     
@@ -869,7 +869,7 @@
           
           <td>
             
-              User is on the Story Coverage page and a coverage result has already been produced
+              User is on the Story Coverage page and a coverage result has been produced
             
           </td>
           
@@ -920,7 +920,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">After a coverage result has been produced, a user downloads the result as a JSON file and verifies the correct file type is returned.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who has already produced a coverage result downloads it as a JSON file and verifies the correct file type is received.</span></div>
     
 
     
@@ -950,7 +950,7 @@
           
           <td>
             
-              User is on the Story Coverage page and a coverage result has already been produced
+              User is on the Story Coverage page and a coverage result has been produced
             
           </td>
           
