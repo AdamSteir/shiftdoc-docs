@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robot — ShiftDoc Docs</title>
+  <title>Analysis Cypress — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Robot
+  Analysis Cypress
 </div>
 
-<h1>Robot</h1>
+<h1>Analysis Cypress</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,8 +217,8 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Robot Framework test produces valid, complete documentation output with the correct framework identified and at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A Product Owner uploading a single Cypress test file receives structured JSON documentation with all fields resolved and at least one named test entry.</span></div>
     
 
     
@@ -239,28 +239,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The tool successfully processes a Robot Framework file and displays results to the user</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a single Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All placeholders and variables in the output are fully resolved — nothing is left blank or templated</td>
+          <td>No placeholder or missing data appears in the downloaded JSON</td>
         </tr>
         
         <tr>
-          <td>JSON framework is &#39;robot&#39;</td>
-          <td>The output correctly identifies the test framework as Robot Framework</td>
+          <td>JSON framework is &#39;cypress&#39;</td>
+          <td>The output correctly identifies the test framework as Cypress</td>
         </tr>
         
         <tr>
-          <td>JSON has 1 or more tests</td>
-          <td>At least one test case is extracted and represented in the output</td>
-        </tr>
-        
-        <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each test in the output is properly named — no anonymous or missing test entries</td>
+          <td>JSON has 1 or more tests with non-empty test names</td>
+          <td>At least one test is documented and each has a meaningful name</td>
         </tr>
         
       </tbody>
@@ -269,8 +264,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - Template data-driven expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - forEach data-driven expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -281,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Robot Framework test using a Template keyword expands into one individual test entry per data row in the Product Owner output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A Product Owner uploading a data-driven Cypress test using forEach sees each data row expanded into its own separate documented test entry.</span></div>
     
 
     
@@ -291,23 +286,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The tool successfully processes a data-driven Robot Framework file and displays results</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting the data-driven forEach Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All data row values are fully substituted — no raw variable references remain</td>
+          <td>No placeholder or missing data appears in the downloaded JSON</td>
         </tr>
         
         <tr>
-          <td>JSON has 3 or more tests</td>
-          <td>Each data row produces its own separate test entry, confirming the expansion behaviour</td>
+          <td>JSON framework is &#39;cypress&#39;</td>
+          <td>The output correctly identifies the test framework as Cypress</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test is individually and meaningfully named</td>
+          <td>JSON has 3 or more tests with non-empty test names</td>
+          <td>Each data row is expanded into a separate test entry, producing at least 3 named tests</td>
         </tr>
         
       </tbody>
@@ -316,8 +311,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - FOR loop expands one test per value</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - for...of expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -328,7 +323,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Robot Framework test containing a FOR loop expands into one individual test entry per loop value in the Product Owner output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A Product Owner uploading a data-driven Cypress test using for...of sees each data row expanded into its own separate documented test entry.</span></div>
     
 
     
@@ -338,23 +333,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The tool successfully processes a Robot Framework file with FOR loops and displays results</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting the for...of Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All loop iteration values are fully resolved in the output</td>
+          <td>No placeholder or missing data appears in the downloaded JSON</td>
         </tr>
         
         <tr>
-          <td>JSON has 3 or more tests</td>
-          <td>Each FOR loop iteration produces its own separate test entry, confirming expansion behaviour</td>
+          <td>JSON framework is &#39;cypress&#39;</td>
+          <td>The output correctly identifies the test framework as Cypress</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test is individually and meaningfully named</td>
+          <td>JSON has 3 or more tests with non-empty test names</td>
+          <td>Each data row is expanded into a separate test entry, producing at least 3 named tests</td>
         </tr>
         
       </tbody>
@@ -363,8 +358,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -375,7 +370,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Robot Framework test in the QA Manager role produces a valid output that includes a populated test coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A QA Manager uploading a single Cypress test file receives structured JSON documentation that includes a populated test coverage matrix alongside standard test details.</span></div>
     
 
     
@@ -385,28 +380,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The tool successfully processes a Robot Framework file and displays results for a QA Manager</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting a single Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All placeholders and variables in the output are fully resolved</td>
+          <td>No placeholder or missing data appears in the downloaded JSON</td>
         </tr>
         
         <tr>
-          <td>JSON has 1 or more tests</td>
-          <td>At least one test case is extracted and represented in the output</td>
+          <td>JSON framework is &#39;cypress&#39;</td>
+          <td>The output correctly identifies the test framework as Cypress</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each test in the output is properly named</td>
+          <td>JSON has 1 or more tests with non-empty test names</td>
+          <td>At least one test is documented and each has a meaningful name</td>
         </tr>
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry, providing traceability and coverage insight</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
       </tbody>
@@ -415,8 +410,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - Template collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - forEach collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -427,7 +422,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Robot Framework Template test is collapsed into a single test entry in the QA Manager view, with the coverage matrix capturing each data row as a separate row using the correct structure.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A QA Manager uploading a data-driven Cypress test using forEach sees all data rows collapsed into a single test entry with a coverage matrix row for each data example.</span></div>
     
 
     
@@ -437,28 +432,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The tool successfully processes the data-driven file and displays results for a QA Manager</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting the data-driven forEach Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All data values are fully resolved — no raw variable references remain</td>
+          <td>No placeholder or missing data appears in the downloaded JSON</td>
         </tr>
         
         <tr>
-          <td>JSON has exactly 1 test</td>
-          <td>Data-driven tests are collapsed into a single logical test entry rather than expanded, matching the QA Manager perspective</td>
+          <td>JSON framework is &#39;cypress&#39;</td>
+          <td>The output correctly identifies the test framework as Cypress</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix row count matches the examples</td>
-          <td>The coverage matrix has one row per data example, preserving full data visibility within the single test entry</td>
+          <td>JSON has exactly 1 test with a non-empty test name</td>
+          <td>All data rows are collapsed into a single named test entry rather than expanded</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for &#39;robot&#39;</td>
-          <td>Each coverage matrix row conforms to the expected Robot Framework-specific data structure</td>
+          <td>Coverage matrix row count matches the number of examples</td>
+          <td>Each data row from the forEach loop is represented as a row in the coverage matrix</td>
+        </tr>
+        
+        <tr>
+          <td>Coverage matrix rows use the correct schema for &#39;cypress&#39;</td>
+          <td>Each coverage matrix row contains the expected fields for a Cypress test</td>
         </tr>
         
       </tbody>
@@ -467,8 +467,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - FOR loop collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - for...of collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -479,7 +479,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that Robot Framework tests containing FOR loops are collapsed in the QA Manager view, with coverage matrix rows correctly representing each loop iteration.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">A QA Manager uploading a data-driven Cypress test using for...of sees all data rows collapsed into a single test entry with a coverage matrix row for each data example.</span></div>
     
 
     
@@ -489,28 +489,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The tool successfully processes a Robot Framework file with FOR loops and displays results for a QA Manager</td>
+          <td>Documentation is generated and displayed</td>
+          <td>The output panel shows results after submitting the for...of Cypress test file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All loop iteration values are fully resolved in the output</td>
+          <td>No placeholder or missing data appears in the downloaded JSON</td>
         </tr>
         
         <tr>
-          <td>JSON has exactly 2 tests</td>
-          <td>FOR loop iterations are collapsed into a smaller number of logical test entries rather than fully expanded, matching the QA Manager perspective</td>
+          <td>JSON framework is &#39;cypress&#39;</td>
+          <td>The output correctly identifies the test framework as Cypress</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix row count matches the examples</td>
-          <td>The coverage matrix captures each loop iteration as its own row, preserving full iteration visibility</td>
+          <td>JSON has exactly 1 test with a non-empty test name</td>
+          <td>All data rows are collapsed into a single named test entry rather than expanded</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for &#39;robot&#39;</td>
-          <td>Each coverage matrix row conforms to the expected Robot Framework-specific data structure</td>
+          <td>Coverage matrix row count matches the number of examples</td>
+          <td>Each data row from the for...of loop is represented as a row in the coverage matrix</td>
+        </tr>
+        
+        <tr>
+          <td>Coverage matrix rows use the correct schema for &#39;cypress&#39;</td>
+          <td>Each coverage matrix row contains the expected fields for a Cypress test</td>
         </tr>
         
       </tbody>
@@ -525,8 +530,8 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     
     
 
@@ -540,7 +545,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Robot Framework test fixture and verifies that the analysis produces valid, framework-tagged JSON output with at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Cypress test fixture and verifies that the documentation panel renders and the downloaded JSON output is well-formed with at least one named test.</span></div>
     
 
     
@@ -564,7 +569,7 @@
           
           <td>
             
-              Robot Framework - PO - single test, core output structure
+              Cypress - PO - single test, core output structure
             
           </td>
           
@@ -576,13 +581,13 @@
           
           <td>
             
-              Selects format &#39;robot&#39; and role &#39;Product Owner&#39;, uploads &#39;robot_single_sample.robot&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;cypress&#39; and role &#39;Product Owner&#39;, uploads &#39;cypress_single_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 1+ tests, and every test has a non-empty test_name
+              Documentation appears in the output panel; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -601,8 +606,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - Template data-driven expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - forEach data-driven expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     
     
 
@@ -616,7 +621,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Robot Framework template fixture and verifies that the analysis expands each data row into a separate test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a forEach data-driven Cypress fixture and verifies that each data row is expanded into its own test entry in the JSON output.</span></div>
     
 
     
@@ -640,7 +645,7 @@
           
           <td>
             
-              Robot Framework - PO - Template data-driven expands one test per row
+              Cypress - PO - forEach data-driven expands one test per row
             
           </td>
           
@@ -652,13 +657,13 @@
           
           <td>
             
-              Selects format &#39;robot&#39; and role &#39;Product Owner&#39;, uploads &#39;robot_datadriven_sample.robot&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;cypress&#39; and role &#39;Product Owner&#39;, uploads &#39;cypress_datadriven_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 3+ tests, and every test has a non-empty test_name
+              Documentation appears in the output panel; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 3 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -677,8 +682,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - FOR loop expands one test per value</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - for...of expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     
     
 
@@ -692,7 +697,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a Robot Framework FOR loop fixture and verifies that the analysis expands each loop iteration into a separate test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a for...of data-driven Cypress fixture and verifies that each iteration is expanded into its own test entry in the JSON output.</span></div>
     
 
     
@@ -716,7 +721,7 @@
           
           <td>
             
-              Robot Framework - PO - FOR loop expands one test per value
+              Cypress - PO - for...of expands one test per row
             
           </td>
           
@@ -728,13 +733,13 @@
           
           <td>
             
-              Selects format &#39;robot&#39; and role &#39;Product Owner&#39;, uploads &#39;robot_forof_sample.robot&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;cypress&#39; and role &#39;Product Owner&#39;, uploads &#39;cypress_forof_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 3+ tests, and every test has a non-empty test_name
+              Documentation appears in the output panel; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 3 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -753,8 +758,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     
     
 
@@ -768,7 +773,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Robot Framework test fixture and verifies that the analysis produces valid JSON output that includes a populated test_coverage_matrix for the first test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Cypress test fixture and verifies that the JSON output is well-formed and includes a populated test_coverage_matrix on the first test.</span></div>
     
 
     
@@ -792,7 +797,7 @@
           
           <td>
             
-              Robot Framework - QAM - single test, coverage matrix populated
+              Cypress - QAM - single test, coverage matrix populated
             
           </td>
           
@@ -804,13 +809,13 @@
           
           <td>
             
-              Selects format &#39;robot&#39; and role &#39;QA Manager&#39;, uploads &#39;robot_single_sample.robot&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;cypress&#39; and role &#39;QA Manager&#39;, uploads &#39;cypress_single_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 1+ tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Documentation appears in the output panel; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -829,8 +834,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - Template collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - forEach collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     
     
 
@@ -844,7 +849,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Robot Framework template fixture and verifies that the analysis collapses all data rows into exactly one test with a correctly structured coverage matrix matching the number of examples.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a forEach data-driven Cypress fixture and verifies that all data rows are collapsed into a single test entry whose coverage matrix rows match the example count and conform to the Cypress schema.</span></div>
     
 
     
@@ -868,7 +873,7 @@
           
           <td>
             
-              Robot Framework - QAM - Template collapses
+              Cypress - QAM - forEach collapses
             
           </td>
           
@@ -880,13 +885,13 @@
           
           <td>
             
-              Selects format &#39;robot&#39; and role &#39;QA Manager&#39;, uploads &#39;robot_datadriven_sample.robot&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;cypress&#39; and role &#39;QA Manager&#39;, uploads &#39;cypress_datadriven_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the number of data examples, and rows conform to the robot schema
+              Documentation appears in the output panel; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows conform to the cypress schema
             
           </td>
           
@@ -905,8 +910,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - FOR loop collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - for...of collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
     
     
 
@@ -920,7 +925,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a Robot Framework FOR loop fixture and verifies that the analysis collapses loop iterations into exactly two tests, each with a correctly structured coverage matrix matching the number of loop values.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a for...of data-driven Cypress fixture and verifies that all iterations are collapsed into a single test entry whose coverage matrix rows match the example count and conform to the Cypress schema.</span></div>
     
 
     
@@ -944,7 +949,7 @@
           
           <td>
             
-              Robot Framework - QAM - FOR loop collapses
+              Cypress - QAM - for...of collapses
             
           </td>
           
@@ -956,13 +961,13 @@
           
           <td>
             
-              Selects format &#39;robot&#39; and role &#39;QA Manager&#39;, uploads &#39;robot_forof_sample.robot&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;cypress&#39; and role &#39;QA Manager&#39;, uploads &#39;cypress_forof_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains exactly 2 tests, every test has a non-empty test_name, coverage matrix row count matches the loop iteration values, and rows conform to the robot schema
+              Documentation appears in the output panel; downloaded JSON has no unresolved values, framework is &#39;cypress&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows conform to the cypress schema
             
           </td>
           

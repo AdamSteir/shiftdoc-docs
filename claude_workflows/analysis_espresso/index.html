@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appium — ShiftDoc Docs</title>
+  <title>Analysis Espresso — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Appium
+  Analysis Espresso
 </div>
 
-<h1>Appium</h1>
+<h1>Analysis Espresso</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,8 +217,8 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
 
     
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Appium test file receives a valid, fully resolved JSON documentation output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Espresso test file receives structured JSON documentation with at least one named test and no missing or unresolved data.</span></div>
     
 
     
@@ -239,23 +239,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after analyzing the uploaded test file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The analysis produces visible output after submission</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are populated — no placeholders or missing data remain</td>
+          <td>All fields in the output are fully populated with no placeholders or blanks</td>
+        </tr>
+        
+        <tr>
+          <td>JSON framework is &#39;espresso&#39;</td>
+          <td>The output is correctly tagged as belonging to the Espresso test framework</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output for a single uploaded test case</td>
+          <td>At least one test case is detected and documented from the uploaded file</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a meaningful name</td>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>Each documented test case is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -264,8 +269,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - DataProvider expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - PO - Parameterized data-driven expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
 
     
@@ -276,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Appium test file sees the output expanded into one separate test entry per data row, yielding three or more documented tests.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Espresso test file sees the parameterized test expanded into one documented test entry per data row, resulting in three or more tests.</span></div>
     
 
     
@@ -286,23 +291,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after analyzing the data-driven test file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The analysis produces visible output after submission</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are fully populated with no placeholders</td>
+          <td>All fields in the output are fully populated with no placeholders or blanks</td>
+        </tr>
+        
+        <tr>
+          <td>JSON framework is &#39;espresso&#39;</td>
+          <td>The output is correctly tagged as belonging to the Espresso test framework</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Data rows are each expanded into individual test entries rather than collapsed into one</td>
+          <td>Data-driven tests are expanded so each parameter row becomes a separate documented test case</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test variant is identifiable by a meaningful name</td>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>Each expanded test case variant is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -311,8 +321,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
 
     
@@ -323,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Appium test file receives a valid JSON output where each test includes a populated test coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Espresso test file receives documentation that includes a populated test coverage matrix alongside standard test name output.</span></div>
     
 
     
@@ -333,28 +343,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after analyzing the uploaded test file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The analysis produces visible output after submission</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are fully populated with no placeholders</td>
+          <td>All fields in the output are fully populated with no placeholders or blanks</td>
+        </tr>
+        
+        <tr>
+          <td>JSON framework is &#39;espresso&#39;</td>
+          <td>The output is correctly tagged as belonging to the Espresso test framework</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output</td>
+          <td>At least one test case is detected and documented from the uploaded file</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a meaningful name</td>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>Each documented test case is identifiable by name</td>
         </tr>
         
         <tr>
-          <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry, providing traceability detail not present in the Product Owner view</td>
+          <td>The first test has a non-empty array &#39;test_coverage_matrix&#39;</td>
+          <td>The QA Manager role triggers generation of a coverage matrix, which is present and contains entries</td>
         </tr>
         
       </tbody>
@@ -363,8 +378,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - DataProvider collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - QAM - data-driven collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
 
     
@@ -375,7 +390,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Appium test file sees the output collapsed into a single test entry whose coverage matrix rows represent each data example using the correct schema.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Espresso test file sees the parameterized test collapsed into a single documented entry whose coverage matrix rows reflect each data example using the correct schema.</span></div>
     
 
     
@@ -385,33 +400,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after analyzing the data-driven test file</td>
+          <td>Documentation appears in the output panel</td>
+          <td>The analysis produces visible output after submission</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are fully populated with no placeholders</td>
+          <td>All fields in the output are fully populated with no placeholders or blanks</td>
+        </tr>
+        
+        <tr>
+          <td>JSON framework is &#39;espresso&#39;</td>
+          <td>The output is correctly tagged as belonging to the Espresso test framework</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>Data-driven tests are collapsed into a single logical test entry in the QA Manager view, contrasting with the Product Owner expansion behavior</td>
+          <td>Data-driven tests are collapsed into a single entry for the QA Manager role, rather than expanded</td>
         </tr>
         
         <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is identifiable by a meaningful name</td>
+          <td>Every test has a non-empty &#39;test_name&#39;</td>
+          <td>The collapsed test case is identifiable by name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from the DataProvider is represented as a distinct row in the coverage matrix</td>
+          <td>Each data row from the parameterized test is represented as a separate row in the coverage matrix</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>Each coverage matrix row conforms to the expected data structure for generic-type test documentation</td>
+          <td>Coverage matrix rows use the correct schema for &#39;espresso&#39;</td>
+          <td>The structure of each coverage matrix row conforms to the expected Espresso-specific format</td>
         </tr>
         
       </tbody>
@@ -426,8 +446,8 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
     
 
@@ -441,7 +461,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Appium test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Espresso test fixture and verifies that the analysis produces valid, framework-tagged JSON output containing at least one named test.</span></div>
     
 
     
@@ -465,7 +485,7 @@
           
           <td>
             
-              Appium - PO - single test, core output structure
+              Espresso - PO - single test, core output structure
             
           </td>
           
@@ -477,13 +497,13 @@
           
           <td>
             
-              Selects format &#39;appium&#39; and role &#39;Product Owner&#39;, uploads &#39;appium_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;espresso&#39; and role &#39;Product Owner&#39;, uploads &#39;espresso_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -502,8 +522,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - PO - DataProvider expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - PO - Parameterized data-driven expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
     
 
@@ -517,7 +537,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own named test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Espresso fixture and verifies that each parameterized row is expanded into its own test entry in the JSON output.</span></div>
     
 
     
@@ -541,7 +561,7 @@
           
           <td>
             
-              Appium - PO - DataProvider expands one test per row
+              Espresso - PO - Parameterized data-driven expands one test per row
             
           </td>
           
@@ -553,13 +573,13 @@
           
           <td>
             
-              Selects format &#39;appium&#39; and role &#39;Product Owner&#39;, uploads &#39;appium_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;espresso&#39; and role &#39;Product Owner&#39;, uploads &#39;espresso_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains 3 or more tests (one per data row), and every test has a non-empty test_name
             
           </td>
           
@@ -578,8 +598,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
     
 
@@ -593,7 +613,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Espresso test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test.</span></div>
     
 
     
@@ -617,7 +637,7 @@
           
           <td>
             
-              Appium - QAM - single test, coverage matrix populated
+              Espresso - QAM - single test, coverage matrix populated
             
           </td>
           
@@ -629,13 +649,13 @@
           
           <td>
             
-              Selects format &#39;appium&#39; and role &#39;QA Manager&#39;, uploads &#39;appium_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;espresso&#39; and role &#39;QA Manager&#39;, uploads &#39;espresso_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -654,8 +674,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Appium - QAM - DataProvider collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Appium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Espresso - QAM - data-driven collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Espresso Analysis</span></div>
     
     
 
@@ -669,7 +689,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Appium fixture and verifies that DataProvider rows collapse into a single named test whose coverage matrix rows match the example count and conform to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Espresso fixture and verifies that the output collapses all rows into exactly one test entry whose coverage matrix rows match the example count and conform to the Espresso schema.</span></div>
     
 
     
@@ -693,7 +713,7 @@
           
           <td>
             
-              Appium - QAM - DataProvider collapses
+              Espresso - QAM - data-driven collapses
             
           </td>
           
@@ -705,20 +725,20 @@
           
           <td>
             
-              Selects format &#39;appium&#39; and role &#39;QA Manager&#39;, uploads &#39;appium_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;espresso&#39; and role &#39;QA Manager&#39;, uploads &#39;espresso_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated; downloaded JSON has no unresolved values, contains exactly 1 test, that test has a non-empty test_name, coverage matrix row count matches the DataProvider examples, and all coverage matrix rows use the correct generic schema
+              Output panel is populated; downloaded JSON has no unresolved values, framework is &#39;espresso&#39;, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the data-driven examples, and rows conform to the Espresso schema
             
           </td>
           
           <td>
             
               
-              <span class="gherkin-type gherkin-positive">Positive</span>
+              <span class="gherkin-type gherkin-edge">Edge Case</span>
             
           </td>
           

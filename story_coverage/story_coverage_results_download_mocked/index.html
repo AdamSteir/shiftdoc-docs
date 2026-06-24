@@ -204,7 +204,7 @@
 <h1>Story Coverage Results Download Mocked</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -240,17 +240,17 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>Coverage results are available from a named uploaded story file</td>
+          <td>Coverage results are available from a file that was uploaded by the user</td>
         </tr>
         
         <tr>
           <td>When I click the Download MD button</td>
-          <td>User can trigger a download in Markdown format</td>
+          <td>The user can trigger a download in Markdown format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.md&#34;</td>
-          <td>Downloaded file name reflects the original story filename and uses the .md extension</td>
+          <td>The downloaded file is named after the original uploaded story file with a .md extension</td>
         </tr>
         
       </tbody>
@@ -282,17 +282,17 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>Coverage results are available from a named uploaded story file</td>
+          <td>Coverage results are available from a file that was uploaded by the user</td>
         </tr>
         
         <tr>
           <td>When I click the Download HTML button</td>
-          <td>User can trigger a download in HTML format</td>
+          <td>The user can trigger a download in HTML format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.html&#34;</td>
-          <td>Downloaded file name reflects the original story filename and uses the .html extension</td>
+          <td>The downloaded file is named after the original uploaded story file with a .html extension</td>
         </tr>
         
       </tbody>
@@ -324,17 +324,17 @@
         
         <tr>
           <td>Given a coverage result is displayed from an uploaded story file</td>
-          <td>Coverage results are available from a named uploaded story file</td>
+          <td>Coverage results are available from a file that was uploaded by the user</td>
         </tr>
         
         <tr>
           <td>When I click the Download JSON button</td>
-          <td>User can trigger a download in JSON format</td>
+          <td>The user can trigger a download in JSON format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file is named &#34;shiftdoc-tca-story_sample.json&#34;</td>
-          <td>Downloaded file name reflects the original story filename and uses the .json extension</td>
+          <td>The downloaded file is named after the original uploaded story file with a .json extension</td>
         </tr>
         
       </tbody>
@@ -355,7 +355,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when coverage results come from pasted story text (no file name available), the downloaded file is automatically named using a date-time timestamp instead.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a user pastes story content directly instead of uploading a file, the downloaded results file is automatically named using a date-time stamp.</span></div>
     
 
     
@@ -366,17 +366,17 @@
         
         <tr>
           <td>Given a coverage result is displayed</td>
-          <td>Coverage results are available from pasted story text with no associated filename</td>
+          <td>Coverage results are available from pasted story content, with no uploaded filename to reference</td>
         </tr>
         
         <tr>
           <td>When I click the Download MD button</td>
-          <td>User triggers a download in Markdown format</td>
+          <td>The user triggers a download in Markdown format</td>
         </tr>
         
         <tr>
           <td>Then the downloaded file matches &#34;shiftdoc-tca-\d{8}-\d{6}\.md&#34;</td>
-          <td>Downloaded file is automatically named with a date-time stamp when no story filename exists</td>
+          <td>The downloaded file is automatically assigned a name containing a date and time stamp when no source filename is available</td>
         </tr>
         
       </tbody>
@@ -406,7 +406,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result derived from an uploaded story file and verifies the downloaded file carries the correct extension for each supported format.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user downloads a coverage result in each supported format and verifies the downloaded file carries the correct extension matching the selected format.</span></div>
     
 
     
@@ -468,7 +468,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content rather than uploading a file downloads a coverage result and verifies the filename falls back to a date-time-stamped pattern instead of a story-derived name.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who pasted story content rather than uploading a named file downloads the coverage result and verifies the filename falls back to a date-time stamp pattern instead of a story-derived name.</span></div>
     
 
     
@@ -498,7 +498,7 @@
           
           <td>
             
-              A coverage result is displayed with no uploaded story file (pasted input)
+              A coverage result is displayed with no uploaded file name available
             
           </td>
           
@@ -510,7 +510,7 @@
           
           <td>
             
-              Downloaded filename matches the regex pattern shiftdoc-tca-\d{8}-\d{6}\.md
+              Downloaded filename matches the pattern shiftdoc-tca-\d{8}-\d{6}\.md
             
           </td>
           

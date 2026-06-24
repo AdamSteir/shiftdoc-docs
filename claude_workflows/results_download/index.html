@@ -204,7 +204,7 @@
 <h1>Results Download</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,7 +217,7 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Markdown download contains rendered content</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">All download formats produce valid output</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Content Verification (Claude)</span></div>
     
 
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can download their completed analysis as a properly formatted Markdown file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a completed analysis can be downloaded in Markdown, HTML, and JSON formats, each producing a valid and correctly structured file.</span></div>
     
 
     
@@ -239,92 +239,23 @@
       <tbody>
         
         <tr>
-          <td>A .md file is downloaded</td>
-          <td>The download produces a file with the correct Markdown format</td>
+          <td>Markdown download</td>
+          <td>A .md file is downloaded and contains expected Markdown heading syntax</td>
         </tr>
         
         <tr>
-          <td>The downloaded file content contains &#39;##&#39;</td>
-          <td>The Markdown file includes structured headings, confirming the analysis content was rendered correctly</td>
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">HTML download contains rendered content</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Content Verification (Claude)</span></div>
-    
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-22</span>
-    </div>
-    
-
-    
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can download their completed analysis as a valid, fully-formed HTML file.</span></div>
-    
-
-    
-    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
-    <table>
-      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
-      <tbody>
-        
-        <tr>
-          <td>A .html file is downloaded</td>
-          <td>The download produces a file with the correct HTML format</td>
+          <td>HTML download</td>
+          <td>A .html file is downloaded and contains valid opening and closing HTML tags</td>
         </tr>
         
         <tr>
-          <td>The downloaded file content contains &#39;&lt;html lang=&#39; and &#39;&lt;/html&gt;&#39;</td>
-          <td>The HTML file has a proper opening and closing structure, confirming it is a complete, valid web page</td>
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">JSON download contains complete analysis payload</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Content Verification (Claude)</span></div>
-    
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-22</span>
-    </div>
-    
-
-    
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Users can download their completed analysis as a structured JSON file that includes framework metadata and all analyzed test data.</span></div>
-    
-
-    
-    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
-    <table>
-      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
-      <tbody>
-        
-        <tr>
-          <td>A .json file is downloaded</td>
-          <td>The download produces a file in JSON format</td>
+          <td>JSON download structure</td>
+          <td>A .json file is downloaded with the framework set to &#39;bdd&#39; in the metadata</td>
         </tr>
         
         <tr>
-          <td>The JSON shiftdoc metadata has framework &#39;bdd&#39;</td>
-          <td>The file correctly identifies the analysis framework as BDD in its metadata</td>
-        </tr>
-        
-        <tr>
-          <td>The JSON has 1 or more tests</td>
-          <td>The downloaded file contains the actual test analysis content and is not empty</td>
+          <td>JSON download content</td>
+          <td>The JSON file contains at least one test entry</td>
         </tr>
         
       </tbody>
@@ -345,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user runs an analysis with optional add-ons such as Gap Analysis, those add-on results are included in the downloaded JSON file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when an analysis is run with the Gap Analysis add-on enabled, the downloaded JSON file includes the gap analysis section.</span></div>
     
 
     
@@ -355,13 +286,8 @@
       <tbody>
         
         <tr>
-          <td>A .json file is downloaded</td>
-          <td>The download produces a file in JSON format</td>
-        </tr>
-        
-        <tr>
-          <td>The JSON has top-level key &#39;gap_analysis&#39;</td>
-          <td>The Gap Analysis add-on results are present as a distinct section in the downloaded file, confirming add-on data is not lost during export</td>
+          <td>JSON download with add-on</td>
+          <td>The downloaded JSON file contains a top-level &#39;gap_analysis&#39; key when Gap Analysis was selected as an add-on</td>
         </tr>
         
       </tbody>
@@ -376,7 +302,7 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Markdown download contains rendered content</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">All download formats produce valid output</span></div>
     <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Content Verification (Claude)</span></div>
     
     
@@ -391,7 +317,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads a Markdown file and verifies it contains valid Markdown heading syntax.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads results in Markdown, HTML, and JSON formats and verifies each file is structurally valid.</span></div>
     
 
     
@@ -415,7 +341,7 @@
           
           <td>
             
-              Markdown download contains rendered content
+              All download formats produce valid output
             
           </td>
           
@@ -427,165 +353,13 @@
           
           <td>
             
-              User clicks Download Markdown
+              User clicks Download Markdown, then Download HTML, then Download JSON
             
           </td>
           
           <td>
             
-              A .md file is downloaded and its content contains &#39;##&#39;
-            
-          </td>
-          
-          <td>
-            
-              
-              <span class="gherkin-type gherkin-positive">Positive</span>
-            
-          </td>
-          
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">HTML download contains rendered content</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Content Verification (Claude)</span></div>
-    
-    
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-22</span>
-    </div>
-    
-
-    
-
-    
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads an HTML file and verifies it is a well-formed HTML document with opening and closing html tags.</span></div>
-    
-
-    
-    <table>
-      <thead><tr>
-        
-        <th>Scenario</th>
-        
-        <th>Given Context</th>
-        
-        <th>When Action</th>
-        
-        <th>Then Assertion</th>
-        
-        <th>Gherkin Type</th>
-        
-      </tr></thead>
-      <tbody>
-        
-        <tr>
-          
-          <td>
-            
-              HTML download contains rendered content
-            
-          </td>
-          
-          <td>
-            
-              A completed BDD Product Owner analysis exists
-            
-          </td>
-          
-          <td>
-            
-              User clicks Download HTML
-            
-          </td>
-          
-          <td>
-            
-              A .html file is downloaded and its content contains both &#39;&lt;html lang=&#39; and &#39;&lt;/html&gt;&#39;
-            
-          </td>
-          
-          <td>
-            
-              
-              <span class="gherkin-type gherkin-positive">Positive</span>
-            
-          </td>
-          
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">JSON download contains complete analysis payload</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Download Analysis Results - Content Verification (Claude)</span></div>
-    
-    
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-22</span>
-    </div>
-    
-
-    
-
-    
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a completed BDD Product Owner analysis downloads a JSON file and verifies it carries the correct shiftdoc framework metadata and at least one test entry.</span></div>
-    
-
-    
-    <table>
-      <thead><tr>
-        
-        <th>Scenario</th>
-        
-        <th>Given Context</th>
-        
-        <th>When Action</th>
-        
-        <th>Then Assertion</th>
-        
-        <th>Gherkin Type</th>
-        
-      </tr></thead>
-      <tbody>
-        
-        <tr>
-          
-          <td>
-            
-              JSON download contains complete analysis payload
-            
-          </td>
-          
-          <td>
-            
-              A completed BDD Product Owner analysis exists
-            
-          </td>
-          
-          <td>
-            
-              User clicks Download JSON
-            
-          </td>
-          
-          <td>
-            
-              A .json file is downloaded, shiftdoc metadata has framework &#39;bdd&#39;, and the JSON contains 1 or more tests
+              Each format produces a correctly typed file with expected structural markers: &#39;##&#39; in Markdown, &#39;&lt;html lang=&#39; and &#39;&lt;/html&gt;&#39; in HTML, framework &#39;bdd&#39; metadata and at least one test in JSON
             
           </td>
           
@@ -619,7 +393,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who ran a BDD Product Owner analysis with the Gap Analysis add-on downloads a JSON file and verifies the add-on output is present as a top-level key.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user who ran a BDD Product Owner analysis with Gap Analysis enabled downloads the JSON output and verifies the add-on section is present at the top level.</span></div>
     
 
     
@@ -649,7 +423,7 @@
           
           <td>
             
-              A completed BDD Product Owner analysis with Gap Analysis add-on exists
+              A completed BDD Product Owner analysis with Gap Analysis add-on selected
             
           </td>
           
@@ -661,7 +435,7 @@
           
           <td>
             
-              A .json file is downloaded and the JSON contains a top-level key &#39;gap_analysis&#39;
+              The downloaded JSON file contains a top-level key &#39;gap_analysis&#39;
             
           </td>
           

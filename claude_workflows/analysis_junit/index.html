@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Junit — ShiftDoc Docs</title>
+  <title>Analysis Junit — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Junit
+  Analysis Junit
 </div>
 
-<h1>Junit</h1>
+<h1>Analysis Junit</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single JUnit test file receives a valid, fully-resolved JSON output containing at least one named test case.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single JUnit test file receives a complete, well-formed documentation output with all test names resolved.</span></div>
     
 
     
@@ -239,23 +239,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
+          <td>Documentation appears in the output panel</td>
           <td>The system produces visible output after analyzing a JUnit file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are populated — no placeholders or missing data remain</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is detected and documented from the uploaded file</td>
+          <td>At least one test entry is generated from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test case is identifiable by name</td>
+          <td>Each documented test is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -276,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven JUnit test file sees each parameter row expanded into its own separate test case in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven JUnit test file sees each parameter row expanded into its own separate test entry in the output.</span></div>
     
 
     
@@ -286,23 +286,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
+          <td>Documentation appears in the output panel</td>
           <td>The system produces visible output after analyzing a parameterized JUnit file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no gaps</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each data row from the parameterized test is treated as a distinct test case, resulting in multiple entries</td>
+          <td>Parameterized tests are expanded so each data row becomes its own test entry</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test case is individually named</td>
+          <td>Each expanded test entry is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -323,7 +323,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single JUnit test file receives output that includes a populated test coverage matrix alongside standard test documentation.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single JUnit test file receives documentation that includes a populated test coverage matrix alongside standard test details.</span></div>
     
 
     
@@ -333,28 +333,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
+          <td>Documentation appears in the output panel</td>
           <td>The system produces visible output after analyzing a JUnit file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no gaps</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is detected and documented from the uploaded file</td>
+          <td>At least one test entry is generated from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test case is identifiable by name</td>
+          <td>Each documented test is identifiable by name</td>
         </tr>
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry for the test case</td>
+          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
       </tbody>
@@ -375,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven JUnit test file sees the parameterized test collapsed into a single test case whose coverage matrix rows represent each data example using the correct structure.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven JUnit test file sees parameterized tests collapsed into a single entry with a coverage matrix that reflects each data row.</span></div>
     
 
     
@@ -385,33 +385,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in output panel</td>
+          <td>Documentation appears in the output panel</td>
           <td>The system produces visible output after analyzing a parameterized JUnit file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no gaps</td>
+          <td>All fields in the output are fully populated with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>All parameter rows are collapsed into a single test case entry rather than expanded individually</td>
+          <td>Parameterized tests are collapsed into a single test entry rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test case is identifiable by name</td>
+          <td>The collapsed test entry is identifiable by name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from the parameterized test is represented as a row in the coverage matrix</td>
+          <td>Each parameter row from the data-driven test is represented as a row in the coverage matrix</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>Each coverage matrix row conforms to the expected generic format with all required fields present</td>
+          <td>The structure of each coverage matrix row conforms to the expected generic format</td>
         </tr>
         
       </tbody>
@@ -441,7 +441,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single JUnit test fixture and verifies that the analysis produces a valid JSON output with at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single JUnit test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.</span></div>
     
 
     
@@ -477,13 +477,13 @@
           
           <td>
             
-              User selects format &#39;junit&#39; and role &#39;Product Owner&#39;, uploads &#39;junit_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;junit&#39; and role &#39;Product Owner&#39;, uploads &#39;junit_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -517,7 +517,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a parameterized JUnit fixture and verifies that each data row is expanded into its own named test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven JUnit fixture and verifies that parameterized tests are expanded into individual test entries — one per data row — in the JSON output.</span></div>
     
 
     
@@ -553,13 +553,13 @@
           
           <td>
             
-              User selects format &#39;junit&#39; and role &#39;Product Owner&#39;, uploads &#39;junit_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;junit&#39; and role &#39;Product Owner&#39;, uploads &#39;junit_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+              Downloaded JSON has no unresolved values, contains 3 or more tests (one per parameterized row), and every test has a non-empty test_name
             
           </td>
           
@@ -593,7 +593,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single JUnit test fixture and verifies that the JSON output includes a populated coverage matrix for the first test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single JUnit test fixture and verifies that the JSON output includes a populated test_coverage_matrix array on the first test entry.</span></div>
     
 
     
@@ -629,13 +629,13 @@
           
           <td>
             
-              User selects format &#39;junit&#39; and role &#39;QA Manager&#39;, uploads &#39;junit_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;junit&#39; and role &#39;QA Manager&#39;, uploads &#39;junit_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -669,7 +669,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a parameterized JUnit fixture and verifies that the analysis collapses all data rows into a single test whose coverage matrix rows match the number of examples and conform to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven JUnit fixture and verifies that parameterized tests are collapsed into a single test entry whose coverage matrix rows match the number of data examples and conform to the generic schema.</span></div>
     
 
     
@@ -705,13 +705,13 @@
           
           <td>
             
-              User selects format &#39;junit&#39; and role &#39;QA Manager&#39;, uploads &#39;junit_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;junit&#39; and role &#39;QA Manager&#39;, uploads &#39;junit_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel is populated, downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows use the correct generic schema
+              Downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the parameterized examples, and rows conform to the generic schema
             
           </td>
           

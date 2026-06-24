@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cypress — ShiftDoc Docs</title>
+  <title>Analysis Playwright — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Cypress
+  Analysis Playwright
 </div>
 
-<h1>Cypress</h1>
+<h1>Analysis Playwright</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,8 +217,8 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner can upload a single Cypress test file and receive a properly structured JSON documentation output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Playwright test file produces valid, fully resolved JSON documentation with at least one named test entry.</span></div>
     
 
     
@@ -239,28 +239,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and displayed</td>
-          <td>The output panel shows results after submitting a single Cypress test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>JSON framework is identified as cypress</td>
-          <td>The output correctly labels the test framework as Cypress</td>
+          <td>JSON framework is &#39;playwright&#39;</td>
+          <td>The output correctly identifies the test framework as Playwright</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output</td>
+          <td>At least one test case is documented in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is given a meaningful name</td>
+          <td>Each documented test is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -269,8 +269,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - forEach data-driven expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - test.each expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Cypress test using forEach, each data row is expanded into its own separate test entry in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright file using test.each produces a separate documented test entry for each data row.</span></div>
     
 
     
@@ -291,28 +291,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and displayed</td>
-          <td>The output panel shows results after submitting a forEach data-driven Cypress test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>JSON framework is identified as cypress</td>
-          <td>The output correctly labels the test framework as Cypress</td>
+          <td>JSON framework is &#39;playwright&#39;</td>
+          <td>The output correctly identifies the test framework as Playwright</td>
         </tr>
         
         <tr>
-          <td>JSON has 3 or more tests</td>
-          <td>The forEach loop is expanded so that each data row produces its own distinct test entry</td>
+          <td>JSON has 2 or more tests</td>
+          <td>Each test.each data row is expanded into its own test entry in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is given a meaningful name</td>
+          <td>Each expanded test entry is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -321,8 +321,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - for...of expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - for...of expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -333,7 +333,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a Product Owner uploads a data-driven Cypress test using for...of, each data row is expanded into its own separate test entry in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright file using a for...of loop produces a separate documented test entry for each iteration.</span></div>
     
 
     
@@ -343,28 +343,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and displayed</td>
-          <td>The output panel shows results after submitting a for...of data-driven Cypress test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>JSON framework is identified as cypress</td>
-          <td>The output correctly labels the test framework as Cypress</td>
+          <td>JSON framework is &#39;playwright&#39;</td>
+          <td>The output correctly identifies the test framework as Playwright</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>The for...of loop is expanded so that each data row produces its own distinct test entry</td>
+          <td>Each for...of loop iteration is expanded into its own test entry in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is given a meaningful name</td>
+          <td>Each expanded test entry is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -373,8 +373,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -385,7 +385,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager receives a documentation output that includes a populated test coverage matrix when uploading a single Cypress test file.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager analyzing a single Playwright test receives documentation that includes a populated test coverage matrix.</span></div>
     
 
     
@@ -395,32 +395,32 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and displayed</td>
-          <td>The output panel shows results after submitting a single Cypress test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>JSON framework is identified as cypress</td>
-          <td>The output correctly labels the test framework as Cypress</td>
+          <td>JSON framework is &#39;playwright&#39;</td>
+          <td>The output correctly identifies the test framework as Playwright</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test entry is present in the output</td>
+          <td>At least one test case is documented in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is given a meaningful name</td>
+          <td>Each documented test is identifiable by name</td>
         </tr>
         
         <tr>
-          <td>First test has a non-empty test_coverage_matrix array</td>
+          <td>First test has a non-empty array test_coverage_matrix</td>
           <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
@@ -430,8 +430,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - forEach collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - test.each collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -442,7 +442,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager uploads a data-driven Cypress test using forEach, all data rows are collapsed into a single test entry with a coverage matrix row for each example.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager analyzing a data-driven Playwright file using test.each sees a single collapsed test entry whose coverage matrix rows represent each data row with the correct structure.</span></div>
     
 
     
@@ -452,38 +452,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and displayed</td>
-          <td>The output panel shows results after submitting a forEach data-driven Cypress test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>JSON framework is identified as cypress</td>
-          <td>The output correctly labels the test framework as Cypress</td>
+          <td>JSON framework is &#39;playwright&#39;</td>
+          <td>The output correctly identifies the test framework as Playwright</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>The forEach data-driven test is collapsed into a single test entry rather than expanded</td>
+          <td>Data-driven test.each tests are collapsed into a single test entry for QA Manager view</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is given a meaningful name</td>
+          <td>The collapsed test entry is identifiable by name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>The number of rows in the coverage matrix equals the number of data rows in the forEach loop</td>
+          <td>The coverage matrix contains one row per data row from test.each</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for cypress</td>
-          <td>Each coverage matrix row follows the expected structure for Cypress test documentation</td>
+          <td>Coverage matrix rows use the correct schema for &#39;playwright&#39;</td>
+          <td>Each coverage matrix row follows the expected Playwright-specific data structure</td>
         </tr>
         
       </tbody>
@@ -492,8 +492,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - for...of collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - for...of collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -504,7 +504,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that when a QA Manager uploads a data-driven Cypress test using for...of, all data rows are collapsed into a single test entry with a coverage matrix row for each example.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager analyzing a data-driven Playwright file using a for...of loop sees a single collapsed test entry whose coverage matrix rows represent each iteration with the correct structure.</span></div>
     
 
     
@@ -514,38 +514,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation is generated and displayed</td>
-          <td>The output panel shows results after submitting a for...of data-driven Cypress test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The system produces visible output after analyzing the uploaded file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded JSON are filled in with real content, not placeholders</td>
+          <td>All fields in the downloaded JSON are populated — no placeholders or missing data</td>
         </tr>
         
         <tr>
-          <td>JSON framework is identified as cypress</td>
-          <td>The output correctly labels the test framework as Cypress</td>
+          <td>JSON framework is &#39;playwright&#39;</td>
+          <td>The output correctly identifies the test framework as Playwright</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>The for...of data-driven test is collapsed into a single test entry rather than expanded</td>
+          <td>Data-driven for...of tests are collapsed into a single test entry for QA Manager view</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is given a meaningful name</td>
+          <td>The collapsed test entry is identifiable by name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>The number of rows in the coverage matrix equals the number of data rows in the for...of loop</td>
+          <td>The coverage matrix contains one row per iteration of the for...of loop</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for cypress</td>
-          <td>Each coverage matrix row follows the expected structure for Cypress test documentation</td>
+          <td>Coverage matrix rows use the correct schema for &#39;playwright&#39;</td>
+          <td>Each coverage matrix row follows the expected Playwright-specific data structure</td>
         </tr>
         
       </tbody>
@@ -560,8 +560,8 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     
     
 
@@ -575,7 +575,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Cypress test fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Playwright test fixture and verifies that the analysis produces valid, framework-tagged JSON output with at least one named test.</span></div>
     
 
     
@@ -599,7 +599,7 @@
           
           <td>
             
-              Cypress - PO - single test, core output structure
+              Playwright - PO - single test, core output structure
             
           </td>
           
@@ -611,13 +611,13 @@
           
           <td>
             
-              Selects format &#39;cypress&#39; and role &#39;Product Owner&#39;, uploads &#39;cypress_single_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;playwright&#39; and role &#39;Product Owner&#39;, uploads &#39;playwright_single_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 1+ tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, declares framework &#39;playwright&#39;, contains 1 or more tests, and every test has a non-empty test_name
             
           </td>
           
@@ -636,8 +636,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - forEach data-driven expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - test.each expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     
     
 
@@ -651,7 +651,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a forEach data-driven Cypress fixture and verifies that the pipeline expands each data row into a separate test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Playwright fixture using test.each and verifies that each table row is expanded into a separate test entry in the JSON output.</span></div>
     
 
     
@@ -675,7 +675,7 @@
           
           <td>
             
-              Cypress - PO - forEach data-driven expands one test per row
+              Playwright - PO - test.each expands one test per row
             
           </td>
           
@@ -687,13 +687,13 @@
           
           <td>
             
-              Selects format &#39;cypress&#39; and role &#39;Product Owner&#39;, uploads &#39;cypress_datadriven_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;playwright&#39; and role &#39;Product Owner&#39;, uploads &#39;playwright_datadriven_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 3+ tests (one per data row), and every test has a non-empty test_name
+              Downloaded JSON has no unresolved values, declares framework &#39;playwright&#39;, contains 2 or more tests (one per test.each row), and every test has a non-empty test_name
             
           </td>
           
@@ -712,8 +712,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - PO - for...of expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - for...of expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     
     
 
@@ -727,7 +727,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a for...of data-driven Cypress fixture and verifies that the pipeline expands each iteration into a separate test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a Playwright fixture using a for...of loop and verifies that each loop iteration is expanded into a separate test entry in the JSON output.</span></div>
     
 
     
@@ -751,7 +751,7 @@
           
           <td>
             
-              Cypress - PO - for...of expands one test per row
+              Playwright - PO - for...of expands one test per row
             
           </td>
           
@@ -763,13 +763,13 @@
           
           <td>
             
-              Selects format &#39;cypress&#39; and role &#39;Product Owner&#39;, uploads &#39;cypress_forof_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;playwright&#39; and role &#39;Product Owner&#39;, uploads &#39;playwright_forof_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 3+ tests (one per iteration), and every test has a non-empty test_name
+              Downloaded JSON has no unresolved values, declares framework &#39;playwright&#39;, contains 3 or more tests (one per for...of iteration), and every test has a non-empty test_name
             
           </td>
           
@@ -788,8 +788,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     
     
 
@@ -803,7 +803,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Cypress test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test in addition to core structural requirements.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Playwright test fixture and verifies that the analysis produces JSON output that includes a populated coverage matrix for the first test.</span></div>
     
 
     
@@ -827,7 +827,7 @@
           
           <td>
             
-              Cypress - QAM - single test, coverage matrix populated
+              Playwright - QAM - single test, coverage matrix populated
             
           </td>
           
@@ -839,13 +839,13 @@
           
           <td>
             
-              Selects format &#39;cypress&#39; and role &#39;QA Manager&#39;, uploads &#39;cypress_single_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;playwright&#39; and role &#39;QA Manager&#39;, uploads &#39;playwright_single_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has 1+ tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Downloaded JSON has no unresolved values, declares framework &#39;playwright&#39;, contains 1 or more tests each with a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -864,8 +864,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - forEach collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - test.each collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     
     
 
@@ -879,7 +879,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a forEach data-driven Cypress fixture and verifies that the pipeline collapses all data rows into a single test whose coverage matrix contains one row per data example using the correct Cypress schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Playwright fixture using test.each and verifies that all rows collapse into a single test object whose coverage matrix rows match the example count and conform to the Playwright schema.</span></div>
     
 
     
@@ -903,7 +903,7 @@
           
           <td>
             
-              Cypress - QAM - forEach collapses
+              Playwright - QAM - test.each collapses
             
           </td>
           
@@ -915,13 +915,13 @@
           
           <td>
             
-              Selects format &#39;cypress&#39; and role &#39;QA Manager&#39;, uploads &#39;cypress_datadriven_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;playwright&#39; and role &#39;QA Manager&#39;, uploads &#39;playwright_datadriven_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of data examples, and rows conform to the Cypress coverage matrix schema
+              Downloaded JSON has no unresolved values, declares framework &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the test.each examples, and rows conform to the Playwright coverage matrix schema
             
           </td>
           
@@ -940,8 +940,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Cypress - QAM - for...of collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Cypress Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - for...of collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
     
     
 
@@ -955,7 +955,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a for...of data-driven Cypress fixture and verifies that the pipeline collapses all iterations into a single test whose coverage matrix contains one row per iteration using the correct Cypress schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a Playwright fixture using a for...of loop and verifies that all iterations collapse into a single test object whose coverage matrix rows match the iteration count and conform to the Playwright schema.</span></div>
     
 
     
@@ -979,7 +979,7 @@
           
           <td>
             
-              Cypress - QAM - for...of collapses
+              Playwright - QAM - for...of collapses
             
           </td>
           
@@ -991,13 +991,13 @@
           
           <td>
             
-              Selects format &#39;cypress&#39; and role &#39;QA Manager&#39;, uploads &#39;cypress_forof_sample.cy.js&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;playwright&#39; and role &#39;QA Manager&#39;, uploads &#39;playwright_forof_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON is framework=&#39;cypress&#39;, has no unresolved values, has exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of iterations, and rows conform to the Cypress coverage matrix schema
+              Downloaded JSON has no unresolved values, declares framework &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the for...of iterations, and rows conform to the Playwright coverage matrix schema
             
           </td>
           

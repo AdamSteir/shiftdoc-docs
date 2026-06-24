@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pytest — ShiftDoc Docs</title>
+  <title>Analysis Bdd — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Pytest
+  Analysis Bdd
 </div>
 
-<h1>Pytest</h1>
+<h1>Analysis Bdd</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,8 +217,8 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single pytest file and generating documentation produces valid, complete output with at least one named test case.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a BDD feature file and generating documentation produces a well-formed JSON output containing named tests, descriptions, and coverage details.</span></div>
     
 
     
@@ -239,23 +239,33 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system responds visibly after processing the uploaded test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The user sees generated documentation after submitting a BDD file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data exists in the generated documentation</td>
+          <td>No placeholder or missing values exist in the downloaded output</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is captured from the uploaded file</td>
+          <td>At least one test entry is produced from the uploaded file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test case is identifiable by name</td>
+          <td>Each test in the output is identifiable by name</td>
+        </tr>
+        
+        <tr>
+          <td>First test has a non-empty description</td>
+          <td>The output includes a human-readable description for the first test</td>
+        </tr>
+        
+        <tr>
+          <td>First test has a non-empty test_coverage array</td>
+          <td>Coverage details are populated for the first test</td>
         </tr>
         
       </tbody>
@@ -264,8 +274,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - PO - parametrize expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - data-driven produces multiple tests</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -276,7 +286,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven pytest file with parametrize is expanded so that each parameter combination appears as its own separate test case in the Product Owner output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a data-driven BDD feature file generates a separate test entry for each data row, resulting in multiple documented tests.</span></div>
     
 
     
@@ -286,23 +296,23 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system responds visibly after processing the data-driven test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The user sees generated documentation after submitting a data-driven BDD file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data exists in the generated documentation</td>
+          <td>No placeholder or missing values exist in the downloaded output</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each parameter row in the data-driven test is expanded into its own test entry</td>
+          <td>Multiple test entries are produced, reflecting the parameterised nature of the file</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test case is individually identifiable by name</td>
+          <td>Each generated test entry is identifiable by name</td>
         </tr>
         
       </tbody>
@@ -311,8 +321,45 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Panel title is &#34;Documentation&#34; when no add-ons are selected</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-21</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that the output panel displays the title &#39;Documentation&#39; rather than an extended title when no additional analysis options are selected.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Documentation appears in output panel</td>
+          <td>The user sees output after submitting a BDD file with no add-ons</td>
+        </tr>
+        
+        <tr>
+          <td>Panel title is not &#39;Documentation and Analysis&#39;</td>
+          <td>The panel heading accurately reflects that only documentation — not analysis — was requested</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - QAM - coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -323,7 +370,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single pytest file in QA Manager mode produces valid documentation that includes a populated test coverage matrix for the first test.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a BDD feature file receives documentation that includes a correctly structured coverage matrix for each test.</span></div>
     
 
     
@@ -333,85 +380,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system responds visibly after processing the uploaded test file</td>
+          <td>Documentation appears in output panel</td>
+          <td>The user sees generated documentation after submitting the file</td>
+        </tr>
+        
+        <tr>
+          <td>Filename appears in output</td>
+          <td>The output references the uploaded file by name, confirming the correct file was processed</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data exists in the generated documentation</td>
-        </tr>
-        
-        <tr>
-          <td>JSON has 1 or more tests</td>
-          <td>At least one test case is captured from the uploaded file</td>
-        </tr>
-        
-        <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each documented test case is identifiable by name</td>
+          <td>No placeholder or missing values exist in the downloaded output</td>
         </tr>
         
         <tr>
           <td>First test has a non-empty test_coverage_matrix array</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - QAM - parametrize collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-20</span>
-    </div>
-    
-
-    
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven pytest file in QA Manager mode produces a single collapsed test entry whose coverage matrix rows match the number of parameter combinations and follow the correct schema.</span></div>
-    
-
-    
-    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
-    <table>
-      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
-      <tbody>
-        
-        <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system responds visibly after processing the data-driven test file</td>
+          <td>A coverage matrix is present and populated for the first test</td>
         </tr>
         
         <tr>
-          <td>JSON output has no unresolved values</td>
-          <td>No placeholder or missing data exists in the generated documentation</td>
-        </tr>
-        
-        <tr>
-          <td>JSON has exactly 1 test</td>
-          <td>All parameter combinations are collapsed into a single test entry rather than expanded</td>
-        </tr>
-        
-        <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test case is identifiable by name</td>
-        </tr>
-        
-        <tr>
-          <td>Coverage matrix row count matches the examples</td>
-          <td>Each parameter combination is represented as its own row within the coverage matrix</td>
-        </tr>
-        
-        <tr>
-          <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>Each coverage matrix row conforms to the expected data structure for generic test types</td>
+          <td>Coverage matrix rows use the correct schema for BDD</td>
+          <td>Each row in the matrix conforms to the expected structure for BDD-format files</td>
         </tr>
         
       </tbody>
@@ -426,8 +416,8 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
     
     
 
@@ -441,7 +431,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single pytest fixture and verifies that the documentation pipeline produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a BDD feature fixture and documents test cases, verifying the JSON output is structurally valid with named tests and coverage data.</span></div>
     
 
     
@@ -465,7 +455,7 @@
           
           <td>
             
-              pytest - PO - single test, core output structure
+              BDD - PO - core output structure
             
           </td>
           
@@ -477,13 +467,13 @@
           
           <td>
             
-              Selects format &#39;pytest&#39; and role &#39;Product Owner&#39;, uploads &#39;pytest_single_sample.py&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, contains 1+ tests, every test has a non-empty test_name, and the first test has a non-empty description and test_coverage array
             
           </td>
           
@@ -502,8 +492,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - PO - parametrize expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - PO - data-driven produces multiple tests</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
     
     
 
@@ -517,7 +507,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven pytest fixture and verifies that each parametrize row is expanded into its own test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven BDD fixture and verifies the output expands into three or more individually named tests.</span></div>
     
 
     
@@ -541,7 +531,7 @@
           
           <td>
             
-              pytest - PO - parametrize expands one test per row
+              BDD - PO - data-driven produces multiple tests
             
           </td>
           
@@ -553,13 +543,13 @@
           
           <td>
             
-              Selects format &#39;pytest&#39; and role &#39;Product Owner&#39;, uploads &#39;pytest_datadriven_sample.py&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_datadriven_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel is populated; downloaded JSON has no unresolved values, contains 3+ tests, and every test has a non-empty test_name
             
           </td>
           
@@ -578,8 +568,84 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Panel title is &#34;Documentation&#34; when no add-ons are selected</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
+    
+    
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-21</span>
+    </div>
+    
+
+    
+
+    
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner documents a BDD feature with no add-ons selected and verifies the output panel title is &#39;Documentation&#39; rather than the combined &#39;Documentation and Analysis&#39; label.</span></div>
+    
+
+    
+    <table>
+      <thead><tr>
+        
+        <th>Scenario</th>
+        
+        <th>Given Context</th>
+        
+        <th>When Action</th>
+        
+        <th>Then Assertion</th>
+        
+        <th>Gherkin Type</th>
+        
+      </tr></thead>
+      <tbody>
+        
+        <tr>
+          
+          <td>
+            
+              Panel title is &#34;Documentation&#34; when no add-ons are selected
+            
+          </td>
+          
+          <td>
+            
+              User is on the Analyze page with no add-ons selected
+            
+          </td>
+          
+          <td>
+            
+              Selects format &#39;bdd&#39; and role &#39;Product Owner&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
+            
+          </td>
+          
+          <td>
+            
+              Output panel is visible and its title is &#39;Documentation&#39;, not &#39;Documentation and Analysis&#39;
+            
+          </td>
+          
+          <td>
+            
+              
+              <span class="gherkin-type gherkin-negative">Negative</span>
+            
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">BDD - QAM - coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">BDD Analysis</span></div>
     
     
 
@@ -593,7 +659,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single pytest fixture and verifies that the JSON output contains at least one named test with a fully populated coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a BDD feature fixture and verifies the JSON output includes a correctly structured coverage matrix with BDD-specific schema per test.</span></div>
     
 
     
@@ -617,7 +683,7 @@
           
           <td>
             
-              pytest - QAM - single test, coverage matrix populated
+              BDD - QAM - coverage matrix populated
             
           </td>
           
@@ -629,89 +695,13 @@
           
           <td>
             
-              Selects format &#39;pytest&#39; and role &#39;QA Manager&#39;, uploads &#39;pytest_single_sample.py&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads &#39;bdd_sample.feature&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
-            
-          </td>
-          
-          <td>
-            
-              
-              <span class="gherkin-type gherkin-positive">Positive</span>
-            
-          </td>
-          
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">pytest - QAM - parametrize collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">pytest Analysis</span></div>
-    
-    
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-20</span>
-    </div>
-    
-
-    
-
-    
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven pytest fixture and verifies that parametrize rows collapse into a single test with a coverage matrix whose row count matches the number of examples and conforms to the generic schema.</span></div>
-    
-
-    
-    <table>
-      <thead><tr>
-        
-        <th>Scenario</th>
-        
-        <th>Given Context</th>
-        
-        <th>When Action</th>
-        
-        <th>Then Assertion</th>
-        
-        <th>Gherkin Type</th>
-        
-      </tr></thead>
-      <tbody>
-        
-        <tr>
-          
-          <td>
-            
-              pytest - QAM - parametrize collapses
-            
-          </td>
-          
-          <td>
-            
-              User is on the Analyze page
-            
-          </td>
-          
-          <td>
-            
-              Selects format &#39;pytest&#39; and role &#39;QA Manager&#39;, uploads &#39;pytest_datadriven_sample.py&#39;, and clicks &#39;Document test cases&#39;
-            
-          </td>
-          
-          <td>
-            
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the parametrize examples, and rows conform to the generic schema
+              Output panel is populated and shows the filename; downloaded JSON has no unresolved values, the first test has a non-empty test_coverage_matrix array, and each coverage matrix row conforms to the BDD schema
             
           </td>
           

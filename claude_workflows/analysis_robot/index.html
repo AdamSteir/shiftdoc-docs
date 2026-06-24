@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Playwright — ShiftDoc Docs</title>
+  <title>Analysis Robot — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Playwright
+  Analysis Robot
 </div>
 
-<h1>Playwright</h1>
+<h1>Analysis Robot</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,8 +217,8 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Playwright test file produces valid, complete documentation output with at least one named test entry.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Robot Framework test file produces valid, complete documentation output for a Product Owner.</span></div>
     
 
     
@@ -239,28 +239,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system successfully processes the uploaded file and displays results to the user</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>All placeholders and variables in the output are fully resolved</td>
         </tr>
         
         <tr>
-          <td>JSON framework is &#39;playwright&#39;</td>
-          <td>The output correctly identifies the test framework as Playwright</td>
+          <td>JSON framework is &#39;robot&#39;</td>
+          <td>The output correctly identifies the test framework as Robot Framework</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is documented from the uploaded file</td>
+          <td>At least one test case is captured in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a meaningful name</td>
+          <td>Each documented test case is properly named</td>
         </tr>
         
       </tbody>
@@ -269,8 +269,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - test.each expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - Template data-driven expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
@@ -281,7 +281,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using test.each is expanded into individual test entries — one per data row — in the Product Owner output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Robot Framework template test is expanded into one separate test entry per data row in the Product Owner output.</span></div>
     
 
     
@@ -291,80 +291,28 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system successfully processes the data-driven test file and displays results</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>All placeholders and variables in the output are fully resolved</td>
         </tr>
         
         <tr>
-          <td>JSON framework is &#39;playwright&#39;</td>
-          <td>The output correctly identifies the test framework as Playwright</td>
-        </tr>
-        
-        <tr>
-          <td>JSON has 2 or more tests</td>
-          <td>Each data row in test.each produces its own distinct test entry in the output</td>
-        </tr>
-        
-        <tr>
-          <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test case is identifiable by a meaningful name</td>
-        </tr>
-        
-      </tbody>
-    </table>
-    
-  </div>
-  
-  <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - for...of expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
-    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
-
-    
-    <div class="label-row">
-      <span class="field-label">Traceability:</span>
-      <span class="tag">@SHIFT-19</span>
-    </div>
-    
-
-    
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using a for...of loop is expanded into individual test entries — one per iteration — in the Product Owner output.</span></div>
-    
-
-    
-    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
-    <table>
-      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
-      <tbody>
-        
-        <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system successfully processes the for...of test file and displays results</td>
-        </tr>
-        
-        <tr>
-          <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
-        </tr>
-        
-        <tr>
-          <td>JSON framework is &#39;playwright&#39;</td>
-          <td>The output correctly identifies the test framework as Playwright</td>
+          <td>JSON framework is &#39;robot&#39;</td>
+          <td>The output correctly identifies the test framework as Robot Framework</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each iteration of the for...of loop produces its own distinct test entry in the output</td>
+          <td>Each data row in the template is represented as its own test case</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test case is identifiable by a meaningful name</td>
+          <td>Each expanded test case is properly named</td>
         </tr>
         
       </tbody>
@@ -373,8 +321,60 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - FOR loop expands one test per value</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
+
+    
+    <div class="label-row">
+      <span class="field-label">Traceability:</span>
+      <span class="tag">@SHIFT-19</span>
+    </div>
+    
+
+    
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Robot Framework test using a FOR loop is expanded into one separate test entry per loop value in the Product Owner output.</span></div>
+    
+
+    
+    <div class="field-label" style="margin-top:0.75rem;margin-bottom:0.4rem;">This Test Verifies:</div>
+    <table>
+      <thead><tr><th>Verification Step</th><th>What It Checks</th></tr></thead>
+      <tbody>
+        
+        <tr>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing the file</td>
+        </tr>
+        
+        <tr>
+          <td>JSON output has no unresolved values</td>
+          <td>All placeholders and variables in the output are fully resolved</td>
+        </tr>
+        
+        <tr>
+          <td>JSON framework is &#39;robot&#39;</td>
+          <td>The output correctly identifies the test framework as Robot Framework</td>
+        </tr>
+        
+        <tr>
+          <td>JSON has 3 or more tests</td>
+          <td>Each iteration value in the FOR loop is represented as its own test case</td>
+        </tr>
+        
+        <tr>
+          <td>Every test has a non-empty test_name</td>
+          <td>Each expanded test case is properly named</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <div class="test-card">
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -385,7 +385,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Playwright test file in QA Manager mode produces documentation that includes a populated test coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single Robot Framework test file produces valid documentation including a populated coverage matrix for a QA Manager.</span></div>
     
 
     
@@ -395,32 +395,32 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system successfully processes the uploaded file and displays results to the user</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>All placeholders and variables in the output are fully resolved</td>
         </tr>
         
         <tr>
-          <td>JSON framework is &#39;playwright&#39;</td>
-          <td>The output correctly identifies the test framework as Playwright</td>
+          <td>JSON framework is &#39;robot&#39;</td>
+          <td>The output correctly identifies the test framework as Robot Framework</td>
         </tr>
         
         <tr>
           <td>JSON has 1 or more tests</td>
-          <td>At least one test case is documented from the uploaded file</td>
+          <td>At least one test case is captured in the output</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by a meaningful name</td>
+          <td>Each documented test case is properly named</td>
         </tr>
         
         <tr>
-          <td>The first test has a non-empty test_coverage_matrix array</td>
+          <td>First test has a non-empty test_coverage_matrix array</td>
           <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
         </tr>
         
@@ -430,8 +430,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - test.each collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - Template collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -442,7 +442,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using test.each is collapsed into a single test entry in QA Manager mode, with coverage matrix rows representing each data scenario.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Robot Framework template is collapsed into a single test entry with a coverage matrix row per data example in the QA Manager output.</span></div>
     
 
     
@@ -452,38 +452,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system successfully processes the data-driven test file and displays results</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>All placeholders and variables in the output are fully resolved</td>
         </tr>
         
         <tr>
-          <td>JSON framework is &#39;playwright&#39;</td>
-          <td>The output correctly identifies the test framework as Playwright</td>
+          <td>JSON framework is &#39;robot&#39;</td>
+          <td>The output correctly identifies the test framework as Robot Framework</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>All data rows from test.each are collapsed into a single test entry rather than expanded</td>
+          <td>Multiple data rows are collapsed into a single test case rather than expanded</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test is identifiable by a meaningful name</td>
+          <td>The collapsed test case is properly named</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from test.each is represented as its own row in the coverage matrix</td>
+          <td>Each data row from the template appears as a separate row in the coverage matrix</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for &#39;playwright&#39;</td>
-          <td>Each coverage matrix row conforms to the expected Playwright-specific structure</td>
+          <td>Coverage matrix rows use the correct schema for &#39;robot&#39;</td>
+          <td>Each coverage matrix row contains the expected fields for Robot Framework tests</td>
         </tr>
         
       </tbody>
@@ -492,8 +492,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - for...of collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - FOR loop collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
@@ -504,7 +504,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven Playwright test using a for...of loop is collapsed into a single test entry in QA Manager mode, with coverage matrix rows representing each iteration.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that Robot Framework tests using FOR loops are collapsed into a smaller number of test entries with coverage matrix rows per loop value in the QA Manager output.</span></div>
     
 
     
@@ -514,38 +514,38 @@
       <tbody>
         
         <tr>
-          <td>Documentation appears in the output panel</td>
-          <td>The system successfully processes the for...of test file and displays results</td>
+          <td>Documentation appears in output panel</td>
+          <td>The tool produces visible output after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the output are fully populated with no placeholders or missing data</td>
+          <td>All placeholders and variables in the output are fully resolved</td>
         </tr>
         
         <tr>
-          <td>JSON framework is &#39;playwright&#39;</td>
-          <td>The output correctly identifies the test framework as Playwright</td>
+          <td>JSON framework is &#39;robot&#39;</td>
+          <td>The output correctly identifies the test framework as Robot Framework</td>
         </tr>
         
         <tr>
-          <td>JSON has exactly 1 test</td>
-          <td>All iterations of the for...of loop are collapsed into a single test entry rather than expanded</td>
+          <td>JSON has exactly 2 tests</td>
+          <td>FOR loop iterations are collapsed so only 2 top-level test entries appear</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test is identifiable by a meaningful name</td>
+          <td>Each collapsed test case is properly named</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each loop iteration is represented as its own row in the coverage matrix</td>
+          <td>Each loop value appears as a separate row in the coverage matrix</td>
         </tr>
         
         <tr>
-          <td>Coverage matrix rows use the correct schema for &#39;playwright&#39;</td>
-          <td>Each coverage matrix row conforms to the expected Playwright-specific structure</td>
+          <td>Coverage matrix rows use the correct schema for &#39;robot&#39;</td>
+          <td>Each coverage matrix row contains the expected fields for Robot Framework tests</td>
         </tr>
         
       </tbody>
@@ -560,8 +560,8 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     
     
 
@@ -575,7 +575,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Playwright test fixture and verifies that the documentation panel populates and the downloaded JSON is a valid, fully-resolved Playwright output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Robot Framework test fixture and verifies that the analysis produces valid, well-formed JSON output with at least one named test entry.</span></div>
     
 
     
@@ -599,7 +599,7 @@
           
           <td>
             
-              Playwright - PO - single test, core output structure
+              Robot Framework - PO - single test, core output structure
             
           </td>
           
@@ -611,13 +611,13 @@
           
           <td>
             
-              Selects format &#39;playwright&#39; and role &#39;Product Owner&#39;, uploads &#39;playwright_single_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;robot&#39; and role &#39;Product Owner&#39;, uploads &#39;robot_single_sample.robot&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 1+ tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 1 or more tests, and every test has a non-empty &#39;test_name&#39;
             
           </td>
           
@@ -636,8 +636,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - test.each expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - Template data-driven expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     
     
 
@@ -651,7 +651,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Playwright fixture using test.each and verifies that each data row is expanded into its own separate test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Robot Framework template fixture and verifies that each data row is expanded into a separate test entry in the JSON output.</span></div>
     
 
     
@@ -675,7 +675,7 @@
           
           <td>
             
-              Playwright - PO - test.each expands one test per row
+              Robot Framework - PO - Template data-driven expands one test per row
             
           </td>
           
@@ -687,13 +687,13 @@
           
           <td>
             
-              Selects format &#39;playwright&#39; and role &#39;Product Owner&#39;, uploads &#39;playwright_datadriven_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;robot&#39; and role &#39;Product Owner&#39;, uploads &#39;robot_datadriven_sample.robot&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 2+ tests (one per data row), and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 3 or more tests, and every test has a non-empty &#39;test_name&#39;
             
           </td>
           
@@ -712,8 +712,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - PO - for...of expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - PO - FOR loop expands one test per value</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     
     
 
@@ -727,7 +727,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a Playwright fixture using a for...of loop and verifies that each loop iteration is expanded into its own separate test entry in the JSON output.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a Robot Framework fixture containing a FOR loop and verifies that each loop iteration is expanded into its own test entry in the JSON output.</span></div>
     
 
     
@@ -751,7 +751,7 @@
           
           <td>
             
-              Playwright - PO - for...of expands one test per row
+              Robot Framework - PO - FOR loop expands one test per value
             
           </td>
           
@@ -763,13 +763,13 @@
           
           <td>
             
-              Selects format &#39;playwright&#39; and role &#39;Product Owner&#39;, uploads &#39;playwright_forof_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;robot&#39; and role &#39;Product Owner&#39;, uploads &#39;robot_forof_sample.robot&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 3+ tests (one per loop row), and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 3 or more tests, and every test has a non-empty &#39;test_name&#39;
             
           </td>
           
@@ -788,8 +788,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     
     
 
@@ -803,7 +803,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Playwright test fixture and verifies that the JSON output is valid and that the first test entry contains a populated test_coverage_matrix array.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Robot Framework test fixture and verifies that the analysis produces valid JSON output including a populated test coverage matrix on the first test.</span></div>
     
 
     
@@ -827,7 +827,7 @@
           
           <td>
             
-              Playwright - QAM - single test, coverage matrix populated
+              Robot Framework - QAM - single test, coverage matrix populated
             
           </td>
           
@@ -839,13 +839,13 @@
           
           <td>
             
-              Selects format &#39;playwright&#39; and role &#39;QA Manager&#39;, uploads &#39;playwright_single_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;robot&#39; and role &#39;QA Manager&#39;, uploads &#39;robot_single_sample.robot&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains 1+ tests with non-empty test_names, and the first test has a non-empty test_coverage_matrix array
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains 1 or more tests, every test has a non-empty &#39;test_name&#39;, and the first test has a non-empty &#39;test_coverage_matrix&#39; array
             
           </td>
           
@@ -864,8 +864,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - test.each collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - Template collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     
     
 
@@ -879,7 +879,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Playwright fixture using test.each and verifies that the output collapses all rows into a single test entry whose coverage matrix contains one row per data example using the correct Playwright schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Robot Framework template fixture and verifies that all data rows are collapsed into exactly one test with a correctly structured coverage matrix whose row count matches the number of examples.</span></div>
     
 
     
@@ -903,7 +903,7 @@
           
           <td>
             
-              Playwright - QAM - test.each collapses
+              Robot Framework - QAM - Template collapses
             
           </td>
           
@@ -915,13 +915,13 @@
           
           <td>
             
-              Selects format &#39;playwright&#39; and role &#39;QA Manager&#39;, uploads &#39;playwright_datadriven_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;robot&#39; and role &#39;QA Manager&#39;, uploads &#39;robot_datadriven_sample.robot&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the data examples, and rows conform to the Playwright coverage matrix schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains exactly 1 test, every test has a non-empty &#39;test_name&#39;, coverage matrix row count matches the examples, and rows conform to the correct Robot Framework schema
             
           </td>
           
@@ -940,8 +940,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Playwright - QAM - for...of collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Playwright Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Robot Framework - QAM - FOR loop collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Robot Framework Analysis</span></div>
     
     
 
@@ -955,7 +955,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a Playwright fixture using a for...of loop and verifies that the output collapses all iterations into a single test entry whose coverage matrix contains one row per loop iteration using the correct Playwright schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a Robot Framework fixture containing a FOR loop and verifies that loop iterations are collapsed into exactly two tests with correctly structured coverage matrices whose row counts match the loop values.</span></div>
     
 
     
@@ -979,7 +979,7 @@
           
           <td>
             
-              Playwright - QAM - for...of collapses
+              Robot Framework - QAM - FOR loop collapses
             
           </td>
           
@@ -991,13 +991,13 @@
           
           <td>
             
-              Selects format &#39;playwright&#39; and role &#39;QA Manager&#39;, uploads &#39;playwright_forof_sample.spec.ts&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;robot&#39; and role &#39;QA Manager&#39;, uploads &#39;robot_forof_sample.robot&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;playwright&#39;, contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the loop iterations, and rows conform to the Playwright coverage matrix schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, framework is &#39;robot&#39;, contains exactly 2 tests, every test has a non-empty &#39;test_name&#39;, coverage matrix row count matches the loop values, and rows conform to the correct Robot Framework schema
             
           </td>
           

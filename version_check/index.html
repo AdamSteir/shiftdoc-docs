@@ -195,16 +195,13 @@
   <a href="/">Home</a>
   
   <span>/</span>
-  <a href="/analyze/">Analyze</a>
-  
-  <span>/</span>
   Version Check
 </div>
 
 <h1>Version Check</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -229,7 +226,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user tries to analyze a test file but their frontend is out of date, they are shown a modal prompting them to reload and get the latest version.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">When a user attempts to analyze a test file but their frontend is out of date, they are shown a prompt to reload and update instead of receiving analysis results.</span></div>
     
 
     
@@ -239,23 +236,23 @@
       <tbody>
         
         <tr>
-          <td>Backend reports a mismatched version</td>
-          <td>The system detects that the user&#39;s frontend version does not match the backend</td>
+          <td>the backend reports a mismatched version</td>
+          <td>The system correctly detects that the user&#39;s frontend version does not match the backend version</td>
         </tr>
         
         <tr>
-          <td>User selects format and role, uploads a file, and clicks Analyze</td>
-          <td>The version check is triggered as part of the normal analysis workflow, not just on page load</td>
+          <td>I click the analyze button</td>
+          <td>Triggering analysis with a stale frontend surfaces the version conflict rather than silently failing or proceeding</td>
         </tr>
         
         <tr>
-          <td>Update required modal appears</td>
-          <td>Users are clearly informed that their version is stale and action is required before they can proceed</td>
+          <td>I see the update required modal</td>
+          <td>Users are clearly informed that an update is required before they can continue</td>
         </tr>
         
         <tr>
-          <td>Modal contains a reload button</td>
-          <td>Users have a clear, one-click path to refresh and get the latest frontend version</td>
+          <td>the modal has a reload button</td>
+          <td>Users are given a direct, one-click way to reload and resolve the version mismatch</td>
         </tr>
         
       </tbody>
@@ -285,7 +282,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a stale frontend attempts to run an analysis and is blocked by an update-required modal prompting them to reload.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A user with a stale frontend attempts to run an analysis and is blocked by an update-required modal, prompting them to reload before proceeding.</span></div>
     
 
     
@@ -321,7 +318,7 @@
           
           <td>
             
-              User selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads fixture &#39;bdd_sample.feature&#39;, and clicks Analyze
+              User selects format &#39;bdd&#39; and role &#39;QA Manager&#39;, uploads a fixture file, and clicks the analyze button
             
           </td>
           

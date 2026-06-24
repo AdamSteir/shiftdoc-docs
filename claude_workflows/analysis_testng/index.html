@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selenium — ShiftDoc Docs</title>
+  <title>Analysis Testng — ShiftDoc Docs</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -198,13 +198,13 @@
   <a href="/claude_workflows/">Frameworks &amp; Add-ons</a>
   
   <span>/</span>
-  Selenium
+  Analysis Testng
 </div>
 
-<h1>Selenium</h1>
+<h1>Analysis Testng</h1>
 <div class="meta">
   <span>Framework: BDD</span>
-  <span>Generated: 2026-06-23</span>
+  <span>Generated: 2026-06-24</span>
   <span>Model: claude-sonnet-4-6</span>
 </div>
 
@@ -217,9 +217,9 @@
 <div id="view-po">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
-    
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
     <div class="label-row">
@@ -229,7 +229,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a single Selenium test receives valid, complete documentation with at least one named test in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single TestNG test file and documenting it produces valid, complete JSON output with at least one named test.</span></div>
     
 
     
@@ -240,12 +240,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing a single Selenium test file</td>
+          <td>The system responds with visible documentation after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
+          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -255,7 +255,7 @@
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by name</td>
+          <td>Each documented test is identifiable by a name</td>
         </tr>
         
       </tbody>
@@ -264,9 +264,9 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - PO - Parameterized expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
-    
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - PO - DataProvider expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">Product Owner</span></div>
 
     
     <div class="label-row">
@@ -276,7 +276,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a Product Owner uploading a data-driven Selenium test sees each data row expanded into its own separate test entry in the output.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven TestNG test using a DataProvider is expanded into one separate test entry per data row in the Product Owner output.</span></div>
     
 
     
@@ -287,22 +287,22 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing a data-driven Selenium test file</td>
+          <td>The system responds with visible documentation after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
+          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has 3 or more tests</td>
-          <td>Each data row in the parameterized test is expanded into its own test entry, resulting in multiple tests</td>
+          <td>The DataProvider rows are each expanded into individual test entries, producing multiple results</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each expanded test entry is identifiable by name</td>
+          <td>Each expanded test entry is identifiable by a name</td>
         </tr>
         
       </tbody>
@@ -311,9 +311,9 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
-    
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
     <div class="label-row">
@@ -323,7 +323,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a single Selenium test receives documentation that includes a populated test coverage matrix.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that uploading a single TestNG test file in the QA Manager role produces valid output that includes a populated test coverage matrix.</span></div>
     
 
     
@@ -334,12 +334,12 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing a single Selenium test file</td>
+          <td>The system responds with visible documentation after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
+          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
         </tr>
         
         <tr>
@@ -349,12 +349,12 @@
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>Each documented test is identifiable by name</td>
+          <td>Each documented test is identifiable by a name</td>
         </tr>
         
         <tr>
-          <td>First test has a non-empty array test_coverage_matrix</td>
-          <td>The QA Manager view includes a coverage matrix with at least one entry for the test</td>
+          <td>First test has a non-empty test_coverage_matrix array</td>
+          <td>The QA Manager view includes a populated coverage matrix for the test</td>
         </tr>
         
       </tbody>
@@ -363,9 +363,9 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - QAM - Parameterized collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
-    
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - QAM - DataProvider collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
+    <div class="label-row"><span class="field-label">User Role:</span> <span class="field-value">QA Manager</span></div>
 
     
     <div class="label-row">
@@ -375,7 +375,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a QA Manager uploading a data-driven Selenium test sees all data rows collapsed into a single test entry with a coverage matrix row for each example.</span></div>
+    <div class="label-row"><span class="field-label">Description:</span> <span class="field-value description">Verifies that a data-driven TestNG test is collapsed into a single test entry in the QA Manager view, with the coverage matrix reflecting all data rows using the correct schema.</span></div>
     
 
     
@@ -386,32 +386,32 @@
         
         <tr>
           <td>Documentation appears in output panel</td>
-          <td>The system produces visible output after processing a data-driven Selenium test file</td>
+          <td>The system responds with visible documentation after processing the file</td>
         </tr>
         
         <tr>
           <td>JSON output has no unresolved values</td>
-          <td>All fields in the downloaded output are fully populated with no placeholders or missing data</td>
+          <td>All fields in the output are fully resolved with no placeholders or missing data</td>
         </tr>
         
         <tr>
           <td>JSON has exactly 1 test</td>
-          <td>All data rows are collapsed into a single test entry rather than expanded</td>
+          <td>The data-driven test is collapsed into a single entry rather than expanded per row</td>
         </tr>
         
         <tr>
           <td>Every test has a non-empty test_name</td>
-          <td>The collapsed test entry is identifiable by name</td>
+          <td>The collapsed test entry is identifiable by a name</td>
         </tr>
         
         <tr>
           <td>Coverage matrix row count matches the examples</td>
-          <td>Each data row from the parameterized test is represented as a separate row in the coverage matrix</td>
+          <td>Each data row from the DataProvider is represented as a row in the coverage matrix</td>
         </tr>
         
         <tr>
           <td>Coverage matrix rows use the correct schema for generic</td>
-          <td>Each coverage matrix row conforms to the expected structure for generic test types</td>
+          <td>The structure of each coverage matrix row conforms to the expected generic schema</td>
         </tr>
         
       </tbody>
@@ -426,8 +426,8 @@
 <div id="view-qam" class="hidden">
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - PO - single test, core output structure</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - PO - single test, core output structure</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
     
     
 
@@ -441,7 +441,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single Selenium test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a single TestNG test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.</span></div>
     
 
     
@@ -465,7 +465,7 @@
           
           <td>
             
-              Selenium - PO - single test, core output structure
+              TestNG - PO - single test, core output structure
             
           </td>
           
@@ -477,7 +477,7 @@
           
           <td>
             
-              Selects format &#39;selenium&#39; and role &#39;Product Owner&#39;, uploads &#39;selenium_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;testng&#39; and role &#39;Product Owner&#39;, uploads &#39;testng_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
@@ -502,8 +502,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - PO - Parameterized expands one test per row</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - PO - DataProvider expands one test per row</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
     
     
 
@@ -517,7 +517,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven Selenium fixture and verifies that the analysis expands parameterized tests so the JSON output contains one entry per data row (3 or more tests).</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A Product Owner uploads a data-driven TestNG fixture and verifies that the DataProvider causes each data row to be expanded into its own named test entry in the JSON output.</span></div>
     
 
     
@@ -541,7 +541,7 @@
           
           <td>
             
-              Selenium - PO - Parameterized expands one test per row
+              TestNG - PO - DataProvider expands one test per row
             
           </td>
           
@@ -553,13 +553,13 @@
           
           <td>
             
-              Selects format &#39;selenium&#39; and role &#39;Product Owner&#39;, uploads &#39;selenium_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;testng&#39; and role &#39;Product Owner&#39;, uploads &#39;testng_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests (one per DataProvider row), and every test has a non-empty test_name
             
           </td>
           
@@ -578,8 +578,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - QAM - single test, coverage matrix populated</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - QAM - single test, coverage matrix populated</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
     
     
 
@@ -593,7 +593,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single Selenium test fixture and verifies that the analysis produces valid JSON output where the first test includes a populated test_coverage_matrix array.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a single TestNG test fixture and verifies that the analysis produces valid JSON output where the first test includes a populated coverage matrix.</span></div>
     
 
     
@@ -617,7 +617,7 @@
           
           <td>
             
-              Selenium - QAM - single test, coverage matrix populated
+              TestNG - QAM - single test, coverage matrix populated
             
           </td>
           
@@ -629,13 +629,13 @@
           
           <td>
             
-              Selects format &#39;selenium&#39; and role &#39;QA Manager&#39;, uploads &#39;selenium_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;testng&#39; and role &#39;QA Manager&#39;, uploads &#39;testng_single_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array
             
           </td>
           
@@ -654,8 +654,8 @@
   </div>
   
   <div class="test-card">
-    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">Selenium - QAM - Parameterized collapses</span></div>
-    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">Selenium Analysis</span></div>
+    <div class="label-row"><span class="field-label">Test Name:</span> <span class="field-value">TestNG - QAM - DataProvider collapses</span></div>
+    <div class="label-row"><span class="field-label">Feature:</span> <span class="field-value">TestNG Analysis</span></div>
     
     
 
@@ -669,7 +669,7 @@
     
 
     
-    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven Selenium fixture and verifies that the analysis collapses parameterized tests into exactly one test entry whose coverage matrix rows match the number of data examples and conform to the generic schema.</span></div>
+    <div class="label-row"><span class="field-label">Journey:</span> <span class="field-value description">A QA Manager uploads a data-driven TestNG fixture and verifies that the DataProvider rows collapse into a single test entry whose coverage matrix rows match the data set and conform to the generic schema.</span></div>
     
 
     
@@ -693,7 +693,7 @@
           
           <td>
             
-              Selenium - QAM - Parameterized collapses
+              TestNG - QAM - DataProvider collapses
             
           </td>
           
@@ -705,13 +705,13 @@
           
           <td>
             
-              Selects format &#39;selenium&#39; and role &#39;QA Manager&#39;, uploads &#39;selenium_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
+              Selects format &#39;testng&#39; and role &#39;QA Manager&#39;, uploads &#39;testng_datadriven_sample.java&#39;, and clicks &#39;Document test cases&#39;
             
           </td>
           
           <td>
             
-              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the examples, and rows use the correct generic schema
+              Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name; coverage matrix row count matches the DataProvider examples and rows conform to the generic schema
             
           </td>
           
