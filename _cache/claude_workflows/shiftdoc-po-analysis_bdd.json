@@ -3,8 +3,8 @@
     "schema": "product-owner",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:13:11Z",
-    "source_file": "bdd.feature",
+    "generated": "2026-06-24T17:02:08Z",
+    "source_file": "analysis_bdd.feature",
     "model": "claude-sonnet-4-6",
     "role": "po",
     "role_label": "Product Owner"
@@ -17,31 +17,31 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "description": "A Product Owner uploading a BDD feature file receives structured documentation with named tests, descriptions, and coverage details in the output panel.",
+      "description": "Verifies that uploading a BDD feature file and generating documentation produces a well-formed JSON output containing named tests, descriptions, and coverage details.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The system produces visible output after processing a BDD feature file"
+          "what_it_checks": "The user sees generated documentation after submitting a BDD file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the downloaded JSON are fully populated with no placeholder or missing values"
+          "what_it_checks": "No placeholder or missing values exist in the downloaded output"
         },
         {
           "verification_step": "JSON has 1 or more tests",
-          "what_it_checks": "At least one test entry is generated from the uploaded feature file"
+          "what_it_checks": "At least one test entry is produced from the uploaded file"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each test in the output is identifiable by a name"
+          "what_it_checks": "Each test in the output is identifiable by name"
         },
         {
           "verification_step": "First test has a non-empty description",
-          "what_it_checks": "The first test includes a human-readable description of what it covers"
+          "what_it_checks": "The output includes a human-readable description for the first test"
         },
         {
           "verification_step": "First test has a non-empty test_coverage array",
-          "what_it_checks": "The first test includes at least one coverage detail entry"
+          "what_it_checks": "Coverage details are populated for the first test"
         }
       ]
     },
@@ -52,23 +52,23 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "description": "A Product Owner uploading a data-driven BDD feature file receives separate documentation entries for each data row, resulting in multiple distinct tests in the output.",
+      "description": "Verifies that uploading a data-driven BDD feature file generates a separate test entry for each data row, resulting in multiple documented tests.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The system produces visible output after processing a data-driven BDD feature file"
+          "what_it_checks": "The user sees generated documentation after submitting a data-driven BDD file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the downloaded JSON are fully populated with no placeholder or missing values"
+          "what_it_checks": "No placeholder or missing values exist in the downloaded output"
         },
         {
           "verification_step": "JSON has 3 or more tests",
-          "what_it_checks": "Data-driven scenarios expand into multiple individual test entries (at least 3)"
+          "what_it_checks": "Multiple test entries are produced, reflecting the parameterised nature of the file"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each expanded test entry is identifiable by a name"
+          "what_it_checks": "Each generated test entry is identifiable by name"
         }
       ]
     },
@@ -79,15 +79,15 @@
       "traceability_annotations": [
         "@SHIFT-21"
       ],
-      "description": "When a Product Owner runs documentation without selecting any add-ons, the output panel title shows 'Documentation' rather than a combined label.",
+      "description": "Verifies that the output panel displays the title 'Documentation' rather than an extended title when no additional analysis options are selected.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The system produces visible output after processing the feature file"
+          "what_it_checks": "The user sees output after submitting a BDD file with no add-ons"
         },
         {
           "verification_step": "Panel title is not 'Documentation and Analysis'",
-          "what_it_checks": "The output panel title reflects only the base documentation mode and does not include add-on labels when none are selected"
+          "what_it_checks": "The panel heading accurately reflects that only documentation \u2014 not analysis \u2014 was requested"
         }
       ]
     },
@@ -98,27 +98,27 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "description": "A QA Manager uploading a BDD feature file receives documentation that includes a properly structured coverage matrix linking tests to coverage areas.",
+      "description": "Verifies that a QA Manager uploading a BDD feature file receives documentation that includes a correctly structured coverage matrix for each test.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The system produces visible output after processing the BDD feature file"
+          "what_it_checks": "The user sees generated documentation after submitting the file"
         },
         {
           "verification_step": "Filename appears in output",
-          "what_it_checks": "The source file is referenced in the output, confirming the correct file was processed"
+          "what_it_checks": "The output references the uploaded file by name, confirming the correct file was processed"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the downloaded JSON are fully populated with no placeholder or missing values"
+          "what_it_checks": "No placeholder or missing values exist in the downloaded output"
         },
         {
           "verification_step": "First test has a non-empty test_coverage_matrix array",
-          "what_it_checks": "The first test includes at least one coverage matrix entry for QA Manager reporting"
+          "what_it_checks": "A coverage matrix is present and populated for the first test"
         },
         {
           "verification_step": "Coverage matrix rows use the correct schema for BDD",
-          "what_it_checks": "Each row in the coverage matrix conforms to the expected structure for BDD-format inputs"
+          "what_it_checks": "Each row in the matrix conforms to the expected structure for BDD-format files"
         }
       ]
     }

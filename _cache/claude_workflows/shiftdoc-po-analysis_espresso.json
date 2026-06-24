@@ -1,0 +1,146 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-24T17:03:48Z",
+    "source_file": "analysis_espresso.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Espresso - PO - single test, core output structure",
+      "feature": "Espresso Analysis",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "Verifies that a Product Owner uploading a single Espresso test file receives structured JSON documentation with at least one named test and no missing or unresolved data.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The analysis produces visible output after submission"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the output are fully populated with no placeholders or blanks"
+        },
+        {
+          "verification_step": "JSON framework is 'espresso'",
+          "what_it_checks": "The output is correctly tagged as belonging to the Espresso test framework"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is detected and documented from the uploaded file"
+        },
+        {
+          "verification_step": "Every test has a non-empty 'test_name'",
+          "what_it_checks": "Each documented test case is identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "Espresso - PO - Parameterized data-driven expands one test per row",
+      "feature": "Espresso Analysis",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "Verifies that a Product Owner uploading a data-driven Espresso test file sees the parameterized test expanded into one documented test entry per data row, resulting in three or more tests.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The analysis produces visible output after submission"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the output are fully populated with no placeholders or blanks"
+        },
+        {
+          "verification_step": "JSON framework is 'espresso'",
+          "what_it_checks": "The output is correctly tagged as belonging to the Espresso test framework"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Data-driven tests are expanded so each parameter row becomes a separate documented test case"
+        },
+        {
+          "verification_step": "Every test has a non-empty 'test_name'",
+          "what_it_checks": "Each expanded test case variant is identifiable by name"
+        }
+      ]
+    },
+    {
+      "test_name": "Espresso - QAM - single test, coverage matrix populated",
+      "feature": "Espresso Analysis",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "Verifies that a QA Manager uploading a single Espresso test file receives documentation that includes a populated test coverage matrix alongside standard test name output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The analysis produces visible output after submission"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the output are fully populated with no placeholders or blanks"
+        },
+        {
+          "verification_step": "JSON framework is 'espresso'",
+          "what_it_checks": "The output is correctly tagged as belonging to the Espresso test framework"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is detected and documented from the uploaded file"
+        },
+        {
+          "verification_step": "Every test has a non-empty 'test_name'",
+          "what_it_checks": "Each documented test case is identifiable by name"
+        },
+        {
+          "verification_step": "The first test has a non-empty array 'test_coverage_matrix'",
+          "what_it_checks": "The QA Manager role triggers generation of a coverage matrix, which is present and contains entries"
+        }
+      ]
+    },
+    {
+      "test_name": "Espresso - QAM - data-driven collapses",
+      "feature": "Espresso Analysis",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "Verifies that a QA Manager uploading a data-driven Espresso test file sees the parameterized test collapsed into a single documented entry whose coverage matrix rows reflect each data example using the correct schema.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in the output panel",
+          "what_it_checks": "The analysis produces visible output after submission"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All fields in the output are fully populated with no placeholders or blanks"
+        },
+        {
+          "verification_step": "JSON framework is 'espresso'",
+          "what_it_checks": "The output is correctly tagged as belonging to the Espresso test framework"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test",
+          "what_it_checks": "Data-driven tests are collapsed into a single entry for the QA Manager role, rather than expanded"
+        },
+        {
+          "verification_step": "Every test has a non-empty 'test_name'",
+          "what_it_checks": "The collapsed test case is identifiable by name"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the examples",
+          "what_it_checks": "Each data row from the parameterized test is represented as a separate row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for 'espresso'",
+          "what_it_checks": "The structure of each coverage matrix row conforms to the expected Espresso-specific format"
+        }
+      ]
+    }
+  ]
+}

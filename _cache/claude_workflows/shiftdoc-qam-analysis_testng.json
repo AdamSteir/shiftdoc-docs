@@ -3,8 +3,8 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:22:36Z",
-    "source_file": "testng.feature",
+    "generated": "2026-06-24T17:09:36Z",
+    "source_file": "analysis_testng.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
     "role_label": "QA Manager"
@@ -16,7 +16,7 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "journey": "A Product Owner uploads a single TestNG test fixture and verifies that the documentation output is generated with at least one test entry containing a valid test name.",
+      "journey": "A Product Owner uploads a single TestNG test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.",
       "test_coverage_matrix": [
         {
           "scenario": "TestNG - PO - single test, core output structure",
@@ -33,13 +33,13 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "journey": "A Product Owner uploads a data-driven TestNG fixture and verifies that each DataProvider row is expanded into a separate test entry in the output.",
+      "journey": "A Product Owner uploads a data-driven TestNG fixture and verifies that the DataProvider causes each data row to be expanded into its own named test entry in the JSON output.",
       "test_coverage_matrix": [
         {
           "scenario": "TestNG - PO - DataProvider expands one test per row",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'testng' and role 'Product Owner', uploads 'testng_datadriven_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests (one per DataProvider row), and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -50,13 +50,13 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "journey": "A QA Manager uploads a single TestNG test fixture and verifies that the output includes a populated test coverage matrix for the first test.",
+      "journey": "A QA Manager uploads a single TestNG test fixture and verifies that the analysis produces valid JSON output where the first test includes a populated coverage matrix.",
       "test_coverage_matrix": [
         {
           "scenario": "TestNG - QAM - single test, coverage matrix populated",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'testng' and role 'QA Manager', uploads 'testng_single_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test names, and the first test has a non-empty test_coverage_matrix array",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
           "gherkin_type": "Positive"
         }
       ]
@@ -67,13 +67,13 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "journey": "A QA Manager uploads a data-driven TestNG fixture and verifies that DataProvider rows collapse into a single test entry whose coverage matrix rows match the number of examples and conform to the generic schema.",
+      "journey": "A QA Manager uploads a data-driven TestNG fixture and verifies that the DataProvider rows collapse into a single test entry whose coverage matrix rows match the data set and conform to the generic schema.",
       "test_coverage_matrix": [
         {
           "scenario": "TestNG - QAM - DataProvider collapses",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'testng' and role 'QA Manager', uploads 'testng_datadriven_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test name, coverage matrix row count matches the DataProvider examples, and rows conform to the generic coverage matrix schema",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test with a non-empty test_name; coverage matrix row count matches the DataProvider examples and rows conform to the generic schema",
           "gherkin_type": "Positive"
         }
       ]

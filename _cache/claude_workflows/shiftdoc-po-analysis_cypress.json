@@ -1,0 +1,196 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-24T17:02:58Z",
+    "source_file": "analysis_cypress.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Cypress - PO - single test, core output structure",
+      "feature": "Cypress Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "A Product Owner uploading a single Cypress test file receives structured JSON documentation with all fields resolved and at least one named test entry.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation is generated and displayed",
+          "what_it_checks": "The output panel shows results after submitting a single Cypress test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data appears in the downloaded JSON"
+        },
+        {
+          "verification_step": "JSON framework is 'cypress'",
+          "what_it_checks": "The output correctly identifies the test framework as Cypress"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests with non-empty test names",
+          "what_it_checks": "At least one test is documented and each has a meaningful name"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - PO - forEach data-driven expands one test per row",
+      "feature": "Cypress Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "A Product Owner uploading a data-driven Cypress test using forEach sees each data row expanded into its own separate documented test entry.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation is generated and displayed",
+          "what_it_checks": "The output panel shows results after submitting the data-driven forEach Cypress test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data appears in the downloaded JSON"
+        },
+        {
+          "verification_step": "JSON framework is 'cypress'",
+          "what_it_checks": "The output correctly identifies the test framework as Cypress"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests with non-empty test names",
+          "what_it_checks": "Each data row is expanded into a separate test entry, producing at least 3 named tests"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - PO - for...of expands one test per row",
+      "feature": "Cypress Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "A Product Owner uploading a data-driven Cypress test using for...of sees each data row expanded into its own separate documented test entry.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation is generated and displayed",
+          "what_it_checks": "The output panel shows results after submitting the for...of Cypress test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data appears in the downloaded JSON"
+        },
+        {
+          "verification_step": "JSON framework is 'cypress'",
+          "what_it_checks": "The output correctly identifies the test framework as Cypress"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests with non-empty test names",
+          "what_it_checks": "Each data row is expanded into a separate test entry, producing at least 3 named tests"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - QAM - single test, coverage matrix populated",
+      "feature": "Cypress Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "A QA Manager uploading a single Cypress test file receives structured JSON documentation that includes a populated test coverage matrix alongside standard test details.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation is generated and displayed",
+          "what_it_checks": "The output panel shows results after submitting a single Cypress test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data appears in the downloaded JSON"
+        },
+        {
+          "verification_step": "JSON framework is 'cypress'",
+          "what_it_checks": "The output correctly identifies the test framework as Cypress"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests with non-empty test names",
+          "what_it_checks": "At least one test is documented and each has a meaningful name"
+        },
+        {
+          "verification_step": "First test has a non-empty test_coverage_matrix array",
+          "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - QAM - forEach collapses",
+      "feature": "Cypress Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "A QA Manager uploading a data-driven Cypress test using forEach sees all data rows collapsed into a single test entry with a coverage matrix row for each data example.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation is generated and displayed",
+          "what_it_checks": "The output panel shows results after submitting the data-driven forEach Cypress test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data appears in the downloaded JSON"
+        },
+        {
+          "verification_step": "JSON framework is 'cypress'",
+          "what_it_checks": "The output correctly identifies the test framework as Cypress"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test with a non-empty test name",
+          "what_it_checks": "All data rows are collapsed into a single named test entry rather than expanded"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the number of examples",
+          "what_it_checks": "Each data row from the forEach loop is represented as a row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for 'cypress'",
+          "what_it_checks": "Each coverage matrix row contains the expected fields for a Cypress test"
+        }
+      ]
+    },
+    {
+      "test_name": "Cypress - QAM - for...of collapses",
+      "feature": "Cypress Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "A QA Manager uploading a data-driven Cypress test using for...of sees all data rows collapsed into a single test entry with a coverage matrix row for each data example.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation is generated and displayed",
+          "what_it_checks": "The output panel shows results after submitting the for...of Cypress test file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "No placeholder or missing data appears in the downloaded JSON"
+        },
+        {
+          "verification_step": "JSON framework is 'cypress'",
+          "what_it_checks": "The output correctly identifies the test framework as Cypress"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test with a non-empty test name",
+          "what_it_checks": "All data rows are collapsed into a single named test entry rather than expanded"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the number of examples",
+          "what_it_checks": "Each data row from the for...of loop is represented as a row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for 'cypress'",
+          "what_it_checks": "Each coverage matrix row contains the expected fields for a Cypress test"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T21:59:38Z",
+    "generated": "2026-06-24T17:00:55Z",
     "source_file": "analyze_results_download_mocked.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
@@ -17,6 +17,13 @@
         "@SHIFT-5"
       ],
       "outline_type": "Scenario Outline",
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked",
+          "explanation": "Stubs the analysis API before each scenario to eliminate backend dependency and ensure deterministic download behaviour."
+        }
+      ],
       "example_groups": [
         {
           "label": "Examples",
@@ -52,41 +59,34 @@
           ]
         }
       ],
-      "test_hooks": [
-        {
-          "type": "Background",
-          "name": "Given the analysis API is mocked",
-          "explanation": "Stubs the analysis API before each scenario so tests run without a live backend."
-        }
-      ],
-      "journey": "A user selects a role and uploads a source file with no add-ons, submits analysis, and verifies that the downloaded Markdown filename encodes both role and source filename correctly.",
+      "journey": "A user selects a role, uploads a source file without any add-ons, submits the analysis, and verifies that the downloaded Markdown file is named using the role shortcode and source filename stem.",
       "test_coverage_matrix": [
         {
           "example": "Product Owner / auth.feature \u2192 shiftdoc-po-auth.md",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'Product Owner', no add-ons, uploads auth.feature, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation' and downloaded file is named shiftdoc-po-auth.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, no add-ons, auth.feature uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-po-auth.md",
           "gherkin_type": "Positive"
         },
         {
           "example": "QA Manager / auth.feature \u2192 shiftdoc-qam-auth.md",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'QA Manager', no add-ons, uploads auth.feature, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation' and downloaded file is named shiftdoc-qam-auth.md",
+          "given_context": "Analyze page with mocked API, QA Manager role, no add-ons, auth.feature uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-qam-auth.md",
           "gherkin_type": "Positive"
         },
         {
           "example": "Product Owner / checkout_flow.feature \u2192 shiftdoc-po-checkout_flow.md",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'Product Owner', no add-ons, uploads checkout_flow.feature, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation' and downloaded file is named shiftdoc-po-checkout_flow.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, no add-ons, checkout_flow.feature uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-po-checkout_flow.md",
           "gherkin_type": "Positive"
         },
         {
           "example": "Product Owner / login.spec.ts \u2192 shiftdoc-po-login.md",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'Product Owner', no add-ons, uploads login.spec.ts, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation' and downloaded file is named shiftdoc-po-login.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, no add-ons, login.spec.ts uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-po-login.md",
           "gherkin_type": "Positive"
         }
       ]
@@ -98,6 +98,13 @@
         "@SHIFT-6"
       ],
       "outline_type": "Scenario Outline",
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked",
+          "explanation": "Stubs the analysis API before each scenario to eliminate backend dependency and ensure deterministic download behaviour."
+        }
+      ],
       "example_groups": [
         {
           "label": "Examples",
@@ -126,34 +133,27 @@
           ]
         }
       ],
-      "test_hooks": [
-        {
-          "type": "Background",
-          "name": "Given the analysis API is mocked",
-          "explanation": "Stubs the analysis API before each scenario so tests run without a live backend."
-        }
-      ],
-      "journey": "A user selects a role, uploads a source file, and enables one or more add-ons, then verifies that each selected add-on contributes its short code to the downloaded Markdown filename in the correct order.",
+      "journey": "A user selects a role, chooses one or more add-ons, uploads a source file, submits the analysis, and verifies that the downloaded filename encodes each selected add-on as an ordered short code suffix.",
       "test_coverage_matrix": [
         {
-          "example": "Product Owner / auth.feature / Technical Review \u2192 +tr",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'Product Owner', add-on 'Technical Review', uploads auth.feature, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation and Analysis' and downloaded file is named shiftdoc-po-auth+tr.md",
+          "example": "Product Owner / auth.feature / 1 add-on \u2192 shiftdoc-po-auth+tr.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, Technical Review add-on, auth.feature uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-po-auth+tr.md",
           "gherkin_type": "Positive"
         },
         {
-          "example": "QA Manager / auth.feature / Technical Review + Gap Analysis + Risk Assessment \u2192 +tr+gap+risk",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'QA Manager', add-ons 'Technical Review, Gap Analysis, Risk Assessment', uploads auth.feature, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation and Analysis' and downloaded file is named shiftdoc-qam-auth+tr+gap+risk.md",
-          "gherkin_type": "Positive"
+          "example": "QA Manager / auth.feature / 3 add-ons \u2192 shiftdoc-qam-auth+tr+gap+risk.md",
+          "given_context": "Analyze page with mocked API, QA Manager role, Technical Review + Gap Analysis + Risk Assessment add-ons, auth.feature uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-qam-auth+tr+gap+risk.md",
+          "gherkin_type": "Boundary"
         },
         {
-          "example": "QA Manager / auth.feature / five add-ons \u2192 +tr+gap+ann+risk+rec",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'QA Manager', add-ons 'Technical Review, Gap Analysis, Annotation Summary, Risk Assessment, Recommendations', uploads auth.feature, submits analysis, clicks Download Markdown",
-          "then_assertion": "Panel heading is 'Documentation and Analysis' and downloaded file is named shiftdoc-qam-auth+tr+gap+ann+risk+rec.md",
+          "example": "QA Manager / auth.feature / 5 add-ons \u2192 shiftdoc-qam-auth+tr+gap+ann+risk+rec.md",
+          "given_context": "Analyze page with mocked API, QA Manager role, all five add-ons selected, auth.feature uploaded",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded file is named shiftdoc-qam-auth+tr+gap+ann+risk+rec.md",
           "gherkin_type": "Boundary"
         }
       ]
@@ -168,16 +168,16 @@
         {
           "type": "Background",
           "name": "Given the analysis API is mocked",
-          "explanation": "Stubs the analysis API before each scenario so tests run without a live backend."
+          "explanation": "Stubs the analysis API before each scenario to eliminate backend dependency and ensure deterministic download behaviour."
         }
       ],
-      "journey": "A user pastes BDD content directly (providing no source filename) and verifies that the downloaded Markdown filename falls back to a date-time-stamped pattern instead of a source-derived name.",
+      "journey": "A user pastes BDD content directly (no file upload), submits the analysis, and verifies the downloaded Markdown filename falls back to a date-time stamp pattern since no source filename is available.",
       "test_coverage_matrix": [
         {
           "scenario": "Pasted text with no filename falls back to date-time",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'Product Owner', pastes BDD content, submits analysis, clicks Download Markdown",
-          "then_assertion": "Downloaded filename matches the regex shiftdoc-po-\\d{8}-\\d{6}\\.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, no file uploaded \u2014 content pasted instead",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded filename matches regex shiftdoc-po-\\d{8}-\\d{6}\\.md",
           "gherkin_type": "Edge Case"
         }
       ]
@@ -192,16 +192,16 @@
         {
           "type": "Background",
           "name": "Given the analysis API is mocked",
-          "explanation": "Stubs the analysis API before each scenario so tests run without a live backend."
+          "explanation": "Stubs the analysis API before each scenario to eliminate backend dependency and ensure deterministic download behaviour."
         }
       ],
-      "journey": "A user pastes BDD content with add-ons selected and no source file, then verifies that the downloaded filename combines the date-time fallback with the appropriate add-on short codes.",
+      "journey": "A user pastes BDD content with add-ons selected, submits the analysis, and verifies the downloaded Markdown filename combines the date-time fallback with the encoded add-on short codes.",
       "test_coverage_matrix": [
         {
           "scenario": "Pasted text with add-ons falls back to date-time with add-on suffix",
-          "given_context": "User is on the Analyze page with API mocked",
-          "when_action": "Selects format 'bdd', role 'Product Owner', add-ons 'Technical Review, Gap Analysis', pastes BDD content, submits analysis, clicks Download Markdown",
-          "then_assertion": "Downloaded filename matches the regex shiftdoc-po-\\d{8}-\\d{6}\\+tr\\+gap\\.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, Technical Review and Gap Analysis add-ons selected, content pasted with no file upload",
+          "when_action": "User submits analysis and clicks Download Markdown",
+          "then_assertion": "Downloaded filename matches regex shiftdoc-po-\\d{8}-\\d{6}\\+tr\\+gap\\.md",
           "gherkin_type": "Edge Case"
         }
       ]
@@ -213,6 +213,13 @@
         "@SHIFT-8"
       ],
       "outline_type": "Scenario Outline",
+      "test_hooks": [
+        {
+          "type": "Background",
+          "name": "Given the analysis API is mocked",
+          "explanation": "Stubs the analysis API before each scenario to eliminate backend dependency and ensure deterministic download behaviour."
+        }
+      ],
       "example_groups": [
         {
           "label": "Examples",
@@ -232,33 +239,26 @@
           ]
         }
       ],
-      "test_hooks": [
-        {
-          "type": "Background",
-          "name": "Given the analysis API is mocked",
-          "explanation": "Stubs the analysis API before each scenario so tests run without a live backend."
-        }
-      ],
-      "journey": "A user downloads analysis results in each supported format and verifies that the file extension in the downloaded filename matches the chosen format.",
+      "journey": "A user uploads a source file, submits the analysis, and verifies that selecting each supported download format produces a file with the correct extension.",
       "test_coverage_matrix": [
         {
-          "example": "Markdown \u2192 .md",
-          "given_context": "User is on the Analyze page with API mocked, format 'bdd', role 'Product Owner', auth.feature uploaded and analysis submitted",
-          "when_action": "Clicks 'Download Markdown'",
+          "example": "Markdown \u2192 shiftdoc-po-auth.md",
+          "given_context": "Analyze page with mocked API, Product Owner role, auth.feature uploaded, analysis submitted",
+          "when_action": "User clicks Download Markdown",
           "then_assertion": "Downloaded file is named shiftdoc-po-auth.md",
           "gherkin_type": "Positive"
         },
         {
-          "example": "HTML \u2192 .html",
-          "given_context": "User is on the Analyze page with API mocked, format 'bdd', role 'Product Owner', auth.feature uploaded and analysis submitted",
-          "when_action": "Clicks 'Download HTML'",
+          "example": "HTML \u2192 shiftdoc-po-auth.html",
+          "given_context": "Analyze page with mocked API, Product Owner role, auth.feature uploaded, analysis submitted",
+          "when_action": "User clicks Download HTML",
           "then_assertion": "Downloaded file is named shiftdoc-po-auth.html",
           "gherkin_type": "Positive"
         },
         {
-          "example": "JSON \u2192 .json",
-          "given_context": "User is on the Analyze page with API mocked, format 'bdd', role 'Product Owner', auth.feature uploaded and analysis submitted",
-          "when_action": "Clicks 'Download JSON'",
+          "example": "JSON \u2192 shiftdoc-po-auth.json",
+          "given_context": "Analyze page with mocked API, Product Owner role, auth.feature uploaded, analysis submitted",
+          "when_action": "User clicks Download JSON",
           "then_assertion": "Downloaded file is named shiftdoc-po-auth.json",
           "gherkin_type": "Positive"
         }

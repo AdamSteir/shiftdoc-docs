@@ -1,0 +1,220 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-24T17:07:01Z",
+    "source_file": "analysis_robot.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Robot Framework - PO - single test, core output structure",
+      "feature": "Robot Framework Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-17"
+      ],
+      "description": "Verifies that uploading a single Robot Framework test file produces valid, complete documentation output for a Product Owner.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The tool produces visible output after processing the file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders and variables in the output are fully resolved"
+        },
+        {
+          "verification_step": "JSON framework is 'robot'",
+          "what_it_checks": "The output correctly identifies the test framework as Robot Framework"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is captured in the output"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test case is properly named"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - PO - Template data-driven expands one test per row",
+      "feature": "Robot Framework Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "Verifies that a data-driven Robot Framework template test is expanded into one separate test entry per data row in the Product Owner output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The tool produces visible output after processing the file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders and variables in the output are fully resolved"
+        },
+        {
+          "verification_step": "JSON framework is 'robot'",
+          "what_it_checks": "The output correctly identifies the test framework as Robot Framework"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Each data row in the template is represented as its own test case"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each expanded test case is properly named"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - PO - FOR loop expands one test per value",
+      "feature": "Robot Framework Analysis",
+      "user_role": "Product Owner",
+      "traceability_annotations": [
+        "@SHIFT-19"
+      ],
+      "description": "Verifies that a Robot Framework test using a FOR loop is expanded into one separate test entry per loop value in the Product Owner output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The tool produces visible output after processing the file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders and variables in the output are fully resolved"
+        },
+        {
+          "verification_step": "JSON framework is 'robot'",
+          "what_it_checks": "The output correctly identifies the test framework as Robot Framework"
+        },
+        {
+          "verification_step": "JSON has 3 or more tests",
+          "what_it_checks": "Each iteration value in the FOR loop is represented as its own test case"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each expanded test case is properly named"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - QAM - single test, coverage matrix populated",
+      "feature": "Robot Framework Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-18"
+      ],
+      "description": "Verifies that uploading a single Robot Framework test file produces valid documentation including a populated coverage matrix for a QA Manager.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The tool produces visible output after processing the file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders and variables in the output are fully resolved"
+        },
+        {
+          "verification_step": "JSON framework is 'robot'",
+          "what_it_checks": "The output correctly identifies the test framework as Robot Framework"
+        },
+        {
+          "verification_step": "JSON has 1 or more tests",
+          "what_it_checks": "At least one test case is captured in the output"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each documented test case is properly named"
+        },
+        {
+          "verification_step": "First test has a non-empty test_coverage_matrix array",
+          "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - QAM - Template collapses",
+      "feature": "Robot Framework Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "Verifies that a data-driven Robot Framework template is collapsed into a single test entry with a coverage matrix row per data example in the QA Manager output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The tool produces visible output after processing the file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders and variables in the output are fully resolved"
+        },
+        {
+          "verification_step": "JSON framework is 'robot'",
+          "what_it_checks": "The output correctly identifies the test framework as Robot Framework"
+        },
+        {
+          "verification_step": "JSON has exactly 1 test",
+          "what_it_checks": "Multiple data rows are collapsed into a single test case rather than expanded"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "The collapsed test case is properly named"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the examples",
+          "what_it_checks": "Each data row from the template appears as a separate row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for 'robot'",
+          "what_it_checks": "Each coverage matrix row contains the expected fields for Robot Framework tests"
+        }
+      ]
+    },
+    {
+      "test_name": "Robot Framework - QAM - FOR loop collapses",
+      "feature": "Robot Framework Analysis",
+      "user_role": "QA Manager",
+      "traceability_annotations": [
+        "@SHIFT-20"
+      ],
+      "description": "Verifies that Robot Framework tests using FOR loops are collapsed into a smaller number of test entries with coverage matrix rows per loop value in the QA Manager output.",
+      "test_coverage": [
+        {
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The tool produces visible output after processing the file"
+        },
+        {
+          "verification_step": "JSON output has no unresolved values",
+          "what_it_checks": "All placeholders and variables in the output are fully resolved"
+        },
+        {
+          "verification_step": "JSON framework is 'robot'",
+          "what_it_checks": "The output correctly identifies the test framework as Robot Framework"
+        },
+        {
+          "verification_step": "JSON has exactly 2 tests",
+          "what_it_checks": "FOR loop iterations are collapsed so only 2 top-level test entries appear"
+        },
+        {
+          "verification_step": "Every test has a non-empty test_name",
+          "what_it_checks": "Each collapsed test case is properly named"
+        },
+        {
+          "verification_step": "Coverage matrix row count matches the examples",
+          "what_it_checks": "Each loop value appears as a separate row in the coverage matrix"
+        },
+        {
+          "verification_step": "Coverage matrix rows use the correct schema for 'robot'",
+          "what_it_checks": "Each coverage matrix row contains the expected fields for Robot Framework tests"
+        }
+      ]
+    }
+  ]
+}

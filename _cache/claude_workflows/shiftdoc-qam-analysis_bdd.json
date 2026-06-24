@@ -3,8 +3,8 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:13:32Z",
-    "source_file": "bdd.feature",
+    "generated": "2026-06-24T17:02:29Z",
+    "source_file": "analysis_bdd.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
     "role_label": "QA Manager"
@@ -16,7 +16,7 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "journey": "A Product Owner uploads a BDD feature file and verifies that the documentation output is rendered, downloadable, and structurally valid with at least one named test containing a description and coverage array.",
+      "journey": "A Product Owner uploads a BDD feature fixture and documents test cases, verifying the JSON output is structurally valid with named tests and coverage data.",
       "test_coverage_matrix": [
         {
           "scenario": "BDD - PO - core output structure",
@@ -33,13 +33,13 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "journey": "A Product Owner uploads a data-driven BDD feature file and verifies that the output correctly expands into three or more individually named tests.",
+      "journey": "A Product Owner uploads a data-driven BDD fixture and verifies the output expands into three or more individually named tests.",
       "test_coverage_matrix": [
         {
           "scenario": "BDD - PO - data-driven produces multiple tests",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'bdd' and role 'Product Owner', uploads 'bdd_datadriven_sample.feature', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 3+ tests, and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -50,7 +50,7 @@
       "traceability_annotations": [
         "@SHIFT-21"
       ],
-      "journey": "A Product Owner documents a BDD feature file without any add-ons selected and verifies that the output panel title is 'Documentation' and not the combined 'Documentation and Analysis' label.",
+      "journey": "A Product Owner documents a BDD feature with no add-ons selected and verifies the output panel title is 'Documentation' rather than the combined 'Documentation and Analysis' label.",
       "test_coverage_matrix": [
         {
           "scenario": "Panel title is \"Documentation\" when no add-ons are selected",
@@ -67,13 +67,13 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "journey": "A QA Manager uploads a BDD feature file and verifies that the output includes the source filename, a valid downloadable JSON with no unresolved values, and a correctly structured coverage matrix for the BDD format.",
+      "journey": "A QA Manager uploads a BDD feature fixture and verifies the JSON output includes a correctly structured coverage matrix with BDD-specific schema per test.",
       "test_coverage_matrix": [
         {
           "scenario": "BDD - QAM - coverage matrix populated",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'bdd' and role 'QA Manager', uploads 'bdd_sample.feature', and clicks 'Document test cases'",
-          "then_assertion": "Output panel shows the filename 'bdd_sample.feature'; downloaded JSON has no unresolved values; the first test has a non-empty test_coverage_matrix array whose rows conform to the BDD schema",
+          "then_assertion": "Output panel is populated and shows the filename; downloaded JSON has no unresolved values, the first test has a non-empty test_coverage_matrix array, and each coverage matrix row conforms to the BDD schema",
           "gherkin_type": "Positive"
         }
       ]

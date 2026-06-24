@@ -1,0 +1,40 @@
+{
+  "shiftdoc": {
+    "schema": "product-owner",
+    "schema_version": "1.0",
+    "framework": "bdd",
+    "generated": "2026-06-24T17:10:57Z",
+    "source_file": "version_check.feature",
+    "model": "claude-sonnet-4-6",
+    "role": "po",
+    "role_label": "Product Owner"
+  },
+  "tests": [
+    {
+      "test_name": "Stale frontend shows update modal when Analyze is clicked",
+      "feature": "Version mismatch detection",
+      "traceability_annotations": [
+        "@SHIFT-47"
+      ],
+      "description": "When a user attempts to analyze a test file but their frontend is out of date, they are shown a prompt to reload and update instead of receiving analysis results.",
+      "test_coverage": [
+        {
+          "verification_step": "the backend reports a mismatched version",
+          "what_it_checks": "The system correctly detects that the user's frontend version does not match the backend version"
+        },
+        {
+          "verification_step": "I click the analyze button",
+          "what_it_checks": "Triggering analysis with a stale frontend surfaces the version conflict rather than silently failing or proceeding"
+        },
+        {
+          "verification_step": "I see the update required modal",
+          "what_it_checks": "Users are clearly informed that an update is required before they can continue"
+        },
+        {
+          "verification_step": "the modal has a reload button",
+          "what_it_checks": "Users are given a direct, one-click way to reload and resolve the version mismatch"
+        }
+      ]
+    }
+  ]
+}

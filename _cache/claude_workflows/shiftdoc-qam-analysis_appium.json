@@ -3,8 +3,8 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:12:48Z",
-    "source_file": "appium.feature",
+    "generated": "2026-06-24T17:01:45Z",
+    "source_file": "analysis_appium.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
     "role_label": "QA Manager"
@@ -22,7 +22,7 @@
           "scenario": "Appium - PO - single test, core output structure",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'appium' and role 'Product Owner', uploads 'appium_single_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -33,13 +33,13 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "journey": "A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own named test entry in the JSON output.",
+      "journey": "A Product Owner uploads a data-driven Appium fixture and verifies that each DataProvider row is expanded into its own discrete test entry in the JSON output.",
       "test_coverage_matrix": [
         {
           "scenario": "Appium - PO - DataProvider expands one test per row",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'appium' and role 'Product Owner', uploads 'appium_datadriven_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 3 or more tests, and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -50,13 +50,13 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "journey": "A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test.",
+      "journey": "A QA Manager uploads a single Appium test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test, confirming the QAM-role enrichment pipeline is working.",
       "test_coverage_matrix": [
         {
           "scenario": "Appium - QAM - single test, coverage matrix populated",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'appium' and role 'QA Manager', uploads 'appium_single_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
           "gherkin_type": "Positive"
         }
       ]
@@ -67,13 +67,13 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "journey": "A QA Manager uploads a data-driven Appium fixture and verifies that DataProvider rows collapse into a single named test whose coverage matrix rows match the example count and conform to the generic schema.",
+      "journey": "A QA Manager uploads a data-driven Appium fixture and verifies that DataProvider rows are collapsed into a single test with a coverage matrix whose row count and schema match the expected data-driven structure.",
       "test_coverage_matrix": [
         {
           "scenario": "Appium - QAM - DataProvider collapses",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'appium' and role 'QA Manager', uploads 'appium_datadriven_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, contains exactly 1 test, that test has a non-empty test_name, coverage matrix row count matches the DataProvider examples, and all coverage matrix rows use the correct generic schema",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, contains exactly 1 test, test has a non-empty test_name, coverage matrix row count matches the DataProvider examples, and rows conform to the 'generic' schema",
           "gherkin_type": "Positive"
         }
       ]

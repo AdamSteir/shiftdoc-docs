@@ -3,7 +3,7 @@
     "schema": "product-owner",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T23:35:29Z",
+    "generated": "2026-06-24T17:10:25Z",
     "source_file": "story_coverage_results_download_mocked.feature",
     "model": "claude-sonnet-4-6",
     "role": "po",
@@ -24,15 +24,15 @@
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed from an uploaded story file",
-          "what_it_checks": "Coverage results are available from a named uploaded story file"
+          "what_it_checks": "Coverage results are available from a file that was uploaded by the user"
         },
         {
           "verification_step": "When I click the Download MD button",
-          "what_it_checks": "User can trigger a download in Markdown format"
+          "what_it_checks": "The user can trigger a download in Markdown format"
         },
         {
           "verification_step": "Then the downloaded file is named \"shiftdoc-tca-story_sample.md\"",
-          "what_it_checks": "Downloaded file name reflects the original story filename and uses the .md extension"
+          "what_it_checks": "The downloaded file is named after the original uploaded story file with a .md extension"
         }
       ]
     },
@@ -50,15 +50,15 @@
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed from an uploaded story file",
-          "what_it_checks": "Coverage results are available from a named uploaded story file"
+          "what_it_checks": "Coverage results are available from a file that was uploaded by the user"
         },
         {
           "verification_step": "When I click the Download HTML button",
-          "what_it_checks": "User can trigger a download in HTML format"
+          "what_it_checks": "The user can trigger a download in HTML format"
         },
         {
           "verification_step": "Then the downloaded file is named \"shiftdoc-tca-story_sample.html\"",
-          "what_it_checks": "Downloaded file name reflects the original story filename and uses the .html extension"
+          "what_it_checks": "The downloaded file is named after the original uploaded story file with a .html extension"
         }
       ]
     },
@@ -76,15 +76,15 @@
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed from an uploaded story file",
-          "what_it_checks": "Coverage results are available from a named uploaded story file"
+          "what_it_checks": "Coverage results are available from a file that was uploaded by the user"
         },
         {
           "verification_step": "When I click the Download JSON button",
-          "what_it_checks": "User can trigger a download in JSON format"
+          "what_it_checks": "The user can trigger a download in JSON format"
         },
         {
           "verification_step": "Then the downloaded file is named \"shiftdoc-tca-story_sample.json\"",
-          "what_it_checks": "Downloaded file name reflects the original story filename and uses the .json extension"
+          "what_it_checks": "The downloaded file is named after the original uploaded story file with a .json extension"
         }
       ]
     },
@@ -94,19 +94,19 @@
       "traceability_annotations": [
         "@SHIFT-56"
       ],
-      "description": "Verifies that when coverage results come from pasted story text (no file name available), the downloaded file is automatically named using a date-time timestamp instead.",
+      "description": "Verifies that when a user pastes story content directly instead of uploading a file, the downloaded results file is automatically named using a date-time stamp.",
       "test_coverage": [
         {
           "verification_step": "Given a coverage result is displayed",
-          "what_it_checks": "Coverage results are available from pasted story text with no associated filename"
+          "what_it_checks": "Coverage results are available from pasted story content, with no uploaded filename to reference"
         },
         {
           "verification_step": "When I click the Download MD button",
-          "what_it_checks": "User triggers a download in Markdown format"
+          "what_it_checks": "The user triggers a download in Markdown format"
         },
         {
           "verification_step": "Then the downloaded file matches \"shiftdoc-tca-\\d{8}-\\d{6}\\.md\"",
-          "what_it_checks": "Downloaded file is automatically named with a date-time stamp when no story filename exists"
+          "what_it_checks": "The downloaded file is automatically assigned a name containing a date and time stamp when no source filename is available"
         }
       ]
     }

@@ -3,8 +3,8 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:21:54Z",
-    "source_file": "swift.feature",
+    "generated": "2026-06-24T17:08:54Z",
+    "source_file": "analysis_swift.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
     "role_label": "QA Manager"
@@ -16,13 +16,13 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "journey": "A Product Owner uploads a single Swift test fixture and verifies that the analysis produces valid, fully-resolved JSON output containing at least one named test.",
+      "journey": "A Product Owner uploads a single Swift test fixture and verifies that the analysis pipeline produces valid, fully-resolved JSON output containing at least one named test.",
       "test_coverage_matrix": [
         {
           "scenario": "Swift - PO - single test, core output structure",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'swift' and role 'Product Owner', uploads 'swift_single_sample.swift', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains 1 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'swift', contains 1+ tests, and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -33,13 +33,13 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "journey": "A Product Owner uploads a data-driven Swift fixture and verifies that the analyser expands struct+for loops into individual tests, producing at least three distinct named test entries in the JSON output.",
+      "journey": "A Product Owner uploads a data-driven Swift fixture and verifies that the analyser expands struct/for-loop parameterisation into one discrete test entry per data row, yielding at least three tests.",
       "test_coverage_matrix": [
         {
           "scenario": "Swift - PO - struct+for data-driven expands one test per row",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'swift' and role 'Product Owner', uploads 'swift_datadriven_sample.swift', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains 3 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'swift', and contains 3 or more tests each with a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -50,13 +50,13 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "journey": "A QA Manager uploads a single Swift test fixture and verifies that the analysis returns valid JSON with a fully populated coverage matrix on the first test.",
+      "journey": "A QA Manager uploads a single Swift test fixture and verifies that the analysis output includes a populated test_coverage_matrix on the first test in addition to core structural validity.",
       "test_coverage_matrix": [
         {
           "scenario": "Swift - QAM - single test, coverage matrix populated",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'swift' and role 'QA Manager', uploads 'swift_single_sample.swift', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'swift', contains 1+ tests with non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
           "gherkin_type": "Positive"
         }
       ]
@@ -67,14 +67,14 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "journey": "A QA Manager uploads a data-driven Swift fixture and verifies that the analyser collapses all data rows into a single test entry whose coverage matrix rows match the number of examples and conform to the Swift schema.",
+      "journey": "A QA Manager uploads a data-driven Swift fixture and verifies that the analyser collapses all parameterised cases into exactly one test whose coverage matrix rows match the number of examples and conform to the Swift schema.",
       "test_coverage_matrix": [
         {
           "scenario": "Swift - QAM - data-driven collapses",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'swift' and role 'QA Manager', uploads 'swift_datadriven_sample.swift', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'swift', contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the data-driven examples, and coverage matrix rows use the correct Swift schema",
-          "gherkin_type": "Edge Case"
+          "then_assertion": "Output panel shows documentation; downloaded JSON has no unresolved values, framework is 'swift', contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the source examples, and rows use the correct Swift schema",
+          "gherkin_type": "Positive"
         }
       ]
     }

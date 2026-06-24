@@ -3,8 +3,8 @@
     "schema": "qa-manager",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:15:11Z",
-    "source_file": "espresso.feature",
+    "generated": "2026-06-24T17:04:08Z",
+    "source_file": "analysis_espresso.feature",
     "model": "claude-sonnet-4-6",
     "role": "qam",
     "role_label": "QA Manager"
@@ -16,13 +16,13 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "journey": "A Product Owner uploads a single Espresso test fixture and verifies that the documented JSON output is structurally valid with at least one named test.",
+      "journey": "A Product Owner uploads a single Espresso test fixture and verifies that the analysis produces valid, framework-tagged JSON output containing at least one named test.",
       "test_coverage_matrix": [
         {
           "scenario": "Espresso - PO - single test, core output structure",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'espresso' and role 'Product Owner', uploads 'espresso_single_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, declares framework 'espresso', contains 1 or more tests, and every test has a non-empty test_name",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'espresso', contains 1 or more tests, and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -33,13 +33,13 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "journey": "A Product Owner uploads a data-driven Espresso fixture and verifies that parameterized rows are expanded into individual tests in the JSON output.",
+      "journey": "A Product Owner uploads a data-driven Espresso fixture and verifies that each parameterized row is expanded into its own test entry in the JSON output.",
       "test_coverage_matrix": [
         {
           "scenario": "Espresso - PO - Parameterized data-driven expands one test per row",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'espresso' and role 'Product Owner', uploads 'espresso_datadriven_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, declares framework 'espresso', contains 3 or more tests (one per data row), and every test has a non-empty test_name",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'espresso', contains 3 or more tests (one per data row), and every test has a non-empty test_name",
           "gherkin_type": "Positive"
         }
       ]
@@ -50,13 +50,13 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "journey": "A QA Manager uploads a single Espresso test fixture and verifies that the JSON output includes a populated test_coverage_matrix for the first test.",
+      "journey": "A QA Manager uploads a single Espresso test fixture and verifies that the JSON output includes a populated test_coverage_matrix on the first test.",
       "test_coverage_matrix": [
         {
           "scenario": "Espresso - QAM - single test, coverage matrix populated",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'espresso' and role 'QA Manager', uploads 'espresso_single_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, declares framework 'espresso', contains 1 or more tests with non-empty test_name values, and the first test includes a non-empty test_coverage_matrix array",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'espresso', contains 1 or more tests, every test has a non-empty test_name, and the first test has a non-empty test_coverage_matrix array",
           "gherkin_type": "Positive"
         }
       ]
@@ -67,13 +67,13 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "journey": "A QA Manager uploads a data-driven Espresso fixture and verifies that all parameterized rows collapse into a single test entry whose coverage matrix rows match the example count and conform to the Espresso schema.",
+      "journey": "A QA Manager uploads a data-driven Espresso fixture and verifies that the output collapses all rows into exactly one test entry whose coverage matrix rows match the example count and conform to the Espresso schema.",
       "test_coverage_matrix": [
         {
           "scenario": "Espresso - QAM - data-driven collapses",
           "given_context": "User is on the Analyze page",
           "when_action": "Selects format 'espresso' and role 'QA Manager', uploads 'espresso_datadriven_sample.java', and clicks 'Document test cases'",
-          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, declares framework 'espresso', contains exactly 1 test with a non-empty test_name, coverage matrix row count matches the number of data examples, and each row uses the correct Espresso schema",
+          "then_assertion": "Output panel is populated; downloaded JSON has no unresolved values, framework is 'espresso', contains exactly 1 test, every test has a non-empty test_name, coverage matrix row count matches the data-driven examples, and rows conform to the Espresso schema",
           "gherkin_type": "Edge Case"
         }
       ]

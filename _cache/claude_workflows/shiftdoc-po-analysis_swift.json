@@ -3,8 +3,8 @@
     "schema": "product-owner",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:21:34Z",
-    "source_file": "swift.feature",
+    "generated": "2026-06-24T17:08:31Z",
+    "source_file": "analysis_swift.feature",
     "model": "claude-sonnet-4-6",
     "role": "po",
     "role_label": "Product Owner"
@@ -17,19 +17,19 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "description": "Verifies that uploading a single Swift test file produces valid, well-formed documentation output with at least one named test case.",
+      "description": "Verifies that a Product Owner uploading a single Swift test file receives properly structured documentation output with no missing values.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The tool produces visible output after processing a Swift file"
+          "what_it_checks": "The analysis produces visible output after processing the Swift file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All placeholders or template tokens in the output are fully resolved"
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or blanks"
         },
         {
           "verification_step": "JSON framework is 'swift'",
-          "what_it_checks": "The output correctly identifies the source language as Swift"
+          "what_it_checks": "The output correctly identifies the test framework as Swift"
         },
         {
           "verification_step": "JSON has 1 or more tests",
@@ -37,7 +37,7 @@
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each documented test case is assigned a meaningful name"
+          "what_it_checks": "Each documented test case carries a meaningful name in the output"
         }
       ]
     },
@@ -48,27 +48,27 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "description": "Verifies that a data-driven Swift test using struct and for-loop patterns is expanded into one documented test entry per data row.",
+      "description": "Verifies that a Product Owner uploading a data-driven Swift test file sees each data row expanded into its own individual test case in the output.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The tool produces visible output after processing a data-driven Swift file"
+          "what_it_checks": "The analysis produces visible output after processing the data-driven Swift file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All placeholders or template tokens in the output are fully resolved"
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or blanks"
         },
         {
           "verification_step": "JSON framework is 'swift'",
-          "what_it_checks": "The output correctly identifies the source language as Swift"
+          "what_it_checks": "The output correctly identifies the test framework as Swift"
         },
         {
           "verification_step": "JSON has 3 or more tests",
-          "what_it_checks": "Data-driven rows are each expanded into their own separate test entry, yielding at least 3 tests"
+          "what_it_checks": "Data-driven rows are each expanded into separate documented test cases, producing at least 3 entries"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each expanded test case is assigned a meaningful name"
+          "what_it_checks": "Each expanded test case carries a meaningful name in the output"
         }
       ]
     },
@@ -79,19 +79,19 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "description": "Verifies that when a QA Manager analyzes a single Swift test file, the output includes a populated test coverage matrix for each test case.",
+      "description": "Verifies that a QA Manager uploading a single Swift test file receives output that includes a populated coverage matrix alongside the core test documentation.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The tool produces visible output after processing a Swift file"
+          "what_it_checks": "The analysis produces visible output after processing the Swift file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All placeholders or template tokens in the output are fully resolved"
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or blanks"
         },
         {
           "verification_step": "JSON framework is 'swift'",
-          "what_it_checks": "The output correctly identifies the source language as Swift"
+          "what_it_checks": "The output correctly identifies the test framework as Swift"
         },
         {
           "verification_step": "JSON has 1 or more tests",
@@ -99,11 +99,11 @@
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each documented test case is assigned a meaningful name"
+          "what_it_checks": "Each documented test case carries a meaningful name in the output"
         },
         {
-          "verification_step": "First test has a non-empty array test_coverage_matrix",
-          "what_it_checks": "The QA Manager role triggers generation of a coverage matrix with at least one entry"
+          "verification_step": "First test has a non-empty test_coverage_matrix array",
+          "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test case"
         }
       ]
     },
@@ -114,35 +114,35 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "description": "Verifies that when a QA Manager analyzes a data-driven Swift test file, the multiple data rows are collapsed into a single test entry whose coverage matrix rows match the number of examples and follow the correct schema.",
+      "description": "Verifies that a QA Manager uploading a data-driven Swift test file sees all data rows collapsed into a single test case whose coverage matrix rows match the number of data examples.",
       "test_coverage": [
         {
           "verification_step": "Documentation appears in output panel",
-          "what_it_checks": "The tool produces visible output after processing a data-driven Swift file"
+          "what_it_checks": "The analysis produces visible output after processing the data-driven Swift file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All placeholders or template tokens in the output are fully resolved"
+          "what_it_checks": "All fields in the downloaded output are fully populated with no placeholders or blanks"
         },
         {
           "verification_step": "JSON framework is 'swift'",
-          "what_it_checks": "The output correctly identifies the source language as Swift"
+          "what_it_checks": "The output correctly identifies the test framework as Swift"
         },
         {
           "verification_step": "JSON has exactly 1 test",
-          "what_it_checks": "Data-driven rows are collapsed into a single test entry under the QA Manager role"
+          "what_it_checks": "Data-driven rows are collapsed into a single documented test case for the QA Manager view"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "The collapsed test case is assigned a meaningful name"
+          "what_it_checks": "The collapsed test case carries a meaningful name in the output"
         },
         {
           "verification_step": "Coverage matrix row count matches the examples",
-          "what_it_checks": "The number of rows in the coverage matrix equals the number of data-driven input rows"
+          "what_it_checks": "The number of rows in the coverage matrix equals the number of data-driven input rows from the Swift file"
         },
         {
           "verification_step": "Coverage matrix rows use the correct schema for 'swift'",
-          "what_it_checks": "Each coverage matrix row conforms to the expected Swift-specific structure"
+          "what_it_checks": "Each coverage matrix row conforms to the expected Swift-specific field structure"
         }
       ]
     }

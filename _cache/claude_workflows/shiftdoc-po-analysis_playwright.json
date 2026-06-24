@@ -3,8 +3,8 @@
     "schema": "product-owner",
     "schema_version": "1.0",
     "framework": "bdd",
-    "generated": "2026-06-23T22:17:05Z",
-    "source_file": "playwright.feature",
+    "generated": "2026-06-24T17:05:22Z",
+    "source_file": "analysis_playwright.feature",
     "model": "claude-sonnet-4-6",
     "role": "po",
     "role_label": "Product Owner"
@@ -17,15 +17,15 @@
       "traceability_annotations": [
         "@SHIFT-17"
       ],
-      "description": "Verifies that uploading a single Playwright test file produces valid, complete documentation output with at least one named test entry.",
+      "description": "Verifies that uploading a single Playwright test file produces valid, fully resolved JSON documentation with at least one named test entry.",
       "test_coverage": [
         {
-          "verification_step": "Documentation appears in the output panel",
-          "what_it_checks": "The system successfully processes the uploaded file and displays results to the user"
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing the uploaded file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the output are fully populated with no placeholders or missing data"
+          "what_it_checks": "All fields in the downloaded JSON are populated \u2014 no placeholders or missing data"
         },
         {
           "verification_step": "JSON framework is 'playwright'",
@@ -33,11 +33,11 @@
         },
         {
           "verification_step": "JSON has 1 or more tests",
-          "what_it_checks": "At least one test case is documented from the uploaded file"
+          "what_it_checks": "At least one test case is documented in the output"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each documented test is identifiable by a meaningful name"
+          "what_it_checks": "Each documented test is identifiable by name"
         }
       ]
     },
@@ -48,15 +48,15 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "description": "Verifies that a data-driven Playwright test using test.each is expanded into individual test entries \u2014 one per data row \u2014 in the Product Owner output.",
+      "description": "Verifies that a data-driven Playwright file using test.each produces a separate documented test entry for each data row.",
       "test_coverage": [
         {
-          "verification_step": "Documentation appears in the output panel",
-          "what_it_checks": "The system successfully processes the data-driven test file and displays results"
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing the uploaded file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the output are fully populated with no placeholders or missing data"
+          "what_it_checks": "All fields in the downloaded JSON are populated \u2014 no placeholders or missing data"
         },
         {
           "verification_step": "JSON framework is 'playwright'",
@@ -64,11 +64,11 @@
         },
         {
           "verification_step": "JSON has 2 or more tests",
-          "what_it_checks": "Each data row in test.each produces its own distinct test entry in the output"
+          "what_it_checks": "Each test.each data row is expanded into its own test entry in the output"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each expanded test case is identifiable by a meaningful name"
+          "what_it_checks": "Each expanded test entry is identifiable by name"
         }
       ]
     },
@@ -79,15 +79,15 @@
       "traceability_annotations": [
         "@SHIFT-19"
       ],
-      "description": "Verifies that a data-driven Playwright test using a for...of loop is expanded into individual test entries \u2014 one per iteration \u2014 in the Product Owner output.",
+      "description": "Verifies that a data-driven Playwright file using a for...of loop produces a separate documented test entry for each iteration.",
       "test_coverage": [
         {
-          "verification_step": "Documentation appears in the output panel",
-          "what_it_checks": "The system successfully processes the for...of test file and displays results"
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing the uploaded file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the output are fully populated with no placeholders or missing data"
+          "what_it_checks": "All fields in the downloaded JSON are populated \u2014 no placeholders or missing data"
         },
         {
           "verification_step": "JSON framework is 'playwright'",
@@ -95,11 +95,11 @@
         },
         {
           "verification_step": "JSON has 3 or more tests",
-          "what_it_checks": "Each iteration of the for...of loop produces its own distinct test entry in the output"
+          "what_it_checks": "Each for...of loop iteration is expanded into its own test entry in the output"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each expanded test case is identifiable by a meaningful name"
+          "what_it_checks": "Each expanded test entry is identifiable by name"
         }
       ]
     },
@@ -110,15 +110,15 @@
       "traceability_annotations": [
         "@SHIFT-18"
       ],
-      "description": "Verifies that uploading a single Playwright test file in QA Manager mode produces documentation that includes a populated test coverage matrix.",
+      "description": "Verifies that a QA Manager analyzing a single Playwright test receives documentation that includes a populated test coverage matrix.",
       "test_coverage": [
         {
-          "verification_step": "Documentation appears in the output panel",
-          "what_it_checks": "The system successfully processes the uploaded file and displays results to the user"
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing the uploaded file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the output are fully populated with no placeholders or missing data"
+          "what_it_checks": "All fields in the downloaded JSON are populated \u2014 no placeholders or missing data"
         },
         {
           "verification_step": "JSON framework is 'playwright'",
@@ -126,14 +126,14 @@
         },
         {
           "verification_step": "JSON has 1 or more tests",
-          "what_it_checks": "At least one test case is documented from the uploaded file"
+          "what_it_checks": "At least one test case is documented in the output"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "Each documented test is identifiable by a meaningful name"
+          "what_it_checks": "Each documented test is identifiable by name"
         },
         {
-          "verification_step": "The first test has a non-empty test_coverage_matrix array",
+          "verification_step": "First test has a non-empty array test_coverage_matrix",
           "what_it_checks": "The QA Manager view includes a coverage matrix with at least one entry for the test"
         }
       ]
@@ -145,15 +145,15 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "description": "Verifies that a data-driven Playwright test using test.each is collapsed into a single test entry in QA Manager mode, with coverage matrix rows representing each data scenario.",
+      "description": "Verifies that a QA Manager analyzing a data-driven Playwright file using test.each sees a single collapsed test entry whose coverage matrix rows represent each data row with the correct structure.",
       "test_coverage": [
         {
-          "verification_step": "Documentation appears in the output panel",
-          "what_it_checks": "The system successfully processes the data-driven test file and displays results"
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing the uploaded file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the output are fully populated with no placeholders or missing data"
+          "what_it_checks": "All fields in the downloaded JSON are populated \u2014 no placeholders or missing data"
         },
         {
           "verification_step": "JSON framework is 'playwright'",
@@ -161,19 +161,19 @@
         },
         {
           "verification_step": "JSON has exactly 1 test",
-          "what_it_checks": "All data rows from test.each are collapsed into a single test entry rather than expanded"
+          "what_it_checks": "Data-driven test.each tests are collapsed into a single test entry for QA Manager view"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "The collapsed test is identifiable by a meaningful name"
+          "what_it_checks": "The collapsed test entry is identifiable by name"
         },
         {
           "verification_step": "Coverage matrix row count matches the examples",
-          "what_it_checks": "Each data row from test.each is represented as its own row in the coverage matrix"
+          "what_it_checks": "The coverage matrix contains one row per data row from test.each"
         },
         {
           "verification_step": "Coverage matrix rows use the correct schema for 'playwright'",
-          "what_it_checks": "Each coverage matrix row conforms to the expected Playwright-specific structure"
+          "what_it_checks": "Each coverage matrix row follows the expected Playwright-specific data structure"
         }
       ]
     },
@@ -184,15 +184,15 @@
       "traceability_annotations": [
         "@SHIFT-20"
       ],
-      "description": "Verifies that a data-driven Playwright test using a for...of loop is collapsed into a single test entry in QA Manager mode, with coverage matrix rows representing each iteration.",
+      "description": "Verifies that a QA Manager analyzing a data-driven Playwright file using a for...of loop sees a single collapsed test entry whose coverage matrix rows represent each iteration with the correct structure.",
       "test_coverage": [
         {
-          "verification_step": "Documentation appears in the output panel",
-          "what_it_checks": "The system successfully processes the for...of test file and displays results"
+          "verification_step": "Documentation appears in output panel",
+          "what_it_checks": "The system produces visible output after analyzing the uploaded file"
         },
         {
           "verification_step": "JSON output has no unresolved values",
-          "what_it_checks": "All fields in the output are fully populated with no placeholders or missing data"
+          "what_it_checks": "All fields in the downloaded JSON are populated \u2014 no placeholders or missing data"
         },
         {
           "verification_step": "JSON framework is 'playwright'",
@@ -200,19 +200,19 @@
         },
         {
           "verification_step": "JSON has exactly 1 test",
-          "what_it_checks": "All iterations of the for...of loop are collapsed into a single test entry rather than expanded"
+          "what_it_checks": "Data-driven for...of tests are collapsed into a single test entry for QA Manager view"
         },
         {
           "verification_step": "Every test has a non-empty test_name",
-          "what_it_checks": "The collapsed test is identifiable by a meaningful name"
+          "what_it_checks": "The collapsed test entry is identifiable by name"
         },
         {
           "verification_step": "Coverage matrix row count matches the examples",
-          "what_it_checks": "Each loop iteration is represented as its own row in the coverage matrix"
+          "what_it_checks": "The coverage matrix contains one row per iteration of the for...of loop"
         },
         {
           "verification_step": "Coverage matrix rows use the correct schema for 'playwright'",
-          "what_it_checks": "Each coverage matrix row conforms to the expected Playwright-specific structure"
+          "what_it_checks": "Each coverage matrix row follows the expected Playwright-specific data structure"
         }
       ]
     }
